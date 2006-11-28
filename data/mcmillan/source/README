@@ -1,0 +1,15 @@
+OWEN MCMILLAN'S FILEMAKER DATABASE
+
+Raw export from Filemaker: Tab-delimited records are contained in
+".dat" files, with the field names listed in corresponding ".fields"
+files.
+
+McMillan_cross.dat	Cross Records
+McMillan_cross.fields
+McMillan_cross.psql	Manually entered database of cross records
+McMillan_overall.dat	Overall individuals
+McMillan_overall.fields
+McMillan_reared.dat	Reared individuals
+McMillan_reared.fields
+McMillan_wild.dat	Wild collected individuals
+McMillan_wild.fields

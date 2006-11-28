@@ -1,0 +1,34 @@
+--
+-- PostgreSQL database dump
+--
+
+SET client_encoding = 'UNICODE';
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Name: pedigree_pedigree_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nassar
+--
+
+SELECT pg_catalog.setval(pg_catalog.pg_get_serial_sequence('pedigree', 'pedigree_id'), 1, true);
+
+
+--
+-- Data for Name: pedigree; Type: TABLE DATA; Schema: public; Owner: nassar
+--
+
+-- Disable triggers
+UPDATE pg_catalog.pg_class SET reltriggers = 0 WHERE oid = 'pedigree'::pg_catalog.regclass;
+
+INSERT INTO pedigree (pedigree_id, pedigree_name, female_id, male_id, experimenter_id, experiment_geographic_site_id, date_mated, date_female_died, cross_type_id) VALUES (1, 'ErHi4', 2668, 2672, 1, 1, '2000-12-15', '2000-12-30', 1);
+
+
+-- Enable triggers
+UPDATE pg_catalog.pg_class SET reltriggers = (SELECT pg_catalog.count(*) FROM pg_catalog.pg_trigger where pg_class.oid = tgrelid) WHERE oid = 'pedigree'::pg_catalog.regclass;
+
+--
+-- PostgreSQL database dump complete
+--
+

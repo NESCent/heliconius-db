@@ -1,0 +1,15 @@
+Cross_is - Type of genetic cross (F1=1st filial generation, F2=2nd fil. gen.)
+Cross_Type - Individuals that make up the cross type
+Cross_Name - Stock name
+Female_Source - 
+Female_Mark
+Female_Collection_No
+Male_Source
+Male_Mark
+Male_Collection_No
+Date_Mated
+Date_F_Died
+No_Eggs
+No_Eclosed
+Cross_Notes
+Percent_Survival
