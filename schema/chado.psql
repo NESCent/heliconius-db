@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-SET client_encoding = 'SQL_ASCII';
+SET client_encoding = 'UTF8';
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
@@ -1396,7 +1396,7 @@ CREATE FUNCTION p(integer, integer) RETURNS point
 
 
 --
--- Name: plpgsql_call_handler(); Type: FUNCTION; Schema: public; Owner: postgres
+-- Name: plpgsql_call_handler(); Type: FUNCTION; Schema: public; Owner: nassar
 --
 
 CREATE FUNCTION plpgsql_call_handler() RETURNS language_handler
@@ -1405,7 +1405,7 @@ CREATE FUNCTION plpgsql_call_handler() RETURNS language_handler
 
 
 --
--- Name: plpgsql_validator(oid); Type: FUNCTION; Schema: public; Owner: postgres
+-- Name: plpgsql_validator(oid); Type: FUNCTION; Schema: public; Owner: nassar
 --
 
 CREATE FUNCTION plpgsql_validator(oid) RETURNS void
@@ -4372,56 +4372,42 @@ SET search_path = godb, pg_catalog;
 -- Data for Name: db; Type: TABLE DATA; Schema: godb; Owner: nassar
 --
 
-COPY db (id, name, fullname, datatype, url_syntax) FROM stdin;
-\.
 
 
 --
 -- Data for Name: dbxref; Type: TABLE DATA; Schema: godb; Owner: nassar
 --
 
-COPY dbxref (id, xref_dbname, xref_key, xref_keytype, xref_desc) FROM stdin;
-\.
 
 
 --
 -- Data for Name: go_acc; Type: TABLE DATA; Schema: godb; Owner: nassar
 --
 
-COPY go_acc (dbxref_id, acc) FROM stdin;
-\.
 
 
 --
 -- Data for Name: graph_path; Type: TABLE DATA; Schema: godb; Owner: nassar
 --
 
-COPY graph_path (id, term1_id, term2_id, distance) FROM stdin;
-\.
 
 
 --
 -- Data for Name: instance_data; Type: TABLE DATA; Schema: godb; Owner: nassar
 --
 
-COPY instance_data (release_name, release_type, release_notes) FROM stdin;
-\.
 
 
 --
 -- Data for Name: term; Type: TABLE DATA; Schema: godb; Owner: nassar
 --
 
-COPY term (id, acc, name, is_obsolete, is_root) FROM stdin;
-\.
 
 
 --
 -- Data for Name: term2term; Type: TABLE DATA; Schema: godb; Owner: nassar
 --
 
-COPY term2term (id, relationship_type_id, term1_id, term2_id) FROM stdin;
-\.
 
 
 SET search_path = public, pg_catalog;
@@ -4430,1502 +4416,1274 @@ SET search_path = public, pg_catalog;
 -- Data for Name: acquisition; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY acquisition (acquisition_id, assay_id, protocol_id, channel_id, acquisitiondate, name, uri) FROM stdin;
-\.
 
 
 --
 -- Data for Name: acquisition_relationship; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY acquisition_relationship (acquisition_relationship_id, subject_id, type_id, object_id, value, rank) FROM stdin;
-\.
 
 
 --
 -- Data for Name: acquisitionprop; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY acquisitionprop (acquisitionprop_id, acquisition_id, type_id, value, rank) FROM stdin;
-\.
 
 
 --
 -- Data for Name: affymetrixcel; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY affymetrixcel (elementresult_id, element_id, quantification_id, signal, mean, sd, pixels) FROM stdin;
-\.
 
 
 --
 -- Data for Name: affymetrixdabg; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY affymetrixdabg (elementresult_id, element_id, quantification_id, signal, call_p) FROM stdin;
-\.
 
 
 --
 -- Data for Name: affymetrixdchip; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY affymetrixdchip (elementresult_id, element_id, quantification_id, signal, z) FROM stdin;
-\.
 
 
 --
 -- Data for Name: affymetrixgcrma; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY affymetrixgcrma (elementresult_id, element_id, quantification_id, signal, z) FROM stdin;
-\.
 
 
 --
 -- Data for Name: affymetrixmas5; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY affymetrixmas5 (elementresult_id, element_id, quantification_id, signal, call, call_p, statpairs, statpairsused, z) FROM stdin;
-\.
 
 
 --
 -- Data for Name: affymetrixplier; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY affymetrixplier (elementresult_id, element_id, quantification_id, signal) FROM stdin;
-\.
 
 
 --
 -- Data for Name: affymetrixprobe; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY affymetrixprobe (element_id, feature_id, arraydesign_id, type_id, dbxref_id, name, affymetrixprobeset_id, "row", col) FROM stdin;
-\.
 
 
 --
 -- Data for Name: affymetrixprobeset; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY affymetrixprobeset (element_id, feature_id, arraydesign_id, type_id, dbxref_id, name) FROM stdin;
-\.
 
 
 --
 -- Data for Name: affymetrixprobesetstat; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY affymetrixprobesetstat (elementresult_id, element_id, quantification_id, signal, mean, median, quartile1, quartile3, sd, n) FROM stdin;
-\.
 
 
 --
 -- Data for Name: affymetrixrma; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY affymetrixrma (elementresult_id, element_id, quantification_id, signal, z) FROM stdin;
-\.
 
 
 --
 -- Data for Name: affymetrixsea; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY affymetrixsea (elementresult_id, element_id, quantification_id, signal) FROM stdin;
-\.
 
 
 --
 -- Data for Name: affymetrixsnp; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY affymetrixsnp (elementresult_id, element_id, quantification_id, signal, call) FROM stdin;
-\.
 
 
 --
 -- Data for Name: affymetrixvsn; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY affymetrixvsn (elementresult_id, element_id, quantification_id, signal, z) FROM stdin;
-\.
 
 
 --
 -- Data for Name: analysis; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY analysis (analysis_id, name, description, program, programversion, algorithm, sourcename, sourceversion, sourceuri, timeexecuted) FROM stdin;
-1	dabg	\N	dabg	dabg	\N	\N	\N	\N	2006-02-22 09:54:00.415136
-2	dchip	\N	dchip	dchip	\N	\N	\N	\N	2006-02-22 09:54:00.416431
-3	gcrma	\N	gcrma	gcrma	\N	\N	\N	\N	2006-02-22 09:54:00.416999
-4	mas5	\N	mas5	mas5	\N	\N	\N	\N	2006-02-22 09:54:00.41753
-5	mpam	\N	mpam	mpam	\N	\N	\N	\N	2006-02-22 09:54:00.418059
-6	plier	\N	plier	plier	\N	\N	\N	\N	2006-02-22 09:54:00.418588
-7	rma	\N	rma	rma	\N	\N	\N	\N	2006-02-22 09:54:00.419118
-8	sea	\N	sea	sea	\N	\N	\N	\N	2006-02-22 09:54:00.419654
-9	vsn	\N	vsn	vsn	\N	\N	\N	\N	2006-02-22 09:54:00.420341
-\.
+INSERT INTO analysis (analysis_id, name, description, program, programversion, algorithm, sourcename, sourceversion, sourceuri, timeexecuted) VALUES (1, 'dabg', NULL, 'dabg', 'dabg', NULL, NULL, NULL, NULL, '2006-02-22 09:54:00.415136');
+INSERT INTO analysis (analysis_id, name, description, program, programversion, algorithm, sourcename, sourceversion, sourceuri, timeexecuted) VALUES (2, 'dchip', NULL, 'dchip', 'dchip', NULL, NULL, NULL, NULL, '2006-02-22 09:54:00.416431');
+INSERT INTO analysis (analysis_id, name, description, program, programversion, algorithm, sourcename, sourceversion, sourceuri, timeexecuted) VALUES (3, 'gcrma', NULL, 'gcrma', 'gcrma', NULL, NULL, NULL, NULL, '2006-02-22 09:54:00.416999');
+INSERT INTO analysis (analysis_id, name, description, program, programversion, algorithm, sourcename, sourceversion, sourceuri, timeexecuted) VALUES (4, 'mas5', NULL, 'mas5', 'mas5', NULL, NULL, NULL, NULL, '2006-02-22 09:54:00.41753');
+INSERT INTO analysis (analysis_id, name, description, program, programversion, algorithm, sourcename, sourceversion, sourceuri, timeexecuted) VALUES (5, 'mpam', NULL, 'mpam', 'mpam', NULL, NULL, NULL, NULL, '2006-02-22 09:54:00.418059');
+INSERT INTO analysis (analysis_id, name, description, program, programversion, algorithm, sourcename, sourceversion, sourceuri, timeexecuted) VALUES (6, 'plier', NULL, 'plier', 'plier', NULL, NULL, NULL, NULL, '2006-02-22 09:54:00.418588');
+INSERT INTO analysis (analysis_id, name, description, program, programversion, algorithm, sourcename, sourceversion, sourceuri, timeexecuted) VALUES (7, 'rma', NULL, 'rma', 'rma', NULL, NULL, NULL, NULL, '2006-02-22 09:54:00.419118');
+INSERT INTO analysis (analysis_id, name, description, program, programversion, algorithm, sourcename, sourceversion, sourceuri, timeexecuted) VALUES (8, 'sea', NULL, 'sea', 'sea', NULL, NULL, NULL, NULL, '2006-02-22 09:54:00.419654');
+INSERT INTO analysis (analysis_id, name, description, program, programversion, algorithm, sourcename, sourceversion, sourceuri, timeexecuted) VALUES (9, 'vsn', NULL, 'vsn', 'vsn', NULL, NULL, NULL, NULL, '2006-02-22 09:54:00.420341');
 
 
 --
 -- Data for Name: analysisfeature; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY analysisfeature (analysisfeature_id, feature_id, analysis_id, rawscore, normscore, significance, identity) FROM stdin;
-\.
 
 
 --
 -- Data for Name: analysisprop; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY analysisprop (analysisprop_id, analysis_id, type_id, value) FROM stdin;
-\.
 
 
 --
 -- Data for Name: arraydesign; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) FROM stdin;
-1	2	1	\N	\N	\N	unknown	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-2	2	1	\N	\N	\N	virtual array	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-3	1	8	7	\N	\N	Affymetrix_HG-U133_Plus_2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-4	1	8	7	\N	\N	Affymetrix_HG-U133A	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-5	1	8	7	\N	\N	Affymetrix_HG-U133A_2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-6	1	8	7	\N	\N	Affymetrix_HG-U133B	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-7	1	8	7	\N	\N	Affymetrix_HG-U95Av2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-8	1	8	7	\N	\N	Affymetrix_HG-U95B	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-9	1	8	7	\N	\N	Affymetrix_HG-U95C	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-10	1	8	7	\N	\N	Affymetrix_HG-U95D	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-11	1	8	7	\N	\N	Affymetrix_HG-U95E	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-12	1	8	7	\N	\N	Affymetrix_HuExon1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-13	1	8	7	\N	\N	Affymetrix_HuGeneFL	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-14	1	8	7	\N	\N	Affymetrix_U74Av2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-15	1	8	7	\N	\N	Affymetrix_MG-U74Av2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-16	1	8	7	\N	\N	Affymetrix_MG-U74Bv2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-17	1	8	7	\N	\N	Affymetrix_MG-U74Cv2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-18	1	8	7	\N	\N	Affymetrix_RG-U34A	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-19	1	8	7	\N	\N	Affymetrix_RG-U34B	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-20	1	8	7	\N	\N	Affymetrix_RG-U34C	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-21	1	8	7	\N	\N	Affymetrix_RT-U34	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-22	1	8	7	\N	\N	Affymetrix_RN-U34	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-23	1	8	7	\N	\N	Affymetrix_YG-S98	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-24	1	8	7	\N	\N	Affymetrix_Yeast_2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-25	1	8	7	\N	\N	Affymetrix_RAE230A	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-26	1	8	7	\N	\N	Affymetrix_RAE230B	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-27	1	8	7	\N	\N	Affymetrix_Rat230_2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-28	1	8	7	\N	\N	Affymetrix_MOE430A	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-29	1	8	7	\N	\N	Affymetrix_MOE430B	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-30	1	8	7	\N	\N	Affymetrix_Mouse430_2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-31	1	8	7	\N	\N	Affymetrix_Mouse430A_2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-32	1	8	7	\N	\N	Affymetrix_ATH1-121501	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-33	1	8	7	\N	\N	Affymetrix_Mapping100K_Hind240	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-34	1	8	7	\N	\N	Affymetrix_Mapping100K_Xba240	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-35	1	8	7	\N	\N	Affymetrix_Mapping10K_Xba131	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-36	1	8	7	\N	\N	Affymetrix_Mapping10K_Xba142	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-37	1	8	7	\N	\N	Affymetrix_Mapping500K_NspI	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-38	1	8	7	\N	\N	Affymetrix_Mapping500K_StyI	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-\.
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (1, 2, 1, NULL, NULL, NULL, 'unknown', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (2, 2, 1, NULL, NULL, NULL, 'virtual array', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (3, 1, 8, 7, NULL, NULL, 'Affymetrix_HG-U133_Plus_2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (4, 1, 8, 7, NULL, NULL, 'Affymetrix_HG-U133A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (5, 1, 8, 7, NULL, NULL, 'Affymetrix_HG-U133A_2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (6, 1, 8, 7, NULL, NULL, 'Affymetrix_HG-U133B', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (7, 1, 8, 7, NULL, NULL, 'Affymetrix_HG-U95Av2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (8, 1, 8, 7, NULL, NULL, 'Affymetrix_HG-U95B', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (9, 1, 8, 7, NULL, NULL, 'Affymetrix_HG-U95C', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (10, 1, 8, 7, NULL, NULL, 'Affymetrix_HG-U95D', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (11, 1, 8, 7, NULL, NULL, 'Affymetrix_HG-U95E', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (12, 1, 8, 7, NULL, NULL, 'Affymetrix_HuExon1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (13, 1, 8, 7, NULL, NULL, 'Affymetrix_HuGeneFL', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (14, 1, 8, 7, NULL, NULL, 'Affymetrix_U74Av2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (15, 1, 8, 7, NULL, NULL, 'Affymetrix_MG-U74Av2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (16, 1, 8, 7, NULL, NULL, 'Affymetrix_MG-U74Bv2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (17, 1, 8, 7, NULL, NULL, 'Affymetrix_MG-U74Cv2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (18, 1, 8, 7, NULL, NULL, 'Affymetrix_RG-U34A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (19, 1, 8, 7, NULL, NULL, 'Affymetrix_RG-U34B', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (20, 1, 8, 7, NULL, NULL, 'Affymetrix_RG-U34C', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (21, 1, 8, 7, NULL, NULL, 'Affymetrix_RT-U34', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (22, 1, 8, 7, NULL, NULL, 'Affymetrix_RN-U34', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (23, 1, 8, 7, NULL, NULL, 'Affymetrix_YG-S98', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (24, 1, 8, 7, NULL, NULL, 'Affymetrix_Yeast_2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (25, 1, 8, 7, NULL, NULL, 'Affymetrix_RAE230A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (26, 1, 8, 7, NULL, NULL, 'Affymetrix_RAE230B', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (27, 1, 8, 7, NULL, NULL, 'Affymetrix_Rat230_2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (28, 1, 8, 7, NULL, NULL, 'Affymetrix_MOE430A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (29, 1, 8, 7, NULL, NULL, 'Affymetrix_MOE430B', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (30, 1, 8, 7, NULL, NULL, 'Affymetrix_Mouse430_2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (31, 1, 8, 7, NULL, NULL, 'Affymetrix_Mouse430A_2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (32, 1, 8, 7, NULL, NULL, 'Affymetrix_ATH1-121501', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (33, 1, 8, 7, NULL, NULL, 'Affymetrix_Mapping100K_Hind240', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (34, 1, 8, 7, NULL, NULL, 'Affymetrix_Mapping100K_Xba240', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (35, 1, 8, 7, NULL, NULL, 'Affymetrix_Mapping10K_Xba131', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (36, 1, 8, 7, NULL, NULL, 'Affymetrix_Mapping10K_Xba142', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (37, 1, 8, 7, NULL, NULL, 'Affymetrix_Mapping500K_NspI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO arraydesign (arraydesign_id, manufacturer_id, platformtype_id, substratetype_id, protocol_id, dbxref_id, name, version, description, array_dimensions, element_dimensions, num_of_elements, num_array_columns, num_array_rows, num_grid_columns, num_grid_rows, num_sub_columns, num_sub_rows) VALUES (38, 1, 8, 7, NULL, NULL, 'Affymetrix_Mapping500K_StyI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 
 --
 -- Data for Name: arraydesignprop; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY arraydesignprop (arraydesignprop_id, arraydesign_id, type_id, value, rank) FROM stdin;
-\.
 
 
 --
 -- Data for Name: assay; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY assay (assay_id, arraydesign_id, protocol_id, assaydate, arrayidentifier, arraybatchidentifier, operator_id, dbxref_id, name, description) FROM stdin;
-\.
 
 
 --
 -- Data for Name: assay_biomaterial; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY assay_biomaterial (assay_biomaterial_id, assay_id, biomaterial_id, channel_id, rank) FROM stdin;
-\.
 
 
 --
 -- Data for Name: assay_project; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY assay_project (assay_project_id, assay_id, project_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: assayprop; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY assayprop (assayprop_id, assay_id, type_id, value, rank) FROM stdin;
-\.
 
 
 --
 -- Data for Name: biomaterial; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY biomaterial (biomaterial_id, taxon_id, biosourceprovider_id, dbxref_id, name, description) FROM stdin;
-\.
 
 
 --
 -- Data for Name: biomaterial_dbxref; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY biomaterial_dbxref (biomaterial_dbxref_id, biomaterial_id, dbxref_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: biomaterial_relationship; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY biomaterial_relationship (biomaterial_relationship_id, subject_id, type_id, object_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: biomaterial_treatment; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY biomaterial_treatment (biomaterial_treatment_id, biomaterial_id, treatment_id, unittype_id, value, rank) FROM stdin;
-\.
 
 
 --
 -- Data for Name: biomaterialprop; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY biomaterialprop (biomaterialprop_id, biomaterial_id, type_id, value, rank) FROM stdin;
-\.
 
 
 --
 -- Data for Name: channel; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY channel (channel_id, name, definition) FROM stdin;
-\.
 
 
 --
 -- Data for Name: contact; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY contact (contact_id, type_id, name, description) FROM stdin;
-1	\N	Affymetrix	\N
-2	\N	null	null
-\.
+INSERT INTO contact (contact_id, type_id, name, description) VALUES (1, NULL, 'Affymetrix', NULL);
+INSERT INTO contact (contact_id, type_id, name, description) VALUES (2, NULL, 'null', 'null');
 
 
 --
 -- Data for Name: contact_relationship; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY contact_relationship (contact_relationship_id, type_id, subject_id, object_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: control; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY control (control_id, type_id, assay_id, tableinfo_id, row_id, name, value, rank) FROM stdin;
-\.
 
 
 --
 -- Data for Name: cv; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY cv (cv_id, name, definition) FROM stdin;
-1	null	\N
-2	local	Locally created terms
-3	Statistical Terms	Locally created terms for statistics
-4	developmental stages	\N
-5	autocreated	Terms that are automatically inserted by loading software
-6	Sequence Ontology Feature Annotation	\N
-7	Sequence Ontology	\N
-\.
+INSERT INTO cv (cv_id, name, definition) VALUES (1, 'null', NULL);
+INSERT INTO cv (cv_id, name, definition) VALUES (2, 'local', 'Locally created terms');
+INSERT INTO cv (cv_id, name, definition) VALUES (3, 'Statistical Terms', 'Locally created terms for statistics');
+INSERT INTO cv (cv_id, name, definition) VALUES (4, 'developmental stages', NULL);
+INSERT INTO cv (cv_id, name, definition) VALUES (5, 'autocreated', 'Terms that are automatically inserted by loading software');
+INSERT INTO cv (cv_id, name, definition) VALUES (6, 'Sequence Ontology Feature Annotation', NULL);
+INSERT INTO cv (cv_id, name, definition) VALUES (7, 'Sequence Ontology', NULL);
 
 
 --
 -- Data for Name: cvterm; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) FROM stdin;
-1	1	null	\N	1	0	0
-2	1	Note	\N	2	0	0
-3	1	Gap	\N	3	0	0
-4	1	computer file	\N	4	0	0
-5	1	synonym	\N	5	0	0
-6	1	score	\N	6	0	0
-7	2	glass	glass array	7	0	0
-8	2	photochemical_oligo	in-situ photochemically synthesized oligoes	8	0	0
-9	2	fetus	\N	9	0	0
-10	4	neonate	\N	10	0	0
-11	4	child	\N	11	0	0
-12	4	adult_young	\N	12	0	0
-13	4	adult	\N	13	0	0
-14	4	adult_old	\N	14	0	0
-15	2	survival_time	\N	15	0	0
-16	3	n	sensu statistica	16	0	0
-17	3	minimum	sensu statistica	17	0	0
-18	3	maximum	sensu statistica	18	0	0
-19	3	modality	sensu statistica	19	0	0
-20	3	modality p	sensu statistica	20	0	0
-21	3	mean	sensu statistica	21	0	0
-22	3	median	sensu statistica	22	0	0
-23	3	mode	sensu statistica	23	0	0
-24	3	quartile 1	sensu statistica	24	0	0
-25	3	quartile 3	sensu statistica	25	0	0
-26	3	skewness	sensu statistica	26	0	0
-27	3	kurtosis	sensu statistica	27	0	0
-28	3	chi square p	sensu statistica	28	0	0
-29	3	standard deviation	sensu statistica	29	0	0
-30	3	expectation maximization gaussian mean	sensu statistica	30	0	0
-31	3	expectation maximization p	sensu statistica	31	0	0
-32	3	histogram	sensu statistica	32	0	0
-33	6	is_a	IS_A relationship predicate (type)	33	0	1
-34	6	part_of	PART_OF relationship predicate (type)	34	0	1
-35	6	RELATED_TO	RELATED_TO relationship predicate (type)	35	0	1
-36	6	derives_from	derives_from relationship predicate (type)	36	0	1
-37	6	non_functional_homolog_of	non_functional_homolog_of relationship predicate (type)	37	0	1
-38	6	member_of	member_of relationship predicate (type)	38	0	1
-39	6	adjacent_to	adjacent_to relationship predicate (type)	39	0	1
-40	6	Sequence_Ontology	\N	40	0	0
-41	6	located_sequence_feature	\N	41	0	0
-42	6	sequence_variant	\N	42	0	0
-43	6	inversion	\N	43	0	0
-44	6	insertion_site	\N	44	0	0
-45	6	transposable_element_insertion_site	\N	45	0	0
-46	6	insertion	\N	46	0	0
-47	6	deletion	\N	47	0	0
-48	6	substitution	\N	48	0	0
-49	6	point_mutation	\N	49	0	0
-50	6	SNP	\N	50	0	0
-51	6	complex_substitution	\N	51	0	0
-52	6	deletion_junction	\N	52	0	0
-53	6	region	\N	53	0	0
-54	6	intergenic_region	\N	54	0	0
-55	6	chromosome	\N	55	0	0
-56	6	chromosomal_structural_element	\N	56	0	0
-57	6	telomere	\N	57	0	0
-58	6	centromere	\N	58	0	0
-59	6	modified_base_site	\N	59	0	0
-60	6	methylated_base_feature	\N	60	0	0
-61	6	methylated_C	\N	61	0	0
-62	6	methylated_A	\N	62	0	0
-63	6	match	\N	63	0	0
-64	6	match_set	\N	64	0	0
-65	6	match_part	\N	65	0	0
-66	6	protein_match	\N	66	0	0
-67	6	nucleotide_match	\N	67	0	0
-68	6	translated_nucleotide_match	\N	68	0	0
-69	6	expressed_sequence_match	\N	69	0	0
-70	6	EST_match	\N	70	0	0
-71	6	cDNA_match	\N	71	0	0
-72	6	cross_genome_match	\N	72	0	0
-73	6	gene_group	\N	73	0	0
-74	6	regulon	\N	74	0	0
-75	6	operon	\N	75	0	0
-76	6	gene	\N	76	0	0
-77	6	transcript	\N	77	0	0
-78	6	pseudogenic_transcript	\N	78	0	0
-79	6	pseudogenic_exon	\N	79	0	0
-80	6	primary_transcript	\N	80	0	0
-81	6	splice_site	\N	81	0	0
-82	6	splice_acceptor_site	\N	82	0	0
-83	6	trans_splice_acceptor_site	\N	83	0	0
-84	6	splice_donor_site	\N	84	0	0
-85	6	processed_transcript	\N	85	0	0
-86	6	exon_junction	\N	86	0	0
-87	6	ncRNA	\N	87	0	0
-88	6	snoRNA	\N	88	0	0
-89	6	Y_RNA	\N	89	0	0
-90	6	tRNA	\N	90	0	0
-91	6	rRNA	\N	91	0	0
-92	6	rRNA_5S	\N	92	0	0
-93	6	rRNA_5.8S	\N	93	0	0
-94	6	rRNA_28S	\N	94	0	0
-95	6	rRNA_18S	\N	95	0	0
-96	6	small_regulatory_ncRNA	\N	96	0	0
-97	6	miRNA	\N	97	0	0
-98	6	rasiRNA	\N	98	0	0
-99	6	vault_RNA	\N	99	0	0
-100	6	enzymatic_RNA	\N	100	0	0
-101	6	telomerase_RNA	\N	101	0	0
-102	6	ribozyme	\N	102	0	0
-103	6	RNase_P_RNA	\N	103	0	0
-104	6	autocatalytically_spliced_intron	\N	104	0	0
-105	6	hammerhead_ribozyme	\N	105	0	0
-106	6	RNase_MRP_RNA	\N	106	0	0
-107	6	SRP_RNA	\N	107	0	0
-108	6	guide_RNA	\N	108	0	0
-109	6	siRNA	\N	109	0	0
-110	6	stRNA	\N	110	0	0
-111	6	antisense_RNA	\N	111	0	0
-112	6	snRNA	\N	112	0	0
-113	6	U6atac_snRNA	\N	113	0	0
-114	6	U4atac_snRNA	\N	114	0	0
-115	6	U14_snRNA	\N	115	0	0
-116	6	U6_snRNA	\N	116	0	0
-117	6	U12_snRNA	\N	117	0	0
-118	6	U1_snRNA	\N	118	0	0
-119	6	U4_snRNA	\N	119	0	0
-120	6	U11_snRNA	\N	120	0	0
-121	6	U2_snRNA	\N	121	0	0
-122	6	U5_snRNA	\N	122	0	0
-123	6	scRNA	\N	123	0	0
-124	6	mRNA	\N	124	0	0
-125	6	UTR	\N	125	0	0
-126	6	three_prime_UTR	\N	126	0	0
-127	6	ribosome_entry_site	\N	127	0	0
-128	6	five_prime_UTR	\N	128	0	0
-129	6	cap	\N	129	0	0
-130	6	CDS	\N	130	0	0
-131	6	polypeptide	\N	131	0	0
-132	6	transit_peptide	\N	132	0	0
-133	6	mature_peptide	\N	133	0	0
-134	6	signal_peptide	\N	134	0	0
-135	6	polyA_sequence	\N	135	0	0
-136	6	codon	\N	136	0	0
-137	6	EST	\N	137	0	0
-138	6	polyA_site	\N	138	0	0
-139	6	clip	\N	139	0	0
-140	6	transcription_end_site	\N	140	0	0
-141	6	protein_coding_primary_transcript	\N	141	0	0
-142	6	nc_primary_transcript	\N	142	0	0
-143	6	antisense_primary_transcript	\N	143	0	0
-144	6	transcription_start_site	\N	144	0	0
-145	6	intron	\N	145	0	0
-146	6	group_II_intron	\N	146	0	0
-147	6	spliceosomal_intron	\N	147	0	0
-148	6	branch_site	\N	148	0	0
-149	6	polypyrimidine_tract	\N	149	0	0
-150	6	group_I_intron	\N	150	0	0
-151	6	exon	\N	151	0	0
-152	6	decayed_exon	\N	152	0	0
-153	6	non_transcribed_region	\N	153	0	0
-154	6	regulatory_region	\N	154	0	0
-155	6	insulator	\N	155	0	0
-156	6	silencer	\N	156	0	0
-157	6	polyA_signal_sequence	\N	157	0	0
-158	6	gene_group_regulatory_region	\N	158	0	0
-159	6	terminator	\N	159	0	0
-160	6	attenuator	\N	160	0	0
-161	6	operator	\N	161	0	0
-162	6	promoter	\N	162	0	0
-163	6	enhancer	\N	163	0	0
-164	6	TF_binding_site	\N	164	0	0
-165	6	splice_enhancer	\N	165	0	0
-166	6	pseudogene	\N	166	0	0
-167	6	repeat_region	\N	167	0	0
-168	6	inverted_repeat	\N	168	0	0
-169	6	tandem_repeat	\N	169	0	0
-170	6	microsatellite	\N	170	0	0
-171	6	minisatellite	\N	171	0	0
-172	6	dispersed_repeat	\N	172	0	0
-173	6	repeat_family	\N	173	0	0
-174	6	transposable_element	\N	174	0	0
-175	6	direct_repeat	\N	175	0	0
-176	6	nuclease_sensitive_site	\N	176	0	0
-177	6	ARS	\N	177	0	0
-178	6	remark	\N	178	0	0
-179	6	experimental_result_region	\N	179	0	0
-180	6	sequence_difference	\N	180	0	0
-181	6	possible_base_call_error	\N	181	0	0
-182	6	possible_assembly_error	\N	182	0	0
-183	6	nucleotide_motif	\N	183	0	0
-184	6	assembly_component	\N	184	0	0
-185	6	tiling_path_fragment	\N	185	0	0
-186	6	read_pair	\N	186	0	0
-187	6	read	\N	187	0	0
-188	6	golden_path_fragment	\N	188	0	0
-189	6	contig	\N	189	0	0
-190	6	integrated_virus	\N	190	0	0
-191	6	pseudogenic_region	\N	191	0	0
-192	6	CpG_island	\N	192	0	0
-193	6	origin_of_transfer	\N	193	0	0
-194	6	flanking_region	\N	194	0	0
-195	6	origin_of_replication	\N	195	0	0
-196	6	reading_frame	\N	196	0	0
-197	6	ORF	\N	197	0	0
-198	6	assembly	\N	198	0	0
-199	6	supercontig	\N	199	0	0
-200	6	ultracontig	\N	200	0	0
-201	6	gap	\N	201	0	0
-202	6	tiling_path	\N	202	0	0
-203	6	golden_path	\N	203	0	0
-204	6	virtual_sequence	\N	204	0	0
-205	6	binding_site	\N	205	0	0
-206	6	reagent	\N	206	0	0
-207	6	tag	\N	207	0	0
-208	6	STS	\N	208	0	0
-209	6	SAGE_tag	\N	209	0	0
-210	6	databank_entry	\N	210	0	0
-211	6	RNAi_reagent	\N	211	0	0
-212	6	PCR_product	\N	212	0	0
-213	6	oligo	\N	213	0	0
-214	6	primer	\N	214	0	0
-215	6	clone	\N	215	0	0
-216	6	clone_start	\N	216	0	0
-217	6	clone_end	\N	217	0	0
-218	6	restriction_fragment	\N	218	0	0
-219	6	RFLP_fragment	\N	219	0	0
-220	6	junction	\N	220	0	0
-\.
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (1, 1, 'null', NULL, 1, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (2, 1, 'Note', NULL, 2, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (3, 1, 'Gap', NULL, 3, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (4, 1, 'computer file', NULL, 4, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (5, 1, 'synonym', NULL, 5, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (6, 1, 'score', NULL, 6, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (7, 2, 'glass', 'glass array', 7, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (8, 2, 'photochemical_oligo', 'in-situ photochemically synthesized oligoes', 8, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (9, 2, 'fetus', NULL, 9, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (10, 4, 'neonate', NULL, 10, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (11, 4, 'child', NULL, 11, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (12, 4, 'adult_young', NULL, 12, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (13, 4, 'adult', NULL, 13, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (14, 4, 'adult_old', NULL, 14, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (15, 2, 'survival_time', NULL, 15, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (16, 3, 'n', 'sensu statistica', 16, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (17, 3, 'minimum', 'sensu statistica', 17, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (18, 3, 'maximum', 'sensu statistica', 18, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (19, 3, 'modality', 'sensu statistica', 19, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (20, 3, 'modality p', 'sensu statistica', 20, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (21, 3, 'mean', 'sensu statistica', 21, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (22, 3, 'median', 'sensu statistica', 22, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (23, 3, 'mode', 'sensu statistica', 23, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (24, 3, 'quartile 1', 'sensu statistica', 24, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (25, 3, 'quartile 3', 'sensu statistica', 25, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (26, 3, 'skewness', 'sensu statistica', 26, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (27, 3, 'kurtosis', 'sensu statistica', 27, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (28, 3, 'chi square p', 'sensu statistica', 28, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (29, 3, 'standard deviation', 'sensu statistica', 29, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (30, 3, 'expectation maximization gaussian mean', 'sensu statistica', 30, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (31, 3, 'expectation maximization p', 'sensu statistica', 31, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (32, 3, 'histogram', 'sensu statistica', 32, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (33, 6, 'is_a', 'IS_A relationship predicate (type)', 33, 0, 1);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (34, 6, 'part_of', 'PART_OF relationship predicate (type)', 34, 0, 1);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (35, 6, 'RELATED_TO', 'RELATED_TO relationship predicate (type)', 35, 0, 1);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (36, 6, 'derives_from', 'derives_from relationship predicate (type)', 36, 0, 1);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (37, 6, 'non_functional_homolog_of', 'non_functional_homolog_of relationship predicate (type)', 37, 0, 1);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (38, 6, 'member_of', 'member_of relationship predicate (type)', 38, 0, 1);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (39, 6, 'adjacent_to', 'adjacent_to relationship predicate (type)', 39, 0, 1);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (40, 6, 'Sequence_Ontology', NULL, 40, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (41, 6, 'located_sequence_feature', NULL, 41, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (42, 6, 'sequence_variant', NULL, 42, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (43, 6, 'inversion', NULL, 43, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (44, 6, 'insertion_site', NULL, 44, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (45, 6, 'transposable_element_insertion_site', NULL, 45, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (46, 6, 'insertion', NULL, 46, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (47, 6, 'deletion', NULL, 47, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (48, 6, 'substitution', NULL, 48, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (49, 6, 'point_mutation', NULL, 49, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (50, 6, 'SNP', NULL, 50, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (51, 6, 'complex_substitution', NULL, 51, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (52, 6, 'deletion_junction', NULL, 52, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (53, 6, 'region', NULL, 53, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (54, 6, 'intergenic_region', NULL, 54, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (55, 6, 'chromosome', NULL, 55, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (56, 6, 'chromosomal_structural_element', NULL, 56, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (57, 6, 'telomere', NULL, 57, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (58, 6, 'centromere', NULL, 58, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (59, 6, 'modified_base_site', NULL, 59, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (60, 6, 'methylated_base_feature', NULL, 60, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (61, 6, 'methylated_C', NULL, 61, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (62, 6, 'methylated_A', NULL, 62, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (63, 6, 'match', NULL, 63, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (64, 6, 'match_set', NULL, 64, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (65, 6, 'match_part', NULL, 65, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (66, 6, 'protein_match', NULL, 66, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (67, 6, 'nucleotide_match', NULL, 67, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (68, 6, 'translated_nucleotide_match', NULL, 68, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (69, 6, 'expressed_sequence_match', NULL, 69, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (70, 6, 'EST_match', NULL, 70, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (71, 6, 'cDNA_match', NULL, 71, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (72, 6, 'cross_genome_match', NULL, 72, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (73, 6, 'gene_group', NULL, 73, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (74, 6, 'regulon', NULL, 74, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (75, 6, 'operon', NULL, 75, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (76, 6, 'gene', NULL, 76, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (77, 6, 'transcript', NULL, 77, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (78, 6, 'pseudogenic_transcript', NULL, 78, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (79, 6, 'pseudogenic_exon', NULL, 79, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (80, 6, 'primary_transcript', NULL, 80, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (81, 6, 'splice_site', NULL, 81, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (82, 6, 'splice_acceptor_site', NULL, 82, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (83, 6, 'trans_splice_acceptor_site', NULL, 83, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (84, 6, 'splice_donor_site', NULL, 84, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (85, 6, 'processed_transcript', NULL, 85, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (86, 6, 'exon_junction', NULL, 86, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (87, 6, 'ncRNA', NULL, 87, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (88, 6, 'snoRNA', NULL, 88, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (89, 6, 'Y_RNA', NULL, 89, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (90, 6, 'tRNA', NULL, 90, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (91, 6, 'rRNA', NULL, 91, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (92, 6, 'rRNA_5S', NULL, 92, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (93, 6, 'rRNA_5.8S', NULL, 93, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (94, 6, 'rRNA_28S', NULL, 94, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (95, 6, 'rRNA_18S', NULL, 95, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (96, 6, 'small_regulatory_ncRNA', NULL, 96, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (97, 6, 'miRNA', NULL, 97, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (98, 6, 'rasiRNA', NULL, 98, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (99, 6, 'vault_RNA', NULL, 99, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (100, 6, 'enzymatic_RNA', NULL, 100, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (101, 6, 'telomerase_RNA', NULL, 101, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (102, 6, 'ribozyme', NULL, 102, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (103, 6, 'RNase_P_RNA', NULL, 103, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (104, 6, 'autocatalytically_spliced_intron', NULL, 104, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (105, 6, 'hammerhead_ribozyme', NULL, 105, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (106, 6, 'RNase_MRP_RNA', NULL, 106, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (107, 6, 'SRP_RNA', NULL, 107, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (108, 6, 'guide_RNA', NULL, 108, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (109, 6, 'siRNA', NULL, 109, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (110, 6, 'stRNA', NULL, 110, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (111, 6, 'antisense_RNA', NULL, 111, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (112, 6, 'snRNA', NULL, 112, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (113, 6, 'U6atac_snRNA', NULL, 113, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (114, 6, 'U4atac_snRNA', NULL, 114, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (115, 6, 'U14_snRNA', NULL, 115, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (116, 6, 'U6_snRNA', NULL, 116, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (117, 6, 'U12_snRNA', NULL, 117, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (118, 6, 'U1_snRNA', NULL, 118, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (119, 6, 'U4_snRNA', NULL, 119, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (120, 6, 'U11_snRNA', NULL, 120, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (121, 6, 'U2_snRNA', NULL, 121, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (122, 6, 'U5_snRNA', NULL, 122, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (123, 6, 'scRNA', NULL, 123, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (124, 6, 'mRNA', NULL, 124, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (125, 6, 'UTR', NULL, 125, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (126, 6, 'three_prime_UTR', NULL, 126, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (127, 6, 'ribosome_entry_site', NULL, 127, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (128, 6, 'five_prime_UTR', NULL, 128, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (129, 6, 'cap', NULL, 129, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (130, 6, 'CDS', NULL, 130, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (131, 6, 'polypeptide', NULL, 131, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (132, 6, 'transit_peptide', NULL, 132, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (133, 6, 'mature_peptide', NULL, 133, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (134, 6, 'signal_peptide', NULL, 134, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (135, 6, 'polyA_sequence', NULL, 135, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (136, 6, 'codon', NULL, 136, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (137, 6, 'EST', NULL, 137, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (138, 6, 'polyA_site', NULL, 138, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (139, 6, 'clip', NULL, 139, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (140, 6, 'transcription_end_site', NULL, 140, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (141, 6, 'protein_coding_primary_transcript', NULL, 141, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (142, 6, 'nc_primary_transcript', NULL, 142, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (143, 6, 'antisense_primary_transcript', NULL, 143, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (144, 6, 'transcription_start_site', NULL, 144, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (145, 6, 'intron', NULL, 145, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (146, 6, 'group_II_intron', NULL, 146, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (147, 6, 'spliceosomal_intron', NULL, 147, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (148, 6, 'branch_site', NULL, 148, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (149, 6, 'polypyrimidine_tract', NULL, 149, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (150, 6, 'group_I_intron', NULL, 150, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (151, 6, 'exon', NULL, 151, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (152, 6, 'decayed_exon', NULL, 152, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (153, 6, 'non_transcribed_region', NULL, 153, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (154, 6, 'regulatory_region', NULL, 154, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (155, 6, 'insulator', NULL, 155, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (156, 6, 'silencer', NULL, 156, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (157, 6, 'polyA_signal_sequence', NULL, 157, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (158, 6, 'gene_group_regulatory_region', NULL, 158, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (159, 6, 'terminator', NULL, 159, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (160, 6, 'attenuator', NULL, 160, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (161, 6, 'operator', NULL, 161, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (162, 6, 'promoter', NULL, 162, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (163, 6, 'enhancer', NULL, 163, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (164, 6, 'TF_binding_site', NULL, 164, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (165, 6, 'splice_enhancer', NULL, 165, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (166, 6, 'pseudogene', NULL, 166, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (167, 6, 'repeat_region', NULL, 167, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (168, 6, 'inverted_repeat', NULL, 168, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (169, 6, 'tandem_repeat', NULL, 169, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (170, 6, 'microsatellite', NULL, 170, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (171, 6, 'minisatellite', NULL, 171, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (172, 6, 'dispersed_repeat', NULL, 172, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (173, 6, 'repeat_family', NULL, 173, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (174, 6, 'transposable_element', NULL, 174, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (175, 6, 'direct_repeat', NULL, 175, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (176, 6, 'nuclease_sensitive_site', NULL, 176, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (177, 6, 'ARS', NULL, 177, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (178, 6, 'remark', NULL, 178, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (179, 6, 'experimental_result_region', NULL, 179, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (180, 6, 'sequence_difference', NULL, 180, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (181, 6, 'possible_base_call_error', NULL, 181, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (182, 6, 'possible_assembly_error', NULL, 182, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (183, 6, 'nucleotide_motif', NULL, 183, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (184, 6, 'assembly_component', NULL, 184, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (185, 6, 'tiling_path_fragment', NULL, 185, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (186, 6, 'read_pair', NULL, 186, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (187, 6, 'read', NULL, 187, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (188, 6, 'golden_path_fragment', NULL, 188, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (189, 6, 'contig', NULL, 189, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (190, 6, 'integrated_virus', NULL, 190, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (191, 6, 'pseudogenic_region', NULL, 191, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (192, 6, 'CpG_island', NULL, 192, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (193, 6, 'origin_of_transfer', NULL, 193, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (194, 6, 'flanking_region', NULL, 194, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (195, 6, 'origin_of_replication', NULL, 195, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (196, 6, 'reading_frame', NULL, 196, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (197, 6, 'ORF', NULL, 197, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (198, 6, 'assembly', NULL, 198, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (199, 6, 'supercontig', NULL, 199, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (200, 6, 'ultracontig', NULL, 200, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (201, 6, 'gap', NULL, 201, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (202, 6, 'tiling_path', NULL, 202, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (203, 6, 'golden_path', NULL, 203, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (204, 6, 'virtual_sequence', NULL, 204, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (205, 6, 'binding_site', NULL, 205, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (206, 6, 'reagent', NULL, 206, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (207, 6, 'tag', NULL, 207, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (208, 6, 'STS', NULL, 208, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (209, 6, 'SAGE_tag', NULL, 209, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (210, 6, 'databank_entry', NULL, 210, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (211, 6, 'RNAi_reagent', NULL, 211, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (212, 6, 'PCR_product', NULL, 212, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (213, 6, 'oligo', NULL, 213, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (214, 6, 'primer', NULL, 214, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (215, 6, 'clone', NULL, 215, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (216, 6, 'clone_start', NULL, 216, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (217, 6, 'clone_end', NULL, 217, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (218, 6, 'restriction_fragment', NULL, 218, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (219, 6, 'RFLP_fragment', NULL, 219, 0, 0);
+INSERT INTO cvterm (cvterm_id, cv_id, name, definition, dbxref_id, is_obsolete, is_relationshiptype) VALUES (220, 6, 'junction', NULL, 220, 0, 0);
 
 
 --
 -- Data for Name: cvterm_dbxref; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY cvterm_dbxref (cvterm_dbxref_id, cvterm_id, dbxref_id, is_for_definition) FROM stdin;
-\.
 
 
 --
 -- Data for Name: cvterm_relationship; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY cvterm_relationship (cvterm_relationship_id, type_id, subject_id, object_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: cvtermpath; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY cvtermpath (cvtermpath_id, type_id, subject_id, object_id, cv_id, pathdistance) FROM stdin;
-\.
 
 
 --
 -- Data for Name: cvtermprop; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY cvtermprop (cvtermprop_id, cvterm_id, type_id, value, rank) FROM stdin;
-\.
 
 
 --
 -- Data for Name: cvtermsynonym; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) FROM stdin;
-1	42	mutation	\N
-2	50	single_nucleotide_polymorphism	\N
-3	53	sequence	\N
-4	80	precursor_RNA	\N
-5	82	acceptor	\N
-6	82	acceptor_splice_site	\N
-7	84	donor	\N
-8	84	donor_splice_site	\N
-9	87	noncoding_RNA	\N
-10	88	small_nucleolar_RNA	\N
-11	90	transfer_RNA	\N
-12	91	ribsomal_RNA	\N
-13	93	5.8S_rRNA	\N
-14	94	23S_rRNA	\N
-15	94	28S_rRNA	\N
-16	95	16S_rRNA	\N
-17	97	micro_RNA	\N
-18	98	repeat associated small interfering RNA	\N
-19	107	7S RNA	\N
-20	107	signal_recognition_particle_RNA	\N
-21	108	gRNA	\N
-22	109	small_interfering_RNA	\N
-23	110	small_temporal_RNA	\N
-24	112	small_nuclear_RNA	\N
-25	124	messenger_RNA	\N
-26	125	untranslated_region	\N
-27	126	three_prime_untranslated_region	\N
-28	128	five_prime_untranslated_region	\N
-29	130	coding_sequence	\N
-30	134	signal peptide coding sequence	\N
-31	137	expressed_sequence_tag @is_a@ reagent	\N
-32	137	expressed_sequence_tag @derives_from@ mRNA	\N
-33	141	pre-mRNA	\N
-34	142	noncoding_primary_transcript	\N
-35	144	TSS @part_of@ primary_transcript	\N
-36	144	TSS @is_a@ junction	\N
-37	148	branch_point	\N
-38	155	insulator_element	\N
-39	164	transcription_factor_binding_site	\N
-40	172	interspersed_repeat	\N
-41	177	autonomously_replicating_sequence	\N
-42	192	CG_island	\N
-43	193	oriT	\N
-44	197	open_reading_frame	\N
-45	199	scaffold @part_of@ ultracontig	\N
-46	199	scaffold @is_a@ assembly	\N
-47	208	sequence_tag_site	\N
-48	210	accession	\N
-49	212	amplicon	\N
-50	213	oligonucleotide	\N
-51	219	restriction_fragment_length_polymorphism	\N
-52	220	boundary	\N
-\.
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (1, 42, 'mutation', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (2, 50, 'single_nucleotide_polymorphism', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (3, 53, 'sequence', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (4, 80, 'precursor_RNA', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (5, 82, 'acceptor', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (6, 82, 'acceptor_splice_site', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (7, 84, 'donor', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (8, 84, 'donor_splice_site', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (9, 87, 'noncoding_RNA', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (10, 88, 'small_nucleolar_RNA', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (11, 90, 'transfer_RNA', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (12, 91, 'ribsomal_RNA', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (13, 93, '5.8S_rRNA', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (14, 94, '23S_rRNA', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (15, 94, '28S_rRNA', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (16, 95, '16S_rRNA', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (17, 97, 'micro_RNA', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (18, 98, 'repeat associated small interfering RNA', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (19, 107, '7S RNA', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (20, 107, 'signal_recognition_particle_RNA', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (21, 108, 'gRNA', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (22, 109, 'small_interfering_RNA', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (23, 110, 'small_temporal_RNA', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (24, 112, 'small_nuclear_RNA', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (25, 124, 'messenger_RNA', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (26, 125, 'untranslated_region', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (27, 126, 'three_prime_untranslated_region', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (28, 128, 'five_prime_untranslated_region', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (29, 130, 'coding_sequence', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (30, 134, 'signal peptide coding sequence', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (31, 137, 'expressed_sequence_tag @is_a@ reagent', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (32, 137, 'expressed_sequence_tag @derives_from@ mRNA', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (33, 141, 'pre-mRNA', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (34, 142, 'noncoding_primary_transcript', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (35, 144, 'TSS @part_of@ primary_transcript', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (36, 144, 'TSS @is_a@ junction', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (37, 148, 'branch_point', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (38, 155, 'insulator_element', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (39, 164, 'transcription_factor_binding_site', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (40, 172, 'interspersed_repeat', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (41, 177, 'autonomously_replicating_sequence', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (42, 192, 'CG_island', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (43, 193, 'oriT', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (44, 197, 'open_reading_frame', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (45, 199, 'scaffold @part_of@ ultracontig', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (46, 199, 'scaffold @is_a@ assembly', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (47, 208, 'sequence_tag_site', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (48, 210, 'accession', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (49, 212, 'amplicon', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (50, 213, 'oligonucleotide', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (51, 219, 'restriction_fragment_length_polymorphism', NULL);
+INSERT INTO cvtermsynonym (cvtermsynonym_id, cvterm_id, synonym, type_id) VALUES (52, 220, 'boundary', NULL);
 
 
 --
 -- Data for Name: db; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY db (db_id, name, description, urlprefix, url) FROM stdin;
-1	null	a fake database for local items	\N	\N
-2	GFF_source	A collection of sources (ie, column 2) from GFF files	\N	\N
-3	ATCC	\N	\N	\N
-4	DB:refseq	\N	\N	\N
-5	DB:genbank	\N	\N	\N
-6	DB:EMBL	\N	\N	\N
-7	DB:TIGR	\N	\N	\N
-8	DB:ucsc	\N	\N	\N
-9	DB:ucla	\N	\N	\N
-10	DB:SGD	\N	\N	\N
-11	DB:PFAM	\N	\N	\N
-12	DB:SUPERFAMILY	\N	\N	\N
-13	DB:PROFILE	\N	\N	\N
-14	DB:PRODOM	\N	\N	\N
-15	DB:PRINTS	\N	\N	\N
-16	DB:SMART	\N	\N	\N
-17	DB:TIGRFAMs	\N	\N	\N
-18	DB:PIR	\N	\N	\N
-19	DB:Affymetrix_U133	\N	\N	\N
-20	DB:Affymetrix_U133PLUS	\N	\N	\N
-21	DB:Affymetrix_U95	\N	\N	\N
-22	DB:LocusLink	\N	\N	\N
-23	DB:RefSeq_protein	\N	\N	\N
-24	DB:GenBank_protein	\N	\N	\N
-25	DB:OMIM	\N	\N	\N
-26	DB:Swiss	\N	\N	\N
-27	DB:RefSNP	\N	\N	\N
-28	DB:TSC	\N	\N	\N
-29	DB:GR	Gramene	\N	\N
-30	DB:uniprot	UniProt/TrEMBL	http://us.expasy.org/cgi-bin/niceprot.pl?	\N
-31	DB:refseq:mrna	RefSeq mRNA	http://http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=search&db=nucleotide&dopt=GenBank&term=	\N
-32	DB:refseq:protein	RefSeq Protein	http://http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=search&db=protein&dopt=GenBank&term=	\N
-33	DB:unigene	Unigene	http://http://www.ncbi.nih.gov/entrez/query.fcgi?db=unigene&cmd=search&term=	\N
-34	DB:omim	OMIM	http://http://www.ncbi.nlm.nih.gov/entrez/dispomim.cgi?id=	\N
-35	DB:locuslink	LocusLink	http://http://www.ncbi.nlm.nih.gov/LocusLink/LocRpt.cgi?l=	\N
-36	DB:genbank:mrna	GenBank mRNA	http://http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=search&db=nucleotide&dopt=GenBank&term=	\N
-37	DB:genbank:protein	GenBank Protein	http://http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=search&db=protein&dopt=GenBank&term=	\N
-38	DB:swissprot:display	SwissProt	http://http://us.expasy.org/cgi-bin/niceprot.pl?	\N
-39	DB:pfam	Pfam	http://http://www.sanger.ac.uk/cgi-bin/Pfam/dql.pl?query=	\N
-40	Sequence Ontology Feature Annotation	\N	\N	\N
-41	Sequence Ontology	\N	\N	\N
-\.
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (1, 'null', 'a fake database for local items', NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (2, 'GFF_source', 'A collection of sources (ie, column 2) from GFF files', NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (3, 'ATCC', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (4, 'DB:refseq', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (5, 'DB:genbank', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (6, 'DB:EMBL', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (7, 'DB:TIGR', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (8, 'DB:ucsc', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (9, 'DB:ucla', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (10, 'DB:SGD', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (11, 'DB:PFAM', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (12, 'DB:SUPERFAMILY', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (13, 'DB:PROFILE', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (14, 'DB:PRODOM', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (15, 'DB:PRINTS', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (16, 'DB:SMART', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (17, 'DB:TIGRFAMs', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (18, 'DB:PIR', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (19, 'DB:Affymetrix_U133', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (20, 'DB:Affymetrix_U133PLUS', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (21, 'DB:Affymetrix_U95', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (22, 'DB:LocusLink', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (23, 'DB:RefSeq_protein', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (24, 'DB:GenBank_protein', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (25, 'DB:OMIM', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (26, 'DB:Swiss', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (27, 'DB:RefSNP', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (28, 'DB:TSC', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (29, 'DB:GR', 'Gramene', NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (30, 'DB:uniprot', 'UniProt/TrEMBL', 'http://us.expasy.org/cgi-bin/niceprot.pl?', NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (31, 'DB:refseq:mrna', 'RefSeq mRNA', 'http://http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=search&db=nucleotide&dopt=GenBank&term=', NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (32, 'DB:refseq:protein', 'RefSeq Protein', 'http://http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=search&db=protein&dopt=GenBank&term=', NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (33, 'DB:unigene', 'Unigene', 'http://http://www.ncbi.nih.gov/entrez/query.fcgi?db=unigene&cmd=search&term=', NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (34, 'DB:omim', 'OMIM', 'http://http://www.ncbi.nlm.nih.gov/entrez/dispomim.cgi?id=', NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (35, 'DB:locuslink', 'LocusLink', 'http://http://www.ncbi.nlm.nih.gov/LocusLink/LocRpt.cgi?l=', NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (36, 'DB:genbank:mrna', 'GenBank mRNA', 'http://http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=search&db=nucleotide&dopt=GenBank&term=', NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (37, 'DB:genbank:protein', 'GenBank Protein', 'http://http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=search&db=protein&dopt=GenBank&term=', NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (38, 'DB:swissprot:display', 'SwissProt', 'http://http://us.expasy.org/cgi-bin/niceprot.pl?', NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (39, 'DB:pfam', 'Pfam', 'http://http://www.sanger.ac.uk/cgi-bin/Pfam/dql.pl?query=', NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (40, 'Sequence Ontology Feature Annotation', NULL, NULL, NULL);
+INSERT INTO db (db_id, name, description, urlprefix, url) VALUES (41, 'Sequence Ontology', NULL, NULL, NULL);
 
 
 --
 -- Data for Name: dbxref; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY dbxref (dbxref_id, db_id, accession, version, description) FROM stdin;
-1	1	local:null		\N
-2	1	local:Note		\N
-3	1	local:Gap		\N
-4	1	local:computer file		\N
-5	1	local:synonym		\N
-6	1	local:score		\N
-7	1	local:glass		\N
-8	1	local:photochemical_oligo		\N
-9	1	developmental stages:fetus		\N
-10	1	developmental stages:neonate		\N
-11	1	developmental stages:child		\N
-12	1	developmental stages:adult_young		\N
-13	1	developmental stages:adult		\N
-14	1	developmental stages:adult_old		\N
-15	1	local:survival_time		\N
-16	1	Statistical Terms:n		\N
-17	1	Statistical Terms:minimum		\N
-18	1	Statistical Terms:maximum		\N
-19	1	Statistical Terms:modality		\N
-20	1	Statistical Terms:modality p		\N
-21	1	Statistical Terms:mean		\N
-22	1	Statistical Terms:median		\N
-23	1	Statistical Terms:mode		\N
-24	1	Statistical Terms:quartile 1		\N
-25	1	Statistical Terms:quartile 3		\N
-26	1	Statistical Terms:skewness		\N
-27	1	Statistical Terms:kurtosis		\N
-28	1	Statistical Terms:chi square p		\N
-29	1	Statistical Terms:standard deviation		\N
-30	1	Statistical Terms:expectation maximization gaussian mean		\N
-31	1	Statistical Terms:expectation maximization p		\N
-32	1	Statistical Terms:histogram		\N
-33	40	OBO_REL:0002		\N
-34	40	OBO_REL:0003		\N
-35	40	RELATED_TO		\N
-36	40	derives_from		\N
-37	40	non_functional_homolog_of		\N
-38	40	member_of		\N
-39	40	adjacent_to		\N
-40	40	SO:0000000		\N
-41	40	0000110		\N
-42	40	0000109		\N
-43	40	1000036		\N
-44	40	0000366		\N
-45	40	0000368		\N
-46	40	0000667		\N
-47	40	0000159		\N
-48	40	1000002		\N
-49	40	1000008		\N
-50	40	0000694		\N
-51	40	1000005		\N
-52	40	0000687		\N
-53	40	0000001		\N
-54	40	0000605		\N
-55	40	0000340		\N
-56	40	0000628		\N
-57	40	0000624		\N
-58	40	0000577		\N
-59	40	0000305		\N
-60	40	0000306		\N
-61	40	0000114		\N
-62	40	0000161		\N
-63	40	0000343		\N
-64	40	0000038		\N
-65	40	0000039		\N
-66	40	0000349		\N
-67	40	0000347		\N
-68	40	0000181		\N
-69	40	0000102		\N
-70	40	0000668		\N
-71	40	0000689		\N
-72	40	0000177		\N
-73	40	0005855		\N
-74	40	1001284		\N
-75	40	0000178		\N
-76	40	0000704		\N
-77	40	0000673		\N
-78	40	0000516		\N
-79	40	0000507		\N
-80	40	0000185		\N
-81	40	0000162		\N
-82	40	0000164		\N
-83	40	0000706		\N
-84	40	0000163		\N
-85	40	0000233		\N
-86	40	0000333		\N
-87	40	0000655		\N
-88	40	0000275		\N
-89	40	0000405		\N
-90	40	0000253		\N
-91	40	0000252		\N
-92	40	0000652		\N
-93	40	0000375		\N
-94	40	0000653		\N
-95	40	0000407		\N
-96	40	0000370		\N
-97	40	0000276		\N
-98	40	0000454		\N
-99	40	0000404		\N
-100	40	0000372		\N
-101	40	0000390		\N
-102	40	0000374		\N
-103	40	0000386		\N
-104	40	0000588		\N
-105	40	0000380		\N
-106	40	0000385		\N
-107	40	0000590		\N
-108	40	0000602		\N
-109	40	0000646		\N
-110	40	0000649		\N
-111	40	0000644		\N
-112	40	0000274		\N
-113	40	0000397		\N
-114	40	0000394		\N
-115	40	0000403		\N
-116	40	0000396		\N
-117	40	0000399		\N
-118	40	0000391		\N
-119	40	0000393		\N
-120	40	0000398		\N
-121	40	0000392		\N
-122	40	0000395		\N
-123	40	0000013		\N
-124	40	0000234		\N
-125	40	0000203		\N
-126	40	0000205		\N
-127	40	0000139		\N
-128	40	0000204		\N
-129	40	0000581		\N
-130	40	0000316		\N
-131	40	0000104		\N
-132	40	0000725		\N
-133	40	0000419		\N
-134	40	0000418		\N
-135	40	0000610		\N
-136	40	0000360		\N
-137	40	0000345		\N
-138	40	0000553		\N
-139	40	0000303		\N
-140	40	0000616		\N
-141	40	0000120		\N
-142	40	0000483		\N
-143	40	0000645		\N
-144	40	0000315		\N
-145	40	0000188		\N
-146	40	0000603		\N
-147	40	0000662		\N
-148	40	0000611		\N
-149	40	0000612		\N
-150	40	0000587		\N
-151	40	0000147		\N
-152	40	0000464		\N
-153	40	0000183		\N
-154	40	0005836		\N
-155	40	0000627		\N
-156	40	0000625		\N
-157	40	0000551		\N
-158	40	0000752		\N
-159	40	0000141		\N
-160	40	0000140		\N
-161	40	0000057		\N
-162	40	0000167		\N
-163	40	0000165		\N
-164	40	0000235		\N
-165	40	0000344		\N
-166	40	0000336		\N
-167	40	0000657		\N
-168	40	0000294		\N
-169	40	0000705		\N
-170	40	0000289		\N
-171	40	0000643		\N
-172	40	0000658		\N
-173	40	0000187		\N
-174	40	0000101		\N
-175	40	0000314		\N
-176	40	0000684		\N
-177	40	0000436		\N
-178	40	0000700		\N
-179	40	0000703		\N
-180	40	0000413		\N
-181	40	0000701		\N
-182	40	0000702		\N
-183	40	0000714		\N
-184	40	0000143		\N
-185	40	0000474		\N
-186	40	0000007		\N
-187	40	0000150		\N
-188	40	0000468		\N
-189	40	0000149		\N
-190	40	0000113		\N
-191	40	0000462		\N
-192	40	0000307		\N
-193	40	0000724		\N
-194	40	0000239		\N
-195	40	0000296		\N
-196	40	0000717		\N
-197	40	0000236		\N
-198	40	0000353		\N
-199	40	0000148		\N
-200	40	0000719		\N
-201	40	0000730		\N
-202	40	0000472		\N
-203	40	0000688		\N
-204	40	0000499		\N
-205	40	0000409		\N
-206	40	0000695		\N
-207	40	0000324		\N
-208	40	0000331		\N
-209	40	0000326		\N
-210	40	2000061		\N
-211	40	0000337		\N
-212	40	0000006		\N
-213	40	0000696		\N
-214	40	0000112		\N
-215	40	0000151		\N
-216	40	0000179		\N
-217	40	0000103		\N
-218	40	0000412		\N
-219	40	0000193		\N
-220	40	0000699		\N
-\.
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (1, 1, 'local:null', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (2, 1, 'local:Note', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (3, 1, 'local:Gap', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (4, 1, 'local:computer file', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (5, 1, 'local:synonym', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (6, 1, 'local:score', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (7, 1, 'local:glass', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (8, 1, 'local:photochemical_oligo', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (9, 1, 'developmental stages:fetus', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (10, 1, 'developmental stages:neonate', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (11, 1, 'developmental stages:child', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (12, 1, 'developmental stages:adult_young', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (13, 1, 'developmental stages:adult', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (14, 1, 'developmental stages:adult_old', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (15, 1, 'local:survival_time', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (16, 1, 'Statistical Terms:n', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (17, 1, 'Statistical Terms:minimum', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (18, 1, 'Statistical Terms:maximum', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (19, 1, 'Statistical Terms:modality', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (20, 1, 'Statistical Terms:modality p', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (21, 1, 'Statistical Terms:mean', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (22, 1, 'Statistical Terms:median', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (23, 1, 'Statistical Terms:mode', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (24, 1, 'Statistical Terms:quartile 1', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (25, 1, 'Statistical Terms:quartile 3', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (26, 1, 'Statistical Terms:skewness', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (27, 1, 'Statistical Terms:kurtosis', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (28, 1, 'Statistical Terms:chi square p', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (29, 1, 'Statistical Terms:standard deviation', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (30, 1, 'Statistical Terms:expectation maximization gaussian mean', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (31, 1, 'Statistical Terms:expectation maximization p', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (32, 1, 'Statistical Terms:histogram', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (33, 40, 'OBO_REL:0002', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (34, 40, 'OBO_REL:0003', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (35, 40, 'RELATED_TO', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (36, 40, 'derives_from', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (37, 40, 'non_functional_homolog_of', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (38, 40, 'member_of', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (39, 40, 'adjacent_to', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (40, 40, 'SO:0000000', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (41, 40, '0000110', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (42, 40, '0000109', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (43, 40, '1000036', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (44, 40, '0000366', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (45, 40, '0000368', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (46, 40, '0000667', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (47, 40, '0000159', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (48, 40, '1000002', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (49, 40, '1000008', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (50, 40, '0000694', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (51, 40, '1000005', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (52, 40, '0000687', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (53, 40, '0000001', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (54, 40, '0000605', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (55, 40, '0000340', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (56, 40, '0000628', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (57, 40, '0000624', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (58, 40, '0000577', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (59, 40, '0000305', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (60, 40, '0000306', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (61, 40, '0000114', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (62, 40, '0000161', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (63, 40, '0000343', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (64, 40, '0000038', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (65, 40, '0000039', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (66, 40, '0000349', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (67, 40, '0000347', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (68, 40, '0000181', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (69, 40, '0000102', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (70, 40, '0000668', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (71, 40, '0000689', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (72, 40, '0000177', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (73, 40, '0005855', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (74, 40, '1001284', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (75, 40, '0000178', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (76, 40, '0000704', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (77, 40, '0000673', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (78, 40, '0000516', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (79, 40, '0000507', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (80, 40, '0000185', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (81, 40, '0000162', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (82, 40, '0000164', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (83, 40, '0000706', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (84, 40, '0000163', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (85, 40, '0000233', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (86, 40, '0000333', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (87, 40, '0000655', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (88, 40, '0000275', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (89, 40, '0000405', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (90, 40, '0000253', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (91, 40, '0000252', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (92, 40, '0000652', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (93, 40, '0000375', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (94, 40, '0000653', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (95, 40, '0000407', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (96, 40, '0000370', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (97, 40, '0000276', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (98, 40, '0000454', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (99, 40, '0000404', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (100, 40, '0000372', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (101, 40, '0000390', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (102, 40, '0000374', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (103, 40, '0000386', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (104, 40, '0000588', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (105, 40, '0000380', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (106, 40, '0000385', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (107, 40, '0000590', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (108, 40, '0000602', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (109, 40, '0000646', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (110, 40, '0000649', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (111, 40, '0000644', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (112, 40, '0000274', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (113, 40, '0000397', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (114, 40, '0000394', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (115, 40, '0000403', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (116, 40, '0000396', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (117, 40, '0000399', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (118, 40, '0000391', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (119, 40, '0000393', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (120, 40, '0000398', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (121, 40, '0000392', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (122, 40, '0000395', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (123, 40, '0000013', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (124, 40, '0000234', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (125, 40, '0000203', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (126, 40, '0000205', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (127, 40, '0000139', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (128, 40, '0000204', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (129, 40, '0000581', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (130, 40, '0000316', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (131, 40, '0000104', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (132, 40, '0000725', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (133, 40, '0000419', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (134, 40, '0000418', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (135, 40, '0000610', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (136, 40, '0000360', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (137, 40, '0000345', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (138, 40, '0000553', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (139, 40, '0000303', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (140, 40, '0000616', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (141, 40, '0000120', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (142, 40, '0000483', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (143, 40, '0000645', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (144, 40, '0000315', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (145, 40, '0000188', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (146, 40, '0000603', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (147, 40, '0000662', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (148, 40, '0000611', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (149, 40, '0000612', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (150, 40, '0000587', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (151, 40, '0000147', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (152, 40, '0000464', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (153, 40, '0000183', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (154, 40, '0005836', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (155, 40, '0000627', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (156, 40, '0000625', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (157, 40, '0000551', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (158, 40, '0000752', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (159, 40, '0000141', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (160, 40, '0000140', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (161, 40, '0000057', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (162, 40, '0000167', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (163, 40, '0000165', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (164, 40, '0000235', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (165, 40, '0000344', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (166, 40, '0000336', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (167, 40, '0000657', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (168, 40, '0000294', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (169, 40, '0000705', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (170, 40, '0000289', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (171, 40, '0000643', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (172, 40, '0000658', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (173, 40, '0000187', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (174, 40, '0000101', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (175, 40, '0000314', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (176, 40, '0000684', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (177, 40, '0000436', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (178, 40, '0000700', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (179, 40, '0000703', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (180, 40, '0000413', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (181, 40, '0000701', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (182, 40, '0000702', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (183, 40, '0000714', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (184, 40, '0000143', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (185, 40, '0000474', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (186, 40, '0000007', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (187, 40, '0000150', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (188, 40, '0000468', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (189, 40, '0000149', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (190, 40, '0000113', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (191, 40, '0000462', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (192, 40, '0000307', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (193, 40, '0000724', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (194, 40, '0000239', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (195, 40, '0000296', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (196, 40, '0000717', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (197, 40, '0000236', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (198, 40, '0000353', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (199, 40, '0000148', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (200, 40, '0000719', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (201, 40, '0000730', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (202, 40, '0000472', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (203, 40, '0000688', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (204, 40, '0000499', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (205, 40, '0000409', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (206, 40, '0000695', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (207, 40, '0000324', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (208, 40, '0000331', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (209, 40, '0000326', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (210, 40, '2000061', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (211, 40, '0000337', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (212, 40, '0000006', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (213, 40, '0000696', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (214, 40, '0000112', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (215, 40, '0000151', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (216, 40, '0000179', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (217, 40, '0000103', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (218, 40, '0000412', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (219, 40, '0000193', '', NULL);
+INSERT INTO dbxref (dbxref_id, db_id, accession, version, description) VALUES (220, 40, '0000699', '', NULL);
 
 
 --
 -- Data for Name: dbxrefprop; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY dbxrefprop (dbxrefprop_id, dbxref_id, type_id, value, rank) FROM stdin;
-\.
 
 
 --
 -- Data for Name: eimage; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY eimage (eimage_id, eimage_data, eimage_type, image_uri) FROM stdin;
-\.
 
 
 --
 -- Data for Name: element; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY element (element_id, feature_id, arraydesign_id, type_id, dbxref_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: element_relationship; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY element_relationship (element_relationship_id, subject_id, type_id, object_id, value, rank) FROM stdin;
-\.
 
 
 --
 -- Data for Name: elementresult; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY elementresult (elementresult_id, element_id, quantification_id, signal) FROM stdin;
-\.
 
 
 --
 -- Data for Name: elementresult_relationship; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY elementresult_relationship (elementresult_relationship_id, subject_id, type_id, object_id, value, rank) FROM stdin;
-\.
 
 
 --
 -- Data for Name: environment; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY environment (environment_id, uniquename, description) FROM stdin;
-\.
 
 
 --
 -- Data for Name: environment_cvterm; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY environment_cvterm (environment_cvterm_id, environment_id, cvterm_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: expression; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY expression (expression_id, description) FROM stdin;
-\.
 
 
 --
 -- Data for Name: expression_cvterm; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY expression_cvterm (expression_cvterm_id, expression_id, cvterm_id, rank, cvterm_type) FROM stdin;
-\.
 
 
 --
 -- Data for Name: expression_image; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY expression_image (expression_image_id, expression_id, eimage_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: expression_pub; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY expression_pub (expression_pub_id, expression_id, pub_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: feature; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY feature (feature_id, dbxref_id, organism_id, name, uniquename, residues, seqlen, md5checksum, type_id, is_analysis, is_obsolete, timeaccessioned, timelastmodified) FROM stdin;
-\.
 
 
 --
 -- Data for Name: feature_cvterm; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY feature_cvterm (feature_cvterm_id, feature_id, cvterm_id, pub_id, is_not) FROM stdin;
-\.
 
 
 --
 -- Data for Name: feature_cvterm_dbxref; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY feature_cvterm_dbxref (feature_cvterm_dbxref_id, feature_cvterm_id, dbxref_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: feature_cvterm_pub; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY feature_cvterm_pub (feature_cvterm_pub_id, feature_cvterm_id, pub_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: feature_cvtermprop; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY feature_cvtermprop (feature_cvtermprop_id, feature_cvterm_id, type_id, value, rank) FROM stdin;
-\.
 
 
 --
 -- Data for Name: feature_dbxref; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY feature_dbxref (feature_dbxref_id, feature_id, dbxref_id, is_current) FROM stdin;
-\.
 
 
 --
 -- Data for Name: feature_expression; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY feature_expression (feature_expression_id, expression_id, feature_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: feature_genotype; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY feature_genotype (feature_genotype_id, feature_id, genotype_id, chromosome_id, rank, cgroup, cvterm_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: feature_phenotype; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY feature_phenotype (feature_phenotype_id, feature_id, phenotype_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: feature_pub; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY feature_pub (feature_pub_id, feature_id, pub_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: feature_relationship; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY feature_relationship (feature_relationship_id, subject_id, object_id, type_id, value, rank) FROM stdin;
-\.
 
 
 --
 -- Data for Name: feature_relationship_pub; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY feature_relationship_pub (feature_relationship_pub_id, feature_relationship_id, pub_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: feature_relationshipprop; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY feature_relationshipprop (feature_relationshipprop_id, feature_relationship_id, type_id, value, rank) FROM stdin;
-\.
 
 
 --
 -- Data for Name: feature_relationshipprop_pub; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY feature_relationshipprop_pub (feature_relationshipprop_pub_id, feature_relationshipprop_id, pub_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: feature_synonym; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY feature_synonym (feature_synonym_id, synonym_id, feature_id, pub_id, is_current, is_internal) FROM stdin;
-\.
 
 
 --
 -- Data for Name: featureloc; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY featureloc (featureloc_id, feature_id, srcfeature_id, fmin, is_fmin_partial, fmax, is_fmax_partial, strand, phase, residue_info, locgroup, rank) FROM stdin;
-\.
 
 
 --
 -- Data for Name: featuremap; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY featuremap (featuremap_id, name, description, unittype_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: featuremap_pub; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY featuremap_pub (featuremap_pub_id, featuremap_id, pub_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: featurepos; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY featurepos (featurepos_id, featuremap_id, feature_id, map_feature_id, mappos) FROM stdin;
-\.
 
 
 --
 -- Data for Name: featureprop; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY featureprop (featureprop_id, feature_id, type_id, value, rank) FROM stdin;
-\.
 
 
 --
 -- Data for Name: featureprop_pub; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY featureprop_pub (featureprop_pub_id, featureprop_id, pub_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: featurerange; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY featurerange (featurerange_id, featuremap_id, feature_id, leftstartf_id, leftendf_id, rightstartf_id, rightendf_id, rangestr) FROM stdin;
-\.
 
 
 --
 -- Data for Name: genotype; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY genotype (genotype_id, uniquename, description) FROM stdin;
-\.
 
 
 --
 -- Data for Name: library; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY library (library_id, organism_id, name, uniquename, type_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: library_cvterm; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY library_cvterm (library_cvterm_id, library_id, cvterm_id, pub_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: library_feature; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY library_feature (library_feature_id, library_id, feature_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: library_pub; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY library_pub (library_pub_id, library_id, pub_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: library_synonym; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY library_synonym (library_synonym_id, synonym_id, library_id, pub_id, is_current, is_internal) FROM stdin;
-\.
 
 
 --
 -- Data for Name: libraryprop; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY libraryprop (libraryprop_id, library_id, type_id, value, rank) FROM stdin;
-\.
 
 
 --
 -- Data for Name: magedocumentation; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY magedocumentation (magedocumentation_id, mageml_id, tableinfo_id, row_id, mageidentifier) FROM stdin;
-\.
 
 
 --
 -- Data for Name: mageml; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY mageml (mageml_id, mage_package, mage_ml) FROM stdin;
-\.
 
 
 --
 -- Data for Name: organism; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY organism (organism_id, abbreviation, genus, species, common_name, "comment") FROM stdin;
-\.
 
 
 --
 -- Data for Name: organism_dbxref; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY organism_dbxref (organism_dbxref_id, organism_id, dbxref_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: organismprop; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY organismprop (organismprop_id, organism_id, type_id, value, rank) FROM stdin;
-\.
 
 
 --
 -- Data for Name: phendesc; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY phendesc (phendesc_id, genotype_id, environment_id, description, pub_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: phenotype; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY phenotype (phenotype_id, uniquename, observable_id, attr_id, value, cvalue_id, assay_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: phenotype_comparison; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY phenotype_comparison (phenotype_comparison_id, genotype1_id, environment1_id, genotype2_id, environment2_id, phenotype1_id, phenotype2_id, type_id, pub_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: phenotype_cvterm; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY phenotype_cvterm (phenotype_cvterm_id, phenotype_id, cvterm_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: phenstatement; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY phenstatement (phenstatement_id, genotype_id, environment_id, phenotype_id, type_id, pub_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY project (project_id, name, description) FROM stdin;
-\.
 
 
 --
 -- Data for Name: protocol; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY protocol (protocol_id, type_id, pub_id, dbxref_id, name, uri, protocoldescription, hardwaredescription, softwaredescription) FROM stdin;
-\.
 
 
 --
 -- Data for Name: protocolparam; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY protocolparam (protocolparam_id, protocol_id, name, datatype_id, unittype_id, value, rank) FROM stdin;
-\.
 
 
 --
 -- Data for Name: pub; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY pub (pub_id, title, volumetitle, volume, series_name, issue, pyear, pages, miniref, uniquename, type_id, is_obsolete, publisher, pubplace) FROM stdin;
-1	\N	\N	\N	\N	\N	\N	\N	null	null	1	f	\N	\N
-\.
+INSERT INTO pub (pub_id, title, volumetitle, volume, series_name, issue, pyear, pages, miniref, uniquename, type_id, is_obsolete, publisher, pubplace) VALUES (1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'null', 'null', 1, false, NULL, NULL);
 
 
 --
 -- Data for Name: pub_dbxref; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY pub_dbxref (pub_dbxref_id, pub_id, dbxref_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: pub_relationship; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY pub_relationship (pub_relationship_id, subject_id, object_id, type_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: pubauthor; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY pubauthor (pubauthor_id, pub_id, rank, editor, surname, givennames, suffix) FROM stdin;
-\.
 
 
 --
 -- Data for Name: pubprop; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY pubprop (pubprop_id, pub_id, type_id, value, rank) FROM stdin;
-\.
 
 
 --
 -- Data for Name: quantification; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY quantification (quantification_id, acquisition_id, operator_id, protocol_id, analysis_id, quantificationdate, name, uri) FROM stdin;
-\.
 
 
 --
 -- Data for Name: quantification_relationship; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY quantification_relationship (quantification_relationship_id, subject_id, type_id, object_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: quantificationprop; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY quantificationprop (quantificationprop_id, quantification_id, type_id, value, rank) FROM stdin;
-\.
 
 
 --
 -- Data for Name: study; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY study (study_id, contact_id, pub_id, dbxref_id, name, description) FROM stdin;
-\.
 
 
 --
 -- Data for Name: study_assay; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY study_assay (study_assay_id, study_id, assay_id) FROM stdin;
-\.
 
 
 --
 -- Data for Name: studydesign; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY studydesign (studydesign_id, study_id, description) FROM stdin;
-\.
 
 
 --
 -- Data for Name: studydesignprop; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY studydesignprop (studydesignprop_id, studydesign_id, type_id, value, rank) FROM stdin;
-\.
 
 
 --
 -- Data for Name: studyfactor; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY studyfactor (studyfactor_id, studydesign_id, type_id, name, description) FROM stdin;
-\.
 
 
 --
 -- Data for Name: studyfactorvalue; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY studyfactorvalue (studyfactorvalue_id, studyfactor_id, assay_id, factorvalue, name, rank) FROM stdin;
-\.
 
 
 --
 -- Data for Name: synonym; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY synonym (synonym_id, name, type_id, synonym_sgml) FROM stdin;
-\.
 
 
 --
 -- Data for Name: tableinfo; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY tableinfo (tableinfo_id, name, primary_key_column, is_view, view_on_table_id, superclass_table_id, is_updateable, modification_date) FROM stdin;
-\.
 
 
 --
 -- Data for Name: treatment; Type: TABLE DATA; Schema: public; Owner: nassar
 --
 
-COPY treatment (treatment_id, rank, biomaterial_id, type_id, protocol_id, name) FROM stdin;
-\.
 
 
 --
