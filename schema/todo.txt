@@ -1,0 +1,120 @@
+==Open Issues==
+
+===Table Pedigree===
+
+* Split out pedigree.{date_mated,date_female_died,days_mated} into pedigree_cvterm?
+* Same thing with specimen.{barcode,...}?
+
+===Table Genotype===
+
+We are interested in storing linear arrays of locus-specific DNA
+sequence data as genotypic data.  One way would be to make
+genotype.description have unlimited length (text?).  Other way is
+to use accession to the data in Genbank, i.e. add accession fkey to
+genotype table.
+
+===Table Geographic_Site===
+
+* county, province, and country seem to be denormalized, and possibly
+belong into a controlled vocabulary
+
+===Table Experimenter===
+
+This should be rather represented by module contact, table contact?
+
+===Table Individual===
+
+* Columns 'male' and 'wild' aren't named as obviously boolean
+attributes; in fact shouldn't they rather be cvterm references?
+
+* Column 'notes' does not sound like a desirable idea. What is to be noted here?
+
+===Table Cross_Type===
+
+This looks like it is a controlled vocabulary, and hence should be
+merged into tables cv and cvterm.
+
+===Table Pedigree===
+
+There are a number of commented out columns. Are they needed or not?
+
+===Table Polytype===
+
+This looks like it is a controlled vocabulary, and hence should be
+merged into tables cv and cvterm.
+
+===Table Primer===
+
+This should be represented by module sequence, table feature.
+
+===Table Primer_Designcluster===
+
+Column naming is inconsistent (design_species_id should be
+design_organism_id, outgroup_id should be outgroup_organism_id,
+designcluster_id should be feature_id, pos should be unambiguous).
+
+===Table gtassay===
+
+Inconsistent column naming (locus_id should be feature_id, or locus_feature_id).
+
+This could possibly be represented also be a primer feature pair and a
+super-feature giving the amplicon.
+
+===Table Specimen===
+
+Column storage_location looks like a cvterm foreign key candidate.
+
+===Table Gtexperiment===
+
+Column genotype_published_id should be better named (e.g., simply pub_id).
+
+===Table Studyx===
+
+* Why name the table StudyX? What is this table for?
+
+* This looks rather like a controlled vocabulary, to be folded into
+the cv and cvterm tables.
+
+===Table Image===
+
+This may be representable as a dbxref (table dbxref, module general).
+
+===Table Gtassay_test===
+
+* What is the definition for the table? I.e., what is the conceptual
+entity? Documentation says 'initial examination'; why not subsequent
+examinations? Why is this not a gtassay_result? How is this entity fundamentally
+different from a gtexperiment?
+
+* Expected_length should be calculable based on amplicon?
+
+* test_species_id: should be named test_organism_id, or possibly
+differently to better reflect the conceptual model?
+
+* columns intron and outcome_success should rather be cvterm foreign keys?
+
+===Table Ptassay===
+
+* This looks rather like a controlled vocabulary?
+
+* Documentation says 'polymorphism detection'; however, is this rather a 
+phenotype assay?
+
+===Table individual_phenotype===
+
+* Phenotype_published_id should be just pub_id
+
+* What is column 'notes' for?
+
+===Table Stock_Phenotype===
+
+* Phenotype_published_id should be just pub_id
+
+* What is column 'notes' for?
+
+===Table Biotype_Phenotype===
+
+* Phenotype_published_id should be just pub_id
+
+* What is column 'notes' for?
+
