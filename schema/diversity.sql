@@ -32,6 +32,15 @@
 -- WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 --
 
+-- =================================================================
+-- Dependencies:
+--
+-- :import feature from sequence
+-- :import cvterm from cv
+-- :import pub from pub
+-- :import phenotype from phenotype
+-- =================================================================
+
 -- table stock
 --
 -- Keeps track of information related to stocks or lines kept for

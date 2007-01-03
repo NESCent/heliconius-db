@@ -13,6 +13,20 @@ genotype.description have unlimited length (text?).  Other way is
 to use accession to the data in Genbank, i.e. add accession fkey to
 genotype table.
 
+===Table Stock===
+
+* Columns maternal_source_id and paternal_source_id should be better named maternal_biotype_id and paternal_biotype_id for consistency?
+
+===Table Biotype===
+
+This relation only has a primary key and no natural attributes. What is its purpose?
+
+===Table Biotype_Organism===
+
+Seems to serve as an association table between Biotype and
+Organism. Why would one associate multiple organisms (taxonomic units)
+with a single biotype?
+ 
 ===Table Geographic_Site===
 
 * county, province, and country seem to be denormalized, and possibly
