@@ -39,6 +39,8 @@
 -- :import cvterm from cv
 -- :import pub from pub
 -- :import phenotype from phenotype
+-- :import organism from organism
+-- :import genotype from genetic
 -- =================================================================
 
 -- table stock
