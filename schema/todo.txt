@@ -31,10 +31,13 @@ with a single biotype?
 
 * county, province, and country seem to be denormalized, and possibly
 belong into a controlled vocabulary
+** Yes.
 
 ===Table Experimenter===
 
 This should be rather represented by module contact, table contact?
+
+* Yes.
 
 ===Table Individual===
 
@@ -48,18 +51,26 @@ attributes; in fact shouldn't they rather be cvterm references?
 This looks like it is a controlled vocabulary, and hence should be
 merged into tables cv and cvterm.
 
+* Yes.
+
 ===Table Pedigree===
 
 There are a number of commented out columns. Are they needed or not?
+
+* Can be removed.
 
 ===Table Polytype===
 
 This looks like it is a controlled vocabulary, and hence should be
 merged into tables cv and cvterm.
 
+* Yes.
+
 ===Table Primer===
 
 This should be represented by module sequence, table feature.
+
+* Yes.
 
 ===Table Primer_Designcluster===
 
@@ -74,9 +85,13 @@ Inconsistent column naming (locus_id should be feature_id, or locus_feature_id).
 This could possibly be represented also be a primer feature pair and a
 super-feature giving the amplicon.
 
+* Revisit, probably not.
+
 ===Table Specimen===
 
 Column storage_location looks like a cvterm foreign key candidate.
+
+* No, is possibly an exact location.
 
 ===Table Gtexperiment===
 
@@ -85,13 +100,17 @@ Column genotype_published_id should be better named (e.g., simply pub_id).
 ===Table Studyx===
 
 * Why name the table StudyX? What is this table for?
+** Maybe expstudy?
 
 * This looks rather like a controlled vocabulary, to be folded into
 the cv and cvterm tables.
+** No.
 
 ===Table Image===
 
 This may be representable as a dbxref (table dbxref, module general).
+
+* Probably yes.
 
 ===Table Gtassay_test===
 
@@ -107,30 +126,37 @@ differently to better reflect the conceptual model?
 
 * columns intron and outcome_success should rather be cvterm foreign keys?
 
+See change to pcrexperiment.
+
 ===Table Ptassay===
 
 * This looks rather like a controlled vocabulary?
+** No.
 
 * Documentation says 'polymorphism detection'; however, is this rather a 
 phenotype assay?
+** Yes, fixed.
 
 ===Table individual_phenotype===
 
 * Phenotype_published_id should be just pub_id
 
 * What is column 'notes' for?
+** Maybe not needed.
 
 ===Table Stock_Phenotype===
 
 * Phenotype_published_id should be just pub_id
 
 * What is column 'notes' for?
+** Maybe not needed.
 
 ===Table Biotype_Phenotype===
 
 * Phenotype_published_id should be just pub_id
 
 * What is column 'notes' for?
+** Maybe not needed.
 
 ==Open issues due to conflict with other modules==
 

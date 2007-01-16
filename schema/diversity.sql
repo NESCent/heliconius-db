@@ -280,8 +280,7 @@ CREATE TABLE gtassay (
 	assay_name character varying(255) NOT NULL UNIQUE,
 	locus_id integer,
 	polytype_id integer REFERENCES polytype(polytype_id) ON DELETE RESTRICT,
-	forward_primer_id integer REFERENCES primer(primer_id) ON DELETE RESTRICT,
-	reverse_primer_id integer REFERENCES primer(primer_id) ON DELETE RESTRICT
+	pcrexperiment_id integer NOT NULL REFERENCES pcrexperiment(pcrexperiment_id) ON DELETE RESTRICT
 );
 
 ALTER TABLE gtassay
@@ -292,8 +291,6 @@ COMMENT ON TABLE gtassay IS 'Method of polymorphism detection';
 COMMENT ON COLUMN gtassay.assay_name IS 'Reference name of the assay';
 COMMENT ON COLUMN gtassay.locus_id IS 'Locus that is examined for polymorphisms';
 COMMENT ON COLUMN gtassay.polytype_id IS 'Method of scoring the polymorphism for this assay (e.g., AFLP, SSCP, RFLP, size polymorphism)';
-COMMENT ON COLUMN gtassay.forward_primer_id IS 'Primer that sits on the coding strand';
-COMMENT ON COLUMN gtassay.reverse_primer_id IS 'Primer that sits on the non-coding strand';
 
 -- create table gtassay_cvterm
 
@@ -420,27 +417,29 @@ CREATE TABLE image (
 COMMENT ON TABLE image IS 'Link to an external image file';
 COMMENT ON COLUMN image.uri IS 'URL or local file path to image';
 
--- table gtassay_test
+-- table pcrexperiment
 --
 -- Initial examination of a locus
 
-CREATE TABLE gtassay_test (
-	gtassay_test_id serial PRIMARY KEY,
-	gtassay_id integer NOT NULL REFERENCES gtassay(gtassay_id) ON DELETE RESTRICT,
+CREATE TABLE pcrexperiment (
+	pcrexperiment_id serial PRIMARY KEY,
 	expected_length smallint,
 	intron boolean,
 	test_species_id integer REFERENCES organism(organism_id) ON DELETE RESTRICT,
 	outcome_success boolean,
-	image_id integer REFERENCES image(image_id) ON DELETE RESTRICT
+	image_id integer REFERENCES image(image_id) ON DELETE RESTRICT,
+	forward_primer_id integer REFERENCES primer(primer_id) ON DELETE RESTRICT,
+	reverse_primer_id integer REFERENCES primer(primer_id) ON DELETE RESTRICT
 );
 
-COMMENT ON TABLE gtassay_test IS 'Initial examination of a locus';
-COMMENT ON COLUMN gtassay_test.gtassay_id IS 'Assay conditions used in test';
-COMMENT ON COLUMN gtassay_test.expected_length IS 'Length of the expectant product';
-COMMENT ON COLUMN gtassay_test.intron IS 'True if cDNA includes an intron, false if it does not';
-COMMENT ON COLUMN gtassay_test.test_species_id IS 'Taxa for which optimization experiments were performed';
-COMMENT ON COLUMN gtassay_test.outcome_success IS 'True if experiment generated strong product in expected size range, false if no product was generated, or NULL if a weak product or non-specific amplification was observed';
-COMMENT ON COLUMN gtassay_test.image_id IS 'Digital image of the experimental results';
+COMMENT ON TABLE pcrexperiment IS 'Initial examination of a locus';
+COMMENT ON COLUMN pcrexperiment.expected_length IS 'Length of the expectant product';
+COMMENT ON COLUMN pcrexperiment.intron IS 'True if cDNA includes an intron, false if it does not';
+COMMENT ON COLUMN pcrexperiment.test_species_id IS 'Taxa for which optimization experiments were performed';
+COMMENT ON COLUMN pcrexperiment.outcome_success IS 'True if experiment generated strong product in expected size range, false if no product was generated, or NULL if a weak product or non-specific amplification was observed';
+COMMENT ON COLUMN pcrexperiment.image_id IS 'Digital image of the experimental results';
+COMMENT ON COLUMN pcrexperiment.forward_primer_id IS 'Primer that sits on the coding strand';
+COMMENT ON COLUMN pcrexperiment.reverse_primer_id IS 'Primer that sits on the non-coding strand';
 
 -- create table individual_image
 
@@ -469,7 +468,7 @@ CREATE TABLE ptassay (
 	assay_name character varying(255) NOT NULL UNIQUE
 );
 
-COMMENT ON TABLE ptassay IS 'Method of polymorphism detection';
+COMMENT ON TABLE ptassay IS 'Phenotype determination assay';
 COMMENT ON COLUMN ptassay.assay_name IS 'Reference name of the assay';
 
 -- create table ptassay_cvterm
