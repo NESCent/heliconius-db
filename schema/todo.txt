@@ -17,6 +17,8 @@ genotype table.
 
 * Columns maternal_source_id and paternal_source_id should be better named maternal_biotype_id and paternal_biotype_id for consistency?
 
+* Is this the site where the individual(s) that gave rise to the stock were collected from, or is this the location of the stock itself?
+
 ===Table Biotype===
 
 This relation only has a primary key and no natural attributes. What is its purpose?
@@ -46,6 +48,8 @@ attributes; in fact shouldn't they rather be cvterm references?
 
 * Column 'notes' does not sound like a desirable idea. What is to be noted here?
 
+* The table has a self-referencing foreign key. Is this used to store lineages?
+
 ===Table Cross_Type===
 
 This looks like it is a controlled vocabulary, and hence should be
@@ -58,6 +62,12 @@ merged into tables cv and cvterm.
 There are a number of commented out columns. Are they needed or not?
 
 * Can be removed.
+
+===Table Pedigree_cvterm===
+
+* What is the column cvterm_type for? Can this be removed? This sounds
+  like it is redundant to the cvterm foreign key and the cvterm's
+  namespace?
 
 ===Table Polytype===
 
@@ -87,6 +97,12 @@ super-feature giving the amplicon.
 
 * Revisit, probably not.
 
+===Table gtassay_cvterm===
+
+* What is the column cvterm_type for? Can this be removed? This sounds
+  like it is redundant to the cvterm foreign key and the cvterm's
+  namespace?
+
 ===Table Specimen===
 
 Column storage_location looks like a cvterm foreign key candidate.
@@ -95,7 +111,11 @@ Column storage_location looks like a cvterm foreign key candidate.
 
 ===Table Gtexperiment===
 
-Column genotype_published_id should be better named (e.g., simply pub_id).
+Column genotype_published_id should be better named (e.g., simply
+pub_id).
+
+And does this column refer to the publication for the genotype or for
+the genotype experiment?
 
 ===Table Studyx===
 
@@ -112,7 +132,7 @@ This may be representable as a dbxref (table dbxref, module general).
 
 * Probably yes.
 
-===Table Gtassay_test===
+===Table Pcrexperiment===
 
 * What is the definition for the table? I.e., what is the conceptual
 entity? Documentation says 'initial examination'; why not subsequent
@@ -137,23 +157,33 @@ See change to pcrexperiment.
 phenotype assay?
 ** Yes, fixed.
 
+* What is the column cvterm_type for? Can this be removed? This sounds
+  like it is redundant to the cvterm foreign key and the cvterm's
+  namespace?
+
 ===Table individual_phenotype===
 
-* Phenotype_published_id should be just pub_id
+* Phenotype_published_id should be just pub_id. Does column
+  phenotype_published_id refer to the publication for the phenotype or
+  for the phenotype itself?
 
 * What is column 'notes' for?
 ** Maybe not needed.
 
 ===Table Stock_Phenotype===
 
-* Phenotype_published_id should be just pub_id
+* Phenotype_published_id should be just pub_id. Does column
+  phenotype_published_id refer to the publication for the phenotype or
+  for the phenotype itself?
 
 * What is column 'notes' for?
-** Maybe not needed.
+** Maybe not be needed.
 
 ===Table Biotype_Phenotype===
 
-* Phenotype_published_id should be just pub_id
+* Phenotype_published_id should be just pub_id. Does column
+  phenotype_published_id refer to the publication for the phenotype or
+  for the phenotype itself?
 
 * What is column 'notes' for?
 ** Maybe not needed.

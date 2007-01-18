@@ -8,8 +8,8 @@
 --
 
 --
--- Copyright (c) 2006-2007, Nassib Nassar, nassar@etymon.com
--- Copyright (c) 2006-2007, Owen McMillan, womcmill@ncsu.edu
+-- Copyright (c) 2006-2007, Nassib Nassar, nassar at etymon.com
+-- Copyright (c) 2006-2007, Owen McMillan, womcmill at ncsu.edu
 -- Copyright (c) 2006-2007, National Evolutionary Synthesis Center
 -- 
 -- Permission is hereby granted, free of charge, to any person obtaining
@@ -41,40 +41,21 @@
 -- :import phenotype from phenotype
 -- :import organism from organism
 -- :import genotype from genetic
+-- :import contact from contact
 -- =================================================================
-
--- table stock
---
--- Keeps track of information related to stocks or lines kept for
--- experimental purposes
-
-CREATE TABLE stock (
-	stock_id serial PRIMARY KEY,
-	stock_name character varying(255) NOT NULL UNIQUE,
-	description character varying(255),
-	biotype_id integer NOT NULL,
-	maternal_source_id integer,
-	paternal_source_id integer,
-	geographic_site_id integer,
-	experimenter_id integer,
-	date_created date
-);
-
-COMMENT ON TABLE stock IS 'Keeps track of information related to stocks or lines kept for experimental purposes';
-COMMENT ON COLUMN stock.stock_name IS 'Reference name of the stock';
-COMMENT ON COLUMN stock.description IS 'Information on how the stock was created or other relevant information describing stock';
-COMMENT ON COLUMN stock.biotype_id IS 'Taxonomic designation of the stock';
-COMMENT ON COLUMN stock.maternal_source_id IS 'Maternal source of the stock if known';
-COMMENT ON COLUMN stock.paternal_source_id IS 'Paternal source of the stock if known';
-COMMENT ON COLUMN stock.geographic_site_id IS 'Location that is the source of the stock if known';
-COMMENT ON COLUMN stock.experimenter_id IS 'Experimenter that started the stock';
-COMMENT ON COLUMN stock.date_created IS 'When the stock was created';
 
 -- create table biotype
 
 CREATE TABLE biotype (
-	biotype_id serial PRIMARY KEY
+	biotype_id SERIAL NOT NULL,
+        PRIMARY KEY (biotype_id),
+        name VARCHAR(64) NOT NULL,
+        CONSTRAINT biotype_c1 UNIQUE (name)
 );
+
+COMMENT ON TABLE biotype IS 'Biotype is essentially a named container of species. Typically, this will be the species that hybridized to give rise to a hybrid individual, and the name will usually be the species part of the binomial names, concatenated by "x".'
+
+COMMENT ON COLUMN biotype.name IS 'The unique name of the biotype. Typically the name of a species hybrid, with for example the species parts of the binomial names concatenated by "x".'
 
 -- table biotype_organism
 --
@@ -82,14 +63,19 @@ CREATE TABLE biotype (
 -- presence of hybrid individuals
 
 CREATE TABLE biotype_organism (
-	biotype_organism_id serial PRIMARY KEY,
-	biotype_id integer NOT NULL REFERENCES biotype(biotype_id) ON DELETE RESTRICT,
-	organism_id integer NOT NULL REFERENCES organism(organism_id) ON DELETE RESTRICT,
-	UNIQUE (biotype_id, organism_id)
+	biotype_organism_id SERIAL NOT NULL,
+        PRIMARY KEY (biotype_organism_id),
+	biotype_id INTEGER NOT NULL,
+        FOREIGN KEY (biotype_id) REFERENCES biotype (biotype_id) 
+                ON DELETE CASCADE,
+	organism_id INTEGER NOT NULL,
+        FOREIGN KEY (organism_id) REFERENCES organism (organism_id) 
+                ON DELETE CASCADE,
+	CONSTRAINT biotype_organism_c1 UNIQUE (biotype_id, organism_id)
 );
 
 COMMENT ON TABLE biotype_organism IS
-	'Allows grouping of several or more organisms to allow for the presence of hybrid individuals';
+	'Allows grouping of two or more organisms to allow for the presence of hybrid individuals';
 
 -- table geographic_site:
 
@@ -107,20 +93,60 @@ CREATE TABLE geographic_site (
 	country character varying(255)
 );
 
+COMMENT ON TABLE geographic_site IS 'The geo-referencable location of the stock';
+
 COMMENT ON COLUMN geographic_site.east IS 'East if true, west if false';
+
 COMMENT ON COLUMN geographic_site.north IS 'North if true, south if false';
+
 COMMENT ON COLUMN geographic_site.altitude_min IS 'Lower altitude range in meters';
+
 COMMENT ON COLUMN geographic_site.altitude_max IS 'Upper altitude range in meters';
 
--- table experimenter
+-- table stock
+--
+-- Keeps track of information related to stocks or lines kept for
+-- experimental purposes
 
-CREATE TABLE experimenter (
-	experimenter_id serial PRIMARY KEY,
-	name character varying(255) NOT NULL UNIQUE
+CREATE TABLE stock (
+	stock_id SERIAL PRIMARY KEY,
+	stock_name character varying(255) NOT NULL UNIQUE,
+	description character varying(255),
+	biotype_id INTEGER NOT NULL,
+        FOREIGN KEY (biotype_id) REFERENCES biotype (biotype_id)
+                ON DELETE RESTRICT,
+	maternal_biotype_id INTEGER,
+        FOREIGN KEY (maternal_biotype_id) REFERENCES biotype (biotype_id)
+                ON DELETE RESTRICT,
+	paternal_biotype_id INTEGER,
+        FOREIGN KEY (paternal_biotype_id) REFERENCES biotype (biotype_id)
+                ON DELETE RESTRICT,
+	geographic_site_id INTEGER,
+        FOREIGN KEY (geographic_site_id) REFERENCES geographic_site (geographic_site_id)
+                ON DELETE RESTRICT,
+	experimenter_id INTEGER,
+        FOREIGN KEY (experimenter_id) REFERENCES contact (contact_id)
+                ON DELETE RESTRICT,
+	date_created date
 );
 
-COMMENT ON COLUMN experimenter.name IS
-	'Name of person (last, first) or institution performing the experiment';
+COMMENT ON TABLE stock IS 'A stock is a line raised from an individual that was either collected in the wild or bred in the laboratory.';
+
+COMMENT ON COLUMN stock.stock_name IS 'Reference name of the stock';
+
+COMMENT ON COLUMN stock.description IS 'Information on how the stock was created or other relevant information describing stock';
+
+COMMENT ON COLUMN stock.biotype_id IS 'Taxonomic designation of the stock';
+
+COMMENT ON COLUMN stock.maternal_biotype_id IS 'Maternal source of the stock if known';
+
+COMMENT ON COLUMN stock.paternal_biotype_id IS 'Paternal source of the stock if known';
+
+COMMENT ON COLUMN stock.geographic_site_id IS 'Location that is the source of the stock if known';
+
+COMMENT ON COLUMN stock.experimenter_id IS 'Experimenter that started the stock';
+
+COMMENT ON COLUMN stock.date_created IS 'When the stock was created';
 
 -- table individual
 
@@ -128,94 +154,99 @@ CREATE TABLE individual (
 	individual_id serial PRIMARY KEY,
 	individual_name character varying(255) NOT NULL UNIQUE,
 	wild boolean NOT NULL,
-	pedigree_id integer REFERENCES individual(individual_id) ON DELETE RESTRICT,
-	stock_id integer REFERENCES stock(stock_id) ON DELETE RESTRICT,
-	geographic_site_id integer REFERENCES geographic_site(geographic_site_id) ON DELETE RESTRICT,
+	pedigree_id integer,
+        FOREIGN KEY (pedigree_id) REFERENCES individual (individual_id) 
+                ON DELETE RESTRICT,
+	stock_id integer,
+        FOREIGN KEY (stock_id) REFERENCES stock (stock_id)
+                ON DELETE RESTRICT,
+	geographic_site_id integer,
+        FOREIGN KEY (geographic_site_id) REFERENCES geographic_site (geographic_site_id) 
+                ON DELETE RESTRICT,
 	collection_date date,
 	male boolean,
-	biotype_id integer NOT NULL REFERENCES biotype(biotype_id) ON DELETE RESTRICT,
+	biotype_id integer NOT NULL,
+        FOREIGN KEY (biotype_id) REFERENCES biotype (biotype_id)
+                ON DELETE RESTRICT,
 	taxonomic_confidence real,
-	experimenter_id integer REFERENCES experimenter(experimenter_id) ON DELETE RESTRICT,
+	experimenter_id integer,
+        FOREIGN KEY (experimenter_id) REFERENCES contact (contact_id) 
+                ON DELETE RESTRICT,
 	notes character varying(255)
 );
 
+COMMENT ON TABLE individual IS 'An individual of a population, collected in the wild, or resulting from a cross in the laboratory.';
+
 COMMENT ON COLUMN individual.individual_name IS 'Reference name of the individual';
-COMMENT ON COLUMN individual.wild IS 
-	'True if field collected specimen; false if reared in captivity';
-COMMENT ON COLUMN individual.geographic_site_id IS 
-	'Geographic site where individual was collected or raised';
+
+COMMENT ON COLUMN individual.wild IS 'True if field collected specimen; false if reared in captivity';
+
+COMMENT ON COLUMN individual.geographic_site_id IS 'Geographic site where individual was collected or raised';
+
 COMMENT ON COLUMN individual.collection_date IS 'Date when the individual was collected';
+
 COMMENT ON COLUMN individual.male IS 'True if sex of the individual is male; false if female';
+
 COMMENT ON COLUMN individual.biotype_id IS 'Genome composition';
-COMMENT ON COLUMN individual.taxonomic_confidence IS
-	'Confidence that the researcher places in the taxonomic designation assigned in biotype_id, ranging from 0 (no confidence) to 1 (certainty)';
-COMMENT ON COLUMN individual.experimenter_id IS
-	'Person or institution that collected or raised the individual';
+
+COMMENT ON COLUMN individual.taxonomic_confidence IS 'Confidence that the researcher places in the taxonomic designation assigned in biotype_id, ranging from 0 (no confidence) to 1 (certainty)';
+
+COMMENT ON COLUMN individual.experimenter_id IS 'Person or institution that collected or raised the individual';
+
 COMMENT ON COLUMN individual.notes IS 'Notes on some aspect of individual, e.g. for an insect, what host plant it was collected on, or whether or not there were beak marks on the wings';
-
--- create table cross_type
-
-CREATE TABLE cross_type (
-	cross_type_id serial PRIMARY KEY,
-	type_name character varying(255) NOT NULL UNIQUE
-);
 
 -- table pedigree
 
 CREATE TABLE pedigree (
 	pedigree_id serial PRIMARY KEY,
 	pedigree_name character varying(255) NOT NULL UNIQUE,
-	female_id integer REFERENCES individual(individual_id) ON DELETE RESTRICT,
-	male_id integer REFERENCES individual(individual_id) ON DELETE RESTRICT,
-	experimenter_id integer REFERENCES experimenter(experimenter_id) ON DELETE RESTRICT,
-	experiment_geographic_site_id integer REFERENCES geographic_site(geographic_site_id) ON DELETE RESTRICT,
+	female_id integer,
+        FOREIGN KEY (female_id) REFERENCES individual (individual_id) 
+                ON DELETE RESTRICT,
+	male_id integer,
+        FOREIGN KEY (male_id) REFERENCES individual (individual_id) 
+                ON DELETE RESTRICT,
+	experimenter_id integer,
+        FOREIGN KEY (experimenter_id) REFERENCES contact (contact_id)
+                ON DELETE RESTRICT,
+	geographic_site_id integer,
+        FOREIGN KEY (geographic_site_id) REFERENCES geographic_site (geographic_site_id) 
+                ON DELETE RESTRICT,
 	date_mated date,
 	date_female_died date,
---	days_mated smallint,
-	cross_type_id integer REFERENCES cross_type(cross_type_id) ON DELETE RESTRICT
---	days_laying smallint,
---	num_eggs_hatched smallint,
---	num_pupa smallint,
---	num_adults smallint,
---	num_females smallint
+	cross_type_id integer,
+        FOREIGN KEY (cross_type_id) REFERENCES cvterm (cvterm_id) 
+                ON DELETE RESTRICT
 );
 
+COMMENT ON TABLE pedigree IS 'Pedigrees of individuals.'
 COMMENT ON COLUMN pedigree.pedigree_name IS 'Reference name given the pedigree by the experimenter';
 COMMENT ON COLUMN pedigree.date_mated IS 'Date the female was mated';
 COMMENT ON COLUMN pedigree.date_female_died IS 'Date female harvested';
---COMMENT ON COLUMN pedigree.days_mated IS 'Number of days that the female was mated';
---COMMENT ON COLUMN pedigree.days_laying IS 'Number of days that the female laid eggs';
---COMMENT ON COLUMN pedigree.num_eggs_hatched IS 'Number of eggs that hatched';
---COMMENT ON COLUMN pedigree.num_pupa IS 'Number of larvae that are pupating';
---COMMENT ON COLUMN pedigree.num_adults IS 'Number of pupae ecclosing';
---COMMENT ON COLUMN pedigree.num_females IS 'Number of female offspring';
 
 -- table pedigree_cvterm
+--
+-- examples for attribute/value pairs:
+--	days_mated,
+--	days_laying,
+--	num_eggs_hatched,
+--	num_pupa,
+--	num_adults,
+--	num_females
 
 CREATE TABLE pedigree_cvterm (
 	pedigree_cvterm_id serial PRIMARY KEY,
-	pedigree_id integer NOT NULL REFERENCES pedigree(pedigree_id) ON DELETE RESTRICT,
+	pedigree_id integer NOT NULL,
+        FOREIGN KEY (pedigree_id) REFERENCES pedigree (pedigree_id) 
+                ON DELETE CASCADE,
 	cvterm_id integer NOT NULL,
+        FOREIGN KEY (cvterm_id) REFERENCES cvterm (cvterm_id)
+                ON DELETE CASCADE,
 	rank integer,
 	cvterm_type character varying(255),
-	UNIQUE (pedigree_id, cvterm_id)
+	CONSTRAINT pedigree_cvterm_c1 UNIQUE (pedigree_id, cvterm_id)
 );
 
-ALTER TABLE pedigree_cvterm
-	ADD CONSTRAINT pedigree_cvterm_cvterm_id_fkey FOREIGN KEY (cvterm_id)
-	REFERENCES cvterm(cvterm_id) ON DELETE RESTRICT;
-
--- table polytype
---
--- Type of marker or method of scoring
-
-CREATE TABLE polytype (
-	polytype_id serial PRIMARY KEY,
-	poly_name character varying(255) NOT NULL UNIQUE
-);
-
-COMMENT ON TABLE polytype IS 'Type of marker or method of scoring';
-COMMENT ON COLUMN polytype.poly_name IS 'Type of marker or method of scoring';
 
 -- table primer
 --
@@ -225,7 +256,7 @@ CREATE TABLE primer (
 	primer_id serial PRIMARY KEY,
 	primer_name character varying(255) NOT NULL UNIQUE,
 	primer_sequence character varying(128),
-	designer_id integer REFERENCES experimenter(experimenter_id) ON DELETE RESTRICT,
+	designer_id integer REFERENCES contact (contact_id) ON DELETE RESTRICT,
 	published_id integer,
 	tm real,
 	strand_forward boolean,
@@ -277,15 +308,18 @@ COMMENT ON COLUMN primer_designcluster.pos IS 'Position of the 5-prime end of th
 
 CREATE TABLE gtassay (
 	gtassay_id serial PRIMARY KEY,
-	assay_name character varying(255) NOT NULL UNIQUE,
+	assay_name character varying(255) NOT NULL,
 	locus_id integer,
-	polytype_id integer REFERENCES polytype(polytype_id) ON DELETE RESTRICT,
-	pcrexperiment_id integer NOT NULL REFERENCES pcrexperiment(pcrexperiment_id) ON DELETE RESTRICT
+        FOREIGN KEY (locus_id) REFERENCES feature (feature_id)
+                ON DELETE RESTRICT,
+	polytype_id integer,
+        FOREIGN KEY (polytype_id) REFERENCES cvterm (cvterm_id)
+                ON DELETE RESTRICT,
+	pcrexperiment_id integer NOT NULL,
+        FOREIGN KEY (pcrexperiment_id) REFERENCES pcrexperiment (pcrexperiment_id)
+                ON DELETE RESTRICT,
+        CONSTRAINT gtassay_c1 UNIQUE (assay_name)
 );
-
-ALTER TABLE gtassay
-	ADD CONSTRAINT gtassay_locus_id_fkey FOREIGN KEY (locus_id)
-	REFERENCES feature(feature_id) ON DELETE RESTRICT;
 
 COMMENT ON TABLE gtassay IS 'Method of polymorphism detection';
 COMMENT ON COLUMN gtassay.assay_name IS 'Reference name of the assay';
@@ -293,31 +327,33 @@ COMMENT ON COLUMN gtassay.locus_id IS 'Locus that is examined for polymorphisms'
 COMMENT ON COLUMN gtassay.polytype_id IS 'Method of scoring the polymorphism for this assay (e.g., AFLP, SSCP, RFLP, size polymorphism)';
 
 -- create table gtassay_cvterm
+-- 
+-- examples for attribute/value pairs:
+--	specific_pcr_conditions,
+--	annealing_temp,
+--	rflp_enzyme,
+--	microsat_repeat_type,
+--	aflp_adapter_1,
+--	aflp_adapter_2,
+--	aflp_adapter_enzyme_1,
+--	aflp_adapter_enzyme_2,
+--	aflp_overhang_linker_1,
+--	aflp_overhang_linker_2,
+--	snp_type,
+--	snp_position
 
 CREATE TABLE gtassay_cvterm (
 	gtassay_cvterm_id serial PRIMARY KEY,
-	gtassay_id integer NOT NULL REFERENCES gtassay(gtassay_id) ON DELETE RESTRICT,
+	gtassay_id integer NOT NULL,
+        FOREIGN KEY (gtassay_id) REFERENCES gtassay (gtassay_id) 
+                ON DELETE CASCADE,
 	cvterm_id integer NOT NULL,
+        FOREIGN KEY (cvterm_id) REFERENCES cvterm (cvterm_id)
+                ON DELETE CASCADE,
 	rank integer,
 	cvterm_type character varying(255),
-	UNIQUE (gtassay_id, cvterm_id)
---	specific_pcr_conditions character varying(255),
---	annealing_temp real,
---	rflp_enzyme character varying(64),
---	microsat_repeat_type character varying(16),
---	aflp_adapter_1 character varying(64),
---	aflp_adapter_2 character varying(64),
---	aflp_adapter_enzyme_1 character varying(64),
---	aflp_adapter_enzyme_2 character varying(64),
---	aflp_overhang_linker_1 character varying(16),
---	aflp_overhang_linker_2 character varying(16),
---	snp_type character varying(16),
---	snp_position smallint
+	CONSTRAINT gtassay_cvterm_c1 UNIQUE (gtassay_id, cvterm_id)
 );
-
-ALTER TABLE gtassay_cvterm
-	ADD CONSTRAINT gtassay_cvterm_cvterm_id_fkey FOREIGN KEY (cvterm_id)
-	REFERENCES cvterm(cvterm_id) ON DELETE RESTRICT;
 
 -- table specimen
 --
@@ -325,32 +361,41 @@ ALTER TABLE gtassay_cvterm
 
 CREATE TABLE specimen (
 	specimen_id serial PRIMARY KEY,
-	specimen_name character varying(255) NOT NULL UNIQUE,
+	specimen_name character varying(255) NOT NULL,
 	description character varying(255),
 	barcode character varying(255),
 	extract_type_id integer NOT NULL,
+        FOREIGN KEY (extract_type_id) REFERENCES cvterm (cvterm_id)
+                ON DELETE RESTRICT,
 	tissue_type_id integer NOT NULL,
-	individual_id integer NOT NULL REFERENCES individual(individual_id) ON DELETE RESTRICT,
+        FOREIGN KEY (tissue_type_id) REFERENCES cvterm (cvterm_id)
+                ON DELETE RESTRICT,
+	individual_id integer NOT NULL,
+        FOREIGN KEY (individual_id) REFERENCES individual (individual_id)
+                ON DELETE CASCADE,
 	storage_location character varying(255),
-	experimenter_id integer REFERENCES experimenter(experimenter_id) ON DELETE RESTRICT
+	experimenter_id integer,
+        FOREIGN KEY (experimenter_id) REFERENCES contact (contact_id)
+                ON DELETE RESTRICT,
+        CONSTRAINT speciment_c1 UNIQUE (specimen_name)
 );
 
-ALTER TABLE specimen
-	ADD CONSTRAINT specimen_extract_type_id_fkey FOREIGN KEY (extract_type_id)
-	REFERENCES cvterm(cvterm_id) ON DELETE RESTRICT;
-
-ALTER TABLE specimen
-	ADD CONSTRAINT specimen_tissue_type_id_fkey FOREIGN KEY (tissue_type_id)
-	REFERENCES cvterm(cvterm_id) ON DELETE RESTRICT;
-
 COMMENT ON TABLE specimen IS 'Part of an individual that is used in an experiment';
+
 COMMENT ON COLUMN specimen.specimen_name IS 'Reference name for the specimen';
+
 COMMENT ON COLUMN specimen.description IS 'Description of the specimen including information on specimen quality, e.g. concentration, purity, etc.';
+
 COMMENT ON COLUMN specimen.barcode IS 'Barcode identifier of the specimen';
+
 COMMENT ON COLUMN specimen.extract_type_id IS 'How the specimen was processed to produce distinctive molecules';
+
 COMMENT ON COLUMN specimen.tissue_type_id IS 'Tissue or morphological type that was used in the specimen extraction';
+
 COMMENT ON COLUMN specimen.individual_id IS 'Individual used in the extraction';
+
 COMMENT ON COLUMN specimen.storage_location IS 'Location, e.g. freezer, lab, etc., where specimen was stored';
+
 COMMENT ON COLUMN specimen.experimenter_id IS 'Researcher that extracted the specimen';
 
 -- table gtexperiment
@@ -360,30 +405,39 @@ COMMENT ON COLUMN specimen.experimenter_id IS 'Researcher that extracted the spe
 
 CREATE TABLE gtexperiment (
 	gtexperiment_id serial PRIMARY KEY,
-	specimen_id integer NOT NULL REFERENCES specimen(specimen_id) ON DELETE RESTRICT,
-	gtassay_id integer NOT NULL REFERENCES gtassay(gtassay_id) ON DELETE RESTRICT,
+	specimen_id integer NOT NULL,
+        FOREIGN KEY (speciment_id) REFERENCES specimen (specimen_id) 
+                ON DELETE RESTRICT,
+	gtassay_id integer NOT NULL,
+        FOREIGN KEY (gtassay_id) REFERENCES gtassay (gtassay_id) 
+                ON DELETE RESTRICT,
 	genotype_id integer,
-	experimenter_id integer REFERENCES experimenter(experimenter_id) ON DELETE RESTRICT,
+        FOREIGN KEY (genotype_id) REFERENCES genotype (genotype_id)
+                ON DELETE RESTRICT,
+	experimenter_id integer,
+        FOREIGN KEY (experimenter_id) REFERENCES contact (contact_id)
+                ON DELETE RESTRICT,
 	experiment_date date,
 	genotype_published_id integer,
+        FOREIGN KEY (genotype_published_id) REFERENCES pub (pub_id)
+                ON DELETE RESTRICT,
 	notes character varying(255)
 );
 
-ALTER TABLE gtexperiment
-	ADD CONSTRAINT gtexperiment_genotype_id_fkey FOREIGN KEY (genotype_id)
-	REFERENCES genotype(genotype_id) ON DELETE RESTRICT;
-
-ALTER TABLE gtexperiment
-	ADD CONSTRAINT gtexperiment_genotype_published_fkey FOREIGN KEY (genotype_published_id)
-	REFERENCES pub(pub_id) ON DELETE RESTRICT;
-
 COMMENT ON TABLE gtexperiment IS 'Experiment to assign the genotype of an individual at a particular locus';
+
 COMMENT ON COLUMN gtexperiment.specimen_id IS 'Specimen used in the experiment';
+
 COMMENT ON COLUMN gtexperiment.gtassay_id IS 'Assay conditions used to assign genotype';
+
 COMMENT ON COLUMN gtexperiment.genotype_id IS 'Genotypic score';
+
 COMMENT ON COLUMN gtexperiment.genotype_published_id IS 'Journal where result was published';
+
 COMMENT ON COLUMN gtexperiment.experimenter_id IS 'Person performing the experiment';
+
 COMMENT ON COLUMN gtexperiment.experiment_date IS 'Date that the experiment was performed';
+
 COMMENT ON COLUMN gtexperiment.notes IS 'Notes on score';
 
 -- create table studyx
@@ -475,16 +529,16 @@ COMMENT ON COLUMN ptassay.assay_name IS 'Reference name of the assay';
 
 CREATE TABLE ptassay_cvterm (
 	ptassay_cvterm_id serial PRIMARY KEY,
-	ptassay_id integer NOT NULL REFERENCES ptassay(ptassay_id) ON DELETE RESTRICT,
+	ptassay_id integer NOT NULL,
+        FOREIGN KEY (ptassay_id) REFERENCES ptassay (ptassay_id) 
+                ON DELETE CASCADE,
 	cvterm_id integer NOT NULL,
+        FOREIGN KEY (cvterm_id) REFERENCES cvterm (cvterm_id)
+                ON DELETE CASCADE,
 	rank integer,
 	cvterm_type character varying(255),
-	UNIQUE (ptassay_id, cvterm_id)
+	CONSTRAINT ptassay_cvterm_c1 UNIQUE (ptassay_id, cvterm_id)
 );
-
-ALTER TABLE ptassay_cvterm
-	ADD CONSTRAINT ptassay_cvterm_cvterm_id_fkey FOREIGN KEY (cvterm_id)
-	REFERENCES cvterm(cvterm_id) ON DELETE RESTRICT;
 
 -- table individual_phenotype
 --
@@ -493,33 +547,39 @@ ALTER TABLE ptassay_cvterm
 
 CREATE TABLE individual_phenotype (
 	individual_phenotype_id serial PRIMARY KEY,
-	individual_id integer NOT NULL REFERENCES individual(individual_id)
-		ON DELETE RESTRICT,
-	ptassay_id integer REFERENCES ptassay(ptassay_id)
-		ON DELETE RESTRICT,
+	individual_id integer NOT NULL,
+        FOREIGN KEY (individual_id) REFERENCES individual (individual_id)
+		ON DELETE CASCADE,
+	ptassay_id integer,
+        FOREIGN KEY (ptassay_id) REFERENCES ptassay (ptassay_id)
+		ON DELETE SET NULL,
 	phenotype_id integer,
-	experimenter_id integer REFERENCES experimenter(experimenter_id) ON DELETE RESTRICT,
+        FOREIGN KEY (phenotype_id) REFERENCES phenotype (phenotype_id)
+                ON DELETE CASCADE,
+	experimenter_id integer,
+        FOREIGN KEY (experimenter_id) REFERENCES contact (contact_id)
+                ON DELETE SET NULL,
 	assay_date date,
 	phenotype_published_id integer,
+        FOREIGN KEY (phenotype_published_id) REFERENCES pub (pub_id)
+                ON DELETE SET NULL,
 	notes character varying(255)
 );
 
-ALTER TABLE individual_phenotype
-	ADD CONSTRAINT individual_phenotype_phenotype_id_fkey FOREIGN KEY (phenotype_id)
-	REFERENCES phenotype(phenotype_id) ON DELETE RESTRICT;
-
-ALTER TABLE individual_phenotype
-	ADD CONSTRAINT individual_phenotype_phenotype_published_fkey
-	FOREIGN KEY (phenotype_published_id)
-	REFERENCES pub(pub_id) ON DELETE RESTRICT;
-
 COMMENT ON TABLE individual_phenotype IS 'Experimental result or observation associating an individual with a phenotype';
+
 COMMENT ON COLUMN individual_phenotype.individual_id IS 'Individual used in the experiment';
+
 COMMENT ON COLUMN individual_phenotype.ptassay_id IS 'Assay conditions used to assign phenotype';
+
 COMMENT ON COLUMN individual_phenotype.phenotype_id IS 'Phenotypic score';
+
 COMMENT ON COLUMN individual_phenotype.experimenter_id IS 'Person performing the experiment';
+
 COMMENT ON COLUMN individual_phenotype.assay_date IS 'Date that the experiment was performed';
+
 COMMENT ON COLUMN individual_phenotype.phenotype_published_id IS 'Journal where result was published';
+
 COMMENT ON COLUMN individual_phenotype.notes IS 'Notes on score';
 
 -- create table individual_phenotype_study
@@ -541,33 +601,39 @@ CREATE TABLE individual_phenotype_study (
 
 CREATE TABLE stock_phenotype (
 	stock_phenotype_id serial PRIMARY KEY,
-	stock_id integer NOT NULL REFERENCES stock(stock_id)
-		ON DELETE RESTRICT,
-	ptassay_id integer REFERENCES ptassay(ptassay_id)
-		ON DELETE RESTRICT,
+	stock_id integer NOT NULL,
+        FOREIGN KEY (stock_id) REFERENCES stock (stock_id)
+		ON DELETE CASCADE,
+	ptassay_id integer,
+        FOREIGN KEY (ptassay_id) REFERENCES ptassay (ptassay_id)
+		ON DELETE SET NULL,
 	phenotype_id integer,
-	experimenter_id integer REFERENCES experimenter(experimenter_id) ON DELETE RESTRICT,
+        FOREIGN KEY (phenotype_id) REFERENCES phenotype (phenotype_id)
+                ON DELETE CASCADE,
+	experimenter_id integer,
+        FOREIGN KEY (experimenter_id) REFERENCES contact (contact_id)
+                ON DELETE RESTRICT,
 	assay_date date,
 	phenotype_published_id integer,
+        FOREIGN KEY (phenotype_published_id) REFERENCES pub (pub_id)
+                ON DELETE SET NULL,
 	notes character varying(255)
 );
 
-ALTER TABLE stock_phenotype
-	ADD CONSTRAINT stock_phenotype_phenotype_id_fkey FOREIGN KEY (phenotype_id)
-	REFERENCES phenotype(phenotype_id) ON DELETE RESTRICT;
-
-ALTER TABLE stock_phenotype
-	ADD CONSTRAINT stock_phenotype_phenotype_published_fkey
-	FOREIGN KEY (phenotype_published_id)
-	REFERENCES pub(pub_id) ON DELETE RESTRICT;
-
 COMMENT ON TABLE stock_phenotype IS 'Experimental result or observation associating a stock with a phenotype';
+
 COMMENT ON COLUMN stock_phenotype.stock_id IS 'Stock used in the experiment';
+
 COMMENT ON COLUMN stock_phenotype.ptassay_id IS 'Assay conditions used to assign phenotype';
+
 COMMENT ON COLUMN stock_phenotype.phenotype_id IS 'Phenotypic score';
+
 COMMENT ON COLUMN stock_phenotype.experimenter_id IS 'Person performing the experiment';
+
 COMMENT ON COLUMN stock_phenotype.assay_date IS 'Date that the experiment was performed';
+
 COMMENT ON COLUMN stock_phenotype.phenotype_published_id IS 'Journal where result was published';
+
 COMMENT ON COLUMN stock_phenotype.notes IS 'Notes on score';
 
 -- create table stock_phenotype_study
@@ -589,33 +655,39 @@ CREATE TABLE stock_phenotype_study (
 
 CREATE TABLE biotype_phenotype (
 	biotype_phenotype_id serial PRIMARY KEY,
-	biotype_id integer NOT NULL REFERENCES biotype(biotype_id)
-		ON DELETE RESTRICT,
-	ptassay_id integer REFERENCES ptassay(ptassay_id)
-		ON DELETE RESTRICT,
+	biotype_id integer NOT NULL,
+        FOREIGN KEY (biotype_id) REFERENCES biotype (biotype_id)
+		ON DELETE CASCADE,
+	ptassay_id integer,
+        FOREIGN KEY (ptassay_id) REFERENCES ptassay (ptassay_id)
+		ON DELETE SET NULL,
 	phenotype_id integer,
-	experimenter_id integer REFERENCES experimenter(experimenter_id) ON DELETE RESTRICT,
+        FOREIGN KEY (phenotype_id) REFERENCES phenotype (phenotype_id)
+                ON DELETE CASCADE,
+	experimenter_id integer,
+        FOREIGN KEY (experimenter_id) REFERENCES contact (contact_id)
+                ON DELETE SET NULL,
 	assay_date date,
 	phenotype_published_id integer,
+        FOREIGN KEY (phenotype_published_id) REFERENCES pub (pub_id)
+                ON DELETE SET NULL,
 	notes character varying(255)
 );
 
-ALTER TABLE biotype_phenotype
-	ADD CONSTRAINT biotype_phenotype_phenotype_id_fkey FOREIGN KEY (phenotype_id)
-	REFERENCES phenotype(phenotype_id) ON DELETE RESTRICT;
-
-ALTER TABLE biotype_phenotype
-	ADD CONSTRAINT biotype_phenotype_phenotype_published_fkey
-	FOREIGN KEY (phenotype_published_id)
-	REFERENCES pub(pub_id) ON DELETE RESTRICT;
-
 COMMENT ON TABLE biotype_phenotype IS 'Experimental result or observation associating a biotype with a phenotype';
+
 COMMENT ON COLUMN biotype_phenotype.biotype_id IS 'Biotype used in the experiment';
+
 COMMENT ON COLUMN biotype_phenotype.ptassay_id IS 'Assay conditions used to assign phenotype';
+
 COMMENT ON COLUMN biotype_phenotype.phenotype_id IS 'Phenotypic score';
+
 COMMENT ON COLUMN biotype_phenotype.experimenter_id IS 'Person performing the experiment';
+
 COMMENT ON COLUMN biotype_phenotype.assay_date IS 'Date that the experiment was performed';
+
 COMMENT ON COLUMN biotype_phenotype.phenotype_published_id IS 'Journal where result was published';
+
 COMMENT ON COLUMN biotype_phenotype.notes IS 'Notes on score';
 
 -- create table biotype_phenotype_study
@@ -630,24 +702,3 @@ CREATE TABLE biotype_phenotype_study (
 	UNIQUE (biotype_phenotype_id, studyx_id)
 );
 
--- add foreign key constraints to table stock
-
-ALTER TABLE stock
-	ADD CONSTRAINT stock_biotype_fkey FOREIGN KEY (biotype_id)
-	REFERENCES biotype(biotype_id) ON DELETE RESTRICT;
-
-ALTER TABLE stock
-	ADD CONSTRAINT stock_maternal_source_fkey FOREIGN KEY (maternal_source_id)
-	REFERENCES biotype(biotype_id) ON DELETE RESTRICT;
-
-ALTER TABLE stock
-	ADD CONSTRAINT stock_paternal_source_fkey FOREIGN KEY (paternal_source_id)
-	REFERENCES biotype(biotype_id) ON DELETE RESTRICT;
-
-ALTER TABLE stock
-	ADD CONSTRAINT stock_geographic_site_fkey FOREIGN KEY (geographic_site_id)
-	REFERENCES geographic_site(geographic_site_id) ON DELETE RESTRICT;
-
-ALTER TABLE stock
-	ADD CONSTRAINT stock_experimenter_fkey FOREIGN KEY (experimenter_id)
-	REFERENCES experimenter(experimenter_id) ON DELETE RESTRICT;
