@@ -42,6 +42,7 @@
 -- :import organism from organism
 -- :import genotype from genetic
 -- :import contact from contact
+-- :import project from general
 -- =================================================================
 
 -- create table biotype
@@ -77,10 +78,10 @@ CREATE TABLE biotype_organism (
 COMMENT ON TABLE biotype_organism IS
 	'Allows grouping of two or more organisms to allow for the presence of hybrid individuals';
 
--- table geographic_site:
+-- table geolocation:
 
-CREATE TABLE geographic_site (
-	geographic_site_id serial PRIMARY KEY,
+CREATE TABLE geolocation (
+	geolocation_id serial PRIMARY KEY,
 	description character varying(255),
 	latitude real,
 	longitude real,
@@ -93,15 +94,15 @@ CREATE TABLE geographic_site (
 	country character varying(255)
 );
 
-COMMENT ON TABLE geographic_site IS 'The geo-referencable location of the stock';
+COMMENT ON TABLE geolocation IS 'The geo-referencable location of the stock';
 
-COMMENT ON COLUMN geographic_site.east IS 'East if true, west if false';
+COMMENT ON COLUMN geolocation.east IS 'East if true, west if false';
 
-COMMENT ON COLUMN geographic_site.north IS 'North if true, south if false';
+COMMENT ON COLUMN geolocation.north IS 'North if true, south if false';
 
-COMMENT ON COLUMN geographic_site.altitude_min IS 'Lower altitude range in meters';
+COMMENT ON COLUMN geolocation.altitude_min IS 'Lower altitude range in meters';
 
-COMMENT ON COLUMN geographic_site.altitude_max IS 'Upper altitude range in meters';
+COMMENT ON COLUMN geolocation.altitude_max IS 'Upper altitude range in meters';
 
 -- table stock
 --
@@ -121,8 +122,8 @@ CREATE TABLE stock (
 	paternal_biotype_id INTEGER,
         FOREIGN KEY (paternal_biotype_id) REFERENCES biotype (biotype_id)
                 ON DELETE RESTRICT,
-	geographic_site_id INTEGER,
-        FOREIGN KEY (geographic_site_id) REFERENCES geographic_site (geographic_site_id)
+	geolocation_id INTEGER,
+        FOREIGN KEY (geolocation_id) REFERENCES geolocation (geolocation_id)
                 ON DELETE RESTRICT,
 	experimenter_id INTEGER,
         FOREIGN KEY (experimenter_id) REFERENCES contact (contact_id)
@@ -142,7 +143,7 @@ COMMENT ON COLUMN stock.maternal_biotype_id IS 'Maternal source of the stock if 
 
 COMMENT ON COLUMN stock.paternal_biotype_id IS 'Paternal source of the stock if known';
 
-COMMENT ON COLUMN stock.geographic_site_id IS 'Location that is the source of the stock if known';
+COMMENT ON COLUMN stock.geolocation_id IS 'Location that is the source of the stock if known';
 
 COMMENT ON COLUMN stock.experimenter_id IS 'Experimenter that started the stock';
 
@@ -155,13 +156,13 @@ CREATE TABLE individual (
 	individual_name character varying(255) NOT NULL UNIQUE,
 	wild boolean NOT NULL,
 	pedigree_id integer,
-        FOREIGN KEY (pedigree_id) REFERENCES individual (individual_id) 
+        FOREIGN KEY (pedigree_id) REFERENCES pedigree (pedigree_id) 
                 ON DELETE RESTRICT,
 	stock_id integer,
         FOREIGN KEY (stock_id) REFERENCES stock (stock_id)
                 ON DELETE RESTRICT,
-	geographic_site_id integer,
-        FOREIGN KEY (geographic_site_id) REFERENCES geographic_site (geographic_site_id) 
+	geolocation_id integer,
+        FOREIGN KEY (geolocation_id) REFERENCES geolocation (geolocation_id) 
                 ON DELETE RESTRICT,
 	collection_date date,
 	male boolean,
@@ -181,7 +182,7 @@ COMMENT ON COLUMN individual.individual_name IS 'Reference name of the individua
 
 COMMENT ON COLUMN individual.wild IS 'True if field collected specimen; false if reared in captivity';
 
-COMMENT ON COLUMN individual.geographic_site_id IS 'Geographic site where individual was collected or raised';
+COMMENT ON COLUMN individual.geolocation_id IS 'Geographic site where individual was collected or raised';
 
 COMMENT ON COLUMN individual.collection_date IS 'Date when the individual was collected';
 
@@ -209,8 +210,8 @@ CREATE TABLE pedigree (
 	experimenter_id integer,
         FOREIGN KEY (experimenter_id) REFERENCES contact (contact_id)
                 ON DELETE RESTRICT,
-	geographic_site_id integer,
-        FOREIGN KEY (geographic_site_id) REFERENCES geographic_site (geographic_site_id) 
+	geolocation_id integer,
+        FOREIGN KEY (geolocation_id) REFERENCES geolocation (geolocation_id) 
                 ON DELETE RESTRICT,
 	date_mated date,
 	date_female_died date,
@@ -243,7 +244,6 @@ CREATE TABLE pedigree_cvterm (
         FOREIGN KEY (cvterm_id) REFERENCES cvterm (cvterm_id)
                 ON DELETE CASCADE,
 	rank integer,
-	cvterm_type character varying(255),
 	CONSTRAINT pedigree_cvterm_c1 UNIQUE (pedigree_id, cvterm_id)
 );
 
@@ -351,7 +351,6 @@ CREATE TABLE gtassay_cvterm (
         FOREIGN KEY (cvterm_id) REFERENCES cvterm (cvterm_id)
                 ON DELETE CASCADE,
 	rank integer,
-	cvterm_type character varying(255),
 	CONSTRAINT gtassay_cvterm_c1 UNIQUE (gtassay_id, cvterm_id)
 );
 
@@ -440,24 +439,23 @@ COMMENT ON COLUMN gtexperiment.experiment_date IS 'Date that the experiment was 
 
 COMMENT ON COLUMN gtexperiment.notes IS 'Notes on score';
 
--- create table studyx
+-- create table gtexperiment_project
+--
+-- Associates a genotype experiment with a project (e.g., an
+-- experimental study)
 
-CREATE TABLE studyx (
-	studyx_id serial PRIMARY KEY,
-	studyx_name character varying(255) NOT NULL UNIQUE
+CREATE TABLE gtexperiment_project (
+	gtexperiment_project_id serial PRIMARY KEY,
+	gtexperiment_id integer NOT NULL,
+        FOREIGN KEY (gtexperiment_id) REFERENCES gtexperiment (gtexperiment_id)
+		ON DELETE CASCADE,
+	project_id integer NOT NULL,
+        FOREIGN KEY (project_id) REFERENCES project (project_id)
+		ON DELETE CASCADE,
+	CONSTRAINT gtexperiment_project_c1 UNIQUE (gtexperiment_id, project_id);
 );
 
--- create table gtexperiment_study
-
-CREATE TABLE gtexperiment_study (
-	gtexperiment_study_id serial PRIMARY KEY,
-	gtexperiment_id integer NOT NULL 
-		REFERENCES gtexperiment(gtexperiment_id)
-		ON DELETE RESTRICT,
-	studyx_id integer NOT NULL REFERENCES studyx(studyx_id)
-		ON DELETE RESTRICT,
-	UNIQUE (gtexperiment_id, studyx_id)
-);
+COMMENT ON TABLE gtexperiment_project IS 'Associates a genotype experiment with a project (e.g., an experimental study)'
 
 -- table image (link out to a file name)
 --
@@ -536,7 +534,6 @@ CREATE TABLE ptassay_cvterm (
         FOREIGN KEY (cvterm_id) REFERENCES cvterm (cvterm_id)
                 ON DELETE CASCADE,
 	rank integer,
-	cvterm_type character varying(255),
 	CONSTRAINT ptassay_cvterm_c1 UNIQUE (ptassay_id, cvterm_id)
 );
 
@@ -582,17 +579,23 @@ COMMENT ON COLUMN individual_phenotype.phenotype_published_id IS 'Journal where 
 
 COMMENT ON COLUMN individual_phenotype.notes IS 'Notes on score';
 
--- create table individual_phenotype_study
+-- create table individual_phenotype_project
+--
+-- Assigns the individual-phenotype association to a project (e.g., an
+-- experimental study)
 
-CREATE TABLE individual_phenotype_study (
-	individual_phenotype_study_id serial PRIMARY KEY,
-	individual_phenotype_id integer NOT NULL 
-		REFERENCES individual_phenotype(individual_phenotype_id)
-		ON DELETE RESTRICT,
-	studyx_id integer NOT NULL REFERENCES studyx(studyx_id)
-		ON DELETE RESTRICT,
-	UNIQUE (individual_phenotype_id, studyx_id)
+CREATE TABLE individual_phenotype_project (
+	individual_phenotype_project_id serial PRIMARY KEY,
+	individual_phenotype_id integer NOT NULL, 
+	FOREIGN KEY (individual_phenotype_id) REFERENCES individual_phenotype (individual_phenotype_id)
+		ON DELETE CASCADE,
+	project_id integer NOT NULL,
+        FOREIGN KEY (project_id) REFERENCES project (project_id)
+		ON DELETE CASCADE,
+	CONSTRAINT individual_phenotype_project_c1 UNIQUE (individual_phenotype_id, project_id)
 );
+
+COMMENT ON TABLE biotype_phenotype_project IS 'Assigns the individual-phenotype association to a project (e.g., an experimental study)';
 
 -- table stock_phenotype
 --
@@ -636,17 +639,23 @@ COMMENT ON COLUMN stock_phenotype.phenotype_published_id IS 'Journal where resul
 
 COMMENT ON COLUMN stock_phenotype.notes IS 'Notes on score';
 
--- create table stock_phenotype_study
+-- create table stock_phenotype_project
+--
+-- Assigns the stock-phenotype association to a project (e.g., an
+-- experimental study)
 
-CREATE TABLE stock_phenotype_study (
-	stock_phenotype_study_id serial PRIMARY KEY,
-	stock_phenotype_id integer NOT NULL 
-		REFERENCES stock_phenotype(stock_phenotype_id)
-		ON DELETE RESTRICT,
-	studyx_id integer NOT NULL REFERENCES studyx(studyx_id)
-		ON DELETE RESTRICT,
-	UNIQUE (stock_phenotype_id, studyx_id)
+CREATE TABLE stock_phenotype_project (
+	stock_phenotype_project_id serial PRIMARY KEY,
+	stock_phenotype_id integer NOT NULL, 
+	FOREIGN KEY (stock_phenotype_id) REFERENCES stock_phenotype (stock_phenotype_id)
+		ON DELETE CASCADE,
+	project_id integer NOT NULL,
+        FOREIGN KEY (project_id) REFERENCES project (project_id)
+		ON DELETE CASCADE,
+	CONSTRAINT stock_phenotype_project_c1 UNIQUE (stock_phenotype_id, project_id)
 );
+
+COMMENT ON TABLE biotype_phenotype_project IS 'Assigns the stock-phenotype association to a project (e.g., an experimental study)';
 
 -- table biotype_phenotype
 --
@@ -690,15 +699,20 @@ COMMENT ON COLUMN biotype_phenotype.phenotype_published_id IS 'Journal where res
 
 COMMENT ON COLUMN biotype_phenotype.notes IS 'Notes on score';
 
--- create table biotype_phenotype_study
+-- create table biotype_phenotype_project
+--
+-- Assigns the biotype-phenotype association to a project (e.g., an
+-- experimental study)
 
-CREATE TABLE biotype_phenotype_study (
-	biotype_phenotype_study_id serial PRIMARY KEY,
-	biotype_phenotype_id integer NOT NULL 
-		REFERENCES biotype_phenotype(biotype_phenotype_id)
-		ON DELETE RESTRICT,
-	studyx_id integer NOT NULL REFERENCES studyx(studyx_id)
-		ON DELETE RESTRICT,
-	UNIQUE (biotype_phenotype_id, studyx_id)
+CREATE TABLE biotype_phenotype_project (
+	biotype_phenotype_project_id serial PRIMARY KEY,
+	biotype_phenotype_id integer NOT NULL,
+        FOREIGN KEY (biotype_phenotype_id) REFERENCES biotype_phenotype (biotype_phenotype_id)
+		ON DELETE CASCADE,
+	project_id integer NOT NULL,
+        FOREIGN KEY (project)id) REFERENCES project (project_id)
+		ON DELETE CASCADE,
+	CONSTRAINT biotype_phenotype_project_c1 UNIQUE (biotype_phenotype_id, project_id)
 );
 
+COMMENT ON TABLE biotype_phenotype_project IS 'Assigns the biotype-phenotype association to a project (e.g., an experimental study)';
