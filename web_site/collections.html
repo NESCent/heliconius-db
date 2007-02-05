@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+
+<LINK href="css/style.css" type=text/css rel=stylesheet>
+<script src="scripts/util.js" type="text/javascript"></script>
+<script src="scripts/xmltoken.js" type="text/javascript"></script>
+<script src="scripts/dom.js" type="text/javascript"></script>
+<script src="scripts/xpath.js" type="text/javascript"></script>
+<script src="scripts/xslt.js" type="text/javascript"></script>
+
+<script src="scripts/heliconius_xslt.js" type="text/javascript"></script>
+<script language="javascript" src="scripts/heliconius.js"></script>
+<script language="javascript">
+function queryWebservice()
+{
+	var url="http://localhost/test/rest/collections";
+	var param="";
+	var method="GET";
+	
+	var loader=new net.ContentLoader(method,url,param,handleResults);
+}
+
+function handleResults()
+{
+	var v=document.getElementById("results");
+	//var v1=document.getElementById("xml_results"); 
+	var xml = xmlParse(this.req.responseText);
+  	var xslt = xmlParse(collections_xsl);
+    var html = xsltProcess(xml, xslt);
+    v.innerHTML = html;
+//	v1.innerText=this.req.responseText;
+  
+}
+</script>
+
+</head>
+
+<body>
+<h3>Search Collections</h3>
+<form name="ws_form">
+<table>
+<tr>
+<td>Country</td><td> <input type="text" name="Country" value="" size=40/></td></tr>
+<tr><td>Province</td><td><input type="text" name="province" value="" size=40 /></td></tr>
+<tr><td>Genus</td><td><input type="text" name="genus" size=50 /></td></tr>
+<tr><td>Species</td><td><input type="text" name="species" size=50 /></td></tr>
+<tr><td height="33">Subspecies</td>
+<td><input type="text" name="subspecies" size=50 /></td></tr>
+<tr><td></td><td>&nbsp;</td></tr>
+<tr><td></td><td height=25 vliagn=center><div class="button_1"><a href="javascript:queryWebservice()" >Search</a></div></td></tr>
+</table>
+</form>
+<div id="results"></div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- <div id="xml_results" style="border:1px solid #224; width=400;"></div> -->
+</body>
+</html>
