@@ -17,29 +17,11 @@ genotype table.
 
 * Columns maternal_source_id and paternal_source_id should be better named maternal_biotype_id and paternal_biotype_id for consistency?
 
-* Is this the site where the individual(s) that gave rise to the stock were collected from, or is this the location of the stock itself?
-
-===Table Biotype===
-
-This relation only has a primary key and no natural attributes. What is its purpose?
-
-===Table Biotype_Organism===
-
-Seems to serve as an association table between Biotype and
-Organism. Why would one associate multiple organisms (taxonomic units)
-with a single biotype?
- 
 ===Table Geographic_Site===
 
 * county, province, and country seem to be denormalized, and possibly
 belong into a controlled vocabulary
 ** Yes.
-
-===Table Experimenter===
-
-This should be rather represented by module contact, table contact?
-
-* Yes.
 
 ===Table Individual===
 
@@ -48,33 +30,9 @@ attributes; in fact shouldn't they rather be cvterm references?
 
 * Column 'notes' does not sound like a desirable idea. What is to be noted here?
 
-* The table has a self-referencing foreign key. Is this used to store lineages?
-
-===Table Cross_Type===
-
-This looks like it is a controlled vocabulary, and hence should be
-merged into tables cv and cvterm.
-
-* Yes.
-
 ===Table Pedigree===
 
-There are a number of commented out columns. Are they needed or not?
-
-* Can be removed.
-
-===Table Pedigree_cvterm===
-
-* What is the column cvterm_type for? Can this be removed? This sounds
-  like it is redundant to the cvterm foreign key and the cvterm's
-  namespace?
-
-===Table Polytype===
-
-This looks like it is a controlled vocabulary, and hence should be
-merged into tables cv and cvterm.
-
-* Yes.
+* This rather represents a cross, not an entire pedigree. Consider renaming it to cross, or something similar.
 
 ===Table Primer===
 
@@ -92,39 +50,10 @@ designcluster_id should be feature_id, pos should be unambiguous).
 
 Inconsistent column naming (locus_id should be feature_id, or locus_feature_id).
 
-This could possibly be represented also be a primer feature pair and a
+This could possibly be represented also as a primer feature pair and a
 super-feature giving the amplicon.
 
 * Revisit, probably not.
-
-===Table gtassay_cvterm===
-
-* What is the column cvterm_type for? Can this be removed? This sounds
-  like it is redundant to the cvterm foreign key and the cvterm's
-  namespace?
-
-===Table Specimen===
-
-Column storage_location looks like a cvterm foreign key candidate.
-
-* No, is possibly an exact location.
-
-===Table Gtexperiment===
-
-Column genotype_published_id should be better named (e.g., simply
-pub_id).
-
-And does this column refer to the publication for the genotype or for
-the genotype experiment?
-
-===Table Studyx===
-
-* Why name the table StudyX? What is this table for?
-** Maybe expstudy?
-
-* This looks rather like a controlled vocabulary, to be folded into
-the cv and cvterm tables.
-** No.
 
 ===Table Image===
 
@@ -148,42 +77,17 @@ differently to better reflect the conceptual model?
 
 See change to pcrexperiment.
 
-===Table Ptassay===
-
-* This looks rather like a controlled vocabulary?
-** No.
-
-* Documentation says 'polymorphism detection'; however, is this rather a 
-phenotype assay?
-** Yes, fixed.
-
-* What is the column cvterm_type for? Can this be removed? This sounds
-  like it is redundant to the cvterm foreign key and the cvterm's
-  namespace?
-
 ===Table individual_phenotype===
-
-* Phenotype_published_id should be just pub_id. Does column
-  phenotype_published_id refer to the publication for the phenotype or
-  for the phenotype itself?
 
 * What is column 'notes' for?
 ** Maybe not needed.
 
 ===Table Stock_Phenotype===
 
-* Phenotype_published_id should be just pub_id. Does column
-  phenotype_published_id refer to the publication for the phenotype or
-  for the phenotype itself?
-
 * What is column 'notes' for?
 ** Maybe not be needed.
 
 ===Table Biotype_Phenotype===
-
-* Phenotype_published_id should be just pub_id. Does column
-  phenotype_published_id refer to the publication for the phenotype or
-  for the phenotype itself?
 
 * What is column 'notes' for?
 ** Maybe not needed.

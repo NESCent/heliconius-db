@@ -75,8 +75,7 @@ CREATE TABLE biotype_organism (
 	CONSTRAINT biotype_organism_c1 UNIQUE (biotype_id, organism_id)
 );
 
-COMMENT ON TABLE biotype_organism IS
-	'Allows grouping of two or more organisms to allow for the presence of hybrid individuals';
+COMMENT ON TABLE biotype_organism IS 'Allows grouping of two or more organisms to allow for the presence of hybrid individuals';
 
 -- table geolocation:
 
@@ -143,9 +142,9 @@ COMMENT ON COLUMN stock.maternal_biotype_id IS 'Maternal source of the stock if 
 
 COMMENT ON COLUMN stock.paternal_biotype_id IS 'Paternal source of the stock if known';
 
-COMMENT ON COLUMN stock.geolocation_id IS 'Location that is the source of the stock if known';
+COMMENT ON COLUMN stock.geolocation_id IS 'Location where the stock was originally collected; should probably be null if the stock was generated in a lab';
 
-COMMENT ON COLUMN stock.experimenter_id IS 'Experimenter that started the stock';
+COMMENT ON COLUMN stock.experimenter_id IS 'Experimenter who started the stock';
 
 COMMENT ON COLUMN stock.date_created IS 'When the stock was created';
 
@@ -225,7 +224,7 @@ COMMENT ON COLUMN pedigree.pedigree_name IS 'Reference name given the pedigree b
 COMMENT ON COLUMN pedigree.date_mated IS 'Date the female was mated';
 COMMENT ON COLUMN pedigree.date_female_died IS 'Date female harvested';
 
--- table pedigree_cvterm
+-- table pedigreeprop
 --
 -- examples for attribute/value pairs:
 --	days_mated,
@@ -235,8 +234,8 @@ COMMENT ON COLUMN pedigree.date_female_died IS 'Date female harvested';
 --	num_adults,
 --	num_females
 
-CREATE TABLE pedigree_cvterm (
-	pedigree_cvterm_id serial PRIMARY KEY,
+CREATE TABLE pedigreeprop (
+	pedigreeprop_id serial PRIMARY KEY,
 	pedigree_id integer NOT NULL,
         FOREIGN KEY (pedigree_id) REFERENCES pedigree (pedigree_id) 
                 ON DELETE CASCADE,
@@ -244,7 +243,7 @@ CREATE TABLE pedigree_cvterm (
         FOREIGN KEY (cvterm_id) REFERENCES cvterm (cvterm_id)
                 ON DELETE CASCADE,
 	rank integer,
-	CONSTRAINT pedigree_cvterm_c1 UNIQUE (pedigree_id, cvterm_id)
+	CONSTRAINT pedigreeprop_c1 UNIQUE (pedigree_id, cvterm_id)
 );
 
 
@@ -326,7 +325,7 @@ COMMENT ON COLUMN gtassay.assay_name IS 'Reference name of the assay';
 COMMENT ON COLUMN gtassay.locus_id IS 'Locus that is examined for polymorphisms';
 COMMENT ON COLUMN gtassay.polytype_id IS 'Method of scoring the polymorphism for this assay (e.g., AFLP, SSCP, RFLP, size polymorphism)';
 
--- create table gtassay_cvterm
+-- create table gtassayprop
 -- 
 -- examples for attribute/value pairs:
 --	specific_pcr_conditions,
@@ -342,8 +341,8 @@ COMMENT ON COLUMN gtassay.polytype_id IS 'Method of scoring the polymorphism for
 --	snp_type,
 --	snp_position
 
-CREATE TABLE gtassay_cvterm (
-	gtassay_cvterm_id serial PRIMARY KEY,
+CREATE TABLE gtassayprop (
+	gtassayprop_id serial PRIMARY KEY,
 	gtassay_id integer NOT NULL,
         FOREIGN KEY (gtassay_id) REFERENCES gtassay (gtassay_id) 
                 ON DELETE CASCADE,
@@ -351,7 +350,7 @@ CREATE TABLE gtassay_cvterm (
         FOREIGN KEY (cvterm_id) REFERENCES cvterm (cvterm_id)
                 ON DELETE CASCADE,
 	rank integer,
-	CONSTRAINT gtassay_cvterm_c1 UNIQUE (gtassay_id, cvterm_id)
+	CONSTRAINT gtassayprop_c1 UNIQUE (gtassay_id, cvterm_id)
 );
 
 -- table specimen
@@ -376,7 +375,7 @@ CREATE TABLE specimen (
 	experimenter_id integer,
         FOREIGN KEY (experimenter_id) REFERENCES contact (contact_id)
                 ON DELETE RESTRICT,
-        CONSTRAINT speciment_c1 UNIQUE (specimen_name)
+        CONSTRAINT specimen_c1 UNIQUE (specimen_name)
 );
 
 COMMENT ON TABLE specimen IS 'Part of an individual that is used in an experiment';
@@ -417,8 +416,8 @@ CREATE TABLE gtexperiment (
         FOREIGN KEY (experimenter_id) REFERENCES contact (contact_id)
                 ON DELETE RESTRICT,
 	experiment_date date,
-	genotype_published_id integer,
-        FOREIGN KEY (genotype_published_id) REFERENCES pub (pub_id)
+	pub_id integer,
+        FOREIGN KEY (pub_id) REFERENCES pub (pub_id)
                 ON DELETE RESTRICT,
 	notes character varying(255)
 );
@@ -431,7 +430,7 @@ COMMENT ON COLUMN gtexperiment.gtassay_id IS 'Assay conditions used to assign ge
 
 COMMENT ON COLUMN gtexperiment.genotype_id IS 'Genotypic score';
 
-COMMENT ON COLUMN gtexperiment.genotype_published_id IS 'Journal where result was published';
+COMMENT ON COLUMN gtexperiment.pub_id IS 'Publication reference where the genotype experiment was published';
 
 COMMENT ON COLUMN gtexperiment.experimenter_id IS 'Person performing the experiment';
 
@@ -523,10 +522,10 @@ CREATE TABLE ptassay (
 COMMENT ON TABLE ptassay IS 'Phenotype determination assay';
 COMMENT ON COLUMN ptassay.assay_name IS 'Reference name of the assay';
 
--- create table ptassay_cvterm
+-- create table ptassayprop
 
-CREATE TABLE ptassay_cvterm (
-	ptassay_cvterm_id serial PRIMARY KEY,
+CREATE TABLE ptassayprop (
+	ptassayprop_id serial PRIMARY KEY,
 	ptassay_id integer NOT NULL,
         FOREIGN KEY (ptassay_id) REFERENCES ptassay (ptassay_id) 
                 ON DELETE CASCADE,
@@ -534,7 +533,7 @@ CREATE TABLE ptassay_cvterm (
         FOREIGN KEY (cvterm_id) REFERENCES cvterm (cvterm_id)
                 ON DELETE CASCADE,
 	rank integer,
-	CONSTRAINT ptassay_cvterm_c1 UNIQUE (ptassay_id, cvterm_id)
+	CONSTRAINT ptassayprop_c1 UNIQUE (ptassay_id, cvterm_id)
 );
 
 -- table individual_phenotype
@@ -557,8 +556,8 @@ CREATE TABLE individual_phenotype (
         FOREIGN KEY (experimenter_id) REFERENCES contact (contact_id)
                 ON DELETE SET NULL,
 	assay_date date,
-	phenotype_published_id integer,
-        FOREIGN KEY (phenotype_published_id) REFERENCES pub (pub_id)
+	pub_id integer,
+        FOREIGN KEY (pub_id) REFERENCES pub (pub_id)
                 ON DELETE SET NULL,
 	notes character varying(255)
 );
@@ -575,7 +574,7 @@ COMMENT ON COLUMN individual_phenotype.experimenter_id IS 'Person performing the
 
 COMMENT ON COLUMN individual_phenotype.assay_date IS 'Date that the experiment was performed';
 
-COMMENT ON COLUMN individual_phenotype.phenotype_published_id IS 'Journal where result was published';
+COMMENT ON COLUMN individual_phenotype.pub_id IS 'Publication reference where the phenotype experiment resulting in the phenotype assignment was published';
 
 COMMENT ON COLUMN individual_phenotype.notes IS 'Notes on score';
 
@@ -617,8 +616,8 @@ CREATE TABLE stock_phenotype (
         FOREIGN KEY (experimenter_id) REFERENCES contact (contact_id)
                 ON DELETE RESTRICT,
 	assay_date date,
-	phenotype_published_id integer,
-        FOREIGN KEY (phenotype_published_id) REFERENCES pub (pub_id)
+	pub_id integer,
+        FOREIGN KEY (pub_id) REFERENCES pub (pub_id)
                 ON DELETE SET NULL,
 	notes character varying(255)
 );
@@ -635,7 +634,7 @@ COMMENT ON COLUMN stock_phenotype.experimenter_id IS 'Person performing the expe
 
 COMMENT ON COLUMN stock_phenotype.assay_date IS 'Date that the experiment was performed';
 
-COMMENT ON COLUMN stock_phenotype.phenotype_published_id IS 'Journal where result was published';
+COMMENT ON COLUMN stock_phenotype.pub_id IS 'Publication reference where the phenotype experiment resulting in the phenotype assignment was published';
 
 COMMENT ON COLUMN stock_phenotype.notes IS 'Notes on score';
 
@@ -677,8 +676,8 @@ CREATE TABLE biotype_phenotype (
         FOREIGN KEY (experimenter_id) REFERENCES contact (contact_id)
                 ON DELETE SET NULL,
 	assay_date date,
-	phenotype_published_id integer,
-        FOREIGN KEY (phenotype_published_id) REFERENCES pub (pub_id)
+	pub_id integer,
+        FOREIGN KEY (pub_id) REFERENCES pub (pub_id)
                 ON DELETE SET NULL,
 	notes character varying(255)
 );
@@ -695,7 +694,7 @@ COMMENT ON COLUMN biotype_phenotype.experimenter_id IS 'Person performing the ex
 
 COMMENT ON COLUMN biotype_phenotype.assay_date IS 'Date that the experiment was performed';
 
-COMMENT ON COLUMN biotype_phenotype.phenotype_published_id IS 'Journal where result was published';
+COMMENT ON COLUMN biotype_phenotype.pub_id IS 'Publication reference where the phenotype experiment resulting in the phenotype assignment was published';
 
 COMMENT ON COLUMN biotype_phenotype.notes IS 'Notes on score';
 
