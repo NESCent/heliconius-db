@@ -78,30 +78,73 @@ CREATE TABLE biotype_organism (
 COMMENT ON TABLE biotype_organism IS 'Allows grouping of two or more organisms to allow for the presence of hybrid individuals';
 
 -- table geolocation:
+--
+-- The geo-referencable location of the stock, experiment, or cross.
 
 CREATE TABLE geolocation (
-	geolocation_id serial PRIMARY KEY,
-	description character varying(255),
+	geolocation_id serial NOT NULL,
+        PRIMARY KEY (geolocation_id),
+        description character varying(255),
+	coordinate_xml character varying(1024),
 	latitude real,
 	longitude real,
-	east boolean,
-	north boolean,
-	altitude_min smallint,
-	altitude_max smallint,
-	county character varying(255),
-	province character varying(255),
-	country character varying(255)
+        geodetic_datum character varying(32),
+	altitude real,
+	altitude_dev real,
+        politlocation_id INTEGER,
+        FOREIGN KEY (politlocation_id) REFERENCES cvterm (cvterm_id)
+                ON DELETE SET NULL
 );
 
 COMMENT ON TABLE geolocation IS 'The geo-referencable location of the stock';
 
-COMMENT ON COLUMN geolocation.east IS 'East if true, west if false';
+COMMENT ON COLUMN geolocation.description IS 'A textual representation of the location, if this is the original georeference. Optional if the original georeference is available in lat/long coordinates.';
 
-COMMENT ON COLUMN geolocation.north IS 'North if true, south if false';
+COMMENT ON COLUMN geolocation.coordinate_xml IS 'The georeference in XML format, preferably in GML.';
 
-COMMENT ON COLUMN geolocation.altitude_min IS 'Lower altitude range in meters';
+COMMENT ON COLUMN geolocation.latitude IS 'The decimal latitude coordinate of the georeference, using positive and negative sign to indicate N and S, respectively.';
 
-COMMENT ON COLUMN geolocation.altitude_max IS 'Upper altitude range in meters';
+COMMENT ON COLUMN geolocation.longitude IS 'The decimal longitude coordinate of the georeference, using positive and negative sign to indicate E and W, respectively.';
+
+COMMENT ON COLUMN geolocation.geodetic_datum IS 'The geodetic system on which the geo-reference coordinates are based. For geo-references measured between 1984 and 2010, this will typically be WGS84.';
+   
+COMMENT ON COLUMN geolocation.altitude IS 'The altitude (elevation) of the location in meters. If the altitude is only known as a range, this is the average, and altitude_dev will hold half of the width of the range.';
+
+COMMENT ON COLUMN geolocation.altitude_dev IS 'The possible deviation in altitude, in meters, from the average altitude for collected individuals. Will be empty (null) if the altitude is exact.';
+
+COMMENT ON COLUMN geolocation.politlocation IS 'The political boundaries of the georeference, if known.';
+
+-- table politlocation
+--
+-- The political boundaries of a georeference.
+
+CREATE TABLE politlocation (
+        politlocation_id serial NOT NULL,
+        PRIMARY KEY (politlocation_id),
+        refdate date,
+        postalcode character varying(64),
+	county_id INTEGER,
+        FOREIGN KEY (county_id) REFERENCES cvterm (cvterm_id)
+                ON DELETE RESTRICT,
+	province_id INTEGER,
+        FOREIGN KEY (province_id) REFERENCES cvterm (cvterm_id)
+                ON DELETE RESTRICT,
+	country_id INTEGER,
+        FOREIGN KEY (country_id) REFERENCES cvterm (cvterm_id)
+                ON DELETE RESTRICT
+);
+
+COMMENT ON TABLE politlocation IS 'The political boundaries within which a georeference currently falls.';
+
+COMMENT ON COLUMN politlocation.refdate IS 'The date on which the political boundaries were used.';
+
+COMMENT ON COLUMN politlocation.postalcode IS 'The postal code, or zipcode in the US, within which the georeference falls.';
+
+COMMENT ON COLUMN politlocation.county_id IS 'The county (or equivalent local government unit) whithin which the georeference falls.';
+
+COMMENT ON COLUMN politlocation.province_id IS 'The province, or state, within which the georeference falls.';
+
+COMMENT ON COLUMN politlocation.country_id IS 'The country within which the georeference falls.';
 
 -- table stock
 --
@@ -109,7 +152,8 @@ COMMENT ON COLUMN geolocation.altitude_max IS 'Upper altitude range in meters';
 -- experimental purposes
 
 CREATE TABLE stock (
-	stock_id SERIAL PRIMARY KEY,
+	stock_id SERIAL NOT NULL,
+        PRIMARY KEY (stock_id),
 	stock_name character varying(255) NOT NULL UNIQUE,
 	description character varying(255),
 	biotype_id INTEGER NOT NULL,
@@ -151,7 +195,8 @@ COMMENT ON COLUMN stock.date_created IS 'When the stock was created';
 -- table individual
 
 CREATE TABLE individual (
-	individual_id serial PRIMARY KEY,
+	individual_id serial NOT NULL,
+        PRIMARY KEY (individual_id),
 	individual_name character varying(255) NOT NULL UNIQUE,
 	wild boolean NOT NULL,
 	pedigree_id integer,
@@ -198,7 +243,8 @@ COMMENT ON COLUMN individual.notes IS 'Notes on some aspect of individual, e.g. 
 -- table pedigree
 
 CREATE TABLE pedigree (
-	pedigree_id serial PRIMARY KEY,
+	pedigree_id serial NOT NULL,
+        PRIMARY KEY (pedigree_id),
 	pedigree_name character varying(255) NOT NULL UNIQUE,
 	female_id integer,
         FOREIGN KEY (female_id) REFERENCES individual (individual_id) 
@@ -219,9 +265,14 @@ CREATE TABLE pedigree (
                 ON DELETE RESTRICT
 );
 
-COMMENT ON TABLE pedigree IS 'Pedigrees of individuals.'
+COMMENT ON TABLE pedigree IS 'Pedigrees of individuals.';
+
 COMMENT ON COLUMN pedigree.pedigree_name IS 'Reference name given the pedigree by the experimenter';
+
+COMMENT ON COLUMN pedigree.geolocation_id IS 'The geo-reference data for where the experimental cross was conducted.'; 
+
 COMMENT ON COLUMN pedigree.date_mated IS 'Date the female was mated';
+
 COMMENT ON COLUMN pedigree.date_female_died IS 'Date female harvested';
 
 -- table pedigreeprop
@@ -235,7 +286,8 @@ COMMENT ON COLUMN pedigree.date_female_died IS 'Date female harvested';
 --	num_females
 
 CREATE TABLE pedigreeprop (
-	pedigreeprop_id serial PRIMARY KEY,
+	pedigreeprop_id serial NOT NULL,
+        PRIMARY KEY (pedigreeprop_id),
 	pedigree_id integer NOT NULL,
         FOREIGN KEY (pedigree_id) REFERENCES pedigree (pedigree_id) 
                 ON DELETE CASCADE,
@@ -246,67 +298,13 @@ CREATE TABLE pedigreeprop (
 	CONSTRAINT pedigreeprop_c1 UNIQUE (pedigree_id, cvterm_id)
 );
 
-
--- table primer
---
--- A short oligonucleotide
-
-CREATE TABLE primer (
-	primer_id serial PRIMARY KEY,
-	primer_name character varying(255) NOT NULL UNIQUE,
-	primer_sequence character varying(128),
-	designer_id integer REFERENCES contact (contact_id) ON DELETE RESTRICT,
-	published_id integer,
-	tm real,
-	strand_forward boolean,
-	notes character varying(255)
-);
-
-ALTER TABLE primer
-	ADD CONSTRAINT primer_published_id_fkey FOREIGN KEY (published_id)
-	REFERENCES pub(pub_id) ON DELETE RESTRICT;
-
-COMMENT ON TABLE primer IS 'A short oligonucleotide';
-COMMENT ON COLUMN primer.primer_name IS 'Reference name of the primer';
-COMMENT ON COLUMN primer.primer_sequence IS 'The 5-prime to 3-prime nucleotide sequence of the primer';
-COMMENT ON COLUMN primer.designer_id IS 'Experimenter that designed the primer';
-COMMENT ON COLUMN primer.published_id IS 'Journal where the primer sequence was published';
-COMMENT ON COLUMN primer.tm IS 'Hypothesized melting temperature';
-COMMENT ON COLUMN primer.strand_forward IS 'Primer anneals to forward strand if true, reverse strand if false';
-COMMENT ON COLUMN primer.notes IS 'General observations about the primer';
-
--- table primer_designcluster
---
--- Relates primers to the clusters that they were designed from
-
-CREATE TABLE primer_designcluster (
-	primer_designcluster_id serial PRIMARY KEY,
-	primer_id integer NOT NULL REFERENCES primer(primer_id) ON DELETE RESTRICT,
-	designcluster_id integer NOT NULL,
-	design_species_id integer REFERENCES organism(organism_id) ON DELETE RESTRICT,
-	outgroup_id integer REFERENCES organism(organism_id) ON DELETE RESTRICT,
-	pos smallint,
-	UNIQUE (primer_id, designcluster_id)
-);
-
-ALTER TABLE primer_designcluster
-	ADD CONSTRAINT primer_designcluster_designcluster_id_fkey
-	FOREIGN KEY (designcluster_id)
-	REFERENCES feature(feature_id) ON DELETE RESTRICT;
-
-COMMENT ON TABLE primer_designcluster IS 'Relates primers to the clusters that they were designed from';
-COMMENT ON COLUMN primer_designcluster.primer_id IS 'A primer';
-COMMENT ON COLUMN primer_designcluster.designcluster_id IS 'Sequence or contig that the primer was designed from';
-COMMENT ON COLUMN primer_designcluster.design_species_id IS 'Organism that the primer was designed from';
-COMMENT ON COLUMN primer_designcluster.outgroup_id IS 'The outgroup used in primer design';
-COMMENT ON COLUMN primer_designcluster.pos IS 'Position of the 5-prime end of the primer relative to the design cluster';
-
 -- table gtassay
 --
 -- Method of polymorphism detection
 
 CREATE TABLE gtassay (
-	gtassay_id serial PRIMARY KEY,
+	gtassay_id serial NOT NULL,
+        PRIMARY KEY (gtassay_id),
 	assay_name character varying(255) NOT NULL,
 	locus_id integer,
         FOREIGN KEY (locus_id) REFERENCES feature (feature_id)
@@ -342,7 +340,8 @@ COMMENT ON COLUMN gtassay.polytype_id IS 'Method of scoring the polymorphism for
 --	snp_position
 
 CREATE TABLE gtassayprop (
-	gtassayprop_id serial PRIMARY KEY,
+	gtassayprop_id serial NOT NULL,
+        PRIMARY KEY (gtassayprop_id),
 	gtassay_id integer NOT NULL,
         FOREIGN KEY (gtassay_id) REFERENCES gtassay (gtassay_id) 
                 ON DELETE CASCADE,
@@ -358,7 +357,8 @@ CREATE TABLE gtassayprop (
 -- Part of an individual that is used in an experiment
 
 CREATE TABLE specimen (
-	specimen_id serial PRIMARY KEY,
+	specimen_id serial NOT NULL,
+        PRIMARY KEY (specimen_id),
 	specimen_name character varying(255) NOT NULL,
 	description character varying(255),
 	barcode character varying(255),
@@ -402,7 +402,8 @@ COMMENT ON COLUMN specimen.experimenter_id IS 'Researcher that extracted the spe
 -- locus
 
 CREATE TABLE gtexperiment (
-	gtexperiment_id serial PRIMARY KEY,
+	gtexperiment_id serial NOT NULL,
+        PRIMARY KEY (gtexperiment_id),
 	specimen_id integer NOT NULL,
         FOREIGN KEY (speciment_id) REFERENCES specimen (specimen_id) 
                 ON DELETE RESTRICT,
@@ -444,7 +445,8 @@ COMMENT ON COLUMN gtexperiment.notes IS 'Notes on score';
 -- experimental study)
 
 CREATE TABLE gtexperiment_project (
-	gtexperiment_project_id serial PRIMARY KEY,
+	gtexperiment_project_id serial NOT NULL,
+        PRIMARY KEY (gtexperiment_project_id),
 	gtexperiment_id integer NOT NULL,
         FOREIGN KEY (gtexperiment_id) REFERENCES gtexperiment (gtexperiment_id)
 		ON DELETE CASCADE,
@@ -461,7 +463,8 @@ COMMENT ON TABLE gtexperiment_project IS 'Associates a genotype experiment with 
 -- Link to an external image file
 
 CREATE TABLE image (
-	image_id serial PRIMARY KEY,
+	image_id serial NOT NULL,
+        PRIMARY KEY (image_id),
 	uri character varying(1024) NOT NULL UNIQUE
 );
 
@@ -479,8 +482,8 @@ CREATE TABLE pcrexperiment (
 	test_species_id integer REFERENCES organism(organism_id) ON DELETE RESTRICT,
 	outcome_success boolean,
 	image_id integer REFERENCES image(image_id) ON DELETE RESTRICT,
-	forward_primer_id integer REFERENCES primer(primer_id) ON DELETE RESTRICT,
-	reverse_primer_id integer REFERENCES primer(primer_id) ON DELETE RESTRICT
+	forward_primer_id integer REFERENCES feature (feature_id) ON DELETE RESTRICT,
+	reverse_primer_id integer REFERENCES feature (feature_id) ON DELETE RESTRICT
 );
 
 COMMENT ON TABLE pcrexperiment IS 'Initial examination of a locus';
@@ -495,7 +498,8 @@ COMMENT ON COLUMN pcrexperiment.reverse_primer_id IS 'Primer that sits on the no
 -- create table individual_image
 
 CREATE TABLE individual_image (
-	individual_image_id serial PRIMARY KEY,
+	individual_image_id serial NOT NULL,
+        PRIMARY KEY (individual_image_id),
 	individual_id integer NOT NULL REFERENCES individual(individual_id) ON DELETE RESTRICT,
 	image_id integer NOT NULL REFERENCES image(image_id) ON DELETE RESTRICT,
 	UNIQUE (individual_id, image_id)
@@ -504,7 +508,8 @@ CREATE TABLE individual_image (
 -- create table specimen_image
 
 CREATE TABLE specimen_image (
-	specimen_image_id serial PRIMARY KEY,
+	specimen_image_id serial NOT NULL,
+        PRIMARY KEY (specimen_image_id),
 	specimen_id integer NOT NULL REFERENCES specimen(specimen_id) ON DELETE RESTRICT,
 	image_id integer NOT NULL REFERENCES image(image_id) ON DELETE RESTRICT,
 	UNIQUE (specimen_id, image_id)
@@ -515,7 +520,8 @@ CREATE TABLE specimen_image (
 -- Method of polymorphism detection
 
 CREATE TABLE ptassay (
-	ptassay_id serial PRIMARY KEY,
+	ptassay_id serial NOT NULL,
+        PRIMARY KEY (ptassay_id),
 	assay_name character varying(255) NOT NULL UNIQUE
 );
 
@@ -525,7 +531,8 @@ COMMENT ON COLUMN ptassay.assay_name IS 'Reference name of the assay';
 -- create table ptassayprop
 
 CREATE TABLE ptassayprop (
-	ptassayprop_id serial PRIMARY KEY,
+	ptassayprop_id serial NOT NULL,
+        PRIMARY KEY (ptassayprop_id),
 	ptassay_id integer NOT NULL,
         FOREIGN KEY (ptassay_id) REFERENCES ptassay (ptassay_id) 
                 ON DELETE CASCADE,
@@ -542,7 +549,8 @@ CREATE TABLE ptassayprop (
 -- phenotype
 
 CREATE TABLE individual_phenotype (
-	individual_phenotype_id serial PRIMARY KEY,
+	individual_phenotype_id serial NOT NULL,
+        PRIMARY KEY (individual_phenotype_id),
 	individual_id integer NOT NULL,
         FOREIGN KEY (individual_id) REFERENCES individual (individual_id)
 		ON DELETE CASCADE,
@@ -584,7 +592,8 @@ COMMENT ON COLUMN individual_phenotype.notes IS 'Notes on score';
 -- experimental study)
 
 CREATE TABLE individual_phenotype_project (
-	individual_phenotype_project_id serial PRIMARY KEY,
+	individual_phenotype_project_id serial NOT NULL,
+        PRIMARY KEY (individual_phenotype_project_id),
 	individual_phenotype_id integer NOT NULL, 
 	FOREIGN KEY (individual_phenotype_id) REFERENCES individual_phenotype (individual_phenotype_id)
 		ON DELETE CASCADE,
@@ -602,7 +611,8 @@ COMMENT ON TABLE biotype_phenotype_project IS 'Assigns the individual-phenotype 
 -- phenotype
 
 CREATE TABLE stock_phenotype (
-	stock_phenotype_id serial PRIMARY KEY,
+	stock_phenotype_id serial NOT NULL,
+        PRIMARY KEY (stock_phenotype_id),
 	stock_id integer NOT NULL,
         FOREIGN KEY (stock_id) REFERENCES stock (stock_id)
 		ON DELETE CASCADE,
@@ -644,7 +654,8 @@ COMMENT ON COLUMN stock_phenotype.notes IS 'Notes on score';
 -- experimental study)
 
 CREATE TABLE stock_phenotype_project (
-	stock_phenotype_project_id serial PRIMARY KEY,
+	stock_phenotype_project_id serial NOT NULL,
+        PRIMARY KEY (stock_phenotype_project_id),
 	stock_phenotype_id integer NOT NULL, 
 	FOREIGN KEY (stock_phenotype_id) REFERENCES stock_phenotype (stock_phenotype_id)
 		ON DELETE CASCADE,
@@ -662,7 +673,8 @@ COMMENT ON TABLE biotype_phenotype_project IS 'Assigns the stock-phenotype assoc
 -- phenotype
 
 CREATE TABLE biotype_phenotype (
-	biotype_phenotype_id serial PRIMARY KEY,
+	biotype_phenotype_id serial NOT NULL,
+        PRIMARY KEY (biotype_phenotype_id),
 	biotype_id integer NOT NULL,
         FOREIGN KEY (biotype_id) REFERENCES biotype (biotype_id)
 		ON DELETE CASCADE,
@@ -704,7 +716,8 @@ COMMENT ON COLUMN biotype_phenotype.notes IS 'Notes on score';
 -- experimental study)
 
 CREATE TABLE biotype_phenotype_project (
-	biotype_phenotype_project_id serial PRIMARY KEY,
+	biotype_phenotype_project_id serial NOT NULL,
+        PRIMARY KEY (biotype_phenotype_project_id),
 	biotype_phenotype_id integer NOT NULL,
         FOREIGN KEY (biotype_phenotype_id) REFERENCES biotype_phenotype (biotype_phenotype_id)
 		ON DELETE CASCADE,

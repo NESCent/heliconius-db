@@ -34,18 +34,6 @@ attributes; in fact shouldn't they rather be cvterm references?
 
 * This rather represents a cross, not an entire pedigree. Consider renaming it to cross, or something similar.
 
-===Table Primer===
-
-This should be represented by module sequence, table feature.
-
-* Yes.
-
-===Table Primer_Designcluster===
-
-Column naming is inconsistent (design_species_id should be
-design_organism_id, outgroup_id should be outgroup_organism_id,
-designcluster_id should be feature_id, pos should be unambiguous).
-
 ===Table gtassay===
 
 Inconsistent column naming (locus_id should be feature_id, or locus_feature_id).
