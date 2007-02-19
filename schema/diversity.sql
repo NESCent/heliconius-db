@@ -199,8 +199,8 @@ CREATE TABLE individual (
         PRIMARY KEY (individual_id),
 	individual_name character varying(255) NOT NULL UNIQUE,
 	wild boolean NOT NULL,
-	pedigree_id integer,
-        FOREIGN KEY (pedigree_id) REFERENCES pedigree (pedigree_id) 
+	crossexperiment_id integer,
+        FOREIGN KEY (crossexperiment_id) REFERENCES crossexperiment (crossexperiment_id) 
                 ON DELETE RESTRICT,
 	stock_id integer,
         FOREIGN KEY (stock_id) REFERENCES stock (stock_id)
@@ -240,12 +240,12 @@ COMMENT ON COLUMN individual.experimenter_id IS 'Person or institution that coll
 
 COMMENT ON COLUMN individual.notes IS 'Notes on some aspect of individual, e.g. for an insect, what host plant it was collected on, or whether or not there were beak marks on the wings';
 
--- table pedigree
+-- table crossexperiment
 
-CREATE TABLE pedigree (
-	pedigree_id serial NOT NULL,
-        PRIMARY KEY (pedigree_id),
-	pedigree_name character varying(255) NOT NULL UNIQUE,
+CREATE TABLE crossexperiment (
+	crossexperiment_id serial NOT NULL,
+        PRIMARY KEY (crossexperiment_id),
+	name character varying(255) NOT NULL UNIQUE,
 	female_id integer,
         FOREIGN KEY (female_id) REFERENCES individual (individual_id) 
                 ON DELETE RESTRICT,
@@ -260,22 +260,24 @@ CREATE TABLE pedigree (
                 ON DELETE RESTRICT,
 	date_mated date,
 	date_female_died date,
-	cross_type_id integer,
-        FOREIGN KEY (cross_type_id) REFERENCES cvterm (cvterm_id) 
+	type_id integer,
+        FOREIGN KEY (type_id) REFERENCES cvterm (cvterm_id) 
                 ON DELETE RESTRICT
 );
 
-COMMENT ON TABLE pedigree IS 'Pedigrees of individuals.';
+COMMENT ON TABLE crossexperiment IS 'An experiment crossing two individuals. The individuals may be from the same or different species, or the same or different biotypes.';
 
-COMMENT ON COLUMN pedigree.pedigree_name IS 'Reference name given the pedigree by the experimenter';
+COMMENT ON COLUMN crossexperiment.name IS 'Reference name for the cross. Existing conventions for naming the cross use the "stock" type and "biotype" information, listing the female "type" first. Thus, a backcross of a female F1 individual generated from a cross between a female H. erato cyrbia and a male H. himera by a male H. himera would be (HecHh)xHh_001, where 001 is the first replicate of this type of cross.';
 
-COMMENT ON COLUMN pedigree.geolocation_id IS 'The geo-reference data for where the experimental cross was conducted.'; 
+COMMENT ON COLUMN crossexperiment.geolocation_id IS 'The geo-reference for where the experimental cross was conducted.'; 
 
-COMMENT ON COLUMN pedigree.date_mated IS 'Date the female was mated';
+COMMENT ON COLUMN crossexperiment.date_mated IS 'Date the female was mated';
 
-COMMENT ON COLUMN pedigree.date_female_died IS 'Date female harvested';
+COMMENT ON COLUMN crossexperiment.date_female_died IS 'Date female harvested';
 
--- table pedigreeprop
+COMMENT ON COLUMN crossexperiment.type_id IS 'The type of cross.';
+
+-- table crossexperimentprop
 --
 -- examples for attribute/value pairs:
 --	days_mated,
@@ -285,17 +287,17 @@ COMMENT ON COLUMN pedigree.date_female_died IS 'Date female harvested';
 --	num_adults,
 --	num_females
 
-CREATE TABLE pedigreeprop (
-	pedigreeprop_id serial NOT NULL,
-        PRIMARY KEY (pedigreeprop_id),
-	pedigree_id integer NOT NULL,
-        FOREIGN KEY (pedigree_id) REFERENCES pedigree (pedigree_id) 
+CREATE TABLE crossexperimentprop (
+	crossexperimentprop_id serial NOT NULL,
+        PRIMARY KEY (crossexperimentprop_id),
+	crossexperiment_id integer NOT NULL,
+        FOREIGN KEY (crossexperiment_id) REFERENCES crossexperiment (crossexperiment_id) 
                 ON DELETE CASCADE,
 	cvterm_id integer NOT NULL,
         FOREIGN KEY (cvterm_id) REFERENCES cvterm (cvterm_id)
                 ON DELETE CASCADE,
 	rank integer,
-	CONSTRAINT pedigreeprop_c1 UNIQUE (pedigree_id, cvterm_id)
+	CONSTRAINT crossexperimentprop_c1 UNIQUE (crossexperiment_id, cvterm_id)
 );
 
 -- table gtassay
