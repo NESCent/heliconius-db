@@ -104,3 +104,37 @@ body {
 	margin:0px;
 }
 
+table{
+padding:0px;
+margin:0px;
+}
+
+th {
+background-color:#00FF66;
+color:#000033;
+font-weight:bold;
+padding:3px;
+}
+
+td{
+background-color:#FFFFFF;
+padding:3px;
+}
+
+.odd
+{
+background-color:#FFFFFF;
+padding:3px;
+}
+
+.even
+{
+padding:3px;
+background-color:#CCCCCC;
+}
+
+caption {
+text-align:left;
+font-size:14px;
+font-weight:bold;
+}
