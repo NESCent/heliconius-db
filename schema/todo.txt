@@ -1,10 +1,5 @@
 ==Open Issues of the Diversity extension==
 
-===Table Pedigree===
-
-* Split out pedigree.{date_mated,date_female_died,days_mated} into pedigree_cvterm?
-* Same thing with specimen.{barcode,...}?
-
 ===Table Genotype===
 
 We are interested in storing linear arrays of locus-specific DNA
@@ -12,42 +7,6 @@ sequence data as genotypic data.  One way would be to make
 genotype.description have unlimited length (text?).  Other way is
 to use accession to the data in Genbank, i.e. add accession fkey to
 genotype table.
-
-===Table Stock===
-
-* Columns maternal_source_id and paternal_source_id should be better named maternal_biotype_id and paternal_biotype_id for consistency?
-
-===Table Geographic_Site===
-
-* county, province, and country seem to be denormalized, and possibly
-belong into a controlled vocabulary
-** Yes.
-
-===Table Individual===
-
-* Columns 'male' and 'wild' aren't named as obviously boolean
-attributes; in fact shouldn't they rather be cvterm references?
-
-* Column 'notes' does not sound like a desirable idea. What is to be noted here?
-
-===Table Pedigree===
-
-* This rather represents a cross, not an entire pedigree. Consider renaming it to cross, or something similar.
-
-===Table gtassay===
-
-Inconsistent column naming (locus_id should be feature_id, or locus_feature_id).
-
-This could possibly be represented also as a primer feature pair and a
-super-feature giving the amplicon.
-
-* Revisit, probably not.
-
-===Table Image===
-
-This may be representable as a dbxref (table dbxref, module general).
-
-* Probably yes.
 
 ===Table Pcrexperiment===
 
@@ -65,53 +24,9 @@ differently to better reflect the conceptual model?
 
 See change to pcrexperiment.
 
-===Table individual_phenotype===
+===Column 'Notes'===
+ 
+This is in tables Individual_Phenotype, Stock_Phenotype, and Biotype_Phenotype.
 
-* What is column 'notes' for?
-** Maybe not needed.
-
-===Table Stock_Phenotype===
-
-* What is column 'notes' for?
-** Maybe not be needed.
-
-===Table Biotype_Phenotype===
-
-* What is column 'notes' for?
-** Maybe not needed.
-
-==Open issues due to conflict with other modules==
-
-Need to be able to store short taxonomies for organisms, specifically
-class, order, family, subfamily, and possibly also subspecies. There
-seem to be multiple possibilities (using the organism, cvterm, or
-phylogeny modules, which each have facilitiies for hierarchical
-relationships) and conflicting recommendations (organism documentation
-says to use cvterm or phylogeny, but example uses organism and even
-violates NOT NULL constraint).
-
-Here is what the original evo.psql definition did to address the issue:
-
-ALTER TABLE organism ADD COLUMN "class" character varying(255);
-ALTER TABLE organism ADD COLUMN "order" character varying(255);
-ALTER TABLE organism ADD COLUMN family character varying(255);
-ALTER TABLE organism ADD COLUMN subfamily character varying(255);
-ALTER TABLE organism ADD COLUMN subspecies character varying(255);
-
-UPDATE organism SET "class" = '';
-UPDATE organism SET "order" = '';
-UPDATE organism SET family = '';
-UPDATE organism SET subfamily = '';
-UPDATE organism SET subspecies = '';
-ALTER TABLE organism ALTER COLUMN "class" SET NOT NULL;
-ALTER TABLE organism ALTER COLUMN "order" SET NOT NULL;
-ALTER TABLE organism ALTER COLUMN family SET NOT NULL;
-ALTER TABLE organism ALTER COLUMN subfamily SET NOT NULL;
-ALTER TABLE organism ALTER COLUMN subspecies SET NOT NULL;
-
-COMMENT ON COLUMN organism.subspecies IS 'Subspecies, variety, forma, etc.';
-
--- ALTER TABLE organism DROP CONSTRAINT organism_c1;
--- ALTER TABLE organism DROP CONSTRAINT organism_genus_key;
-ALTER TABLE organism
-	ADD CONSTRAINT organism_genus_key UNIQUE (genus, species, subfamily, subspecies);
+* What is the column 'notes' for? It may not be needed, and may be
+  better served by attribute/value associations.
