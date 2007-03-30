@@ -154,7 +154,7 @@ COMMENT ON COLUMN politlocation.country_id IS 'The country within which the geor
 CREATE TABLE stock (
 	stock_id SERIAL NOT NULL,
         PRIMARY KEY (stock_id),
-	stock_name character varying(255) NOT NULL UNIQUE,
+	name character varying(255) NOT NULL UNIQUE,
 	description character varying(255),
 	biotype_id INTEGER NOT NULL,
         FOREIGN KEY (biotype_id) REFERENCES biotype (biotype_id)
@@ -176,7 +176,7 @@ CREATE TABLE stock (
 
 COMMENT ON TABLE stock IS 'A stock is a line raised from an individual that was either collected in the wild or bred in the laboratory.';
 
-COMMENT ON COLUMN stock.stock_name IS 'Reference name of the stock';
+COMMENT ON COLUMN stock.name IS 'Reference name of the stock';
 
 COMMENT ON COLUMN stock.description IS 'Information on how the stock was created or other relevant information describing stock';
 
@@ -193,12 +193,24 @@ COMMENT ON COLUMN stock.experimenter_id IS 'Experimenter who started the stock';
 COMMENT ON COLUMN stock.date_created IS 'When the stock was created';
 
 -- table individual
+--
+-- An individual of a population, collected in the wild, or resulting
+-- from a cross in the laboratory.
+--
+-- UNDER REVIEW: do we need a foreign key here to organism to denote
+-- the host organism that an individual was collected from, e.g. for
+-- an insect, what host plant it was collected on
 
 CREATE TABLE individual (
 	individual_id serial NOT NULL,
         PRIMARY KEY (individual_id),
-	individual_name character varying(255) NOT NULL UNIQUE,
-	wild boolean NOT NULL,
+	name character varying(255) NOT NULL,
+	description character varying(255),
+	is_captivity_reared boolean NOT NULL,
+	collection_date date,
+        gender_id integer,
+        FOREIGN KEY (gender_id) REFERENCES cvterm (cvterm_id)
+                ON DELETE RESTRICT,
 	crossexperiment_id integer,
         FOREIGN KEY (crossexperiment_id) REFERENCES crossexperiment (crossexperiment_id) 
                 ON DELETE RESTRICT,
@@ -208,44 +220,62 @@ CREATE TABLE individual (
 	geolocation_id integer,
         FOREIGN KEY (geolocation_id) REFERENCES geolocation (geolocation_id) 
                 ON DELETE RESTRICT,
-	collection_date date,
-	male boolean,
-	biotype_id integer NOT NULL,
-        FOREIGN KEY (biotype_id) REFERENCES biotype (biotype_id)
-                ON DELETE RESTRICT,
-	taxonomic_confidence real,
 	experimenter_id integer,
         FOREIGN KEY (experimenter_id) REFERENCES contact (contact_id) 
                 ON DELETE RESTRICT,
-	notes character varying(255)
+        CONSTRAINT individual_c1 UNIQUE (name)
 );
 
 COMMENT ON TABLE individual IS 'An individual of a population, collected in the wild, or resulting from a cross in the laboratory.';
 
-COMMENT ON COLUMN individual.individual_name IS 'Reference name of the individual';
+COMMENT ON COLUMN individual.name IS 'Reference name of the individual';
 
-COMMENT ON COLUMN individual.wild IS 'True if field collected specimen; false if reared in captivity';
+COMMENT ON COLUMN individual.description IS 'Description of the individual, as far as not covered in other attributes already.';
 
-COMMENT ON COLUMN individual.geolocation_id IS 'Geographic site where individual was collected or raised';
+COMMENT ON COLUMN individual.is_captivity_reared IS 'True if the individual was reared in captivity, and false otherwise. Individuals collected in the field would have false here.';
 
 COMMENT ON COLUMN individual.collection_date IS 'Date when the individual was collected';
 
-COMMENT ON COLUMN individual.male IS 'True if sex of the individual is male; false if female';
+COMMENT ON COLUMN individual.geolocation_id IS 'Geographic site where individual was collected or raised';
 
-COMMENT ON COLUMN individual.biotype_id IS 'Genome composition';
-
-COMMENT ON COLUMN individual.taxonomic_confidence IS 'Confidence that the researcher places in the taxonomic designation assigned in biotype_id, ranging from 0 (no confidence) to 1 (certainty)';
+COMMENT ON COLUMN individual.gender_id IS 'The gender of the individual. This comes from a controlled vocabulary.';
 
 COMMENT ON COLUMN individual.experimenter_id IS 'Person or institution that collected or raised the individual';
 
-COMMENT ON COLUMN individual.notes IS 'Notes on some aspect of individual, e.g. for an insect, what host plant it was collected on, or whether or not there were beak marks on the wings';
+-- table individual_biotype
+CREATE TABLE individual_biotype (
+        individual_biotype_id serial NOT NULL,
+        PRIMARY KEY (individual_biotype_id),
+        individual_id integer NOT NULL,
+        FOREIGN KEY (individual_id) REFERENCES individual (individual_id)
+                ON DELETE CASCADE,
+        biotype_id integer NOT NULL,
+        FOREIGN KEY (biotype _id) REFERENCES biotype (biotype_id)
+                ON DELETE RESTRICT,
+        certainty_type_id integer NOT NULL,
+        FOREIGN KEY (certainty_type_id) REFERENCES cvterm (cvterm_id)
+                ON DELETE RESTRICT,
+        CONSTRAINT individual_biotype_c1 UNIQUE (individual_id, biotype_id, certainty_type_id)
+);
+
+COMMENT ON TABLE individual_biotype IS 'Designation of one or more possible biotypes to an individual';
+
+COMMENT ON COLUMN individual_biotype.individual_id IS 'The individual to which the biotype is being designated.';
+
+COMMENT ON COLUMN individual_biotype.biotype_id IS 'The biotype being designated to the individual.';
+
+COMMENT ON COLUMN individual_biotype.certainty_type_id IS 'The certainty of the designation, as a term from a controlled vocabulary. There cannot be more than one biotype designation if the designation is to be considered certain.'; 
 
 -- table crossexperiment
+--
+-- An experiment crossing two individuals. The individuals may be from
+-- the same or different species, or the same or different biotypes.
 
 CREATE TABLE crossexperiment (
 	crossexperiment_id serial NOT NULL,
         PRIMARY KEY (crossexperiment_id),
 	name character varying(255) NOT NULL UNIQUE,
+        expdate date,
 	female_id integer,
         FOREIGN KEY (female_id) REFERENCES individual (individual_id) 
                 ON DELETE RESTRICT,
@@ -258,8 +288,6 @@ CREATE TABLE crossexperiment (
 	geolocation_id integer,
         FOREIGN KEY (geolocation_id) REFERENCES geolocation (geolocation_id) 
                 ON DELETE RESTRICT,
-	date_mated date,
-	date_female_died date,
 	type_id integer,
         FOREIGN KEY (type_id) REFERENCES cvterm (cvterm_id) 
                 ON DELETE RESTRICT
@@ -271,15 +299,14 @@ COMMENT ON COLUMN crossexperiment.name IS 'Reference name for the cross. Existin
 
 COMMENT ON COLUMN crossexperiment.geolocation_id IS 'The geo-reference for where the experimental cross was conducted.'; 
 
-COMMENT ON COLUMN crossexperiment.date_mated IS 'Date the female was mated';
+COMMENT ON COLUMN crossexperiment.expdate IS 'The date of the cross experiment, typically the mating date.';
 
-COMMENT ON COLUMN crossexperiment.date_female_died IS 'Date female harvested';
-
-COMMENT ON COLUMN crossexperiment.type_id IS 'The type of cross.';
+COMMENT ON COLUMN crossexperiment.type_id IS 'The type of cross, for example, F1, or F2, or backcross.';
 
 -- table crossexperimentprop
 --
 -- examples for attribute/value pairs:
+--      date_female_died,
 --	days_mated,
 --	days_laying,
 --	num_eggs_hatched,
@@ -302,28 +329,31 @@ CREATE TABLE crossexperimentprop (
 
 -- table gtassay
 --
--- Method of polymorphism detection
+-- Genotyping assay, or method of polymorphism detection
 
 CREATE TABLE gtassay (
 	gtassay_id serial NOT NULL,
         PRIMARY KEY (gtassay_id),
-	assay_name character varying(255) NOT NULL,
+	name character varying(255) NOT NULL,
 	locus_id integer,
         FOREIGN KEY (locus_id) REFERENCES feature (feature_id)
                 ON DELETE RESTRICT,
-	polytype_id integer,
-        FOREIGN KEY (polytype_id) REFERENCES cvterm (cvterm_id)
+	type_id integer,
+        FOREIGN KEY (type_id) REFERENCES cvterm (cvterm_id)
                 ON DELETE RESTRICT,
 	pcrexperiment_id integer NOT NULL,
         FOREIGN KEY (pcrexperiment_id) REFERENCES pcrexperiment (pcrexperiment_id)
                 ON DELETE RESTRICT,
-        CONSTRAINT gtassay_c1 UNIQUE (assay_name)
+        CONSTRAINT gtassay_c1 UNIQUE (name)
 );
 
-COMMENT ON TABLE gtassay IS 'Method of polymorphism detection';
-COMMENT ON COLUMN gtassay.assay_name IS 'Reference name of the assay';
-COMMENT ON COLUMN gtassay.locus_id IS 'Locus that is examined for polymorphisms';
-COMMENT ON COLUMN gtassay.polytype_id IS 'Method of scoring the polymorphism for this assay (e.g., AFLP, SSCP, RFLP, size polymorphism)';
+COMMENT ON TABLE gtassay IS 'Genotyping assay, or method of polymorphism detection.';
+
+COMMENT ON COLUMN gtassay.name IS 'Reference name of the genotyping assay';
+
+COMMENT ON COLUMN gtassay.locus_id IS 'The locus that is being assayed for polymorphisms';
+
+COMMENT ON COLUMN gtassay.type_id IS 'The type of the assay. Usually this is the method of scoring the polymorphism (e.g., AFLP, SSCP, RFLP, size polymorphism).';
 
 -- create table gtassayprop
 -- 
@@ -361,9 +391,10 @@ CREATE TABLE gtassayprop (
 CREATE TABLE specimen (
 	specimen_id serial NOT NULL,
         PRIMARY KEY (specimen_id),
-	specimen_name character varying(255) NOT NULL,
+	name character varying(255) NOT NULL,
 	description character varying(255),
-	barcode character varying(255),
+	identifier character varying(255),
+	storage_location character varying(255),
 	extract_type_id integer NOT NULL,
         FOREIGN KEY (extract_type_id) REFERENCES cvterm (cvterm_id)
                 ON DELETE RESTRICT,
@@ -373,7 +404,6 @@ CREATE TABLE specimen (
 	individual_id integer NOT NULL,
         FOREIGN KEY (individual_id) REFERENCES individual (individual_id)
                 ON DELETE CASCADE,
-	storage_location character varying(255),
 	experimenter_id integer,
         FOREIGN KEY (experimenter_id) REFERENCES contact (contact_id)
                 ON DELETE RESTRICT,
@@ -382,13 +412,13 @@ CREATE TABLE specimen (
 
 COMMENT ON TABLE specimen IS 'Part of an individual that is used in an experiment';
 
-COMMENT ON COLUMN specimen.specimen_name IS 'Reference name for the specimen';
+COMMENT ON COLUMN specimen.name IS 'Reference name for the specimen';
 
 COMMENT ON COLUMN specimen.description IS 'Description of the specimen including information on specimen quality, e.g. concentration, purity, etc.';
 
-COMMENT ON COLUMN specimen.barcode IS 'Barcode identifier of the specimen';
+COMMENT ON COLUMN specimen.identifier IS 'Identifier, for example a barcode, of the specimen';
 
-COMMENT ON COLUMN specimen.extract_type_id IS 'How the specimen was processed to produce distinctive molecules';
+COMMENT ON COLUMN specimen.extract_type_id IS 'Type of extraction used, or how the specimen was processed to produce distinctive molecules';
 
 COMMENT ON COLUMN specimen.tissue_type_id IS 'Tissue or morphological type that was used in the specimen extraction';
 
@@ -425,13 +455,13 @@ CREATE TABLE gtexperiment (
 	notes character varying(255)
 );
 
-COMMENT ON TABLE gtexperiment IS 'Experiment to assign the genotype of an individual at a particular locus';
+COMMENT ON TABLE gtexperiment IS 'Genotyping experiment; an experiment to assign the genotype of an individual at a particular locus.';
 
 COMMENT ON COLUMN gtexperiment.specimen_id IS 'Specimen used in the experiment';
 
-COMMENT ON COLUMN gtexperiment.gtassay_id IS 'Assay conditions used to assign genotype';
+COMMENT ON COLUMN gtexperiment.gtassay_id IS 'The genotyping assay used to determine the genotype.';
 
-COMMENT ON COLUMN gtexperiment.genotype_id IS 'Genotypic score';
+COMMENT ON COLUMN gtexperiment.genotype_id IS 'The genotype determined by the experiment.';
 
 COMMENT ON COLUMN gtexperiment.pub_id IS 'Publication reference where the genotype experiment was published';
 
@@ -439,7 +469,7 @@ COMMENT ON COLUMN gtexperiment.experimenter_id IS 'Person performing the experim
 
 COMMENT ON COLUMN gtexperiment.experiment_date IS 'Date that the experiment was performed';
 
-COMMENT ON COLUMN gtexperiment.notes IS 'Notes on score';
+COMMENT ON COLUMN gtexperiment.notes IS 'Notes on the genotype assignement';
 
 -- create table gtexperiment_project
 --
@@ -467,15 +497,23 @@ COMMENT ON TABLE gtexperiment_project IS 'Associates a genotype experiment with 
 CREATE TABLE image (
 	image_id serial NOT NULL,
         PRIMARY KEY (image_id),
-	uri character varying(1024) NOT NULL UNIQUE
+        identifier character varying(255),
+	uri character varying(1024) NOT NULL,
+        CONSTRAINT image_c1 UNIQUE (identifier),
+        CONSTRAINT image_c2 UNIQUE (uri)
 );
 
-COMMENT ON TABLE image IS 'Link to an external image file';
+COMMENT ON TABLE image IS 'Link to an external image';
+
+COMMENT ON COLUMN image.identifier IS 'Unique identifier for the image, such as a LSID, or any other GUID';
+
 COMMENT ON COLUMN image.uri IS 'URL or local file path to image';
 
 -- table pcrexperiment
 --
 -- Initial examination of a locus
+--
+-- UNDER REVIEW: this entity is under review and subject to change.
 
 CREATE TABLE pcrexperiment (
 	pcrexperiment_id serial PRIMARY KEY,
@@ -524,11 +562,12 @@ CREATE TABLE specimen_image (
 CREATE TABLE ptassay (
 	ptassay_id serial NOT NULL,
         PRIMARY KEY (ptassay_id),
-	assay_name character varying(255) NOT NULL UNIQUE
+	name character varying(255) NOT NULL UNIQUE
 );
 
 COMMENT ON TABLE ptassay IS 'Phenotype determination assay';
-COMMENT ON COLUMN ptassay.assay_name IS 'Reference name of the assay';
+
+COMMENT ON COLUMN ptassay.name IS 'Reference name of the phenotyping assay';
 
 -- create table ptassayprop
 
@@ -576,9 +615,9 @@ COMMENT ON TABLE individual_phenotype IS 'Experimental result or observation ass
 
 COMMENT ON COLUMN individual_phenotype.individual_id IS 'Individual used in the experiment';
 
-COMMENT ON COLUMN individual_phenotype.ptassay_id IS 'Assay conditions used to assign phenotype';
+COMMENT ON COLUMN individual_phenotype.ptassay_id IS 'Phenotyping assay used to determine the phenotype';
 
-COMMENT ON COLUMN individual_phenotype.phenotype_id IS 'Phenotypic score';
+COMMENT ON COLUMN individual_phenotype.phenotype_id IS 'The phenotype determined in the experiment.';
 
 COMMENT ON COLUMN individual_phenotype.experimenter_id IS 'Person performing the experiment';
 
@@ -586,7 +625,7 @@ COMMENT ON COLUMN individual_phenotype.assay_date IS 'Date that the experiment w
 
 COMMENT ON COLUMN individual_phenotype.pub_id IS 'Publication reference where the phenotype experiment resulting in the phenotype assignment was published';
 
-COMMENT ON COLUMN individual_phenotype.notes IS 'Notes on score';
+COMMENT ON COLUMN individual_phenotype.notes IS 'Notes on the phenotype assignment';
 
 -- create table individual_phenotype_project
 --
@@ -638,9 +677,9 @@ COMMENT ON TABLE stock_phenotype IS 'Experimental result or observation associat
 
 COMMENT ON COLUMN stock_phenotype.stock_id IS 'Stock used in the experiment';
 
-COMMENT ON COLUMN stock_phenotype.ptassay_id IS 'Assay conditions used to assign phenotype';
+COMMENT ON COLUMN stock_phenotype.ptassay_id IS 'Phenotype assay used to assign the phenotype';
 
-COMMENT ON COLUMN stock_phenotype.phenotype_id IS 'Phenotypic score';
+COMMENT ON COLUMN stock_phenotype.phenotype_id IS 'The phenotype determined by the experiment';
 
 COMMENT ON COLUMN stock_phenotype.experimenter_id IS 'Person performing the experiment';
 
@@ -648,7 +687,7 @@ COMMENT ON COLUMN stock_phenotype.assay_date IS 'Date that the experiment was pe
 
 COMMENT ON COLUMN stock_phenotype.pub_id IS 'Publication reference where the phenotype experiment resulting in the phenotype assignment was published';
 
-COMMENT ON COLUMN stock_phenotype.notes IS 'Notes on score';
+COMMENT ON COLUMN stock_phenotype.notes IS 'Notes on the phenotype assignment';
 
 -- create table stock_phenotype_project
 --
@@ -700,9 +739,9 @@ COMMENT ON TABLE biotype_phenotype IS 'Experimental result or observation associ
 
 COMMENT ON COLUMN biotype_phenotype.biotype_id IS 'Biotype used in the experiment';
 
-COMMENT ON COLUMN biotype_phenotype.ptassay_id IS 'Assay conditions used to assign phenotype';
+COMMENT ON COLUMN biotype_phenotype.ptassay_id IS 'Phenotyping assay used to assign the phenotype';
 
-COMMENT ON COLUMN biotype_phenotype.phenotype_id IS 'Phenotypic score';
+COMMENT ON COLUMN biotype_phenotype.phenotype_id IS 'Phenotype determined by the experiment';
 
 COMMENT ON COLUMN biotype_phenotype.experimenter_id IS 'Person performing the experiment';
 
@@ -710,7 +749,7 @@ COMMENT ON COLUMN biotype_phenotype.assay_date IS 'Date that the experiment was 
 
 COMMENT ON COLUMN biotype_phenotype.pub_id IS 'Publication reference where the phenotype experiment resulting in the phenotype assignment was published';
 
-COMMENT ON COLUMN biotype_phenotype.notes IS 'Notes on score';
+COMMENT ON COLUMN biotype_phenotype.notes IS 'Notes on the phenotype assignment';
 
 -- create table biotype_phenotype_project
 --
