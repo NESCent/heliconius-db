@@ -6,6 +6,10 @@
 -- information. You will likely need other modules of the chado schema
 -- installed first (see dependencies).
 --
+-- The initial version (evo.psql) was created by Owen McMillan and
+-- Nassib Nassar. Revisions since the renaming to diversity module in
+-- January 2007 by Hilmar Lapp (hlapp at gmx.net).
+--
 
 --
 -- Copyright (c) 2006-2007, Nassib Nassar, nassar at etymon.com
@@ -54,7 +58,7 @@ CREATE TABLE biotype (
         CONSTRAINT biotype_c1 UNIQUE (name)
 );
 
-COMMENT ON TABLE biotype IS 'Biotype is essentially a named container of species. Typically, this will be the species that hybridized to give rise to a hybrid individual, and the name will usually be the species part of the binomial names, concatenated by "x".'
+COMMENT ON TABLE biotype IS 'Biotype is essentially a named container of species. Typically, this will be the species that hybridized to give rise to a hybrid individual, and the name will usually be the species part of the binomial names, concatenated by "x". The biotype may also be used to designate race, beyond just a species; there may not be a taxonomic node for this, for example for races defined by host preference.'
 
 COMMENT ON COLUMN biotype.name IS 'The unique name of the biotype. Typically the name of a species hybrid, with for example the species parts of the binomial names concatenated by "x".'
 
@@ -180,7 +184,7 @@ COMMENT ON COLUMN stock.name IS 'Reference name of the stock';
 
 COMMENT ON COLUMN stock.description IS 'Information on how the stock was created or other relevant information describing stock';
 
-COMMENT ON COLUMN stock.biotype_id IS 'Taxonomic designation of the stock';
+COMMENT ON COLUMN stock.biotype_id IS 'Taxonomic designation of the stock. This is assumed to be a rather certain designation, although sometimes, such as for distinguishing between races, it may need to be verified through an assay.';
 
 COMMENT ON COLUMN stock.maternal_biotype_id IS 'Maternal source of the stock if known';
 
@@ -220,6 +224,9 @@ CREATE TABLE individual (
 	geolocation_id integer,
         FOREIGN KEY (geolocation_id) REFERENCES geolocation (geolocation_id) 
                 ON DELETE RESTRICT,
+        host_organism_id integer,
+        FOREIGN KEY (host_organism_id) REFERENCES organism (organism_id)
+                ON DELETE RESTRICT,
 	experimenter_id integer,
         FOREIGN KEY (experimenter_id) REFERENCES contact (contact_id) 
                 ON DELETE RESTRICT,
@@ -236,7 +243,11 @@ COMMENT ON COLUMN individual.is_captivity_reared IS 'True if the individual was 
 
 COMMENT ON COLUMN individual.collection_date IS 'Date when the individual was collected';
 
+COMMENT ON COLUMN individual.stock_id IS 'The stock the individual was raised from if it was not collected in the wild. Note that if a stock is assigned to an individual, the individual implicitly inherits the biotype designation of the stock.';
+
 COMMENT ON COLUMN individual.geolocation_id IS 'Geographic site where individual was collected or raised';
+
+COMMENT ON COLUMN individual.host_organism_id IS 'The host organism from which the individual was collected. This will typically only apply if the individual was collected in the wild. Note that this does not necessarily imply an ecological relationship between the host and the individual (although it often will if the data is collected).';
 
 COMMENT ON COLUMN individual.gender_id IS 'The gender of the individual. This comes from a controlled vocabulary.';
 
@@ -258,13 +269,43 @@ CREATE TABLE individual_biotype (
         CONSTRAINT individual_biotype_c1 UNIQUE (individual_id, biotype_id, certainty_type_id)
 );
 
-COMMENT ON TABLE individual_biotype IS 'Designation of one or more possible biotypes to an individual';
+COMMENT ON TABLE individual_biotype IS 'Designation of one or more possible biotypes to an individual. There should be more than one designation for an individual iff none of the designations are certain, not if the individual is a hybrid (use the biotype itself to represent the hybrid). Individuals raised from stocks have an implicit biotype (that of the stock), and do not need an explicit biotype designation.';
 
 COMMENT ON COLUMN individual_biotype.individual_id IS 'The individual to which the biotype is being designated.';
 
 COMMENT ON COLUMN individual_biotype.biotype_id IS 'The biotype being designated to the individual.';
 
 COMMENT ON COLUMN individual_biotype.certainty_type_id IS 'The certainty of the designation, as a term from a controlled vocabulary. There cannot be more than one biotype designation if the designation is to be considered certain.'; 
+
+-- table individualprop
+--
+-- Property/value pairs of individuals, for example the generation the
+-- individual is sampled from.
+
+CREATE TABLE individualprop (
+        individualprop_id serial NOT NULL,
+        PRIMARY KEY (individualprop_id),
+        individual_id integer not null,
+        FOREIGN KEY (individual_id) REFERENCES individual (individual_id)
+                ON DELETE CASCADE,
+        cvterm_id integer not null,
+        FOREIGN KEY (cvterm_id) REFERENCES cvterm (cvterm_id)
+                ON DELETE CASCADE,
+        value text,
+        rank integer not null default 0,
+        CONSTRAINT individualprop_c1 UNIQUE (individual_id,cvterm_id,rank)
+);
+
+COMMENT ON TABLE individualprop IS 'Property/value associations for individuals.';
+
+COMMENT ON COLUMN individualprop.individual_id IS 'The individual to which the property applies.';
+
+COMMENT ON COLUMN individualprop.cvterm_id IS 'The name of the property as a reference to a controlled vocabulary term.';
+
+COMMENT ON COLUMN individualprop.value IS 'The value of the property.';
+
+COMMENT ON COLUMN individualprop.rank IS 'The rank of the property value, if the property has an array of values.';
+
 
 -- table crossexperiment
 --
@@ -323,9 +364,20 @@ CREATE TABLE crossexperimentprop (
 	cvterm_id integer NOT NULL,
         FOREIGN KEY (cvterm_id) REFERENCES cvterm (cvterm_id)
                 ON DELETE CASCADE,
-	rank integer,
-	CONSTRAINT crossexperimentprop_c1 UNIQUE (crossexperiment_id, cvterm_id)
+        value text,
+        rank integer not null default 0,
+	CONSTRAINT crossexperimentprop_c1 UNIQUE (crossexperiment_id, cvterm_id, rank)
 );
+
+COMMENT ON TABLE crossexperimentprop IS 'Property/value associations for cross experiments.';
+
+COMMENT ON COLUMN crossexperimentprop.crossexperiment_id 'The cross experiment to which the property applies.';
+
+COMMENT ON COLUMN crossexperimentprop.cvterm_id IS 'The name of the property as a reference to a controlled vocabulary term.';
+
+COMMENT ON COLUMN crossexperimentprop.value IS 'The value of the property.';
+
+COMMENT ON COLUMN crossexperimentprop.rank IS 'The rank of the property value, if the property has an array of values.';
 
 -- table gtassay
 --
@@ -380,9 +432,21 @@ CREATE TABLE gtassayprop (
 	cvterm_id integer NOT NULL,
         FOREIGN KEY (cvterm_id) REFERENCES cvterm (cvterm_id)
                 ON DELETE CASCADE,
-	rank integer,
-	CONSTRAINT gtassayprop_c1 UNIQUE (gtassay_id, cvterm_id)
+        value text,
+        rank integer not null default 0,
+	CONSTRAINT gtassayprop_c1 UNIQUE (gtassay_id, cvterm_id, rank)
 );
+
+COMMENT ON TABLE gtassayprop IS 'Property/value associations for genotyping assays.';
+
+COMMENT ON COLUMN gtassayprop.gtassay_id IS 'The genotyping assay to which the property applies.';
+
+COMMENT ON COLUMN gtassayprop.cvterm_id IS 'The name of the property as a reference to a controlled vocabulary term.';
+
+COMMENT ON COLUMN gtassayprop.value IS 'The value of the property.';
+
+COMMENT ON COLUMN gtassayprop.rank IS 'The rank of the property value, if the property has an array of values.';
+
 
 -- table specimen
 --
@@ -580,9 +644,21 @@ CREATE TABLE ptassayprop (
 	cvterm_id integer NOT NULL,
         FOREIGN KEY (cvterm_id) REFERENCES cvterm (cvterm_id)
                 ON DELETE CASCADE,
-	rank integer,
-	CONSTRAINT ptassayprop_c1 UNIQUE (ptassay_id, cvterm_id)
+        value text,
+        rank integer not null default 0,
+	CONSTRAINT ptassayprop_c1 UNIQUE (ptassay_id, cvterm_id, rank)
 );
+
+COMMENT ON TABLE ptassayprop IS 'Property/value associations for phenotyping assays.';
+
+COMMENT ON COLUMN ptassayprop.gtassay_id IS 'The phenotyping assay to which the property applies.';
+
+COMMENT ON COLUMN ptassayprop.cvterm_id IS 'The name of the property as a reference to a controlled vocabulary term.';
+
+COMMENT ON COLUMN ptassayprop.value IS 'The value of the property.';
+
+COMMENT ON COLUMN ptassayprop.rank IS 'The rank of the property value, if the property has an array of values.';
+
 
 -- table individual_phenotype
 --
