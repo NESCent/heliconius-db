@@ -1,14 +1,18 @@
 --
 -- The natural diversity extension module for Chado.
 --
--- This schema is an extension (a 'module') to the Chado schema, the common
--- data model of the GMOD project. See http://www.gmod.org/chado for further
--- information. You will likely need other modules of the chado schema
--- installed first (see dependencies).
+-- This schema is an extension (a 'module') to the Chado schema, the
+-- common data model of the GMOD project. See
+-- http://www.gmod.org/chado for further information. You will likely
+-- need other modules of the chado schema installed first (see
+-- dependencies). You can construct a DDL scripts containing all
+-- dependencies and this schema in the right order using the script
+-- chado/modules/bin/makedep.pl in the gmod-schema source tree (for
+-- example, on sourceforge).
 --
 -- The initial version (evo.psql) was created by Owen McMillan and
--- Nassib Nassar. Revisions since the renaming to diversity module in
--- January 2007 by Hilmar Lapp (hlapp at gmx.net).
+-- Nassib Nassar. The revisions since the renaming to diversity module
+-- in January 2007 are by Hilmar Lapp (hlapp at gmx.net).
 --
 
 --
@@ -847,11 +851,13 @@ COMMENT ON TABLE biotype_phenotype_project IS 'Assigns the biotype-phenotype ass
 --
 
 ALTER TABLE individual ADD 
-       FOREIGN KEY (crossexperiment_id) REFERENCES crossexperiment (crossexperiment_id) 
+       FOREIGN KEY (crossexperiment_id) 
+       REFERENCES crossexperiment (crossexperiment_id) 
                 ON DELETE RESTRICT
 ;
 
 ALTER TABLE gtassay ADD
-        FOREIGN KEY (pcrexperiment_id) REFERENCES pcrexperiment (pcrexperiment_id)
+        FOREIGN KEY (pcrexperiment_id) 
+        REFERENCES pcrexperiment (pcrexperiment_id)
                 ON DELETE RESTRICT
 ;
