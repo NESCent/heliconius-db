@@ -381,25 +381,38 @@ COMMENT ON COLUMN crossexperimentprop.rank IS 'The rank of the property value, i
 -- table gtassay
 --
 -- Genotyping assay, or method of polymorphism detection
+--
+-- TO BE REVIEWED: If an assay has been validated under different
+-- conditions, such as for different species, we can't express that
+-- right now. We may need to introduce a gtassayvalidation (or
+-- something similar) table for that purpose.
 
 CREATE TABLE gtassay (
 	gtassay_id serial NOT NULL,
         PRIMARY KEY (gtassay_id),
 	name character varying(255) NOT NULL,
+	species_id integer,
+        FOREIGN KEY (species_id) REFERENCES organism(organism_id) 
+                ON DELETE RESTRICT,
+	image_id integer,
+        FOREIGN KEY (image_id) REFERENCES image (image_id) 
+                ON DELETE RESTRICT,
 	locus_id integer,
         FOREIGN KEY (locus_id) REFERENCES feature (feature_id)
                 ON DELETE RESTRICT,
 	type_id integer,
         FOREIGN KEY (type_id) REFERENCES cvterm (cvterm_id)
                 ON DELETE RESTRICT,
-        -- UNDER REVIEW: do we need this?
-	pcrexperiment_id integer NOT NULL,
         CONSTRAINT gtassay_c1 UNIQUE (name)
 );
 
 COMMENT ON TABLE gtassay IS 'Genotyping assay, or method of polymorphism detection.';
 
 COMMENT ON COLUMN gtassay.name IS 'Reference name of the genotyping assay';
+
+COMMENT ON COLUMN gtassay.species_id IS 'The species on which the assay was validated; this need not be the same as the one from which the specimen was obtained that is used in the genotyping experiment.';
+
+COMMENT ON COLUMN gtassay.image_id IS 'The image documenting the quality and/or success of the assay; typically this will be a gel image, for example showing the purity of bands.';
 
 COMMENT ON COLUMN gtassay.locus_id IS 'The locus that is being assayed for polymorphisms';
 
@@ -410,16 +423,12 @@ COMMENT ON COLUMN gtassay.type_id IS 'The type of the assay. Usually this is the
 -- examples for attribute/value pairs:
 --	specific_pcr_conditions,
 --	annealing_temp,
---	rflp_enzyme,
 --	microsat_repeat_type,
---	aflp_adapter_1,
---	aflp_adapter_2,
---	aflp_adapter_enzyme_1,
---	aflp_adapter_enzyme_2,
---	aflp_overhang_linker_1,
---	aflp_overhang_linker_2,
---	snp_type,
---	snp_position
+--	snp_type,     (note: shouldn't this be a ref. to a feature?)
+--	snp_position, (note: shouldn't this be a ref. to a feature?)
+--	expected_length (of PCR product)
+--	amplicon_contains_intron,
+--	outcome_success
 
 CREATE TABLE gtassayprop (
 	gtassayprop_id serial NOT NULL,
@@ -445,6 +454,125 @@ COMMENT ON COLUMN gtassayprop.value IS 'The value of the property.';
 
 COMMENT ON COLUMN gtassayprop.rank IS 'The rank of the property value, if the property has an array of values.';
 
+
+--
+-- table reagent
+-- 
+-- A reagent used in an assay, for example in a genotyping assay. The
+-- most often used reagents will be PCR primers, but there are other
+-- reagents used in genotyping assays too that characterize the
+-- assay. For example,
+--	rflp_enzyme,
+--	aflp_adapte,
+--	aflp_adapter_enzyme,
+--	aflp_overhang_linker.
+
+CREATE TABLE reagent (
+        reagent_id serial NOT NULL,
+        PRIMARY KEY (reagent_id),
+        name character varying (80) NOT NULL,
+        type_id integer NOT NULL,
+        FOREIGN KEY (type_id) REFERENCES cvterm (cvterm_id)
+                ON DELETE RESTRICT,
+        feature_id integer,
+        FOREIGN KEY (feature_id) REFERENCES feature (feature_id)
+                ON DELETE CASCADE,
+        CONSTRAINT reagent_c1 UNIQUE (name, type_id)
+);
+
+COMMENT ON TABLE reagent IS 'A reagent such as a primer, an enzyme, an adapter oligo, a linker oligo. Reagents are used in genotyping assays, or in any other kind of assay.';
+
+COMMENT ON COLUMN reagent.name IS 'The name of the reagent. The name should be unique for a given type.';
+
+COMMENT ON COLUMN reagent.type_id IS 'The type of the reagent, for example linker oligomer, or forward primer.';
+
+COMMENT ON COLUMN reagent.feature_id IS 'If the reagent is a primer, the feature that it corresponds to. More generally, the corresponding feature for any reagent that has a sequence that maps to another sequence.';
+
+--
+-- table reagentprop
+--
+-- Property/value associations for reagents, such as Tm, Km, optimal
+-- concentration or buffer, etc
+
+CREATE TABLE reagentprop (
+	reagentprop_id serial NOT NULL,
+        PRIMARY KEY (reagentprop_id),
+	reagent_id integer NOT NULL,
+        FOREIGN KEY (reagent_id) REFERENCES reagent (reagent_id) 
+                ON DELETE CASCADE,
+	cvterm_id integer NOT NULL,
+        FOREIGN KEY (cvterm_id) REFERENCES cvterm (cvterm_id)
+                ON DELETE CASCADE,
+        value text,
+        rank integer not null default 0,
+	CONSTRAINT reagentprop_c1 UNIQUE (reagent_id, cvterm_id, rank)
+);
+
+COMMENT ON TABLE reagentprop IS 'Property/value associations for reagents.';
+
+COMMENT ON COLUMN reagentprop.reagent_id IS 'The reagent to which the property applies.';
+
+COMMENT ON COLUMN reagentprop.cvterm_id IS 'The name of the property as a reference to a controlled vocabulary term.';
+
+COMMENT ON COLUMN reagentprop.value IS 'The value of the property.';
+
+COMMENT ON COLUMN reagentprop.rank IS 'The rank of the property value, if the property has an array of values.';
+
+--
+-- table reagent_relationship
+--
+-- Relationships between reagents. Some reagents form a group; i.e.,
+-- they are used all together or not at all. Examples are
+-- adapter/linker/enzyme assay reagents.
+CREATE TABLE reagent_relationship (
+        reagent_relationship_id serial NOT NULL,
+        PRIMARY KEY (reagent_relationship_id),
+        subject_reagent_id integer NOT NULL,
+        FOREIGN KEY (subject_reagent_id) REFERENCES reagent (reagent_id)
+                ON DELETE CASCADE,
+        object_reagent_id integer NOT NULL,
+        FOREIGN KEY (object_reagent_id) REFERENCES reagent (reagent_id)
+                ON DELETE CASCADE,
+        type_id integer NOT NULL,
+        FOREIGN KEY (type_id) REFERENCES cvterm (cvterm_id)
+                ON DELETE RESTRICT,
+        CONSTRAINT reagent_relationship_c1 UNIQUE (subject_reagent_id, object_reagent_id, type_id)
+);
+
+COMMENT ON TABLE reagent_relationship IS 'Relationships between reagents. Some reagents form a group; i.e., they are used all together or not at all. Examples are adapter/linker/enzyme assay reagents.';
+
+COMMENT ON COLUMN reagent_relationship.subject_reagent_id IS 'The subject reagent in the relationship. In parent/child terminology, the subject is the child. For example, in "linkerA 3prime-overhang-linker enzymeA" linkerA is the subject, 3prime-overhand-linker is the type, and enzymeA is the object.'; 
+
+COMMENT ON COLUMN reagent_relationship.object_reagent_id IS 'The object reagent in the relationship. In parent/child terminology, the object is the parent. For example, in "linkerA 3prime-overhang-linker enzymeA" linkerA is the subject, 3prime-overhand-linker is the type, and enzymeA is the object.'; 
+
+COMMENT ON COLUMN reagent_relationship.type_id IS 'The type (or predicate) of the relationship. For example, in "linkerA 3prime-overhang-linker enzymeA" linkerA is the subject, 3prime-overhand-linker is the type, and enzymeA is the object.'; 
+
+-- 
+-- table gtassay_reagent
+--
+-- Reagents used by a genotyping assay. An assay may use multiple
+-- reagents.
+
+CREATE TABLE gtassay_reagent (
+        gtassay_reagent_id serial NOT NULL,
+        PRIMARY KEY (gtassay_reagent_id),
+        gtassay_id integer NOT NULL,
+        FOREIGN KEY (gtassay_id) REFERENCES gtassay (gtassay_id)
+                ON DELETE CASCADE,
+        reagent_id integer NOT NULL,
+        FOREIGN KEY (reagent_id) REFERENCES reagent (reagent_id)
+                ON DELETE CASCADE,
+        type_id integer NOT NULL,
+        CONSTRAINT gtassay_reagent_c1 UNIQUE (gtassay_id, reagent_id, type_id)
+);
+
+COMMENT ON TABLE gtassay_reagent IS 'Reagents used by a genotyping assay. An assay may use multiple reagents.';
+
+COMMENT ON COLUMN gtassay_reagent.gtassay_id IS 'The genotyping assay using the reagent.';
+
+COMMENT ON COLUMN gtassay_reagent.reagent_id IS 'The reagent used by the genotyping assay.';
+
+COMMENT ON COLUMN gtassay_reagent.type_id IS 'The type or role in which the reagent is being used. For example, a primer may be used as a forward primer or a reverse primer, or a linker oligonucleotide may be used 3'' or 5''. Oftentimes, the type may be identical to the type of the reagent, though. A reagent can be used by one assay in the same role only once.';
 
 -- table specimen
 --
@@ -570,32 +698,6 @@ COMMENT ON TABLE image IS 'Link to an external image';
 COMMENT ON COLUMN image.identifier IS 'Unique identifier for the image, such as a LSID, or any other GUID';
 
 COMMENT ON COLUMN image.uri IS 'URL or local file path to image';
-
--- table pcrexperiment
---
--- Initial examination of a locus
---
--- UNDER REVIEW: this entity is under review and subject to change.
-
-CREATE TABLE pcrexperiment (
-	pcrexperiment_id serial PRIMARY KEY,
-	expected_length smallint,
-	intron boolean,
-	test_species_id integer REFERENCES organism(organism_id) ON DELETE RESTRICT,
-	outcome_success boolean,
-	image_id integer REFERENCES image(image_id) ON DELETE RESTRICT,
-	forward_primer_id integer REFERENCES feature (feature_id) ON DELETE RESTRICT,
-	reverse_primer_id integer REFERENCES feature (feature_id) ON DELETE RESTRICT
-);
-
-COMMENT ON TABLE pcrexperiment IS 'Initial examination of a locus';
-COMMENT ON COLUMN pcrexperiment.expected_length IS 'Length of the expectant product';
-COMMENT ON COLUMN pcrexperiment.intron IS 'True if cDNA includes an intron, false if it does not';
-COMMENT ON COLUMN pcrexperiment.test_species_id IS 'Taxa for which optimization experiments were performed';
-COMMENT ON COLUMN pcrexperiment.outcome_success IS 'True if experiment generated strong product in expected size range, false if no product was generated, or NULL if a weak product or non-specific amplification was observed';
-COMMENT ON COLUMN pcrexperiment.image_id IS 'Digital image of the experimental results';
-COMMENT ON COLUMN pcrexperiment.forward_primer_id IS 'Primer that sits on the coding strand';
-COMMENT ON COLUMN pcrexperiment.reverse_primer_id IS 'Primer that sits on the non-coding strand';
 
 -- create table individual_image
 
