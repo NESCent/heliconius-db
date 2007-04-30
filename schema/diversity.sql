@@ -154,6 +154,25 @@ COMMENT ON COLUMN geolocation.altitude_dev IS 'The possible deviation in altitud
 
 COMMENT ON COLUMN geolocation.politlocation_id IS 'The political boundaries of the georeference, if known.';
 
+-- table image (link out to a file name)
+--
+-- Link to an external image file
+
+CREATE TABLE image (
+	image_id serial NOT NULL,
+        PRIMARY KEY (image_id),
+        identifier character varying(255),
+	uri character varying(1024) NOT NULL,
+        CONSTRAINT image_c1 UNIQUE (identifier),
+        CONSTRAINT image_c2 UNIQUE (uri)
+);
+
+COMMENT ON TABLE image IS 'Link to an external image';
+
+COMMENT ON COLUMN image.identifier IS 'Unique identifier for the image, such as a LSID, or any other GUID';
+
+COMMENT ON COLUMN image.uri IS 'URL or local file path to image';
+
 -- table stock
 --
 -- Keeps track of information related to stocks or lines kept for
@@ -572,7 +591,7 @@ COMMENT ON COLUMN gtassay_reagent.gtassay_id IS 'The genotyping assay using the 
 
 COMMENT ON COLUMN gtassay_reagent.reagent_id IS 'The reagent used by the genotyping assay.';
 
-COMMENT ON COLUMN gtassay_reagent.type_id IS 'The type or role in which the reagent is being used. For example, a primer may be used as a forward primer or a reverse primer, or a linker oligonucleotide may be used 3'' or 5''. Oftentimes, the type may be identical to the type of the reagent, though. A reagent can be used by one assay in the same role only once.';
+--COMMENT ON COLUMN gtassay_reagent.type_id IS 'The type or role in which the reagent is being used. For example, a primer may be used as a forward primer or a reverse primer, or a linker oligonucleotide may be used 3'' or 5''. Oftentimes, the type may be identical to the type of the reagent, though. A reagent can be used by one assay in the same role only once.';
 
 -- table specimen
 --
@@ -679,25 +698,6 @@ CREATE TABLE gtexperiment_project (
 );
 
 COMMENT ON TABLE gtexperiment_project IS 'Associates a genotype experiment with a project (e.g., an experimental study)';
-
--- table image (link out to a file name)
---
--- Link to an external image file
-
-CREATE TABLE image (
-	image_id serial NOT NULL,
-        PRIMARY KEY (image_id),
-        identifier character varying(255),
-	uri character varying(1024) NOT NULL,
-        CONSTRAINT image_c1 UNIQUE (identifier),
-        CONSTRAINT image_c2 UNIQUE (uri)
-);
-
-COMMENT ON TABLE image IS 'Link to an external image';
-
-COMMENT ON COLUMN image.identifier IS 'Unique identifier for the image, such as a LSID, or any other GUID';
-
-COMMENT ON COLUMN image.uri IS 'URL or local file path to image';
 
 -- create table individual_image
 
@@ -955,11 +955,5 @@ COMMENT ON TABLE biotype_phenotype_project IS 'Assigns the biotype-phenotype ass
 ALTER TABLE individual ADD 
        FOREIGN KEY (crossexperiment_id) 
        REFERENCES crossexperiment (crossexperiment_id) 
-                ON DELETE RESTRICT
-;
-
-ALTER TABLE gtassay ADD
-        FOREIGN KEY (pcrexperiment_id) 
-        REFERENCES pcrexperiment (pcrexperiment_id)
                 ON DELETE RESTRICT
 ;
