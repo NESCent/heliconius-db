@@ -3,6 +3,8 @@
 body {
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 	font-size:12px;
+	margin:0px;
+	padding:0px;
 }
 
 
@@ -93,7 +95,8 @@ body {
 .menu_window{
 	border-right:1px solid #778;
 	padding:0px;
-	width: 120px;
+	width: 150px;
+	height: 450px;
 	
 }
 
@@ -102,35 +105,31 @@ body {
 	padding:0px;
 	padding-bottom: 0px;
 	margin:0px;
-}
-
-table{
-padding:0px;
-margin:0px;
+	height:74px;
 }
 
 th {
-background-color:#00FF66;
+background-color:#CCCCCC;
 color:#000033;
 font-weight:bold;
 padding:3px;
+margin:0px;
+padding-left:10px;
+padding-right:10px;
 }
 
 td{
-background-color:#FFFFFF;
-padding:3px;
+	padding:3px;
 }
 
 .odd
 {
-background-color:#FFFFFF;
-padding:3px;
+	background-color:#FFFFFF;
 }
 
 .even
 {
-padding:3px;
-background-color:#CCCCCC;
+	background-color:#CCCCCC;
 }
 
 caption {
@@ -138,3 +137,58 @@ text-align:left;
 font-size:14px;
 font-weight:bold;
 }
+
+.field_name
+{
+	text-align:right;
+	vertical-align:top;
+	background-color:#CCCCCC;
+	padding:3px;
+	padding-left:5px;
+	padding-right:5px;
+}
+
+.field_value
+{
+	text-align:left;
+	vertical-align:top;
+	padding:3px;
+	padding-left:5px;
+	padding-right:5px;
+}
+
+
+.linked
+{
+	background-color:#99CC66;
+
+}
+
+#default_box{
+	margin: 0;
+	margin-right:0px;
+	padding:10px;
+	border:1px solid #585858;
+	background-color:#CCCCCC;
+}
+
+#mother_box{
+	margin: 0;
+	margin-right:0px;
+	padding:10px;
+	border:1px solid #585858;
+	background-color:#FF99FF;
+	width:150px;
+}
+
+#father_box{
+	margin: 0;
+	margin-right:0px;
+	padding:10px;
+	border:1px solid #585858;
+	background-color:#0000CC;
+	color:#FFFFFF;
+	width:150px;
+}
+
+
