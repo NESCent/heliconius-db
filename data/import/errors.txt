@@ -1,0 +1,349 @@
+where	reason	action	id
+Error while assigning mother to cross	No individual found: NA	ignored	etylus
+Error while assigning father to cross	No individual found: NA	ignored	etylus
+Error while assigning mother to cross	No individual found: NA	ignored	himera
+Error while assigning father to cross	No individual found: NA	ignored	himera
+Error while assigning mother to cross	No individual found: X	ignored	HiCH6
+Error while assigning father to cross	No individual found: X	ignored	HiCH6
+Error while assigning mother to cross	No individual found: (PR187)	ignored	HiCH1
+Error while assigning father to cross	No individual found: (PR187)	ignored	HiCH1
+Error while assigning mother to cross	No individual found: X	ignored	CHCy6
+Error while assigning father to cross	No individual found: X	ignored	CHCy6
+Error while assigning mother to cross	No individual found: NA	ignored	NB3xStock
+Error while assigning father to cross	No individual found: NA	ignored	NB3xStock
+Error while assigning mother to cross	No individual found: NA	ignored	peterivana
+Error while assigning father to cross	No individual found: NA	ignored	peterivana
+Error while assigning mother to cross	No individual found: X	ignored	(CHCH)3
+Error while assigning father to cross	No individual found: X	ignored	(CHCH)3
+Error while assigning mother to cross	No individual found: X	ignored	EtHi10
+Error while assigning father to cross	No individual found: X	ignored	EtHi10
+Error while assigning mother to cross	No individual found: EC1188 	ignored	Brood_63
+Error while assigning father to cross	No individual found: EC1188 	ignored	Brood_63
+Error while assigning mother to cross	No individual found: (PR137)	ignored	CyCH2
+Error while assigning father to cross	No individual found: (PR137)	ignored	CyCH2
+Error while assigning mother to cross	No individual found: NA	ignored	erato
+Error while assigning father to cross	No individual found: NA	ignored	erato
+Error while assigning mother to cross	No individual found: NA	ignored	notabalis
+Error while assigning father to cross	No individual found: NA	ignored	notabalis
+Error while assigning mother to cross	No individual found: NA	ignored	cyrbia
+Error while assigning father to cross	No individual found: NA	ignored	cyrbia
+Error while assigning cross to individual	No cross found: 	ignored	PR1709
+Error while assigning cross to individual	No cross found: 	ignored	PR2117
+Error while assigning cross to individual	No cross found: 	ignored	PR2116
+Error while assigning cross to individual	No cross found: 	ignored	PR2115
+Error while assigning cross to individual	No cross found: 	ignored	PR2114
+Error while assigning cross to individual	No cross found: 	ignored	PR2113
+Error while assigning cross to individual	No cross found: 	ignored	PR2112
+Error while assigning cross to individual	No cross found: 	ignored	PR2109
+Error while assigning cross to individual	No cross found: 	ignored	PR2108
+Error while assigning cross to individual	No cross found: 	ignored	PR2107
+Error while assigning cross to individual	No cross found: 	ignored	PR2106
+Error while assigning cross to individual	No cross found: 	ignored	PR2105
+Error while assigning cross to individual	No cross found: ?Marked HIER?	ignored	PR2104
+Error while assigning cross to individual	No cross found: HIEr11	ignored	PR2102
+Error while assigning cross to individual	No cross found: HIEr11	ignored	PR2100
+Error while assigning cross to individual	No cross found: 	ignored	PR100 
+Error while assigning cross to individual	No cross found: 	ignored	PR1630
+Error while assigning cross to individual	No cross found: 	ignored	PR1629
+Error while assigning cross to individual	No cross found: 	ignored	PR1628
+Error while assigning cross to individual	No cross found: 	ignored	PR1627
+Error while assigning cross to individual	No cross found: 	ignored	PR1626
+Error while assigning cross to individual	No cross found: 	ignored	PR950
+Error while assigning cross to individual	No cross found: 	ignored	PR920
+Error while assigning cross to individual	No cross found: 	ignored	PR280
+Error while assigning cross to individual	No cross found: 	ignored	PR279
+Error while assigning cross to individual	No cross found: 	ignored	PR273
+Error while assigning cross to individual	No cross found: 	ignored	PR267
+Error while assigning cross to individual	No cross found: 	ignored	PR265
+Error while assigning cross to individual	No cross found: 	ignored	PR263
+Error while assigning cross to individual	No cross found: 	ignored	PR260
+Error while assigning cross to individual	No cross found: 	ignored	PR257
+Error while assigning cross to individual	No cross found: 	ignored	PR256
+Error while assigning cross to individual	No cross found: 	ignored	PR255
+Error while assigning cross to individual	No cross found: 	ignored	PR254
+Error while assigning cross to individual	No cross found: 	ignored	PR253
+Error while assigning cross to individual	No cross found: 	ignored	PR252
+Error while assigning cross to individual	No cross found: 	ignored	PR251
+Error while assigning cross to individual	No cross found: 	ignored	PR250
+Error while assigning cross to individual	No cross found: 	ignored	PR247
+Error while assigning cross to individual	No cross found: 	ignored	PR239
+Error while assigning cross to individual	No cross found: 	ignored	PR238
+Error while assigning cross to individual	No cross found: HBr13/14	ignored	PR237
+Error while assigning cross to individual	No cross found: 	ignored	PR236
+Error while assigning cross to individual	No cross found: 	ignored	PR235
+Error while assigning cross to individual	No cross found: 	ignored	PR230
+Error while assigning cross to individual	No cross found: HBr14	ignored	PR229
+Error while assigning cross to individual	No cross found: HBr14  (13?)	ignored	PR228
+Error while assigning cross to individual	No cross found: HBr12/13/14	ignored	PR227
+Error while assigning cross to individual	No cross found: HBr7	ignored	PR226
+Error while assigning cross to individual	No cross found: EBr10	ignored	PR224
+Error while assigning cross to individual	No cross found: 	ignored	PR223
+Error while assigning cross to individual	No cross found: 	ignored	PR218
+Error while assigning cross to individual	No cross found: 	ignored	PR215
+Error while assigning cross to individual	No cross found: HBr12/13/14	ignored	PR214
+Error while assigning cross to individual	No cross found: HBr12/13/14	ignored	PR213
+Error while assigning cross to individual	No cross found: 	ignored	PR211
+Error while assigning cross to individual	No cross found: 	ignored	PR210
+Error while assigning cross to individual	No cross found: 	ignored	PR1587
+Error while assigning cross to individual	No cross found: 	ignored	PR1586
+Error while assigning cross to individual	No cross found: 	ignored	PR209
+Error while assigning cross to individual	No cross found: 	ignored	PR208
+Error while assigning cross to individual	No cross found: 	ignored	PR207
+Error while assigning cross to individual	No cross found: 	ignored	PR206
+Error while assigning cross to individual	No cross found: 	ignored	PR205
+Error while assigning cross to individual	No cross found: 	ignored	PR204
+Error while assigning cross to individual	No cross found: 	ignored	PR203
+Error while assigning cross to individual	No cross found: 	ignored	PR202
+Error while assigning cross to individual	No cross found: 	ignored	PR201
+Error while assigning cross to individual	No cross found: 	ignored	PR200
+Error while assigning cross to individual	No cross found: 	ignored	PR1576
+Error while assigning cross to individual	No cross found: 	ignored	PR1574
+Error while assigning cross to individual	No cross found: 	ignored	PR1573
+Error while assigning cross to individual	No cross found: 	ignored	PR1572
+Error while assigning cross to individual	No cross found: 	ignored	PR1570
+Error while assigning cross to individual	No cross found: 	ignored	PR1505
+Error while assigning cross to individual	No cross found: 	ignored	PR805
+Error while assigning cross to individual	No cross found: 	ignored	PR199
+Error while assigning cross to individual	No cross found: 	ignored	PR198
+Error while assigning cross to individual	No cross found: 	ignored	PR197
+Error while assigning cross to individual	No cross found: 	ignored	PR196
+Error while assigning cross to individual	No cross found: 	ignored	PR195
+Error while assigning cross to individual	No cross found: 	ignored	PR194
+Error while assigning cross to individual	No cross found: 	ignored	PR193
+Error while assigning cross to individual	No cross found: 	ignored	PR192
+Error while assigning cross to individual	No cross found: CyHiB2	ignored	PR191
+Error while assigning cross to individual	No cross found: 	ignored	PR190
+Error while assigning cross to individual	No cross found: CyHiB2	ignored	PR189
+Error while assigning cross to individual	No cross found: 	ignored	PR188
+Error while assigning cross to individual	No cross found: 	ignored	PR187
+Error while assigning cross to individual	No cross found: CyHiB2	ignored	PR186
+Error while assigning cross to individual	No cross found: CyHiB2	ignored	PR185
+Error while assigning cross to individual	No cross found: HBR8	ignored	PR182
+Error while assigning cross to individual	No cross found: 	ignored	PR180
+Error while assigning cross to individual	No cross found: 	ignored	PR178
+Error while assigning cross to individual	No cross found: 	ignored	PR177
+Error while assigning cross to individual	No cross found: 	ignored	PR176
+Error while assigning cross to individual	No cross found: 	ignored	PR175
+Error while assigning cross to individual	No cross found: 	ignored	PR174
+Error while assigning cross to individual	No cross found: 	ignored	PR173
+Error while assigning cross to individual	No cross found: 	ignored	PR172
+Error while assigning cross to individual	No cross found: 	ignored	PR171
+Error while assigning cross to individual	No cross found: 	ignored	PR170
+Error while assigning cross to individual	No cross found: 	ignored	PR169
+Error while assigning cross to individual	No cross found: 	ignored	PR168
+Error while assigning cross to individual	No cross found: 	ignored	PR167
+Error while assigning cross to individual	No cross found: 	ignored	PR166
+Error while assigning cross to individual	No cross found: 	ignored	PR165
+Error while assigning cross to individual	No cross found: 	ignored	PR164
+Error while assigning cross to individual	No cross found: 	ignored	PR163
+Error while assigning cross to individual	No cross found: 	ignored	PR162
+Error while assigning cross to individual	No cross found: 	ignored	PR161
+Error while assigning cross to individual	No cross found: 	ignored	PR159
+Error while assigning cross to individual	No cross found: 	ignored	PR158
+Error while assigning cross to individual	No cross found: 	ignored	PR157
+Error while assigning cross to individual	No cross found: 	ignored	PR156
+Error while assigning cross to individual	No cross found: 	ignored	PR155
+Error while assigning cross to individual	No cross found: 	ignored	PR154
+Error while assigning cross to individual	No cross found: 	ignored	PR153
+Error while assigning cross to individual	No cross found: 	ignored	PR152
+Error while assigning cross to individual	No cross found: 	ignored	PR151
+Error while assigning cross to individual	No cross found: 	ignored	PR150
+Error while assigning cross to individual	No cross found: 	ignored	PR149
+Error while assigning cross to individual	No cross found: 	ignored	PR148
+Error while assigning cross to individual	No cross found: 	ignored	PR147
+Error while assigning cross to individual	No cross found: 	ignored	PR146
+Error while assigning cross to individual	No cross found: 	ignored	PR145
+Error while assigning cross to individual	No cross found: CyHiB2	ignored	PR144
+Error while assigning cross to individual	No cross found: 	ignored	PR143
+Error while assigning cross to individual	No cross found: 	ignored	PR141
+Error while assigning cross to individual	No cross found: CyHiB2	ignored	PR140
+Error while assigning cross to individual	No cross found: 	ignored	PR139
+Error while assigning cross to individual	No cross found: 	ignored	PR138
+Error while assigning cross to individual	No cross found: 	ignored	PR137
+Error while assigning cross to individual	No cross found: CyHiB2	ignored	PR136
+Error while assigning cross to individual	No cross found: 	ignored	PR135
+Error while assigning cross to individual	No cross found: 	ignored	PR134
+Error while assigning cross to individual	No cross found: 	ignored	PR133
+Error while assigning cross to individual	No cross found: 	ignored	PR132
+Error while assigning cross to individual	No cross found: 	ignored	PR131
+Error while assigning cross to individual	No cross found: 	ignored	PR130
+Error while assigning cross to individual	No cross found: 	ignored	PR129
+Error while assigning cross to individual	No cross found: 	ignored	PR128
+Error while assigning cross to individual	No cross found: 	ignored	PR127
+Error while assigning cross to individual	No cross found: 	ignored	PR126
+Error while assigning cross to individual	No cross found: 	ignored	PR124
+Error while assigning cross to individual	No cross found: 	ignored	PR123
+Error while assigning cross to individual	No cross found: 	ignored	PR122
+Error while assigning cross to individual	No cross found: 	ignored	PR120
+Error while assigning cross to individual	No cross found: 	ignored	PR119
+Error while assigning cross to individual	No cross found: 	ignored	PR118
+Error while assigning cross to individual	No cross found: 	ignored	PR116
+Error while assigning cross to individual	No cross found: 	ignored	PR115
+Error while assigning cross to individual	No cross found: 	ignored	PR114
+Error while assigning cross to individual	No cross found: 	ignored	PR113
+Error while assigning cross to individual	No cross found: 	ignored	PR112
+Error while assigning cross to individual	No cross found: CyHiB2	ignored	PR111
+Error while assigning cross to individual	No cross found: CyHiB2	ignored	PR110
+Error while assigning cross to individual	No cross found: CyHiB2	ignored	PR109
+Error while assigning cross to individual	No cross found: CyHiB2	ignored	PR108
+Error while assigning cross to individual	No cross found: CyHiB2	ignored	PR107
+Error while assigning cross to individual	No cross found: 	ignored	PR106
+Error while assigning cross to individual	No cross found: 	ignored	PR105
+Error while assigning cross to individual	No cross found: 	ignored	PR104
+Error while assigning cross to individual	No cross found: 	ignored	PR103
+Error while assigning cross to individual	No cross found: 	ignored	PR102
+Error while assigning cross to individual	No cross found: 	ignored	PR101
+Error while assigning cross to individual	No cross found: 	ignored	PR1455
+Error while assigning cross to individual	No cross found: 	ignored	PR1454
+Error while assigning cross to individual	No cross found: 	ignored	PR1453
+Error while assigning cross to individual	No cross found: 	ignored	PR1452
+Error while assigning cross to individual	No cross found: 	ignored	PR1451
+Error while assigning cross to individual	No cross found: 	ignored	PR1450
+Error while assigning cross to individual	No cross found: 	ignored	PR1449
+Error while assigning cross to individual	No cross found: 	ignored	PR1448
+Error while assigning cross to individual	No cross found: 	ignored	PR1447
+Error while assigning cross to individual	No cross found: 	ignored	PR1446
+Error while assigning cross to individual	No cross found: 	ignored	PR1445
+Error while assigning cross to individual	No cross found: 	ignored	PR1444
+Error while assigning cross to individual	No cross found: 	ignored	PR1443
+Error while assigning cross to individual	No cross found: 	ignored	PR1442
+Error while assigning cross to individual	No cross found: 	ignored	PR1441
+Error while assigning cross to individual	No cross found: 	ignored	PR1440
+Error while assigning cross to individual	No cross found: 	ignored	PR1439
+Error while assigning cross to individual	No cross found: 	ignored	PR1438
+Error while assigning cross to individual	No cross found: 	ignored	PR1437
+Error while assigning cross to individual	No cross found: 	ignored	PR1436
+Error while assigning cross to individual	No cross found: 	ignored	PR1435
+Error while assigning cross to individual	No cross found: 	ignored	PR1434
+Error while assigning cross to individual	No cross found: 	ignored	PR1433
+Error while assigning cross to individual	No cross found: 	ignored	PR1432
+Error while assigning cross to individual	No cross found: 	ignored	PR1431
+Error while assigning cross to individual	No cross found: 	ignored	PR1430
+Error while assigning cross to individual	No cross found: 	ignored	PR1429
+Error while assigning cross to individual	No cross found: 	ignored	PR1428
+Error while assigning cross to individual	No cross found: 	ignored	PR1427
+Error while assigning cross to individual	No cross found: 	ignored	PR1426
+Error while assigning cross to individual	No cross found: 	ignored	PR1425
+Error while assigning cross to individual	No cross found: 	ignored	PR1424
+Error while assigning cross to individual	No cross found: 	ignored	PR1423
+Error while assigning cross to individual	No cross found: 	ignored	PR1422
+Error while assigning cross to individual	No cross found: 	ignored	PR1421
+Error while assigning cross to individual	No cross found: 	ignored	PR1420
+Error while assigning cross to individual	No cross found: 	ignored	PR1419
+Error while assigning cross to individual	No cross found: 	ignored	PR1418
+Error while assigning cross to individual	No cross found: 	ignored	PR1417
+Error while assigning cross to individual	No cross found: 	ignored	PR1416
+Error while assigning cross to individual	No cross found: 	ignored	PR1415
+Error while assigning cross to individual	No cross found: 	ignored	PR1414
+Error while assigning cross to individual	No cross found: 	ignored	PR1413
+Error while assigning cross to individual	No cross found: 	ignored	PR1412
+Error while assigning cross to individual	No cross found: 	ignored	PR1411
+Error while assigning cross to individual	No cross found: 	ignored	PR1410
+Error while assigning cross to individual	No cross found: 	ignored	PR1409
+Error while assigning cross to individual	No cross found: 	ignored	PR1408
+Error while assigning cross to individual	No cross found: 	ignored	PR1407
+Error while assigning cross to individual	No cross found: 	ignored	PR1406
+Error while assigning cross to individual	No cross found: 	ignored	PR1405
+Error while assigning cross to individual	No cross found: 	ignored	PR1404
+Error while assigning cross to individual	No cross found: 	ignored	PR1403
+Error while assigning cross to individual	No cross found: 	ignored	PR707
+Error while assigning cross to individual	No cross found: 	ignored	PR700
+Error while assigning cross to individual	No cross found: 	ignored	PR1386
+Error while assigning cross to individual	No cross found: 	ignored	PR1344
+Error while assigning cross to individual	No cross found: 	ignored	PR681
+Error while assigning cross to individual	No cross found: 	ignored	PR660
+Error while assigning cross to individual	No cross found: 	ignored	PR1313
+Error while assigning cross to individual	No cross found: 	ignored	PR1307
+Error while assigning cross to individual	No cross found: 	ignored	PR1958
+Error while assigning cross to individual	No cross found: 	ignored	PR1911
+Error while assigning cross to individual	No cross found: 	ignored	PR1910
+Error while assigning cross to individual	No cross found: 	ignored	PR1906
+Error while assigning cross to individual	No cross found: 	ignored	PR1903
+Error while assigning cross to individual	No cross found: 	ignored	PR1900
+Error while assigning cross to individual	No cross found: 	ignored	PR99
+Error while assigning cross to individual	No cross found: 	ignored	PR96
+Error while assigning cross to individual	No cross found: 	ignored	PR95
+Error while assigning cross to individual	No cross found: 	ignored	PR94
+Error while assigning cross to individual	No cross found: 	ignored	PR93
+Error while assigning cross to individual	No cross found: 	ignored	PR92
+Error while assigning cross to individual	No cross found: 	ignored	PR91
+Error while assigning cross to individual	No cross found: 	ignored	PR90
+Error while assigning cross to individual	No cross found: 	ignored	PR88
+Error while assigning cross to individual	No cross found: 	ignored	PR1186
+Error while assigning cross to individual	No cross found: 	ignored	PR87
+Error while assigning cross to individual	No cross found: 	ignored	PR86
+Error while assigning cross to individual	No cross found: 	ignored	PR85
+Error while assigning cross to individual	No cross found: 	ignored	PR1183
+Error while assigning cross to individual	No cross found: 	ignored	PR84
+Error while assigning cross to individual	No cross found: 	ignored	PR83
+Error while assigning cross to individual	No cross found: 	ignored	PR81
+Error while assigning cross to individual	No cross found: 	ignored	PR80
+Error while assigning cross to individual	No cross found: 	ignored	PR1178
+Error while assigning cross to individual	No cross found: 	ignored	PR79
+Error while assigning cross to individual	No cross found: CyHiB2	ignored	PR78
+Error while assigning cross to individual	No cross found: 	ignored	PR77
+Error while assigning cross to individual	No cross found: 	ignored	PR76
+Error while assigning cross to individual	No cross found: 	ignored	PR72
+Error while assigning cross to individual	No cross found: 	ignored	PR68
+Error while assigning cross to individual	No cross found: 	ignored	PR67
+Error while assigning cross to individual	No cross found: 	ignored	PR66
+Error while assigning cross to individual	No cross found: CyHiB2	ignored	PR65
+Error while assigning cross to individual	No cross found: CyHiB2	ignored	PR64
+Error while assigning cross to individual	No cross found: CyHiB2	ignored	PR63
+Error while assigning cross to individual	No cross found: CyHiB2	ignored	PR62
+Error while assigning cross to individual	No cross found: CyHiB2	ignored	PR61
+Error while assigning cross to individual	No cross found: 	ignored	PR59
+Error while assigning cross to individual	No cross found: 	ignored	PR54
+Error while assigning cross to individual	No cross found: 	ignored	PR50
+Error while assigning cross to individual	No cross found: 	ignored	PR49
+Error while assigning cross to individual	No cross found: 	ignored	PR48
+Error while assigning cross to individual	No cross found: 	ignored	PR47
+Error while assigning cross to individual	No cross found: 	ignored	PR46
+Error while assigning cross to individual	No cross found: 	ignored	PR45
+Error while assigning cross to individual	No cross found: 	ignored	PR44
+Error while assigning cross to individual	No cross found: 	ignored	PR43
+Error while assigning cross to individual	No cross found: 	ignored	PR42
+Error while assigning cross to individual	No cross found: 	ignored	PR41
+Error while assigning cross to individual	No cross found: 	ignored	PR40
+Error while assigning cross to individual	No cross found: 	ignored	PR39
+Error while assigning cross to individual	No cross found: 	ignored	PR38
+Error while assigning cross to individual	No cross found: 	ignored	PR37
+Error while assigning cross to individual	No cross found: 	ignored	PR36
+Error while assigning cross to individual	No cross found: 	ignored	PR1134
+Error while assigning cross to individual	No cross found: 	ignored	PR35
+Error while assigning cross to individual	No cross found: 	ignored	PR34
+Error while assigning cross to individual	No cross found: 	ignored	PR33
+Error while assigning cross to individual	No cross found: 	ignored	PR32
+Error while assigning cross to individual	No cross found: 	ignored	PR31
+Error while assigning cross to individual	No cross found: 	ignored	PR30
+Error while assigning cross to individual	No cross found: 	ignored	PR29
+Error while assigning cross to individual	No cross found: 	ignored	PR28
+Error while assigning cross to individual	No cross found: 	ignored	PR1126
+Error while assigning cross to individual	No cross found: 	ignored	PR27
+Error while assigning cross to individual	No cross found: 	ignored	PR26
+Error while assigning cross to individual	No cross found: 	ignored	PR25
+Error while assigning cross to individual	No cross found: 	ignored	PR24
+Error while assigning cross to individual	No cross found: 	ignored	PR23
+Error while assigning cross to individual	No cross found: 	ignored	PR22
+Error while assigning cross to individual	No cross found: 	ignored	PR21
+Error while assigning cross to individual	No cross found: 	ignored	PR20
+Error while assigning cross to individual	No cross found: 	ignored	PR19
+Error while assigning cross to individual	No cross found: 	ignored	PR18
+Error while assigning cross to individual	No cross found: 	ignored	PR17
+Error while assigning cross to individual	No cross found: 	ignored	PR16
+Error while assigning cross to individual	No cross found: 	ignored	PR15
+Error while assigning cross to individual	No cross found: 	ignored	PR14
+Error while assigning cross to individual	No cross found: 	ignored	PR13
+Error while assigning cross to individual	No cross found: 	ignored	PR12
+Error while assigning cross to individual	No cross found: 	ignored	PR11
+Error while assigning cross to individual	No cross found: 	ignored	PR10
+Error while assigning cross to individual	No cross found: 	ignored	PR09
+Error while assigning cross to individual	No cross found: 	ignored	PR08
+Error while assigning cross to individual	No cross found: 	ignored	PR07
+Error while assigning cross to individual	No cross found: 	ignored	PR06
+Error while assigning cross to individual	No cross found: 	ignored	PR05
+Error while assigning cross to individual	No cross found: 	ignored	PR04
+Error while assigning cross to individual	No cross found: 	ignored	PR03
+Error while assigning cross to individual	No cross found: 	ignored	PR02
+Error while assigning cross to individual	No cross found: NoF29	ignored	PR01
+Error while assigning cross to individual	No cross found: cyribia	ignored	

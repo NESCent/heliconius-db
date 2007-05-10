@@ -1,0 +1,797 @@
+Collection_No	Collection_Date	Genus	Species	Race	Sex	General_Notes	WildOrReared	Collection_No	Collection_Site	Dept._Province	Country	Latitude	Longitude	Altitude	Collector	Collection_Notes	IsWild
+2	7/22/1999	Heliconius	charithonia		f		Wild	2	"El Progreso, Rio Yacumbi, Zamora"	Zamora	Ecuador	04-55S	78-50W				wild
+3	7/22/1999	Heliconius	charithonia		m		Wild	3	"El Progreso, Rio Yacumbi, Zamora"	Zamora	Ecuador	04-55S	78-50W				wild
+4	7/22/1999	Heliconius	charithonia		m		Wild	4	"El Progreso, Rio Yacumbi, Zamora"	Zamora	Ecuador	04-55S	78-50W				wild
+5	7/22/1999	Heliconius	charithonia		m		Wild	5	"El Progreso, Rio Yacumbi, Zamora"	Zamora	Ecuador	04-55S	78-50W				wild
+6	7/22/1999	Heliconius	charithonia		?		Wild	6	"El Progreso, Rio Yacumbi, Zamora"	Zamora	Ecuador	04-55S	78-50W				wild
+7	7/22/1999	Dryas	iulia		m		Wild	7	"El Progreso, Rio Yacumbi, Zamora"	Zamora	Ecuador	04-55S	78-50W				wild
+8	7/24/1999	Heliconius	numata		m		Wild	8	"Rio Pindo, Shell (‘Proyecto Fundacion 2000), Puyo"	Pastaza	Ecuador	01-30S	78-05W				wild
+9	7/26/1999	Heliconius	sara		m		Wild	9	"Rio Quilo, 23km Puyo to Banos"	Pastaza	Ecuador	01-30S	78-05W				wild
+10	7/26/1999	Heliconius	doris?		f		Wild	10	"Rio Quilo, 23km Puyo to Banos"	Pastaza	Ecuador	01-30S	78-05W				wild
+11	7/26/1999	Heliconius	telesiphe		f		Wild	11	"Rio Quilo, 23km Puyo to Banos"	Pastaza	Ecuador	01-30S	78-05W				wild
+12	7/26/1999	Heliconius	telesiphe		m		Wild	12	"Rio Quilo, 23km Puyo to Banos"	Pastaza	Ecuador	01-30S	78-05W				wild
+13	7/26/1999	Podotricha	telesiphe		m	mimic of H. telesiphe	Wild	13	"Rio Quilo, 23km Puyo to Banos"	Pastaza	Ecuador	01-30S	78-05W			mimic of H. telesiphe	wild
+14	7/26/1999	Heliconius	melpomene	plesseni	m		Wild	14	"Rio Quilo, 23km Puyo to Banos"	Pastaza	Ecuador	01-30S	78-05W				wild
+15	7/26/1999	Heliconius	wallacei		m		Wild	15	"Rio Pindo, Shell (‘Proyecto Fundacion 2000’), Puyo"	Pastaza	Ecuador	01-30S	78-05W				wild
+16	7/25/1999	Heliconius	sara		m		Wild	16	"Rio Quilo, 23km Puyo to Banos"	Pastaza	Ecuador	01-30S	78-05W				wild
+17	7/25/1999	Heliconius	doris?		m		Wild	17	"Gavilan del Anzu, 15km Puyo to Tena"	Pastaza	Ecuador	01-30S	78-05W				wild
+18	7/25/1999	Heliconius	erato?	notabalis hybrid?	m	INEFAN?	Wild	18	"Gavilan del Anzu, 15km Puyo to Tena"	Pastaza	Ecuador	01-30S	78-05W			possible hybrid zone- individuals seen with no red band. Also H. mel caught with distal-most band only on forewing	wild
+19	7/25/1999	Heliconius	erato	notabalis hybrid?	m	INEFAN?	Wild	19	"Gavilan del Anzu, 15km Puyo to Tena"	Pastaza	Ecuador	01-30S	78-05W			possible hybrid zone- individuals seen with no red band. Also H. mel caught with distal-most band only on forewing	wild
+20	7/25/1999	Heliconius	melpomene	plesseni hybrid?	m		Wild	20	"Gavilan del Anzu, 15km Puyo to Tena"	Pastaza	Ecuador	01-30S	78-05W			possible hybrid zone- individuals seen with no red band. Also H. mel caught with distal-most band only on forewing	wild
+21	7/25/1999	Heliconius	melpomene	plesseni hybrid?	m		Wild	21	"Gavilan del Anzu, 15km Puyo to Tena"	Pastaza	Ecuador	01-30S	78-05W			possible hybrid zone- this individual has no red band. Also H. mel caught with distal-most band only on forewing	wild
+22	7/25/1999	Heliconius	melpomene hybrid?	plesseni	m		Wild	22	"Gavilan del Anzu, 15km Puyo to Tena"	Pastaza	Ecuador	01-30S	78-05W			possible hybrid zone- this individual has distal-most band only on forewing.	wild
+23	7/23/1999	Heliconius	charithonia		m		Wild	23	"Panguinza, Zumbi,  Zamora"	Zamora	Ecuador	04-55S	78-50W				wild
+24	7/22/1999	Heliconius	charithonia		m		Wild	24	"Panguinza, Zumbi,  Zamora"	Zamora	Ecuador	04-55S	78-50W				wild
+25	7/22/1999	Dryas	iulia		?		Wild	25	"Panguinza, Zumbi,  Zamora"	Zamora	Ecuador	04-55S	78-50W				wild
+26	7/22/1999	Dryas	iulia		?		Wild	26	"Panguinza, Zumbi,  Zamora"	Zamora	Ecuador	04-55S	78-50W				wild
+27	7/22/1999	Heliconius	erato	etylus	f	INEFAN?	Wild	27	"El Progreso, Rio Yacumbi, Zamora"	Zamora	Ecuador	04-55S	78-50W				wild
+28	7/22/1999	Heliconius	erato	etylus	m	INEFAN?	Wild	28	"El Progreso, Rio Yacumbi, Zamora"	Zamora	Ecuador	04-55S	78-50W				wild
+29	7/22/1999	Heliconius	erato	etylus	m	INEFAN?	Wild	29	"El Progreso, Rio Yacumbi, Zamora"	Zamora	Ecuador	04-55S	78-50W				wild
+30	7/22/1999	Heliconius	erato	etylus	f	INEFAN?	Wild	30	"El Progreso, Rio Yacumbi, Zamora"	Zamora	Ecuador	04-55S	78-50W				wild
+31	7/22/1999	Heliconius	erato	etylus	?	INEFAN?	Wild	31	"El Progreso, Rio Yacumbi, Zamora"	Zamora	Ecuador	04-55S	78-50W				wild
+38	1/18/1994	Heliconius	peruvianus?		m	NO WINGS	Wild	38	Guayquichuma +1.25km		Ecuador					Nowings; NJ with charithonia	wild
+70	1/25/1994	Heliconius	peruvianus?		f	NO WINGS	Wild	70	"El Porvenir, Zambi"		Ecuador					Nowings; NJ with charithonia	wild
+80	1/25/1994	Heliconius	peruvianus?		m	NO WINGS	Wild	80	Guayquichuma +2.75km (Las Orquideas rest.)		Ecuador					Nowings; NJ with charithonia	wild
+101	1/30/1994	Heliconius	erato	etylus	m	NO WINGS; 	Wild	101	"Rio Bombuscaro bridge, East of Zamora"	Zamora	Ecuador					NO WINGS	wild
+102	1/30/1994	Heliconius	erato	etylus	m	NO WINGS;	Wild	102	"Rio Bombuscaro bridge, East of Zamora"	Zamora	Ecuador					NO WINGS	wild
+103	1/30/1994	Heliconius	erato	etylus	f	NO WINGS;	Wild	103	"Rio Bombuscaro bridge, East of Zamora"	Zamora	Ecuador					NO WINGS	wild
+104	1/30/1994	Heliconius	erato	etylus	f	NO WINGS;	Wild	104	"Rio Bombuscaro bridge, East of Zamora"	Zamora	Ecuador					NO WINGS	wild
+250	5/19/1994	Heliconius	melpomene		M	NO WINGS	Wild	250	Guayquichuma Glen		Ecuador					NO WINGS	wild
+396	7/5/1994	Heliconius	clysonymus		M		Wild	396	"Chagauarpamba, 2gm south"		Ecuador						wild
+397	7/5/1994	Heliconius	clysonymus		f		Wild	397	"Chagauarpamba, 2gm south"		Ecuador						wild
+398	7/6/1994	Heliconius	clysonymus		M		Wild	398	"Chagauarpamba, 2gm south"		Ecuador						wild
+428	7/16/1994	Heliconius	melpomene	ecuadoriensis	f		Wild	428	Zumba-Pucupamba 3.3gm	Zamora	Ecuador						wild
+432	7/16/1994	Heliconius	numata?		m		Wild	432	Zumba-Palanda 5.1gm		Ecuador						wild
+433	7/16/1994	Heliconius	numata?		m		Wild	433	Zumba-Palanda 5.1gm		Ecuador						wild
+451	7/21/1994	Heliconius	sara		f		Wild	451	Guayquichuma +1.25km 		Ecuador						wild
+452	7/21/1994	Heliconius	sara		m		Wild	452	Guayquichuma +1.25km 		Ecuador						wild
+453	7/21/1994	Heliconius	sara		m		Wild	453	Guayquichuma +1.25km 		Ecuador						wild
+458	7/21/1994	Heliconius	sara		m		Wild	458	Guayquichuma +1.25km 		Ecuador						wild
+513	8/20/1994	Heliconius	telesiphe		m		Wild	513	Romerllos Guard station near Zamora	Zamora	Ecuador						wild
+514	8/20/1994	Heliconius	telesiphe		m		Wild	514	Romerllos Guard station near Zamora	Zamora	Ecuador						wild
+515	8/20/1994	Heliconius	telesiphe		f		Wild	515	Romerllos Guard station near Zamora	Zamora	Ecuador						wild
+570	10/27/1994	Eueides	procula		f		Wild	570	"Buena Vista East 3.1gm, near Chaguar."		Ecuador						wild
+800	10/27/1994	Eueides	aliphero		m		Wild	800	Rio Guaduas (Chaguarpamba-Balsas)		Ecuador						wild
+1042	6/11/1994	Heliconius	melpomene	cythera	m		Wild	1042	"Hacienda Hesperia, Sto. Domingo"	Pinchincha	Ecuador			1130m			wild
+1043	6/11/1994	Heliconius	charithonia		m		Wild	1043	"Hacienda Hesperia, Sto. Domingo"	Pinchincha	Ecuador			1130m			wild
+1044	6/11/1994	Heliconius	charithonia		m		Wild	1044	"Hacienda Hesperia, Sto. Domingo"	Pinchincha	Ecuador			1130m			wild
+1045	6/11/1994	Heliconius	charithonia		m		Wild	1045	"Hacienda Hesperia, Sto. Domingo"	Pinchincha	Ecuador			1130m			wild
+1046	6/11/1994	Heliconius	charithonia		f		Wild	1046	"Hacienda Hesperia, Sto. Domingo"	Pinchincha	Ecuador			1130m			wild
+1047	6/11/1994	Heliconius	cydno		m		Wild	1047	"Hacienda Hesperia, Sto. Domingo"	Pinchincha	Ecuador			1130m			wild
+1050	7/11/1994	Heliconius	melpomene	cythera	m		Wild	1050	Tinalandia	Pinchincha	Ecuador			750m			wild
+1051	7/11/1994	Heliconius	melpomene	cythera	m		Wild	1051	Tinalandia	Pinchincha	Ecuador			750m			wild
+1056	7/11/1994	Heliconius	eleuchia		m		Wild	1056	Tinalandia	Pinchincha	Ecuador			750m			wild
+1057	8/11/1994	Heliconius	eleuchia		m		Wild	1057	"Alluriquin, Sto. Domingo"	Pinchincha	Ecuador			780m			wild
+1058	8/11/1994	Heliconius	eleuchia		m		Wild	1058	"Alluriquin, Sto. Domingo"	Pinchincha	Ecuador			780m			wild
+1378		Heliconius	melpomene	cythera	m	no date	Wild	1378	Zhud-La Troncale		Ecuador						wild
+1379		Heliconius	melpomene	cythera	f	no date	Wild	1379	Zhud-La Troncale		Ecuador						wild
+1968	12/23/1999				m	NO WINGS	Wild	1968			Ecuador					NO WINGS	wild
+2239	1/1/1995	Heliconius	erato	lativitta			Wild	2239	" Satcha lodge,Rio Napo"	Napo	Ecuador						wild
+2240	1/1/1995	Heliconius	sp?				Wild	2240	" Satcha lodge,Rio Napo"	Napo	Ecuador						wild
+2596	1/1/1995	Dryas	iulia		f		Wild	2596	Vilcabamba	Loja	Ecuador						wild
+3176	7/3/1995	Podotricha	telesiphe				Wild	3176	Valladollid		Ecuador						wild
+3905	5/4/1995	Dryas	iulia		m		Wild	3905	"Oleoducto,Alluriguin nr.Santo Domingo"	Pinchincha	Ecuador						wild
+3906	5/4/1995	Dryas	iulia		f		Wild	3906	"Oleoducto,Alluriguin nr.Santo Domingo"	Pinchincha	Ecuador						wild
+3910	5/4/1995	Heliconius	athis		m		Wild	3910	"Oleoducto,Alluriguin nr.Santo Domingo"	Pinchincha	Ecuador						wild
+3911	5/4/1995	Heliconius	athis		f		Wild	3911	"Oleoducto,Alluriguin nr.Santo Domingo"	Pinchincha	Ecuador						wild
+3916	5/4/1995	Heliconius	sapho		m		Wild	3916	"Oleoducto,Alluriguin nr.Santo Domingo"	Pinchincha	Ecuador						wild
+3917	5/4/1995	Heliconius	eleuchia		f		Wild	3917	"Oleoducto,Alluriguin nr.Santo Domingo"	Pinchincha	Ecuador						wild
+3968	5/4/1995	Heliconius	athis		f		Wild	3968	Along road to Sto Domingo	Pinchincha	Ecuador						wild
+3969	5/4/1995	Heliconius	athis		m		Wild	3969	Along road to Sto Domingo	Pinchincha	Ecuador						wild
+3997	8/4/1995	Podotricha	telesiphe		m		Wild	3997	"Baeza,in river by cementario,"	Napo	Ecuador			1800m			wild
+3998	8/4/1995	Podotricha	telesiphe		m		Wild	3998	"Baeza,in river by cementario,"	Napo	Ecuador			1800m			wild
+3999	8/4/1995	Heliconius	telesiphe		f	NO WINGS	Wild	3999	22.9Km Baeza tena	Napo	Ecuador			1450m		NO WINGS	wild
+4001	1/6/2000	Heliconius	erato	lativitta	m	INEFAN?	Wild	4001		Baeza	Ecuador						wild
+4003	1/6/2000	Heliconius	erato	lativitta	m	INEFAN?	Wild	4003		Baeza	Ecuador						wild
+4004	1/6/2000	Heliconius	erato	lativitta	m	INEFAN?	Wild	4004		Baeza	Ecuador						wild
+4007	8/4/1995	Heliconius	erato	sp???	f	lativitta like	Wild	4007	31Km Baeza tena	Napo	Ecuador			900m		lativitta like	wild
+4008	8/4/1995	Heliconius	erato	sp??	m	lativitta-like	Wild	4008	31Km Baeza tena	Napo	Ecuador			900m		lativitta-like	wild
+4011	8/4/1995	Heliconius	numata		m		Wild	4011	31Km Baeza tena	Napo	Ecuador			900m			wild
+4012	8/4/1995	Heliconius	numata		m		Wild	4012	"Baeza,in river by cementario"	Napo	Ecuador			1800m			wild
+4019	8/4/1995	Dryas	iulia		m		Wild	4019	31Km Baeza tena	Napo	Ecuador			900m			wild
+4020	8/4/1995	Dryas	iulia		m		Wild	4020	31Km Baeza tena	Napo	Ecuador			900m			wild
+4021	8/4/1995	Dryas	iulia		m		Wild	4021	31Km Baeza tena	Napo	Ecuador			900m			wild
+4022	8/4/1995	Heliconius	sara?		f		Wild	4022	31Km Baeza tena	Napo	Ecuador			900m			wild
+4023	8/4/1995	Dione	juno		m		Wild	4023	31Km Baeza tena	Napo	Ecuador			900m			wild
+4026	8/4/1995	Heliconius	melpomene	aglaope	m		Wild	4026	31Km Baeza tena	Napo	Ecuador			900m			wild
+4027	8/4/1995	Heliconius	melpomene	aglaope	m		Wild	4027	31Km Baeza tena	Napo	Ecuador			900m			wild
+7151	1/8/1997	Heliconius	melpomene	rosina			Wild	7151	Rio Calovebra		Panama						wild
+7152	1/8/1997	Heliconius	melpomene	rosina			Wild	7152	Rio Calovebra		Panama						wild
+7153	1/8/1997	Heliconius	erato	petiverana			Wild	7153	Rio Calovebra		Panama						wild
+7154	1/8/1997	Heliconius	erato	petiverana			Wild	7154	Rio Calovebra		Panama						wild
+7155	1/8/1997	Heliconius	erato	petiverana			Wild	7155	Rio Calovebra		Panama						wild
+7156	1/8/1997	Heliconius	erato	petiverana			Wild	7156	Rio Calovebra		Panama						wild
+7157	1/8/1997	Heliconius	erato	petiverana			Wild	7157	Rio Calovebra		Panama						wild
+7158	1/8/1997	Heliconius	erato	petiverana			Wild	7158	Rio Calovebra		Panama						wild
+7159	1/8/1997	Heliconius	erato	petiverana			Wild	7159	Rio Calovebra		Panama						wild
+7160	1/8/1997	Heliconius	erato	petiverana			Wild	7160	Rio Calovebra		Panama						wild
+7161	1/8/1997	Heliconius	erato	petiverana			Wild	7161	Rio Calovebra		Panama						wild
+7162	1/8/1997	Heliconius	erato	petiverana			Wild	7162	Rio Calovebra		Panama						wild
+7163	1/8/1997	Heliconius	erato	petiverana			Wild	7163	Rio Calovebra		Panama						wild
+7164	1/8/1997	Heliconius	erato	petiverana			Wild	7164	Rio Calovebra		Panama						wild
+7165	1/8/1997	Heliconius	erato	petiverana			Wild	7165	Rio Calovebra		Panama						wild
+7166	1/8/1997	Heliconius	sara	fulgidus			Wild	7166	Rio Calovebra		Panama						wild
+7167	1/8/1997	Heliconius	sara	fulgidus			Wild	7167	Rio Calovebra		Panama						wild
+7168	1/8/1997	Heliconius	erato	petiverana			Wild	7168	Rio Calovebra		Panama						wild
+7169	1/8/1997	Heliconius	erato	petiverana			Wild	7169	Rio Calovebra		Panama						wild
+7170	1/8/1997	Heliconius	sara	fulgidus			Wild	7170	Rio Calovebra		Panama						wild
+7171	1/8/1997	Heliconius	erato	hybrid?		lacks yellow hindwing band	Wild	7171	Rio Calovebra		Panama					lacks yellow hindwing band	wild
+7172	1/8/1997	Heliconius	erato	petiverana			Wild	7172	Rio Calovebra		Panama						wild
+7173	1/8/1997	Heliconius	erato	petiverana			Wild	7173	Rio Calovebra		Panama						wild
+7174	1/8/1997	Heliconius	erato	petiverana			Wild	7174	Rio Calovebra		Panama						wild
+7175	1/8/1997	Heliconius	erato	petiverana	m		Wild	7175	"Bahia Azul, Quebrada larga"		Panama	9.143611111	-81.87055556			2004-04-05 Changed LATLON from 81’52’14’’N 9’08’37’’W to decimal values	wild
+7176	1/8/1997	Heliconius	erato	petiverana	f		Wild	7176	"Bahia Azul, Quebrada larga"		Panama	9.143611111	-81.87055556			2004-04-05 Changed LATLON from 81’52’14’’N 9’08’37’’W to decimal values	wild
+7177	1/8/1997	Heliconius	erato	hybrid?		lacks yellow hind wing band	Wild	7177	"Bahia Azul, Quebrada larga"		Panama	9.143611111	-81.87055556			lacks yellow hind wing band; 2004-04-05 Changed LATLON from 81’52’14’’N 9’08’37’’W to decimal values	wild
+7178	1/8/1997	Heliconius	erato	petiverana			Wild	7178	"Bahia Azul, Quebrada larga"		Panama	9.143611111	-81.87055556			2004-04-05 Changed LATLON from 81’52’14’’N 9’08’37’’W to decimal values	wild
+7179	1/8/1997	Heliconius	sara	fulgidus	m		Wild	7179	"Rio Robalo, Laguna de Chiriqui"		Panama						wild
+7180	1/8/1997	Heliconius	phaetusa				Wild	7180	"Rio Robalo, Laguna de Chiriqui"		Panama						wild
+7181	1/8/1997	Lycorea	cleobaea			DANAINAE	Wild	7181	"Rio Robalo, Laguna de Chiriqui"		Panama					DANAINAE	wild
+7182	1/8/1997	Heliconius	erato	petiverana			Wild	7182	"Rio Robalo, Laguna de Chiriqui"		Panama						wild
+7183	1/8/1997	Heliconius	erato	petiverana	f		Wild	7183	"Rio Robalo, Laguna de Chiriqui"		Panama						wild
+C11	2/28/1998	Heliconius	melpomene	melpomene	f		Wild	C11	Virgen de Chiraja-near Gayabetal (just after shrine towards Villavicencio)		Colombia						wild
+C12	2/28/1998	Heliconius	melpomene	melpomene	f		Wild	C12	Virgen de Chiraja-near Gayabetal (just after shrine towards Villavicencio)		Colombia						wild
+C128		Heliconius	melpomene	vulcanus	m	Nic please fix this date - it said 5/06/1902	Wild	C128	Rio Bravo- a long road		Colombia						wild
+C1384		Heliconius	melpomene	melpomene	f	NNic please fix this date - it said 3/11/1903	Wild	C1384	La Victorie (Sablance)		French Guyana						wild
+C140		Heliconius	erato	chestertonii	f	Nic please fix this date - it said 5/06/1902	Wild	C140	Rio Bravo- a long road		Colombia						wild
+C1652	3/31/1999	Heliconius	melpomene	rosina	f		Wild	C1652	Beyond pipeline road		Panama						wild
+C171		Heliconius	erato	chestertonii	f	Nic please fix this date - it said 5/07/1902	Wild	C171	Yotoco-  just outside reserve		Colombia						wild
+C1852		Heliconius	melpomene	rosina	f	no date	Wild	C1852			Panama						wild
+C188		Heliconius	erato	chestertonii	m	Nic please fix this date - it said 5/07/1902	Wild	C188	Near Calima Reservoir		Colombia						wild
+C189		Heliconius	erato	chestertonii	m	Nic please fix this date - it said 5/07/1902	Wild	C189	Alto Los Cedros-near calima reservoir-on left turn past Puntatierra on the way towards Buenaventura		Colombia						wild
+C20	2/28/1998	Heliconius	erato		m		Wild	C20	Virgen de Chiraja-near Gayabetal (just after shrine towards Villavicencio)		Colombia						wild
+C201		Heliconius	erato	chestertonii	f	Nic please fix this date - it said 5/07/1902	Wild	C201	Yocoto just outside reserve		Colombia						wild
+C206		Heliconius	erato	chestertonii	f	Nic please fix this date - it said 5/04/1902	Wild	C206	Atuncela		Colombia						wild
+C207		Heliconius	erato	chestertonii	m	Nic please fix this date - it said 5/07/1902	Wild	C207	Alto Los Cedros-near Calima resorvorio-on the left turn past Puntetierra on the way towards Buenaventura		Colombia						wild
+C214		Heliconius	erato	chestertonii	f	Nic please fix this date - it said 5/04/1902	Wild	C214	Atuncela		Colombia						wild
+C2397		Heliconius	melpomene	plesseni	m	no date	Wild	C2397	Puyo Valley		Ecuador						wild
+C2404		Heliconius	melpomene	plesseni	m	no date	Wild	C2404	Puyo Valley		Ecuador						wild
+C2417		Heliconius	melpomene	ecuadoriensis	f	no date	Wild	C2417	Zamora		Ecuador						wild
+C2429		Heliconius	melpomene	plesseni	f	no date	Wild	C2429	Puyo Valley coll by Nic Flanagan		Ecuador						wild
+C2430		Heliconius	melpomene	ecuadoriensis	m	no date	Wild	C2430	zamora coll by Nic Flanagan		Ecuador						wild
+C2432		Heliconius	melpomene	ecuadoriensis	f	no date	Wild	C2432	zamora coll by Nic Flanagan		Ecuador						wild
+C255	4/18/1998	Heliconius	erato	demophoon?	m		Wild	C255	Parcela 33 Villeta-Guaduas 23.6 km		Colombia						wild
+C256	4/18/1998	Heliconius	erato	hydara	m		Wild	C256	Parcela 33 Villeta-Guaduas 23.6 km		Colombia						wild
+C259	4/17/1998	Heliconius	melpomene	melpomene	m		Wild	C259	Mariquita Reserve		Colombia						wild
+C313	5/25/1998	Heliconius	erato	erato	m		Wild	C313	Roura to Kaw Mountains-18.3 km		French Guyana						wild
+C347	5/21/1998	Heliconius	erato	erato	f		Wild	C347	"near caco,coll. Phillipe, Souleur"		French Guyana						wild
+C348	5/21/1998	Heliconius	erato	erato	f		Wild	C348	"Cacao, cayenne, 9.9 km"		French Guyana						wild
+C349	5/21/1998	Heliconius	erato	erato	m		Wild	C349	"Cacao, cayenne, 9.9 km"		French Guyana						wild
+C351	5/21/1998	Heliconius	erato	erato	m		Wild	C351	"Cacao, cayenne, 9.9 km"		French Guyana						wild
+C353	5/23/1998	Heliconius	melpomene	melpomene	m		Wild	C353	Crique yiyi  - Kourou - St. Laurent		French Guyana						wild
+C398	5/28/1998	Heliconius	melpomene	melpomene	m		Wild	C398	Pointe Macouria		French Guyana						wild
+C403	5/28/1998	Heliconius	melpomene	melpomene	m		Wild	C403	Sablance - Rout N1 km 19		French Guyana						wild
+C420	5/29/1998	Heliconius	erato	hydara	f		Wild	C420	Pointe Macouria		French Guyana						wild
+C421		Heliconius	melpomene	melpomene	f	Nic please fix this date - it said 7/08/1902	Wild	C421	Parcela 33 Villeta - Guaduas 23.6 km		Colombia						wild
+C422		Heliconius	melpomene	melpomene	f	Nic please fix this date - it said 7/08/1902	Wild	C422	Parcela 33 Villeta - Guaduas 23.6 km		Colombia						wild
+C440	5/30/1998	Heliconius	erato	hydara	m		Wild	C440	Sablance Route N1 km 19		French Guyana						wild
+C442	5/30/1998	Heliconius	erato	hydara	m		Wild	C442	Sablance Route N1 km 19		French Guyana						wild
+C444	5/30/1998	Heliconius	erato	hydara	m		Wild	C444	Sablance Route N1 km 19		French Guyana						wild
+C447	5/30/1998	Heliconius	erato	hydara	m		Wild	C447	Sablance Route N1 km 19		French Guyana						wild
+C454		Heliconius	erato	hydara	f	Nic please fix this date - it said 7/08/1902	Wild	C454	Parcela 33 Villeta - Guaduas 23.6 km		Colombia						wild
+C455		Heliconius	erato	hydara	f	Nic please fix this date - it said 7/08/1902	Wild	C455	Parcela 33 Villeta - Guaduas 23.6 km		Colombia						wild
+C456		Heliconius	erato	hydara	f	Nic please fix this date - it said 7/08/1902	Wild	C456	Parcela 33 Villeta - Guaduas 23.6 km		Colombia						wild
+C457		Heliconius	erato	hydara	f	Nic please fix this date - it said 7/08/1902	Wild	C457	Parcela 33 Villeta - Guaduas 23.6 km		Colombia						wild
+C528	5/29/1998	Heliconius	melpomene	melpomene	f		Wild	C528	Pointe Macouria		French Guyana						wild
+C57		Heliconius	erato	chestertonii x venus	m	Nic please fix this date - it said 5/05/1902	Wild	C57	"Finca La Delicias-Qbda. La Guinea, on Cali-Buenaventura road past Tunel #3"		Colombia						wild
+C58		Heliconius	melpomene	vulcanus	m	Nic please fix this date - it said 5/05/1902	Wild	C58	"Finca La Delicias-Qbda. La Guinea, on Cali-Buenaventura road past Tunel #3"		Colombia						wild
+C59		Heliconius	melpomene	vulcanus	m	Nic please fix this date - it said 5/05/1902	Wild	C59	La Gloria Cali- Buenaventura road at Tuenl #3		Colombia						wild
+C628	8/19/1998	Heliconius	melpomene	rosina	f		Wild	C628	Pipeline road		Panama						wild
+C65		Heliconius	erato	chestertonii	m	Nic please fix this date - it said 5/05/1902	Wild	C65	La Gloria Cali- Buenaventura road at Tuenl #3		Colombia						wild
+C66		Heliconius	erato	chestertonii	m	Nic please fix this date - it said 5/05/1902	Wild	C66	La Gloria Cali- Buenaventura road at Tuenl #3		Colombia						wild
+C841	11/26/1998	Heliconius	melpomene	rosina	f		Wild	C841	Madden Hwy 4km from Gamboa turnoff		Panama						wild
+FG0	10/28/2000	Heliconius	erato	erato			Wild	FG0	"Montjoly, Regine Crique Blanch"	Cayenne	French Guiana	4.534516667	52.37348333	-3.048		"DDK, WOM"	wild
+								FG0	Emerald Jungle Village to Kaw Marsh & return! Right turn 0.1 k  off of regine / roura rd int. towards roura	Cayenne	French Guiana	4.802283333	52.3644	-6.096		"DDK, WOM, CREW"	wild
+FG1	10/27/2000	Heliconius	erato	erato	Male		Wild	FG1	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard Bfly farm just down road to Cacao"	Cayenne	French Guiana	4.568116667	52.40521667	45.1104		"DDK, WOM"	wild
+FG10	10/27/2000	Heliconius	spp 1		Unknown	White patches & skinny wings	Wild	FG10	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard Above Cacao @ access interdit"	Cayenne	French Guiana	4.5392	52.47388333	53.9496	White patches & skinny wings	"DDK, WOM"	wild
+FG100	11/2/2000	Heliconius	melpomene		Male		Wild	FG100	Mariposoula au Grande Santi Road along mio edge Suriname!	St. Laurent du Maroni	French Guiana	3.685933333	54.08875	110.9472		"DDK, WOM, CREW"	wild
+FG101	11/2/2000	Heliconius	melpomene		Male		Wild	FG101	Mariposoula au Grande Santi Road along mio edge Suriname!	St. Laurent du Maroni	French Guiana	3.685933333	54.08875	110.9472		"DDK, WOM, CREW"	wild
+FG102	11/2/2000	Heliconius					Wild	FG102	Mariposoula au Grande Santi Road along mio edge Suriname!	St. Laurent du Maroni	French Guiana	3.685933333	54.08875	110.9472		"DDK, WOM, CREW"	wild
+FG103	11/2/2000	Heliconius					Wild	FG103	Mariposoula au Grande Santi Road along mio edge Suriname!	St. Laurent du Maroni	French Guiana	3.685933333	54.08875	110.9472		"DDK, WOM, CREW"	wild
+FG104	11/2/2000	Heliconius	melpomene	thexilope	Male		Wild	FG104	Mariposoula au Grande Santi Road along mio edge Suriname!	St. Laurent du Maroni	French Guiana	3.685933333	54.08875	110.9472		"DDK, WOM, CREW"	wild
+FG105	11/2/2000	Dryadula					Wild	FG105	Mariposoula au Grande Santi Loca	St. Laurent du Maroni	French Guiana	3.828933333	54.19371667	84.1248		"DDK, WOM, CREW"	wild
+FG106	11/2/2000	Dryadula					Wild	FG106	Mariposoula au Grande Santi Loca	St. Laurent du Maroni	French Guiana	3.828933333	54.19371667	84.1248		"DDK, WOM, CREW"	wild
+FG107	11/2/2000	Dryadula					Wild	FG107	Mariposoula au Grande Santi Loca	St. Laurent du Maroni	French Guiana	3.828933333	54.19371667	84.1248		"DDK, WOM, CREW"	wild
+FG108	11/2/2000	Dryadula					Wild	FG108	Mariposoula au Grande Santi Loca	St. Laurent du Maroni	French Guiana	3.828933333	54.19371667	84.1248		"DDK, WOM, CREW"	wild
+FG109	11/2/2000	Dryadula					Wild	FG109	Mariposoula au Grande Santi Loca	St. Laurent du Maroni	French Guiana	3.828933333	54.19371667	84.1248		"DDK, WOM, CREW"	wild
+FG11	10/27/2000	Heliconius	spp 1		Unknown	White patches & skinny wings but slightly larger poss. 2nd species!	Wild	FG11	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard Above Cacao @ access interdit"	Cayenne	French Guiana	4.5392	52.47388333	53.9496	White patches & skinny wings but slightly larger poss. 2nd species!	"DDK, WOM"	wild
+FG110	11/2/2000	Dryadula					Wild	FG110	Mariposoula au Grande Santi Loca	St. Laurent du Maroni	French Guiana	3.828933333	54.19371667	84.1248		"DDK, WOM, CREW"	wild
+FG111	11/2/2000	Dryadula					Wild	FG111	Mariposoula au Grande Santi Loca	St. Laurent du Maroni	French Guiana	3.828933333	54.19371667	84.1248		"DDK, WOM, CREW"	wild
+FG112	11/2/2000	Heliconius				Suriname?	Wild	FG112	Mariposoula au Grande Santi Yuhan village	St. Laurent du Maroni	French Guiana	4.052216667	54.36688333	50.9016	Suriname?	"DDK, WOM, CREW"	wild
+FG113	11/2/2000	Heliconius	melpomene		Male	Suriname?	Wild	FG113	Mariposoula au Grande Santi Yuhan village	St. Laurent du Maroni	French Guiana	4.052216667	54.36688333	50.9016	Suriname?	"DDK, WOM, CREW"	wild
+FG114	11/2/2000	Dione				Suriname?	Wild	FG114	Mariposoula au Grande Santi Yuhan village	St. Laurent du Maroni	French Guiana	4.052216667	54.36688333	50.9016	Suriname?	"DDK, WOM, CREW"	wild
+FG115	11/2/2000	Dione				Suriname?	Wild	FG115	Mariposoula au Grande Santi Yuhan village	St. Laurent du Maroni	French Guiana	4.052216667	54.36688333	50.9016	Suriname?	"DDK, WOM, CREW"	wild
+FG116	11/2/2000	Heliconius					Wild	FG116	Mariposoula au Grande Santi This GPS is 1km down rio from this spot!	St. Laurent du Maroni	French Guiana	4.15055	54.3351	45.1104		"DDK, WOM, CREW"	wild
+FG117	11/2/2000	Heliconius					Wild	FG117	Mariposoula au Grande Santi This GPS is 1km down rio from this spot!	St. Laurent du Maroni	French Guiana	4.15055	54.3351	45.1104		"DDK, WOM, CREW"	wild
+FG118	11/3/2000	Heliconius	melpomene	thexilope	Male		Wild	FG118	Grande Santi au Kanut Tani Creek on FG side	St. Laurent du Maroni	French Guiana	4.2916	54.39245	9.144		"DDK, WOM, CREW"	wild
+FG119	11/3/2000	Heliconius	wallacei		Female		Wild	FG119	Grande Santi au Kanut Tani Creek on FG side	St. Laurent du Maroni	French Guiana	4.2916	54.39245	9.144		"DDK, WOM, CREW"	wild
+FG12	10/27/2000	Ithomiine spp.				Melinea ? Mechanitis	Wild	FG12	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard Above Cacao @ access interdit"	Cayenne	French Guiana	4.5392	52.47388333	53.9496	Melinea ? Mechanitis	"DDK, WOM"	wild
+FG120	11/3/2000	Heliconius	wallacei		Male		Wild	FG120	Grande Santi au Kanut Tani Creek on FG side	St. Laurent du Maroni	French Guiana	4.2916	54.39245	9.144		"DDK, WOM, CREW"	wild
+FG121	11/3/2000	Heliconius	wallacei		Male		Wild	FG121	Grande Santi au Kanut Tani Creek on FG side	St. Laurent du Maroni	French Guiana	4.2916	54.39245	9.144		"DDK, WOM, CREW"	wild
+FG122	11/3/2000	Heliconius	wallacei		Female		Wild	FG122	Grande Santi au Kanut Tani Creek on FG side	St. Laurent du Maroni	French Guiana	4.2916	54.39245	9.144		"DDK, WOM, CREW"	wild
+FG123	11/3/2000	Heliconius	wallacei		Female		Wild	FG123	Grande Santi au Kanut Tani Creek on FG side	St. Laurent du Maroni	French Guiana	4.2916	54.39245	9.144		"DDK, WOM, CREW"	wild
+FG124	11/3/2000	Heliconius	wallacei		Male		Wild	FG124	Grande Santi au Kanut Tani Creek on FG side	St. Laurent du Maroni	French Guiana	4.2916	54.39245	9.144		"DDK, WOM, CREW"	wild
+FG125	11/3/2000	Heliconius	wallacei		Male		Wild	FG125	Grande Santi au Kanut Tani Creek on FG side	St. Laurent du Maroni	French Guiana	4.2916	54.39245	9.144		"DDK, WOM, CREW"	wild
+FG126	11/3/2000	Heliconius	wallacei		Male		Wild	FG126	Grande Santi au Kanut Tani Creek on FG side	St. Laurent du Maroni	French Guiana	4.2916	54.39245	9.144		"DDK, WOM, CREW"	wild
+FG128	11/3/2000	Heliconius	wallacei		Male		Wild	FG128	Grande Santi au Kanut Tani Creek on SU side	St. Laurent du Maroni	French Guiana	4.3265	54.3942	-9.144		"DDK, WOM, CREW"	wild
+FG129	11/3/2000	Heliconius	wallacei		Female		Wild	FG129	Grande Santi au Kanut Tani Creek on SU side	St. Laurent du Maroni	French Guiana	4.3265	54.3942	-9.144		"DDK, WOM, CREW"	wild
+FG13	10/27/2000	Heliconius	sara				Wild	FG13	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard Above Cacao @ access interdit"	Cayenne	French Guiana	4.5392	52.47388333	53.9496		"DDK, WOM"	wild
+FG131	11/3/2000	Heliconius	melpomene		Female		Wild	FG131	Grande Santi au Kanut Tani Creek in SU good place!	St. Laurent du Maroni	French Guiana	4.3629	54.4295	66.1416		"DDK, WOM, CREW"	wild
+FG132	11/3/2000	Heliconius	melpomene	thexilope	Male		Wild	FG132	Grande Santi au Kanut Tani Creek in SU good place!	St. Laurent du Maroni	French Guiana	4.3629	54.4295	66.1416		"DDK, WOM, CREW"	wild
+FG133	11/3/2000	Heliconius	wallacei		Male		Wild	FG133	Grande Santi au Kanut Tani Creek in SU good place!	St. Laurent du Maroni	French Guiana	4.3629	54.4295	66.1416		"DDK, WOM, CREW"	wild
+FG134	11/3/2000	Heliconius	wallacei		Female		Wild	FG134	Grande Santi au Kanut Tani Creek in SU good place!	St. Laurent du Maroni	French Guiana	4.3629	54.4295	66.1416		"DDK, WOM, CREW"	wild
+FG135	11/3/2000	Heliconius	wallacei		Male		Wild	FG135	Grande Santi au Kanut Tani Creek in SU good place!	St. Laurent du Maroni	French Guiana	4.3629	54.4295	66.1416		"DDK, WOM, CREW"	wild
+FG136	11/3/2000	Heliconius	wallacei		Male		Wild	FG136	Grande Santi au Kanut Tani Creek in SU good place!	St. Laurent du Maroni	French Guiana	4.3629	54.4295	66.1416		"DDK, WOM, CREW"	wild
+FG137	11/3/2000	Heliconius	wallacei		Male		Wild	FG137	Grande Santi au Kanut Tani Oxbow in Surinam	St. Laurent du Maroni	French Guiana	4.373783333	54.44163333	27.1272		"DDK, WOM, CREW"	wild
+FG138	11/3/2000	Heliconius	melpomene		Male		Wild	FG138	Grande Santi au Kanut Tani Creek in Surinam accross from  Kanut Tani	St. Laurent du Maroni	French Guiana	4.586333333	54.42211667	39.0144		"DDK, WOM, CREW"	wild
+FG139	11/4/2000	Dione					Wild	FG139	Kanut Tani Au St. Laurent du Maroni Arrive in St. Laurent Du Maroni	St. Laurent du Maroni	French Guiana					"DDK, WOM, CREW"	wild
+FG14	10/27/2000	Heliconius	spp 1?			White patches & skinny wings but slightly larger poss. 2nd species!	Wild	FG14	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard Above Cacao @ access interdit"	Cayenne	French Guiana	4.5392	52.47388333	53.9496	White patches & skinny wings but slightly larger poss. 2nd species!	"DDK, WOM"	wild
+FG15	10/27/2000	Heliconius	sara				Wild	FG15	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard Above Cacao @ access interdit"	Cayenne	French Guiana	4.5392	52.47388333	53.9496		"DDK, WOM"	wild
+FG16	10/27/2000	Heliconius	erato	erato	Male	young ? old ?	Wild	FG16	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard @ crk on road"	Cayenne	French Guiana	4.547866667	52.47395	138.0744		"DDK, WOM"	wild
+FG18	10/27/2000	Heliconius	spp 1			large!	Wild	FG18	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard @ road to left ~4? km from town"	Cayenne	French Guiana	4.556783333	52.47015	84.1248	large!	"DDK, WOM"	wild
+FG19	10/27/2000	Ithomiine spp.					Wild	FG19	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard @ road to left ~4? km from town"	Cayenne	French Guiana	4.556783333	52.47015	84.1248		"DDK, WOM"	wild
+FG2	10/27/2000	Heliconius	erato hybrid		Male?		Wild	FG2	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard Bfly farm just down road to Cacao"	Cayenne	French Guiana	4.568116667	52.40538333	53.9496		"DDK, WOM"	wild
+FG20	10/27/2000	Heliconius	sara			All roosting in forest understory!	Wild	FG20	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard @ road to left ~4? km from town"	Cayenne	French Guiana	4.556783333	52.47015	84.1248	All roosting in forest understory!	"DDK, WOM"	wild
+FG21	10/27/2000	Heliconius	sara			All roosting in forest understory!	Wild	FG21	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard @ road to left ~4? km from town"	Cayenne	French Guiana	4.556783333	52.47015	84.1248	All roosting in forest understory!	"DDK, WOM"	wild
+FG22	10/27/2000	Heliconius	sara			All roosting in forest understory!	Wild	FG22	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard @ road to left ~4? km from town"	Cayenne	French Guiana	4.556783333	52.47015	84.1248	All roosting in forest understory!	"DDK, WOM"	wild
+FG23	10/27/2000	Heliconius	sara			All roosting in forest understory!	Wild	FG23	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard @ road to left ~4? km from town"	Cayenne	French Guiana	4.556783333	52.47015	84.1248	All roosting in forest understory!	"DDK, WOM"	wild
+FG24	10/27/2000	Heliconius	sara			All roosting in forest understory!	Wild	FG24	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard @ road to left ~4? km from town"	Cayenne	French Guiana	4.556783333	52.47015	84.1248	All roosting in forest understory!	"DDK, WOM"	wild
+FG25	10/27/2000	Heliconius	sara			All roosting in forest understory!	Wild	FG25	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard @ road to left ~4? km from town"	Cayenne	French Guiana	4.556783333	52.47015	84.1248	All roosting in forest understory!	"DDK, WOM"	wild
+FG26	10/27/2000	Heliconius	sara			All roosting in forest understory!	Wild	FG26	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard @ road to left ~4? km from town"	Cayenne	French Guiana	4.556783333	52.47015	84.1248	All roosting in forest understory!	"DDK, WOM"	wild
+FG27	10/28/2000	Heliconius	Small tiger		Female		Wild	FG27	"Montjoly, Regine Rio Compte W. side"	Cayenne	French Guiana	4.660566667	52.35511667	-3.048		"DDK, WOM"	wild
+FG28	10/28/2000	Heliconius	melpomene hybrid		Female		Wild	FG28	"Montjoly, Regine Rio Compte W. side"	Cayenne	French Guiana	4.660566667	52.35511667	-3.048		"DDK, WOM"	wild
+FG29	10/28/2000	Heliconius	erato hybrid		Male		Wild	FG29	"Montjoly, Regine Rio Compte W. side"	Cayenne	French Guiana	4.660566667	52.35511667	-3.048		"DDK, WOM"	wild
+FG3	10/27/2000	Dragonfly				Looks very much like sara!	Wild	FG3	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard Bfly farm just down road to Cacao"	Cayenne	French Guiana	4.568133333	52.40538333	53.9496	Looks very much like sara!	"DDK, WOM"	wild
+								FG3	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard Bfly farm just down road to Cacao"	Cayenne	French Guiana	4.568116667	52.40521667	45.1104	Looks very much like sara!	"DDK, WOM"	wild
+FG3	10/27/2000	Dragonfly				Looks very much like sara!	Wild	FG3	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard Bfly farm just down road to Cacao"	Cayenne	French Guiana	4.568133333	52.40538333	53.9496	Looks very much like sara!	"DDK, WOM"	wild
+								FG3	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard Bfly farm just down road to Cacao"	Cayenne	French Guiana	4.568116667	52.40521667	45.1104	Looks very much like sara!	"DDK, WOM"	wild
+FG30	10/28/2000	Heliconius	wallacei ?		Female		Wild	FG30	"Montjoly, Regine Rio Compte W. side"	Cayenne	French Guiana	4.660566667	52.35511667	-3.048		"DDK, WOM"	wild
+FG300	11/1/2000	Heliconius	erato	erato	Male	released successfully	Wild	FG300	Maripousoula et environs Back @ roost	St. Laurent du Maroni	French Guiana	3.6627	54.0303	84.1248	released successfully	"DDK, WOM"	wild
+FG301	11/1/2000	Heliconius	erato	erato	Male	unmarked on envelope; released successfully	Wild	FG301	Maripousoula et environs Back @ roost	St. Laurent du Maroni	French Guiana	3.6627	54.0303	84.1248	released successfully	"DDK, WOM"	wild
+FG302	11/1/2000	Heliconius	erato	erato	Male	released successfully; unmarked on envelope	Wild	FG302	Maripousoula et environs Back @ roost	St. Laurent du Maroni	French Guiana	3.6627	54.0303	84.1248	released successfully	"DDK, WOM"	wild
+FG303	11/1/2000	Heliconius	erato	erato	Male	released successfully; unmarked on envelope	Wild	FG303	Maripousoula et environs Back @ roost	St. Laurent du Maroni	French Guiana	3.6627	54.0303	84.1248	released successfully	"DDK, WOM"	wild
+FG304	11/1/2000	Heliconius	melpomene	thexiolope	Male	released successfully	Wild	FG304	Maripousoula et environs Back @ roost	St. Laurent du Maroni	French Guiana	3.6627	54.0303	84.1248	released successfully	"DDK, WOM"	wild
+FG305	11/1/2000	Heliconius	erato	erato	Male	released successfully; unmarked on envelope	Wild	FG305	Maripousoula et environs Back @ roost	St. Laurent du Maroni	French Guiana	3.6627	54.0303	84.1248	released successfully	"DDK, WOM"	wild
+FG306	11/1/2000	Heliconius	erato	erato	Male	released successfully; unmarked on envelope	Wild	FG306	Maripousoula et environs Back @ roost	St. Laurent du Maroni	French Guiana	3.6627	54.0303	84.1248	released successfully	"DDK, WOM"	wild
+FG307	11/1/2000	Heliconius	erato	erato	Female	released successfully; unmarked on envelope	Wild	FG307	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952	released successfully in GH!	"DDK, WOM"	wild
+FG308	11/1/2000	Heliconius	erato	erato	Male	released successfully; unmarked on envelope	Wild	FG308	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952	released successfully in GH!	"DDK, WOM"	wild
+FG309	11/1/2000	Heliconius	erato	erato	Female	released successfully in GH!	Wild	FG309	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952	released successfully in GH!	"DDK, WOM"	wild
+FG31	10/28/2000	Heliconius	erato	erato	Male	Saved as voucher specimen	Wild	FG31	"Montjoly, Regine Rio Compte W. side"	Cayenne	French Guiana	4.660566667	52.35511667	-3.048	Saved as voucher specimen	"DDK, WOM"	wild
+FG310	11/1/2000	Heliconius	erato	erato	Female	released successfully in GH!	Wild	FG310	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952	released successfully in GH!	"DDK, WOM"	wild
+FG311	11/1/2000	Heliconius	melpomene	thexiolope	Female	released successfully in GH!	Wild	FG311	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952	released successfully in GH!	"DDK, WOM"	wild
+FG312	11/1/2000	Heliconius	melpomene	thexiolope	Male	released successfully in GH! Capture tiae 0943	Wild	FG312	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952	released successfully in GH! Capture tiae 0943	"DDK, WOM"	wild
+FG313	11/1/2000	Heliconius	erato	erato	Unknown	released successfully in GH!  erato unmarked on envelope	Wild	FG313	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952	released successfully in GH!	"DDK, WOM"	wild
+FG314	11/1/2000	Heliconius	melpomene	thexiolope	Female	released successfully in GH!	Wild	FG314	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952	released successfully in GH!	"DDK, WOM"	wild
+FG315	11/1/2000	Heliconius	erato	erato	Male	released successfully in GH!	Wild	FG315	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952	released successfully in GH!	"DDK, WOM"	wild
+FG316	11/2/2000	Heliconius	erato	erato	Male	SU Released successfully into GH!  erato unmarked on envelope	Wild	FG316	Mariposoula au Grande Santi Road along mio edge Suriname!	St. Laurent du Maroni	French Guiana	3.685933333	54.08875	110.9472	SU Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG317	11/2/2000	Heliconius	erato	erato	Male	SU Released successfully into GH!	Wild	FG317	Mariposoula au Grande Santi Road along mio edge Suriname!	St. Laurent du Maroni	French Guiana	3.685933333	54.08875	110.9472	SU Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG318	11/1/2000	Heliconius	erato	erato	Male	Successfully released into GH!	Wild	FG318	Maripousoula et environs Rio End of town from barrllof's house	St. Laurent du Maroni	French Guiana	3.63365	54.03063333	110.9472	Successfully released into GH!	"DDK, WOM"	wild
+FG319	11/2/2000	Heliconius	melpomene	thexiolope	Female	SU Released successfully into GH!	Wild	FG319	Mariposoula au Grande Santi Road along mio edge Suriname!	St. Laurent du Maroni	French Guiana	3.685933333	54.08875	110.9472	SU Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG32	10/28/2000	Damselfly			Unknown	Saved as voucher specimen	Wild	FG32	"Montjoly, Regine Rio Compte W. side"	Cayenne	French Guiana	4.660566667	52.35511667	-3.048	Saved as voucher specimen	"DDK, WOM"	wild
+FG320	11/2/2000	Heliconius	erato	erato	Male	SU Released successfully into GH!	Wild	FG320	Mariposoula au Grande Santi Road along mio edge Suriname!	St. Laurent du Maroni	French Guiana	3.685933333	54.08875	110.9472	SU Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG321	11/2/2000	Heliconius	erato	erato	Female	SU Released successfully into GH!	Wild	FG321	Mariposoula au Grande Santi Road along mio edge Suriname!	St. Laurent du Maroni	French Guiana	3.685933333	54.08875	110.9472	SU Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG322	11/2/2000	Heliconius	erato	erato	Male	SU Released successfully into GH!	Wild	FG322	Mariposoula au Grande Santi Road along mio edge Suriname!	St. Laurent du Maroni	French Guiana	3.685933333	54.08875	110.9472	SU Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG323	11/1/2000	Heliconius	erato	erato	Male	Released successfully into GH!  collected @ 1243.	Wild	FG323	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952	Released successfully into GH!  collected @ 1243.	"DDK, WOM"	wild
+FG324	11/2/2000	Heliconius	erato	erato	Female	Suriname?	Wild	FG324	Mariposoula au Grande Santi Yuhan village	St. Laurent du Maroni	French Guiana	4.052216667	54.36688333	50.9016	Suriname?	"DDK, WOM, CREW"	wild
+FG325	11/2/2000	Heliconius	erato	erato	Female	Suriname?	Wild	FG325	Mariposoula au Grande Santi Yuhan village	St. Laurent du Maroni	French Guiana	4.052216667	54.36688333	50.9016	Suriname?	"DDK, WOM, CREW"	wild
+FG326	11/3/2000	Heliconius	erato	erato	Male	Released successfully into GH!	Wild	FG326	Grande Santi au Kanut Tani Creek on FG side	St. Laurent du Maroni	French Guiana	4.2916	54.39245	9.144	Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG328	11/3/2000	Heliconius	erato	erato	Male	released successfully into GH!	Wild	FG328	Grande Santi au Kanut Tani Creek in SU good place!	St. Laurent du Maroni	French Guiana	4.3629	54.4295	66.1416	released successfully into GH!	"DDK, WOM, CREW"	wild
+FG329	11/3/2000	Heliconius	erato	erato	Male	Released successfully into GH!	Wild	FG329	Grande Santi au Kanut Tani Oxbow in Surinam	St. Laurent du Maroni	French Guiana	4.373783333	54.44163333	27.1272	Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG33	10/28/2000	Heliconius	melpomene hybrid		Female	Classic F1	Wild	FG33	"Montjoly, Regine Rio Compte W. side"	Cayenne	French Guiana	4.660566667	52.35511667	-3.048	Classic F1	"DDK, WOM"	wild
+FG330	11/3/2000	Heliconius	erato	erato	Male	Released successfully into GH!	Wild	FG330	Grande Santi au Kanut Tani Creek in Surinam accross from  Kanut Tani	St. Laurent du Maroni	French Guiana	4.586333333	54.42211667	39.0144	Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG331	11/3/2000	Heliconius	erato	erato	Male	Released successfully into GH!	Wild	FG331	Grande Santi au Kanut Tani Creek in Surinam accross from  Kanut Tani	St. Laurent du Maroni	French Guiana	4.586333333	54.42211667	39.0144	Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG332	11/3/2000	Heliconius	erato	erato	Female	Released successfully into GH!	Wild	FG332	Grande Santi au Kanut Tani Creek in Surinam accross from  Kanut Tani	St. Laurent du Maroni	French Guiana	4.586333333	54.42211667	39.0144	Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG333	11/3/2000	Heliconius	erato	erato	Male	Released successfully into GH!	Wild	FG333	Grande Santi au Kanut Tani Oxbow in Surinam	St. Laurent du Maroni	French Guiana	4.373783333	54.44163333	27.1272	Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG334	11/3/2000	Heliconius	erato	erato	Male	released successfully into GH!	Wild	FG334	Grande Santi au Kanut Tani Creek in SU good place!	St. Laurent du Maroni	French Guiana	4.3629	54.4295	66.1416	released successfully into GH!	"DDK, WOM, CREW"	wild
+FG335	11/3/2000	Heliconius	erato	erato	Female	released successfully into GH!	Wild	FG335	Grande Santi au Kanut Tani Creek in SU good place!	St. Laurent du Maroni	French Guiana	4.3629	54.4295	66.1416	released successfully into GH!	"DDK, WOM, CREW"	wild
+FG336	11/3/2000	Heliconius	erato	erato	Male	released successfully into GH!	Wild	FG336	Grande Santi au Kanut Tani Creek in SU good place!	St. Laurent du Maroni	French Guiana	4.3629	54.4295	66.1416	released successfully into GH!	"DDK, WOM, CREW"	wild
+FG337	11/3/2000	Heliconius	erato	erato	Female	released successfully into GH!	Wild	FG337	Grande Santi au Kanut Tani Creek in SU good place!	St. Laurent du Maroni	French Guiana	4.3629	54.4295	66.1416	released successfully into GH!	"DDK, WOM, CREW"	wild
+FG338	11/3/2000	Heliconius	melpomene	thexiolope	Female	released successfully into GH!	Wild	FG338	Grande Santi au Kanut Tani Creek in SU good place!	St. Laurent du Maroni	French Guiana	4.3629	54.4295	66.1416	released successfully into GH!	"DDK, WOM, CREW"	wild
+FG339	11/3/2000	Heliconius	erato	erato	Female	Released successfully into GH!	Wild	FG339	Grande Santi au Kanut Tani Creek in Surinam accross from  Kanut Tani	St. Laurent du Maroni	French Guiana	4.586333333	54.42211667	39.0144	Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG34	10/28/2000	Heliconius	wallacei		Male		Wild	FG34	"Montjoly, Regine Rio Compte W. side"	Cayenne	French Guiana	4.660566667	52.35511667	-3.048		"DDK, WOM"	wild
+FG340	11/3/2000	Heliconius	erato	erato	Male	Released successfully into GH!	Wild	FG340	Grande Santi au Kanut Tani Creek in Surinam accross from  Kanut Tani	St. Laurent du Maroni	French Guiana	4.586333333	54.42211667	39.0144	Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG341	11/3/2000	Heliconius	erato	erato	Female	Released successfully into GH!	Wild	FG341	Grande Santi au Kanut Tani Creek in Surinam accross from  Kanut Tani	St. Laurent du Maroni	French Guiana	4.586333333	54.42211667	39.0144	Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG342	11/3/2000	Heliconius	erato	erato	Male	Released successfully into GH!	Wild	FG342	Grande Santi au Kanut Tani Creek in Surinam accross from  Kanut Tani	St. Laurent du Maroni	French Guiana	4.586333333	54.42211667	39.0144	Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG343	11/3/2000	Heliconius	erato	erato	Female	Released successfully into GH!	Wild	FG343	Grande Santi au Kanut Tani Creek in Surinam accross from  Kanut Tani	St. Laurent du Maroni	French Guiana	4.586333333	54.42211667	39.0144	Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG344	11/3/2000	Heliconius	erato	erato	Female	Released successfully into GH!	Wild	FG344	Grande Santi au Kanut Tani Creek in Surinam accross from  Kanut Tani	St. Laurent du Maroni	French Guiana	4.586333333	54.42211667	39.0144	Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG345	11/3/2000	Heliconius	erato	erato	Female	Released successfully into GH!	Wild	FG345	Grande Santi au Kanut Tani Creek in Surinam accross from  Kanut Tani	St. Laurent du Maroni	French Guiana	4.586333333	54.42211667	39.0144	Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG346	11/3/2000	Heliconius	erato	erato	Male	Released successfully into GH!	Wild	FG346	Grande Santi au Kanut Tani Creek in Surinam accross from  Kanut Tani	St. Laurent du Maroni	French Guiana	4.586333333	54.42211667	39.0144	Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG347	11/3/2000	Heliconius	erato	erato	Male	Released successfully into GH!	Wild	FG347	Grande Santi au Kanut Tani Creek in Surinam accross from  Kanut Tani	St. Laurent du Maroni	French Guiana	4.586333333	54.42211667	39.0144	Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG348	11/3/2000	Heliconius	erato	erato	Female	Loc uk? poss-83 Released successfully into GH!	Wild	FG348	Grande Santi au Kanut Tani Creek in Surinam accross from  Kanut Tani	St. Laurent du Maroni	French Guiana	4.586333333	54.42211667	39.0144	Loc uk? poss-83 Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG349	11/3/2000	Heliconius	erato	erato	Female	Loc uk? poss-83 Released successfully into GH!	Wild	FG349	Grande Santi au Kanut Tani Creek in Surinam accross from  Kanut Tani	St. Laurent du Maroni	French Guiana	4.586333333	54.42211667	39.0144	Loc uk? poss-83 Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG35	10/28/2000	Heliconius	sara		Male	classic was dead before it was preserved	Wild	FG35	"Montjoly, Regine Rio Compte W. side"	Cayenne	French Guiana	4.660566667	52.35511667	-3.048	classic was dead before it was preserved	"DDK, WOM"	wild
+FG350	11/3/2000	Heliconius	wallacei		Male	Released successfully into GH!	Wild	FG350	Grande Santi au Kanut Tani Creek in Surinam accross from  Kanut Tani	St. Laurent du Maroni	French Guiana	4.586333333	54.42211667	39.0144	Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG351	11/3/2000	Heliconius	wallacei		Female	Released successfully into GH!	Wild	FG351	Grande Santi au Kanut Tani Creek in Surinam accross from  Kanut Tani	St. Laurent du Maroni	French Guiana	4.586333333	54.42211667	39.0144	Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG352	11/3/2000	Heliconius	wallacei?		Unknown	Released successfully into GH!	Wild	FG352	Grande Santi au Kanut Tani Creek in Surinam accross from  Kanut Tani	St. Laurent du Maroni	French Guiana	4.586333333	54.42211667	39.0144	Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG353	11/3/2000	Heliconius	wallacei?		Male	Released successfully into GH!	Wild	FG353	Grande Santi au Kanut Tani Creek in Surinam accross from  Kanut Tani	St. Laurent du Maroni	French Guiana	4.586333333	54.42211667	39.0144	Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG354	11/3/2000	Heliconius	wallacei?		Unknown	Released successfully into GH!	Wild	FG354	Grande Santi au Kanut Tani Creek in Surinam accross from  Kanut Tani	St. Laurent du Maroni	French Guiana	4.586333333	54.42211667	39.0144	Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG355	11/3/2000	Heliconius	wallacei?		Female	Released successfully into GH!	Wild	FG355	Grande Santi au Kanut Tani Creek in Surinam accross from  Kanut Tani	St. Laurent du Maroni	French Guiana	4.586333333	54.42211667	39.0144	Released successfully into GH!	"DDK, WOM, CREW"	wild
+FG36	10/28/2000	Heliconius	wallacei		Male	was dead before it was preserved	Wild	FG36	"Montjoly, Regine Rio Compte W. side"	Cayenne	French Guiana	4.660566667	52.35511667	-3.048	was dead before it was preserved	"DDK, WOM"	wild
+FG37	10/28/2000	Heliconius	large tiger		Male		Wild	FG37	"Montjoly, Regine Rio Compte W. side"	Cayenne	French Guiana	4.660566667	52.35511667	-3.048		"DDK, WOM"	wild
+FG38	10/28/2000	Heliconius	large tiger		Male		Wild	FG38	"Montjoly, Regine Rio Compte W. side"	Cayenne	French Guiana	4.660566667	52.35511667	-3.048		"DDK, WOM"	wild
+FG39	10/28/2000	Heliconius	sara		Female		Wild	FG39	"Montjoly, Regine Rio Compte W. side"	Cayenne	French Guiana	4.660566667	52.35511667	-3.048		"DDK, WOM"	wild
+FG4	10/27/2000	Heliconius	sara		Unknown		Wild	FG4	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard Above Cacao @ access interdit"	Cayenne	French Guiana	4.5392	52.47388333	53.9496		"DDK, WOM"	wild
+FG40	10/28/2000	Heliconius	sara		Female		Wild	FG40	"Montjoly, Regine Rio Compte W. side"	Cayenne	French Guiana	4.660566667	52.35511667	-3.048		"DDK, WOM"	wild
+FG41	10/28/2000	Heliconius	wallacei		Male	Freshly dead-good glow	Wild	FG41	"Montjoly, Regine Rio Compte W. side"	Cayenne	French Guiana	4.660566667	52.35511667	-3.048	Freshly dead-good glow	"DDK, WOM"	wild
+FG42	10/28/2000	Heliconius	melpomene hybrid		Male		Wild	FG42	"Montjoly, Regine Rio Compte W. side"	Cayenne	French Guiana	4.660566667	52.35511667	-3.048		"DDK, WOM"	wild
+FG43	10/28/2000	Heliconius	erato hybrid		Male	freshly dead	Wild	FG43	"Montjoly, Regine Rio Compte W. side"	Cayenne	French Guiana	4.660566667	52.35511667	-3.048	freshly dead	"DDK, WOM"	wild
+FG44	10/28/2000	Heliconius	antiochus		Male		Wild	FG44	"Montjoly, Regine Rio Compte W. side"	Cayenne	French Guiana	4.660566667	52.35511667	-3.048		"DDK, WOM"	wild
+FG45	10/28/2000	Dryas			Male	Actually loc 61	Wild	FG45	"Montjoly, Regine Rio Compte W. side"	Cayenne	French Guiana	4.660566667	52.35511667	-3.048	Actually loc 61	"DDK, WOM"	wild
+FG46	10/28/2000	Heliconius	erato	erato	Male	Actually loc 61	Wild	FG46	"Montjoly, Regine Rio Compte W. side"	Cayenne	French Guiana	4.660566667	52.35511667	-3.048	Actually loc 61	"DDK, WOM"	wild
+FG47	10/28/2000	Heliconius	wallacei		Male	"freshly dead, Actually loc 61"	Wild	FG47	"Montjoly, Regine Rio Compte W. side"	Cayenne	French Guiana	4.660566667	52.35511667	-3.048	"freshly dead, Actually loc 61"	"DDK, WOM"	wild
+FG48	10/28/2000	Heliconius	wallacei		Male	"freshly dead, Actually loc 61"	Wild	FG48	"Montjoly, Regine Rio Compte W. side"	Cayenne	French Guiana	4.660566667	52.35511667	-3.048	"freshly dead, Actually loc 61"	"DDK, WOM"	wild
+FG49	10/29/2000	Heliconius	ricini		Male	Killed live	Wild	FG49	Auberge des Orpailleurs Rio Orapu! au Regine Auberge des Orpailleurs @Rio Orapu!	Cayenne	French Guiana	4.5107	52.35163333	6.096	Killed live	"DDK, WOM"	wild
+FG5	10/27/2000	Heliconius	erato	erato	Unknown		Wild	FG5	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard Above Cacao @ access interdit"	Cayenne	French Guiana	4.5392	52.47388333	53.9496		"DDK, WOM"	wild
+FG50	10/29/2000	Heliconius	sara		Female	"Killed live , w/bm actually loc 64"	Wild	FG50	Auberge des Orpailleurs Rio Orapu! au Regine Auberge des Orpailleurs @Rio Orapu!	Cayenne	French Guiana	4.5107	52.35163333	6.096	"Killed live , w/bm actually loc 64"	"DDK, WOM"	wild
+FG51	10/29/2000	Heliconius	sara		Male	"Killed live, actually loc 64"	Wild	FG51	Auberge des Orpailleurs Rio Orapu! au Regine Auberge des Orpailleurs @Rio Orapu!	Cayenne	French Guiana	4.5107	52.35163333	6.096	"Killed live, actually loc 64"	"DDK, WOM"	wild
+FG52	10/29/2000	Euides			Male		Wild	FG52	Auberge des Orpailleurs Rio Orapu! au Regine Roadside stop km 43.6 (Regine = ?)	Cayenne	French Guiana	4.479216667	52.35023333	60.0456		"DDK, WOM"	wild
+FG53	10/29/2000	Euides			Male		Wild	FG53	Auberge des Orpailleurs Rio Orapu! au Regine Roadside stop km 43.6 (Regine = ?)	Cayenne	French Guiana	4.479216667	52.35023333	60.0456		"DDK, WOM"	wild
+FG54	10/29/2000	Euides			Male		Wild	FG54	Auberge des Orpailleurs Rio Orapu! au Regine Roadside stop km 43.6 (Regine = ?)	Cayenne	French Guiana	4.479216667	52.35023333	60.0456		"DDK, WOM"	wild
+FG55	10/29/2000	Euides			Male		Wild	FG55	Auberge des Orpailleurs Rio Orapu! au Regine Roadside stop km 43.6 (Regine = ?)	Cayenne	French Guiana	4.479216667	52.35023333	60.0456		"DDK, WOM"	wild
+FG56	10/29/2000	Ithomiine spp.	large tiger		Female		Wild	FG56	Auberge des Orpailleurs Rio Orapu! au Regine Michele Carnel et Joel les amis du Calif et ...	Cayenne	French Guiana	4.281333333	52.17316667	60.0456		"DDK, WOM"	wild
+FG57	10/29/2000	Ithomiine spp.	large tiger		Male		Wild	FG57	Auberge des Orpailleurs Rio Orapu! au Regine Michele Carnel et Joel les amis du Calif et ...	Cayenne	French Guiana	4.281333333	52.17316667	60.0456		"DDK, WOM"	wild
+FG58	10/29/2000	Heliconius	large tiger		Female		Wild	FG58	Auberge des Orpailleurs Rio Orapu! au Regine Michele Carnel et Joel les amis du Calif et ...	Cayenne	French Guiana	4.281333333	52.17316667	60.0456		"DDK, WOM"	wild
+FG59	10/30/2000	Ithomiine spp.					Wild	FG59	Auberge des Orpailleurs au Cayenne au Cayenne Auberge des Orpailleurs @ rio Orapo	Cayenne	French Guiana	4.5107	52.35163333	6.096		"DDK, WOM"	wild
+FG6	10/27/2000	Heliconius	sara		Unknown		Wild	FG6	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard Above Cacao @ access interdit"	Cayenne	French Guiana	4.5392	52.47388333	53.9496		"DDK, WOM"	wild
+FG60	10/30/2000	Heliconius	sara				Wild	FG60	Auberge des Orpailleurs au Cayenne au Cayenne Auberge des Orpailleurs @ rio Orapo	Cayenne	French Guiana	4.5107	52.35163333	6.096		"DDK, WOM"	wild
+FG61	10/30/2000	Nymphalid					Wild	FG61	Auberge des Orpailleurs au Cayenne au Cayenne Auberge des Orpailleurs @ rio Orapo	Cayenne	French Guiana	4.5107	52.35163333	6.096		"DDK, WOM"	wild
+FG62	10/30/2000	Nymphalid					Wild	FG62	Auberge des Orpailleurs au Cayenne au Cayenne Auberge des Orpailleurs @ rio Orapo	Cayenne	French Guiana	4.5107	52.35163333	6.096		"DDK, WOM"	wild
+FG63	10/30/2000	Euides					Wild	FG63	Auberge des Orpailleurs au Cayenne au Cayenne @ road bend to s.	Cayenne	French Guiana	4.61135	52.38206667	24.0792		"DDK, WOM"	wild
+FG64	10/31/2000	Heliconius					Wild	FG64	Maripousoula et environs Roost by crique	St. Laurent du Maroni	French Guiana	3.6627	54.0303	84.1248		"DDK, WOM"	wild
+FG65	11/1/2000	Dione					Wild	FG65	Maripousoula et environs @ first dryas spot	St. Laurent du Maroni	French Guiana	3.6436	54.02855	107.8992		"DDK, WOM"	wild
+FG66	11/1/2000	Ithomiine spp.					Wild	FG66	Maripousoula et environs @ first dryas spot	St. Laurent du Maroni	French Guiana	3.6436	54.02855	107.8992		"DDK, WOM"	wild
+								FG66	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952		"DDK, WOM"	wild
+FG66	11/1/2000	Ithomiine spp.					Wild	FG66	Maripousoula et environs @ first dryas spot	St. Laurent du Maroni	French Guiana	3.6436	54.02855	107.8992		"DDK, WOM"	wild
+								FG66	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952		"DDK, WOM"	wild
+FG67	11/1/2000	Ithomiine spp.					Wild	FG67	Maripousoula et environs @ first dryas spot	St. Laurent du Maroni	French Guiana	3.6436	54.02855	107.8992		"DDK, WOM"	wild
+								FG67	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952		"DDK, WOM"	wild
+FG67	11/1/2000	Heliconius	large tiger				Wild	FG67	Maripousoula et environs @ first dryas spot	St. Laurent du Maroni	French Guiana	3.6436	54.02855	107.8992		"DDK, WOM"	wild
+								FG67	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952		"DDK, WOM"	wild
+FG68	11/1/2000	Heliconius	wallacei				Wild	FG68	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952		"DDK, WOM"	wild
+FG69	11/1/2000	Heliconius	ricini				Wild	FG69	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952		"DDK, WOM"	wild
+FG7	10/27/2000	Heliconius	spp 1		Unknown	White patches & skinny wings	Wild	FG7	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard Above Cacao @ access interdit"	Cayenne	French Guiana	4.5392	52.47388333	53.9496	White patches & skinny wings	"DDK, WOM"	wild
+FG70	11/1/2000	Heliconius	large tiger				Wild	FG70	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952		"DDK, WOM"	wild
+FG71	11/1/2000	Ithomiine spp.					Wild	FG71	Maripousoula et environs @ other forest edge	St. Laurent du Maroni	French Guiana	3.661683333	54.02783333	110.9472		"DDK, WOM"	wild
+FG72	11/1/2000	Heliconius	doris				Wild	FG72	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952		"DDK, WOM"	wild
+FG73	11/1/2000	Heliconius	wallacei				Wild	FG73	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952		"DDK, WOM"	wild
+FG74	11/1/2000	Heliconius	large tiger				Wild	FG74	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952		"DDK, WOM"	wild
+FG75	11/1/2000	Heliconius					Wild	FG75	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952		"DDK, WOM"	wild
+FG76	11/1/2000	Heliconius	doris				Wild	FG76	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952		"DDK, WOM"	wild
+FG77	11/1/2000	Heliconius	large tiger				Wild	FG77	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952		"DDK, WOM"	wild
+FG78	11/1/2000	Heliconius					Wild	FG78	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952		"DDK, WOM"	wild
+FG79	11/1/2000	Heliconius					Wild	FG79	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952		"DDK, WOM"	wild
+FG8	10/27/2000	Heliconius	spp 1		Unknown	White patches & skinny wings	Wild	FG8	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard Above Cacao @ access interdit"	Cayenne	French Guiana	4.5392	52.47388333	53.9496	White patches & skinny wings	"DDK, WOM"	wild
+FG80	11/1/2000	Heliconius	melpomene		Male	Also called FG 327	Wild	FG80	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952	Also called FG 327	"DDK, WOM"	wild
+FG81	11/1/2000	Heliconius	melpomene		Male		Wild	FG81	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952		"DDK, WOM"	wild
+FG82	11/1/2000	Heliconius	melpomene	thexilope	Male		Wild	FG82	Maripousoula et environs @ forest edge	St. Laurent du Maroni	French Guiana	3.661033333	54.02656667	113.9952		"DDK, WOM"	wild
+FG83	11/1/2000	Ithomiine spp.					Wild	FG83	Maripousoula et environs @ other forest edge	St. Laurent du Maroni	French Guiana	3.661683333	54.02783333	110.9472		"DDK, WOM"	wild
+FG84	11/1/2000	Heliconius					Wild	FG84	Maripousoula et environs Back @ roost	St. Laurent du Maroni	French Guiana	3.6627	54.0303	84.1248		"DDK, WOM"	wild
+FG85	11/1/2000	Heliconius					Wild	FG85	Maripousoula et environs Back @ roost	St. Laurent du Maroni	French Guiana	3.6627	54.0303	84.1248		"DDK, WOM"	wild
+FG86	11/1/2000	Heliconius	melpomene		Male		Wild	FG86	Maripousoula et environs Back @ roost	St. Laurent du Maroni	French Guiana	3.6627	54.0303	84.1248		"DDK, WOM"	wild
+FG87	11/1/2000	Heliconius	melpomene		Male		Wild	FG87	Maripousoula et environs Back @ roost	St. Laurent du Maroni	French Guiana	3.6627	54.0303	84.1248		"DDK, WOM"	wild
+FG88	11/1/2000	Heliconius	melpomene		Male		Wild	FG88	Maripousoula et environs Back @ roost	St. Laurent du Maroni	French Guiana	3.6627	54.0303	84.1248		"DDK, WOM"	wild
+FG89	11/1/2000	Heliconius	melpomene	thexilope	Male		Wild	FG89	Maripousoula et environs Back @ roost	St. Laurent du Maroni	French Guiana	3.6627	54.0303	84.1248		"DDK, WOM"	wild
+FG9	10/27/2000	Heliconius	spp 1		Unknown	White patches & skinny wings	Wild	FG9	"Montjoly, Cayenne - Cayenne,  Cacao et retour - Motel Beauregard Above Cacao @ access interdit"	Cayenne	French Guiana	4.5392	52.47388333	53.9496	White patches & skinny wings	"DDK, WOM"	wild
+FG90	11/1/2000	Heliconius	melpomene	thexilope	Male		Wild	FG90	Maripousoula et environs Rio End of town from barrllof's house	St. Laurent du Maroni	French Guiana	3.63365	54.03063333	110.9472		"DDK, WOM"	wild
+FG91	11/1/2000	Ithomiine spp.					Wild	FG91	Maripousoula et environs Rio End of town from barrllof's house	St. Laurent du Maroni	French Guiana	3.63365	54.03063333	110.9472		"DDK, WOM"	wild
+FG92	11/2/2000	Heliconius					Wild	FG92	Mariposoula au Grande Santi Road along mio edge Suriname!	St. Laurent du Maroni	French Guiana	3.685933333	54.08875	110.9472		"DDK, WOM, CREW"	wild
+FG93	11/2/2000	Heliconius					Wild	FG93	Mariposoula au Grande Santi Road along mio edge Suriname!	St. Laurent du Maroni	French Guiana	3.685933333	54.08875	110.9472		"DDK, WOM, CREW"	wild
+FG94	11/2/2000	Heliconius	large tiger				Wild	FG94	Mariposoula au Grande Santi Road along mio edge Suriname!	St. Laurent du Maroni	French Guiana	3.685933333	54.08875	110.9472		"DDK, WOM, CREW"	wild
+FG95	11/2/2000	Heliconius					Wild	FG95	Mariposoula au Grande Santi Road along mio edge Suriname!	St. Laurent du Maroni	French Guiana	3.685933333	54.08875	110.9472		"DDK, WOM, CREW"	wild
+FG96	11/2/2000	Heliconius					Wild	FG96	Mariposoula au Grande Santi Road along mio edge Suriname!	St. Laurent du Maroni	French Guiana	3.685933333	54.08875	110.9472		"DDK, WOM, CREW"	wild
+FG97	11/2/2000	Heliconius					Wild	FG97	Mariposoula au Grande Santi Road along mio edge Suriname!	St. Laurent du Maroni	French Guiana	3.685933333	54.08875	110.9472		"DDK, WOM, CREW"	wild
+FG98	11/2/2000	Ithomiine spp.					Wild	FG98	Mariposoula au Grande Santi Road along mio edge Suriname!	St. Laurent du Maroni	French Guiana	3.685933333	54.08875	110.9472		"DDK, WOM, CREW"	wild
+FG99	11/2/2000	Heliconius	large tiger				Wild	FG99	Mariposoula au Grande Santi Road along mio edge Suriname!	St. Laurent du Maroni	French Guiana	3.685933333	54.08875	110.9472		"DDK, WOM, CREW"	wild
+JM1001		Heliconius	erato	Peru HZ	f	no date	Wild	JM1001	Km 28 T - Y ST 1/ 6	DS14	Peru						wild
+JM1003		Heliconius	erato	Peru HZ	m	no date	Wild	JM1003	Km 28 T - Y ST 8	DS15	Peru						wild
+JM1004		Heliconius	erato	Peru HZ	f	no date	Wild	JM1004	Km 28 T - Y ST 8	DS15	Peru						wild
+JM1005		Heliconius	erato	Peru HZ	m	no date	Wild	JM1005	Km 28 T - Y ST 8	DS15	Peru						wild
+JM1008		Heliconius	erato	Peru HZ	m	no date	Wild	JM1008	Km 28 T - Y ST 10	DS16	Peru						wild
+JM1009		Heliconius	erato	Peru HZ	f	no date	Wild	JM1009	Km 28 T - Y ST 10	DS16	Peru						wild
+JM1010		Heliconius	erato	Peru HZ	m	no date	Wild	JM1010	Km 28 T - Y ST 10	DS16	Peru						wild
+JM1011		Heliconius	erato	Peru HZ	m	no date	Wild	JM1011	Km 28 T - Y ST 8	DS15	Peru						wild
+JM1013		Heliconius	erato	Peru HZ	f	no date	Wild	JM1013	Km 28 T - Y ST 1/ 6	DS14	Peru						wild
+JM1028		Heliconius	erato	Peru HZ	m	no date	Wild	JM1028	"Santa Rosa de Davidcillo, km 72 T-Y"	DS30	Peru						wild
+JM1029		Heliconius	erato	Peru HZ	m	no date	Wild	JM1029	"Santa Rosa de Davidcillo, km 72 T-Y"	DS30	Peru						wild
+JM1031		Heliconius	erato	Peru HZ	m	no date	Wild	JM1031	"Santa Rosa de Davidcillo, km 72 T-Y"	DS30	Peru						wild
+JM1033		Heliconius	erato	Peru HZ	m	no date	Wild	JM1033	"Santa Rosa de Davidcillo, km 72 T-Y"	DS30	Peru						wild
+JM1034		Heliconius	erato	Peru HZ	m	no date	Wild	JM1034	"Santa Rosa de Davidcillo, km 72 T-Y"	DS30	Peru						wild
+JM1035		Heliconius	erato	Peru HZ	m	no date	Wild	JM1035	"Santa Rosa de Davidcillo, km 72 T-Y"	DS31	Peru						wild
+JM1036		Heliconius	erato	Peru HZ	m	no date	Wild	JM1036	"Santa Rosa de Davidcillo, km 72 T-Y"	DS31	Peru						wild
+JM1037		Heliconius	erato	Peru HZ	m	no date	Wild	JM1037	"Santa Rosa de Davidcillo, km 72 T-Y"	DS31	Peru						wild
+JM1038		Heliconius	erato	Peru HZ	f	no date	Wild	JM1038	"Santa Rosa de Davidcillo, km 72 T-Y"	DS31	Peru						wild
+JM1039		Heliconius	erato	Peru HZ	m	no date	Wild	JM1039	"Santa Rosa de Davidcillo, km 72 T-Y"	DS31	Peru						wild
+JM1040		Heliconius	erato	Peru HZ	m	no date	Wild	JM1040	"Santa Rosa de Davidcillo, km 72 T-Y"	DS31	Peru						wild
+JM1041		Heliconius	erato	Peru HZ	m	no date	Wild	JM1041	"Santa Rosa de Davidcillo, km 72 T-Y"	DS31	Peru						wild
+JM1042		Heliconius	erato	Peru HZ	m	no date	Wild	JM1042	"Santa Rosa de Davidcillo, km 72 T-Y"	DS31	Peru						wild
+JM1043		Heliconius	erato	Peru HZ	m/f	no date	Wild	JM1043	"Santa Rosa de Davidcillo, km 72 T-Y"	DS32	Peru						wild
+JM1044		Heliconius	erato	Peru HZ	m/f	no date	Wild	JM1044	"Santa Rosa de Davidcillo, km 72 T-Y"	DS32	Peru						wild
+JM1045		Heliconius	erato	Peru HZ	m	no date	Wild	JM1045	"Santa Rosa de Davidcillo, km 72 T-Y"	DS32	Peru						wild
+JM1047		Heliconius	erato	Peru HZ	m	no date	Wild	JM1047	"Santa Rosa de Davidcillo, km 72 T-Y"	DS32	Peru						wild
+JM1105		Heliconius	erato	Peru HZ	m/f	no date	Wild	JM1105	"Santa Rosa de Davidcillo, km 72 T-Y"	DS31	Peru						wild
+JM1140		Heliconius	erato	Peru HZ	m	no date	Wild	JM1140	"Chazuta, Rio Huallaga, 220-320M"	DS01	Peru						wild
+JM1141		Heliconius	erato	Peru HZ	f	no date	Wild	JM1141	"Chazuta, Rio Huallaga, 220-320M"	DS01	Peru						wild
+JM1142		Heliconius	erato	Peru HZ	m	no date	Wild	JM1142	"Chazuta, Rio Huallaga, 220-320M"	DS02	Peru						wild
+JM1143		Heliconius	erato	Peru HZ	m	no date	Wild	JM1143	"Chazuta, Rio Huallaga, 220-320M"	DS02	Peru						wild
+JM1145		Heliconius	erato	Peru HZ	m	no date	Wild	JM1145	"Chazuta, Rio Huallaga, 220-320M"	DS03	Peru						wild
+JM1146		Heliconius	erato	Peru HZ	m	no date	Wild	JM1146	"Chazuta, Rio Huallaga, 220-320M"	DS03	Peru						wild
+JM1148		Heliconius	erato	Peru HZ	m	no date	Wild	JM1148	"Chazuta, Rio Huallaga, 220-320M"	DS02	Peru						wild
+JM1174		Heliconius	melpomene	Peru HZ (cognata)	m	no date	Wild	JM1174									wild
+JM1178		Heliconius	melpomene	Peru HZ (cognata)	f	no date	Wild	JM1178									wild
+JM1181		Heliconius	melpomene	Peru HZ (cognata)	m	no date	Wild	JM1181									wild
+JM1187		Heliconius	melpomene	Peru HZ (cognata)	m	no date	WIld	JM1187									wild
+JM1264		Heliconius	erato	Peru HZ	m	no date	Wild	JM1264	"Chazuta, Rio Huallaga, 220-320M"	DS02	Peru						wild
+JM1265		Heliconius	erato	Peru HZ	f	no date	Wild	JM1265	"Chazuta, Rio Huallaga, 220-320M"	DS02	Peru						wild
+JM1266		Heliconius	erato	Peru HZ	m	no date	Wild	JM1266	"Chazuta, Rio Huallaga, 220-320M"	DS03	Peru						wild
+JM1267		Heliconius	erato	Peru HZ	m	no date	Wild	JM1267	"Chazuta, Rio Huallaga, 220-320M"	DS03	Peru						wild
+JM1268		Heliconius	erato	Peru HZ	m	no date	Wild	JM1268	"Chazuta, Rio Huallaga, 220-320M"	DS04	Peru						wild
+JM1269		Heliconius	erato	Peru HZ	m	no date	Wild	JM1269	"Chazuta, Rio Huallaga, 220-320M"	DS04	Peru						wild
+JM1270		Heliconius	melpomene	Peru HZ (amaryllis)	m	no date	Wild	JM1270									wild
+JM1271		Heliconius	melpomene	Peru HZ (amaryllis)	f	no date	Wild	JM1271									wild
+JM1275		Heliconius	erato	Peru HZ	f	no date	Wild	JM1275	"Tarapoto, Rio Shilcayo, 350M, NR Toma de agua"	DS06	Peru						wild
+JM1277		Heliconius	erato	Peru HZ	f	no date	Wild	JM1277	Tarapoto Site 1	DS07	Peru						wild
+JM1286		Heliconius	erato	Peru HZ	m	no date	Wild	JM1286	Tarapoto ST. 4/ 5	DS10	Peru						wild
+JM1288		Heliconius	erato	Peru HZ	m	no date	Wild	JM1288	Tarapoto Site 3	DS09	Peru						wild
+JM1289		Heliconius	erato	Peru HZ	m	no date	Wild	JM1289	Km 28 T - Y ST 10	DS16	Peru						wild
+JM1298		Heliconius	erato	Peru HZ	m	no date	Wild	JM1298	Km 28 T - Y ST 8	DS15	Peru						wild
+JM1299		Heliconius	erato	Peru HZ	m	no date	Wild	JM1299	Km 28 T - Y ST 8	DS15	Peru						wild
+JM1300		Heliconius	erato	Peru HZ	m	no date	Wild	JM1300	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS12	Peru						wild
+JM1307		Heliconius	erato	Peru HZ	m	no date	Wild	JM1307	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS12	Peru						wild
+JM1310		Heliconius	erato	Peru HZ	f	no date	Wild	JM1310	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS12	Peru						wild
+JM1311		Heliconius	erato	Peru HZ	m	no date	Wild	JM1311	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS12	Peru						wild
+JM1314		Heliconius	erato	Peru HZ	m	no date	Wild	JM1314	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS12	Peru						wild
+JM1317		Heliconius	erato	Peru HZ	m	no date	Wild	JM1317	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS12	Peru						wild
+JM1319		Heliconius	erato	Peru HZ	f	no date	Wild	JM1319	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS12	Peru						wild
+JM1320		Heliconius	erato	Peru HZ	m	no date	Wild	JM1320	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS12	Peru						wild
+JM1321		Heliconius	erato	Peru HZ	m	no date	Wild	JM1321	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS12	Peru						wild
+JM1322		Heliconius	erato	Peru HZ	f	no date	Wild	JM1322	"KN 30 T - Y Rio Tiraco, 570 M"	DS17	Peru						wild
+JM1324		Heliconius	erato	Peru HZ	f	no date	Wild	JM1324	"KN 30 T - Y Rio Tiraco, 570 M"	DS17	Peru						wild
+JM1326		Heliconius	erato	Peru HZ	f	no date	Wild	JM1326	"KN 30 T - Y Rio Tiraco, 570 M"	DS17	Peru						wild
+JM1327		Heliconius	erato	Peru HZ	m	no date	Wild	JM1327	"KN 30 T - Y Rio Tiraco, 570 M"	DS17	Peru						wild
+JM1328		Heliconius	erato	Peru HZ	m	no date	Wild	JM1328	"KN 30 T - Y Rio Tiraco, 570 M"	DS17	Peru						wild
+JM1329		Heliconius	erato	Peru HZ	m	no date	Wild	JM1329	"KN 30 T - Y Rio Tiraco, 570 M"	DS17	Peru						wild
+JM1331		Heliconius	erato	Peru HZ	m	no date	Wild	JM1331	"KN 30 T - Y Rio Tiraco, 570 M"	DS17	Peru						wild
+JM1333		Heliconius	erato	Peru HZ	m	no date	Wild	JM1333	"KN 30 T - Y Rio Tiraco, 570 M"	DS17	Peru						wild
+JM1335		Heliconius	erato	Peru HZ	f	no date	Wild	JM1335	"KN 30 T - Y Rio Tiraco, 570 M"	DS17	Peru						wild
+JM1336		Heliconius	erato	Peru HZ	m	no date	Wild	JM1336	"KN 30 T - Y Rio Tiraco, 570 M"	DS17	Peru						wild
+JM1337		Heliconius	erato	Peru HZ	m	no date	Wild	JM1337	KN 54 T-Y	DS22	Peru						wild
+JM1339		Heliconius	erato	Peru HZ	m	no date	Wild	JM1339	KN 54 T-Y	DS22	Peru						wild
+JM1340		Heliconius	erato	Peru HZ	m	no date	Wild	JM1340	KN 54 T-Y	DS22	Peru						wild
+JM1341		Heliconius	erato	Peru HZ	m	no date	Wild	JM1341	KN 54 T-Y	DS22	Peru						wild
+JM1342		Heliconius	erato	Peru HZ	m	no date	Wild	JM1342	KN 54 T-Y	DS22	Peru						wild
+JM1357		Heliconius	erato	Peru HZ	m	no date	Wild	JM1357	"1.5 km below Pongo de Cainarache, between Rio Cainarache and Mt range"	DS25	Peru						wild
+JM1358		Heliconius	erato	Peru HZ	m	no date	Wild	JM1358	"1.5 km below Pongo de Cainarache, between Rio Cainarache and Mt range"	DS25	Peru						wild
+JM1359		Heliconius	erato	Peru HZ	m	no date	Wild	JM1359	"1.5 km below Pongo de Cainarache, between Rio Cainarache and Mt range"	DS25	Peru						wild
+JM1360		Heliconius	erato	Peru HZ	m	no date	Wild	JM1360	"1.5 km below Pongo de Cainarache, between Rio Cainarache and Mt range"	DS25	Peru						wild
+JM1361		Heliconius	erato	Peru HZ	m	no date	Wild	JM1361	"1.5 km below Pongo de Cainarache, between Rio Cainarache and Mt range"	DS25	Peru						wild
+JM1364		Heliconius	erato	Peru HZ	m	no date	Wild	JM1364	KN 58 T-Y	DS24	Peru						wild
+JM1365		Heliconius	erato	Peru HZ	m	no date	Wild	JM1365	KN 58 T-Y	DS24	Peru						wild
+JM1366		Heliconius	erato	Peru HZ	f	no date	Wild	JM1366	KN 58 T-Y	DS24	Peru						wild
+								JM1366	KN 58 T-Y	DS24	Peru						wild
+JM1366		Heliconius	erato	Peru HZ	f	no date	Wild	JM1366	KN 58 T-Y	DS24	Peru						wild
+								JM1366	KN 58 T-Y	DS24	Peru						wild
+JM1367		Heliconius	erato	Peru HZ	m	no date	Wild	JM1367	KN 58 T-Y	DS24	Peru						wild
+JM1368		Heliconius	erato	Peru HZ	m	no date	Wild	JM1368	KN 58 T-Y	DS24	Peru						wild
+JM1369		Heliconius	erato	Peru HZ	m	no date	Wild	JM1369	KN 58 T-Y	DS24	Peru						wild
+JM1370		Heliconius	erato	Peru HZ	m	no date	Wild	JM1370	KN 58 T-Y	DS24	Peru						wild
+JM1371		Heliconius	erato	Peru HZ	m	no date	Wild	JM1371	KN 58 T-Y	DS24	Peru						wild
+JM1372		Heliconius	erato	Peru HZ	f	no date	Wild	JM1372	KN 58 T-Y	DS24	Peru						wild
+JM1373		Heliconius	erato	Peru HZ	f	no date	Wild	JM1373	KN 58 T-Y	DS24	Peru						wild
+JM1375		Heliconius	erato	Peru HZ	m	no date	Wild	JM1375	KN 58 T-Y	DS24	Peru						wild
+JM1376		Heliconius	erato	Peru HZ	m	no date	Wild	JM1376	KN 58 T-Y	DS24	Peru						wild
+JM1377		Heliconius	erato	Peru HZ	m	no date	Wild	JM1377	KN 58 T-Y	DS24	Peru						wild
+JM1381		Heliconius	erato	Peru HZ	m	no date	Wild	JM1381	KN 58 T-Y	DS24	Peru						wild
+JM1382		Heliconius	erato	Peru HZ	m	no date	Wild	JM1382	KN 58 T-Y	DS24	Peru						wild
+JM1383		Heliconius	erato	Peru HZ	m	no date	Wild	JM1383	KN 58 T-Y	DS24	Peru						wild
+JM1384		Heliconius	erato	Peru HZ	f	no date	Wild	JM1384	KN 58 T-Y	DS24	Peru						wild
+JM1386		Heliconius	erato	Peru HZ	m	no date	Wild	JM1386	KN 58 T-Y	DS24	Peru						wild
+JM1389		Heliconius	erato	Peru HZ	f	no date	Wild	JM1389	"KN 46 - 47 Tarapoto - Y, 340 M"	DS20	Peru						wild
+JM1390		Heliconius	erato	Peru HZ	m	no date	Wild	JM1390	"KN 46 - 47 Tarapoto - Y, 340 M"	DS20	Peru						wild
+JM1391		Heliconius	erato	Peru HZ	m	no date	Wild	JM1391	"KN 46 - 47 Tarapoto - Y, 340 M"	DS20	Peru						wild
+JM1392		Heliconius	erato	Peru HZ	m	no date	Wild	JM1392	"KN 46 - 47 Tarapoto - Y, 340 M"	DS20	Peru						wild
+JM1399		Heliconius	erato	Peru HZ	m	no date	Wild	JM1399	"Convento, km 68 T-Y 270M"	DS28	Peru						wild
+JM1401		Heliconius	erato	Peru HZ	f	no date	Wild	JM1401	"Convento, km 68 T-Y 270M"	DS28	Peru						wild
+JM1411		Heliconius	erato	Peru HZ	f	no date	Wild	JM1411	KN 58 T-Y	DS24	Peru						wild
+JM1412		Heliconius	erato	Peru HZ	f	no date	Wild	JM1412	KN 58 T-Y	DS24	Peru						wild
+JM1413		Heliconius	erato	Peru HZ	m	no date	Wild	JM1413	KN 58 T-Y	DS24	Peru						wild
+JM1415		Heliconius	erato	Peru HZ	m	no date	Wild	JM1415	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1416		Heliconius	erato	Peru HZ	f	no date	Wild	JM1416	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1418		Heliconius	erato	Peru HZ	f	no date	Wild	JM1418	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1419		Heliconius	erato	Peru HZ	m	no date	Wild	JM1419	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1420		Heliconius	erato	Peru HZ	m	no date	Wild	JM1420	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1421		Heliconius	erato	Peru HZ	m	no date	Wild	JM1421	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1424		Heliconius	erato	Peru HZ	m	no date	Wild	JM1424	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1425		Heliconius	erato	Peru HZ	m	no date	Wild	JM1425	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1426		Heliconius	erato	Peru HZ	m	no date	Wild	JM1426	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1427		Heliconius	erato	Peru HZ	m	no date	Wild	JM1427	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1429		Heliconius	erato	Peru HZ	m	no date	Wild	JM1429	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1430		Heliconius	erato	Peru HZ	m	no date	Wild	JM1430	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1433		Heliconius	erato	Peru HZ	m	no date	Wild	JM1433	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1435		Heliconius	erato	Peru HZ	f	no date	Wild	JM1435	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1436		Heliconius	erato	Peru HZ	m	no date	Wild	JM1436	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1437		Heliconius	erato	Peru HZ	m	no date	Wild	JM1437	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1438		Heliconius	erato	Peru HZ	m	no date	Wild	JM1438	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1443		Heliconius	erato	Peru HZ	f	no date	Wild	JM1443	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1445		Heliconius	erato	Peru HZ	f	no date	Wild	JM1445	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1446		Heliconius	erato	Peru HZ	f	no date	Wild	JM1446	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1447		Heliconius	erato	Peru HZ	m	no date	Wild	JM1447	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1448		Heliconius	erato	Peru HZ	m	no date	Wild	JM1448	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1451		Heliconius	erato	Peru HZ	m	no date	Wild	JM1451	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1452		Heliconius	erato	Peru HZ	m	no date	Wild	JM1452	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1454		Heliconius	erato	Peru HZ	m	no date	Wild	JM1454	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1462		Heliconius	erato	Peru HZ	f	no date	Wild	JM1462	"Cerro Isco, Nr Shapajilla"	DS25b	Peru						wild
+JM1463		Heliconius	erato	Peru HZ	m	no date	Wild	JM1463	"Cerro Isco, Nr Shapajilla"	DS25b	Peru						wild
+JM1464		Heliconius	erato	Peru HZ	f	no date	Wild	JM1464	"Cerro Isco, Nr Shapajilla"	DS25b	Peru						wild
+JM1465		Heliconius	erato	Peru HZ	f	no date	Wild	JM1465	"Cerro Isco, Nr Shapajilla"	DS25b	Peru						wild
+JM1466		Heliconius	erato	Peru HZ	m	no date	Wild	JM1466	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1467		Heliconius	erato	Peru HZ	m	no date	Wild	JM1467	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1468		Heliconius	erato	Peru HZ	m	no date	Wild	JM1468	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1469		Heliconius	erato	Peru HZ	m	no date	Wild	JM1469	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1470		Heliconius	erato	Peru HZ	m	no date	Wild	JM1470	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1471		Heliconius	erato	Peru HZ	f	no date	Wild	JM1471	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1472		Heliconius	erato	Peru HZ	f	no date	Wild	JM1472	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1473		Heliconius	erato	Peru HZ	f	no date	Wild	JM1473	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1474		Heliconius	erato	Peru HZ	m	no date	Wild	JM1474	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1475		Heliconius	erato	Peru HZ	m	no date	Wild	JM1475	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1476		Heliconius	erato	Peru HZ	m	no date	Wild	JM1476	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1477		Heliconius	erato	Peru HZ	f	no date	Wild	JM1477	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1478		Heliconius	erato	Peru HZ	m	no date	Wild	JM1478	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1479		Heliconius	erato	Peru HZ	f	no date	Wild	JM1479	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1480		Heliconius	erato	Peru HZ	f	no date	Wild	JM1480	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1481		Heliconius	erato	Peru HZ	m	no date	Wild	JM1481	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1482		Heliconius	erato	Peru HZ	m	no date	Wild	JM1482	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1484		Heliconius	erato	Peru HZ	m	no date	Wild	JM1484	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1485		Heliconius	erato	Peru HZ	m	no date	Wild	JM1485	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1487		Heliconius	erato	Peru HZ	f	no date	Wild	JM1487	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1488		Heliconius	erato	Peru HZ	f	no date	Wild	JM1488	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1490		Heliconius	erato	Peru HZ	m	no date	Wild	JM1490	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1491		Heliconius	erato	Peru HZ	m	no date	Wild	JM1491	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1492		Heliconius	erato	Peru HZ	m	no date	Wild	JM1492	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1494		Heliconius	erato	Peru HZ	m	no date	Wild	JM1494	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1495		Heliconius	erato	Peru HZ	f	no date	Wild	JM1495	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1496		Heliconius	erato	Peru HZ	m	no date	Wild	JM1496	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1497		Heliconius	erato	Peru HZ	f	no date	Wild	JM1497	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1498		Heliconius	erato	Peru HZ	m	no date	Wild	JM1498	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1501		Heliconius	erato	Peru HZ	m	no date	Wild	JM1501	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1502		Heliconius	erato	Peru HZ	m	no date	Wild	JM1502	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1503		Heliconius	erato	Peru HZ	f	no date	Wild	JM1503	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1504		Heliconius	erato	Peru HZ	m	no date	Wild	JM1504	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1505		Heliconius	erato	Peru HZ	f	no date	Wild	JM1505	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1506		Heliconius	erato	Peru HZ	m	no date	Wild	JM1506	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1507		Heliconius	erato	Peru HZ	m	no date	Wild	JM1507	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1509		Heliconius	erato	Peru HZ	f	no date	Wild	JM1509	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1510		Heliconius	erato	Peru HZ	m	no date	Wild	JM1510	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM1511		Heliconius	erato	Peru HZ	m	no date	Wild	JM1511	"Tarapoto, Rio Shilcayo, 350M, NR Toma de agua"	DS06	Peru						wild
+JM1513		Heliconius	erato	Peru HZ	m	no date	Wild	JM1513	"Tarapoto, Rio Shilcayo, 350M, NR Toma de agua"	DS06	Peru						wild
+JM1514		Heliconius	erato	Peru HZ	m	no date	Wild	JM1514	"Tarapoto, Rio Shilcayo, 350M, NR Toma de agua"	DS06	Peru						wild
+JM1515		Heliconius	erato	Peru HZ	m	no date	Wild	JM1515	"Tarapoto, Rio Shilcayo, 350M, NR Toma de agua"	DS06	Peru						wild
+JM1526		Heliconius	erato	Peru HZ	m	no date	Wild	JM1526	"Chazuta, Rio Huallaga, 220-320M"	DS01	Peru						wild
+JM1527		Heliconius	erato	Peru HZ	m	no date	Wild	JM1527	"Chazuta, Rio Huallaga, 220-320M"	DS02	Peru						wild
+JM1529		Heliconius	erato	Peru HZ	m	no date	Wild	JM1529	"Chazuta, Rio Huallaga, 220-320M"	DS04	Peru						wild
+JM1530		Heliconius	erato	Peru HZ	m	no date	Wild	JM1530	"Chazuta, Rio Huallaga, 220-320M"	DS04	Peru						wild
+JM1531		Heliconius	erato	Peru HZ	m	no date	Wild	JM1531	"Chazuta, Rio Huallaga, 220-320M"	DS03	Peru						wild
+JM1532		Heliconius	erato	Peru HZ	m	no date	Wild	JM1532	"Chazuta, Rio Huallaga, 220-320M"	DS03	Peru						wild
+JM1535		Heliconius	erato	Peru HZ	m	no date	Wild	JM1535	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS12	Peru						wild
+JM1537		Heliconius	erato	Peru HZ	m	no date	Wild	JM1537	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS12	Peru						wild
+JM1538		Heliconius	erato	Peru HZ	m	no date	Wild	JM1538	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS12	Peru						wild
+JM1541		Heliconius	erato	Peru HZ	f	no date	Wild	JM1541	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS12	Peru						wild
+JM1542		Heliconius	erato	Peru HZ	m	no date	Wild	JM1542	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS12	Peru						wild
+JM1545		Heliconius	erato	Peru HZ	m	no date	Wild	JM1545	"Chazuta, Rio Huallaga, 220-320M"	DS01	Peru						wild
+JM1547		Heliconius	erato	Peru HZ	f	no date	Wild	JM1547	"Chazuta, Rio Huallaga, 220-320M"	DS02	Peru						wild
+JM1548		Heliconius	erato	Peru HZ	m	no date	Wild	JM1548	"Chazuta, Rio Huallaga, 220-320M"	DS02	Peru						wild
+JM1549		Heliconius	erato	Peru HZ	m	no date	Wild	JM1549	"Chazuta, Rio Huallaga, 220-320M"	DS02	Peru						wild
+JM1550		Heliconius	erato	Peru HZ	f	no date	Wild	JM1550	"Chazuta, Rio Huallaga, 220-320M"	DS03	Peru						wild
+JM1551		Heliconius	erato	Peru HZ	m	no date	Wild	JM1551	"Chazuta, Rio Huallaga, 220-320M"	DS03	Peru						wild
+JM1552		Heliconius	erato	Peru HZ	m	no date	Wild	JM1552	"Chazuta, Rio Huallaga, 220-320M"	DS03	Peru						wild
+JM1553		Heliconius	erato	Peru HZ	m	no date	Wild	JM1553	"Chazuta, Rio Huallaga, 220-320M"	DS03	Peru						wild
+JM1554		Heliconius	erato	Peru HZ	m	no date	Wild	JM1554	"Chazuta, Rio Huallaga, 220-320M"	DS03	Peru						wild
+JM1555		Heliconius	erato	Peru HZ	m	no date	Wild	JM1555	"Chazuta, Rio Huallaga, 220-320M"	DS03	Peru						wild
+JM1556		Heliconius	erato	Peru HZ	m	no date	Wild	JM1556	"Chazuta, Rio Huallaga, 220-320M"	DS04	Peru						wild
+JM1557		Heliconius	erato	Peru HZ	f	no date	Wild	JM1557	"Chazuta, Rio Huallaga, 220-320M"	DS04	Peru						wild
+JM1559		Heliconius	erato	Peru HZ	m	no date	Wild	JM1559	"KN 30 T - Y Rio Tiraco, 570 M"	DS17	Peru						wild
+JM1560		Heliconius	erato	Peru HZ	m	no date	Wild	JM1560	"KN 30 T - Y Rio Tiraco, 570 M"	DS17	Peru						wild
+JM1562		Heliconius	erato	Peru HZ	m	no date	Wild	JM1562	"KN 30 T - Y Rio Tiraco, 570 M"	DS17	Peru						wild
+JM1563		Heliconius	erato	Peru HZ	m	no date	Wild	JM1563	"KN 30 T - Y Rio Tiraco, 570 M"	DS17	Peru						wild
+JM1564		Heliconius	erato	Peru HZ	m	no date	Wild	JM1564	"KN 30 T - Y Rio Tiraco, 570 M"	DS17	Peru						wild
+JM1567		Heliconius	erato	Peru HZ	f	no date	Wild	JM1567	"KN 30 T - Y Rio Tiraco, 570 M"	DS17	Peru						wild
+JM1568		Heliconius	erato	Peru HZ	f	no date	Wild	JM1568	"KN 30 T - Y Rio Tiraco, 570 M"	DS17	Peru						wild
+JM1574		Heliconius	erato	Peru HZ	m	no date	Wild	JM1574	"Santa Rosa de Davidcillo, km 72 T-Y"	DS30	Peru						wild
+JM1575		Heliconius	erato	Peru HZ	m	no date	Wild	JM1575	"Santa Rosa de Davidcillo, km 72 T-Y"	DS30	Peru						wild
+JM1576		Heliconius	erato	Peru HZ	f	no date	Wild	JM1576	"Santa Rosa de Davidcillo, km 72 T-Y"	DS30	Peru						wild
+JM1577		Heliconius	erato	Peru HZ	m	no date	Wild	JM1577	"Santa Rosa de Davidcillo, km 72 T-Y"	DS30	Peru						wild
+JM1578		Heliconius	erato	Peru HZ	m	no date	Wild	JM1578	"Santa Rosa de Davidcillo, km 72 T-Y"	DS30	Peru						wild
+JM1579		Heliconius	erato	Peru HZ	m	no date	Wild	JM1579	"Santa Rosa de Davidcillo, km 72 T-Y"	DS30	Peru						wild
+JM1581		Heliconius	erato	Peru HZ	m	no date	Wild	JM1581	"Santa Rosa de Davidcillo, km 72 T-Y"	DS30	Peru						wild
+JM1582		Heliconius	erato	Peru HZ	f	no date	Wild	JM1582	"Santa Rosa de Davidcillo, km 72 T-Y"	DS30	Peru						wild
+JM1583		Heliconius	erato	Peru HZ	m	no date	Wild	JM1583	"Santa Rosa de Davidcillo, km 72 T-Y"	DS31	Peru						wild
+JM1584		Heliconius	erato	Peru HZ	m	no date	Wild	JM1584	"Santa Rosa de Davidcillo, km 72 T-Y"	DS31	Peru						wild
+JM1585		Heliconius	erato	Peru HZ	m	no date	Wild	JM1585	"Santa Rosa de Davidcillo, km 72 T-Y"	DS32	Peru						wild
+JM1586		Heliconius	erato	Peru HZ	m/f	no date	Wild	JM1586	"Santa Rosa de Davidcillo, km 72 T-Y"	DS32	Peru						wild
+JM1587		Heliconius	erato	Peru HZ	m/f	no date	Wild	JM1587	"Santa Rosa de Davidcillo, km 72 T-Y"	DS32	Peru						wild
+JM1588		Heliconius	erato	Peru HZ	m	no date	Wild	JM1588	"Santa Rosa de Davidcillo, km 72 T-Y"	DS33	Peru						wild
+JM1589		Heliconius	erato	Peru HZ	f	no date	Wild	JM1589	"Santa Rosa de Davidcillo, km 72 T-Y"	DS30	Peru						wild
+JM1590		Heliconius	erato	Peru HZ	f	no date	Wild	JM1590	above Shapajilla	DS25c	Peru						wild
+JM1591		Heliconius	erato	Peru HZ	m	no date	Wild	JM1591	above Shapajilla	DS25c	Peru						wild
+JM1602		Heliconius	erato	Peru HZ	m	no date	Wild	JM1602	Uk	Uk							wild
+JM1605		Heliconius	erato	Peru HZ	f	no date	Wild	JM1605	above Shapajilla	DS25c	Peru						wild
+JM1606		Heliconius	erato	Peru HZ	f	no date	Wild	JM1606	above Shapajilla	DS25c	Peru						wild
+JM1607		Heliconius	erato	Peru HZ	m	no date	Wild	JM1607	above Shapajilla	DS25c	Peru						wild
+JM1608		Heliconius	erato	Peru HZ	m	no date	Wild	JM1608	above Shapajilla	DS25c	Peru						wild
+JM1609		Heliconius	erato	Peru HZ	m	no date	Wild	JM1609	above Shapajilla	DS25c	Peru						wild
+JM1611		Heliconius	erato	Peru HZ	f	no date	Wild	JM1611	above Shapajilla	DS25c	Peru						wild
+JM1613		Heliconius	erato	Peru HZ	m	no date	Wild	JM1613	above Shapajilla	DS25c	Peru						wild
+JM1614		Heliconius	erato	Peru HZ	m	no date	Wild	JM1614	above Shapajilla	DS25c	Peru						wild
+JM1616		Heliconius	erato	Peru HZ	f	no date	Wild	JM1616	above Shapajilla	DS25c	Peru						wild
+JM1617		Heliconius	erato	Peru HZ	f	no date	Wild	JM1617	above Shapajilla	DS25c	Peru						wild
+JM1618		Heliconius	erato	Peru HZ	m	no date	Wild	JM1618	above Shapajilla	DS25c	Peru						wild
+JM1619		Heliconius	erato	Peru HZ	m	no date	Wild	JM1619	above Shapajilla	DS25c	Peru						wild
+JM1620		Heliconius	erato	Peru HZ	m	no date	Wild	JM1620	above Shapajilla	DS25c	Peru						wild
+JM1621		Heliconius	erato	Peru HZ	f	no date	Wild	JM1621	above Shapajilla	DS25c	Peru						wild
+JM1622		Heliconius	erato	Peru HZ	f	no date	Wild	JM1622	"Carretera Barranquitas, km 63 T-Y"	DS27	Peru						wild
+JM1624		Heliconius	erato	Peru HZ	m	no date	Wild	JM1624	"Carretera Barranquitas, km 63 T-Y"	DS27	Peru						wild
+JM1625		Heliconius	erato	Peru HZ	m	no date	Wild	JM1625	"Carretera Barranquitas, km 63 T-Y"	DS27	Peru						wild
+JM1627		Heliconius	erato	Peru HZ	m	no date	Wild	JM1627	"Carretera Barranquitas, km 63 T-Y"	DS27	Peru						wild
+JM1628		Heliconius	erato	Peru HZ	m	no date	Wild	JM1628	"Carretera Barranquitas, km 63 T-Y"	DS27	Peru						wild
+JM1629		Heliconius	erato	Peru HZ	m	no date	Wild	JM1629	"Carretera Barranquitas, km 63 T-Y"	DS27	Peru						wild
+JM1631		Heliconius	erato	Peru HZ	m	no date	Wild	JM1631	"Carretera Barranquitas, km 63 T-Y"	DS27	Peru						wild
+JM1632		Heliconius	erato	Peru HZ	f	no date	Wild	JM1632	"Carretera Barranquitas, km 63 T-Y"	DS27	Peru						wild
+JM1634		Heliconius	erato	Peru HZ	f	no date	Wild	JM1634	"Carretera Barranquitas, km 63 T-Y"	DS27	Peru						wild
+JM1639		Heliconius	erato	Peru HZ	m	no date	Wild	JM1639	"Carretera Barranquitas, km 63 T-Y"	DS27	Peru						wild
+JM1641		Heliconius	erato	Peru HZ	f	no date	Wild	JM1641	"Carretera Barranquitas, km 63 T-Y"	DS27	Peru						wild
+JM1642		Heliconius	erato	Peru HZ	f	no date	Wild	JM1642	KN 58 T-Y	DS24	Peru						wild
+JM1643		Heliconius	erato	Peru HZ	f	no date	Wild	JM1643	KN 58 T-Y	DS24	Peru						wild
+JM1694		Heliconius	erato	Peru HZ	m	no date	Wild	JM1694	"Carretera Barranquitas, km 63 T-Y"	DS27	Peru						wild
+JM1695		Heliconius	erato	Peru HZ	f	no date	Wild	JM1695	"Carretera Barranquitas, km 63 T-Y"	DS27	Peru						wild
+JM1697		Heliconius	erato	Peru HZ	m	no date	Wild	JM1697	"Carretera Barranquitas, km 63 T-Y"	DS27	Peru						wild
+JM1699		Heliconius	erato	Peru HZ	m	no date	Wild	JM1699	"Carretera Barranquitas, km 63 T-Y"	DS27	Peru						wild
+JM1700		Heliconius	erato	Peru HZ	m	no date	Wild	JM1700	"Carretera Barranquitas, km 63 T-Y"	DS27	Peru						wild
+JM1701		Heliconius	erato	Peru HZ	m	no date	Wild	JM1701	"Carretera Barranquitas, km 63 T-Y"	DS27	Peru						wild
+JM1704		Heliconius	erato	Peru HZ	m	no date	Wild	JM1704	"Carretera Barranquitas, km 63 T-Y"	DS27	Peru						wild
+JM1706		Heliconius	erato	Peru HZ	m	no date	Wild	JM1706	"Carretera Barranquitas, km 63 T-Y"	DS27	Peru						wild
+JM1707		Heliconius	erato	Peru HZ	m	no date	Wild	JM1707	"Carretera Barranquitas, km 63 T-Y"	DS27	Peru						wild
+JM1708		Heliconius	erato	Peru HZ	m	no date	Wild	JM1708	"Carretera Barranquitas, km 63 T-Y"	DS27	Peru						wild
+JM1712		Heliconius	erato	Peru HZ	f	no date	Wild	JM1712	"Carretera Barranquitas, km 63 T-Y"	DS27	Peru						wild
+JM1908		Heliconius	erato	Peru HZ	f	no date	Wild	JM1908	"Above Pachiza, Malposos del Rio Huallbamba 300M"	DS00	Peru						wild
+JM1909		Heliconius	erato	Peru HZ	m	no date	Wild	JM1909	"Above Pachiza, Malposos del Rio Huallabamba 300 M"	DS00	Peru						wild
+JM1910		Heliconius	erato	Peru HZ	m	no date	Wild	JM1910	"Above Pachiza, Malposos del Rio Huallabamba 300 M"	DS00	Peru						wild
+JM1911		Heliconius	erato	Peru HZ	f	no date	Wild	JM1911	"Above Pachiza, Malposos del Rio Huallabamba 300 M"	DS00	Peru						wild
+JM1912		Heliconius	erato	Peru HZ	m	no date	Wild	JM1912	"Above Pachiza, Malposos del Rio Huallabamba 300 M"	DS00	Peru						wild
+JM1913		Heliconius	erato	Peru HZ	m	no date	Wild	JM1913	"Above Pachiza, Malposos del Rio Huallabamba 300 M"	DS00	Peru						wild
+JM1916		Heliconius	melpomene	Peru HZ (amaryllis)	m	no date	Wild	JM1916									wild
+JM1917		Heliconius	melpomene	Peru HZ (amaryllis)	m	no date	Wild	JM1917									wild
+JM1919		Heliconius	melpomene	Peru HZ (amaryllis)	m	no date	Wild	JM1919									wild
+JM1926		Heliconius	erato	Peru HZ	f	no date	Wild	JM1926	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS13	Peru						wild
+JM1931		Heliconius	erato	Peru HZ	m	no date	Wild	JM1931	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS13	Peru						wild
+JM1932		Heliconius	erato	Peru HZ	f	no date	Wild	JM1932	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS13	Peru						wild
+JM2144		Heliconius	erato	Peru HZ	m	no date	Wild	JM2144	Km26 Tarapoto - Yurimaguas	DS13b	Peru						wild
+JM2145		Heliconius	erato	Peru HZ	m	no date	Wild	JM2145	Km26 Tarapoto - Yurimaguas	DS13b	Peru						wild
+JM2146		Heliconius	erato	Peru HZ	m	no date	Wild	JM2146	Km26 Tarapoto - Yurimaguas	DS13b	Peru						wild
+JM2148		Heliconius	erato	Peru HZ	m	no date	Wild	JM2148	Km26 Tarapoto - Yurimaguas	DS13b	Peru						wild
+JM2150		Heliconius	erato	Peru HZ	m	no date	Wild	JM2150	Km26 Tarapoto - Yurimaguas	DS13b	Peru						wild
+JM2151		Heliconius	erato	Peru HZ	f	no date	Wild	JM2151	Km26 Tarapoto - Yurimaguas	DS13b	Peru						wild
+JM2152		Heliconius	erato	Peru HZ	m	no date	Wild	JM2152	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS12	Peru						wild
+JM2153		Heliconius	erato	Peru HZ	f	no date	Wild	JM2153	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS12	Peru						wild
+JM2158		Heliconius	erato	Peru HZ	f	no date	Wild	JM2158	Chuma	DS05	Peru						wild
+JM2179		Heliconius	erato	Peru HZ	m	no date	Wild	JM2179	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS13	Peru						wild
+JM2188		Heliconius	erato	Peru HZ	f	no date	Wild	JM2188	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS13	Peru						wild
+JM2193		Heliconius	erato	Peru HZ	m	no date	Wild	JM2193	Km26 Tarapoto - Yurimaguas	DS13b	Peru						wild
+JM2194		Heliconius	erato	Peru HZ	f	no date	Wild	JM2194	Km26 Tarapoto - Yurimaguas	DS13b	Peru						wild
+JM2195		Heliconius	erato	Peru HZ	m	no date	Wild	JM2195	Km26 Tarapoto - Yurimaguas	DS13b	Peru						wild
+JM2196		Heliconius	erato	Peru HZ	m	no date	Wild	JM2196	Km26 Tarapoto - Yurimaguas	DS13b	Peru						wild
+JM2197		Heliconius	erato	Peru HZ	f	no date	Wild	JM2197	Km26 Tarapoto - Yurimaguas	DS13b	Peru						wild
+JM2198		Heliconius	erato	Peru HZ	m	no date	Wild	JM2198	Km26 Tarapoto - Yurimaguas	DS13b	Peru						wild
+JM2199		Heliconius	erato	Peru HZ	f	no date	Wild	JM2199	Km26 Tarapoto - Yurimaguas	DS13b	Peru						wild
+JM2200		Heliconius	erato	Peru HZ	f	no date	Wild	JM2200	Km26 Tarapoto - Yurimaguas	DS13b	Peru						wild
+JM2210		Heliconius	erato	Peru HZ	f	no date	Wild	JM2210	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS12	Peru						wild
+JM2211		Heliconius	erato	Peru HZ	m	no date	Wild	JM2211	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS12	Peru						wild
+JM2212		Heliconius	erato	Peru HZ	m	no date	Wild	JM2212	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS12	Peru						wild
+JM2213		Heliconius	erato	Peru HZ	f	no date	Wild	JM2213	Uk	Uk							wild
+JM2219		Heliconius	erato	Peru HZ	m	no date	Wild	JM2219	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS12	Peru						wild
+JM2220		Heliconius	erato	Peru HZ	m	no date	Wild	JM2220	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS12	Peru						wild
+JM2221		Heliconius	erato	Peru HZ	m	no date	Wild	JM2221	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS12	Peru						wild
+JM2222		Heliconius	erato	Peru HZ	m	no date	Wild	JM2222	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS12	Peru						wild
+JM437		Heliconius	erato	Peru HZ	m	no date	Wild	JM437	"Santa Rosa de Davidcillo, km 72 T-Y"	DS30	Peru						wild
+JM438		Heliconius	erato	Peru HZ	m	no date	Wild	JM438	"Santa Rosa de Davidcillo, km 72 T-Y"	DS30	Peru						wild
+JM439		Heliconius	erato	Peru HZ	m	no date	Wild	JM439	"Santa Rosa de Davidcillo, km 72 T-Y"	DS30	Peru						wild
+JM440		Heliconius	erato	Peru HZ	m	no date	Wild	JM440	"Santa Rosa de Davidcillo, km 72 T-Y"	DS30	Peru						wild
+JM442		Heliconius	erato	Peru HZ	m	no date	Wild	JM442	"Santa Rosa de Davidcillo, km 72 T-Y"	DS31	Peru						wild
+JM443		Heliconius	erato	Peru HZ	f	no date	Wild	JM443	"Santa Rosa de Davidcillo, km 72 T-Y"	DS31	Peru						wild
+JM460		Heliconius	erato	Peru HZ	m	no date	Wild	JM460	KN 54 T-Y	DS21	Peru						wild
+JM462		Heliconius	erato	Peru HZ	f	no date	Wild	JM462	KN 54 T-Y	DS21	Peru						wild
+JM488		Heliconius	erato	Peru HZ	f	no date	Wild	JM488	"Chazuta, Rio Huallaga, 220-320M"	DS02	Peru						wild
+JM489		Heliconius	erato	Peru HZ	f	no date	Wild	JM489	"Chazuta, Rio Huallaga, 220-320M"	DS03	Peru						wild
+JM494		Heliconius	melpomene	Peru HZ (cognata)	m	no date	Wild	JM494									wild
+JM853		Heliconius	erato	Peru HZ	m	no date	Wild	JM853	"Tarapoto, Rio Shilcayo, 350M, NR Toma de agua"	DS06	Peru						wild
+JM854		Heliconius	erato	Peru HZ	m	no date	Wild	JM854	Uk	Uk							wild
+JM883		Heliconius	erato	Peru HZ	f	no date	Wild	JM883	"Chazuta, Rio Huallaga, 220-320M"	DS02	Peru						wild
+JM889		Heliconius	erato	Peru HZ	m	no date	Wild	JM889	"Chazuta, Rio Huallaga, 220-320M"	DS03	Peru						wild
+JM897		Heliconius	erato	Peru HZ	m	no date	Wild	JM897	"Rio Aguashiyacu, NR Fundo Bachmann"	DS11	Peru						wild
+JM918		Heliconius	erato	Peru HZ	f	no date	Wild	JM918	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS13	Peru						wild
+JM919		Heliconius	erato	Peru HZ	f	no date	Wild	JM919	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS13	Peru						wild
+JM920		Heliconius	erato	Peru HZ	m	no date	Wild	JM920	"Cataratas & Atena, Km 15-17 Tarapoto - Yurimaguas"	DS13	Peru						wild
+JM933		Heliconius	erato	Peru HZ	m	no date	Wild	JM933	"Santa Rosa de Davidcillo, km 72 T-Y"	DS32	Peru						wild
+JM961		Heliconius	erato	Peru HZ	f	no date	Wild	JM961	"Rio Yaracyacu trail, Km 62 T-Y, 270 M"	DS26	Peru						wild
+JM996		Heliconius	erato	Peru HZ	m	no date	Wild	JM996	Km 28 T - Y ST 1/ 6	DS14	Peru						wild
+JM997		Heliconius	erato	Peru HZ	f	no date	Wild	JM997	Km 28 T - Y ST 1/ 6	DS14	Peru						wild
+P34	1/8/1997	Heliconius	sapho				Wild	P34			Panama						wild
+P35	1/8/1997	Heliconius	sapho				Wild	P35			Panama						wild
+P37	1/8/1997	Heliconius	sapho				Wild	P37			Panama						wild
+P38	1/8/1997	Heliconius	sapho				Wild	P38			Panama						wild
+P39	1/8/1997	Heliconius	cydno				Wild	P39			Panama						wild
+P40	1/8/1997	Heliconius	cydno				Wild	P40			Panama						wild
+P41	1/8/1997	Heliconius	cydno				Wild	P41			Panama						wild
+P42	1/8/1997	Heliconius	cydno				Wild	P42			Panama						wild
+P43	1/9/1997	Heliconius	melpomene	rosina			Wild	P43	Pipeline Rd.		Panama						wild
+P44	1/9/1997	Heliconius	erato	petiverana	f	No body	Wild	P44	Pipeline Rd.		Panama					No body	wild
+P45	1/9/1997	Heliconius	sara		m		Wild	P45	Pipeline Rd.		Panama						wild
+P47	1/9/1997	Heliconius	erato	petiverana	m		Wild	P47	Pipeline Rd.		Panama						wild
+P48	1/9/1997	Heliconius	ismenius?		m		Wild	P48	Pipeline Rd.		Panama						wild
+P49	1/9/1997	Heliconius	ismenius?		m		Wild	P49	Pipeline Rd.		Panama						wild
+P50	1/9/1997	Heliconius	erato	petiverana	f		Wild	P50	El valle		Panama						wild
+P51	1/9/1997	Heliconius	erato	petiverana	m		Wild	P51	El valle		Panama						wild
+P52	1/9/1997	Dryas 	iulia		f		Wild	P52	El valle		Panama						wild
+P53	1/9/1997	Heliconius	ismenius?		m		Wild	P53	"Parque Metro, Panama city"		Panama						wild
+P54	1/9/1997	Heliconius	ismenius?		m		Wild	P54	"Parque Metro, Panama city"		Panama						wild
+P55	1/9/1997	Heliconius	ismenius?		m		Wild	P55	"Parque Metro, Panama city"		Panama						wild
+P56	1/9/1997	Heliconius	ismenius?		m		Wild	P56	"Parque Metro, Panama city"		Panama						wild
+P57	1/9/1997	Heliconius	sara		m		Wild	P57			Panama						wild
+P58	1/9/1997	?					Wild	P58			Panama						wild
+PR521	1/6/2000	Heliconius	himera		f	"Collected by Jim in Tarapoto, Peru, 198-???? "	Wild	PR521	Tarapoto HZ		Peru					"Collected by Jim in Tarapoto, Peru, 198-???? "	wild
+PR522	1/6/2000	Heliconius	himera		m	"Collected by Jim in Tarapoto, Peru, 198-???? "	Wild	PR522			Peru					"Collected by Jim in Tarapoto, Peru, 198-???? "	wild
+PR523	1/6/2000	Heliconius	himera		f	"Collected by Jim in Tarapoto, Peru, 198-???? EtOH evaporated from tube in transport."	Wild	PR523			Peru					"Collected by Jim in Tarapoto, Peru, 198-???? EtOH evaporated from tube in transport."	wild
+PR524	1/6/2000	Heliconius	himera		m	"Collected by Jim in Tarapoto, Peru, 198-???? "	Wild	PR524			Peru					"Collected by Jim in Tarapoto, Peru, 198-???? "	wild
+PR525	1/6/2000	Heliconius	himera		f	"Collected by Jim in Tarapoto, Peru, 198-???? "	Wild	PR525			Peru					"Collected by Jim in Tarapoto, Peru, 198-???? "	wild
+PR55	10/11/1999	Heliconius	charithonia		m	"In captive population, L.E. Gilbert's lab. "	Wild	PR55	"Brakenridge Field Station, University of Texas, Austin"	Texas	USA					"In captive population, L.E. Gilbert's lab. "	wild
+PR56	10/11/1999	Heliconius	charithonia		m	"In captive population, L.E. Gilbert's lab. "	Wild	PR56	"Brakenridge Field Station, University of Texas, Austin"	Texas	USA					"In captive population, L.E. Gilbert's lab. "	wild
+PR57	10/11/1999	Heliconius	charithonia		m	"In captive population, L.E. Gilbert's lab. "	Wild	PR57	"Brakenridge Field Station, University of Texas, Austin"	Texas	USA					"In captive population, L.E. Gilbert's lab. "	wild
+PR58	10/11/1999	Heliconius	charithonia		m	"In captive population, L.E. Gilbert's lab. "	Wild	PR58	"Brakenridge Field Station, University of Texas, Austin"	Texas	USA					"In captive population, L.E. Gilbert's lab. "	wild
+TT01	12/23/1999	Heliconius	melpomene	melpomene	m		Wild	TT01	"Avocat, Petit Marianne waterfall"	Trinidad	Trinidad						wild
+TT02	12/24/1999	Heliconius	melpomene	melpomene	m		Wild	TT02	"North Coast Rd, Maracas - Las Cuevas"	Trinidad	Trinidad						wild
+TT03	12/24/1999	Heliconius	melpomene	melpomene	f		Wild	TT03	"North Coast Rd, Maracas - Las Cuevas"	Trinidad	Trinidad						wild
+TT04	12/24/1999	Heliconius	melpomene	melpomene	f		Wild	TT04	"North Coast Rd, Maracas - Las Cuevas"	Trinidad	Trinidad						wild
+TT05	12/24/1999	Heliconius	erato	hydara	f		Wild	TT05	"North Coast Rd, Maracas - Las Cuevas"	Trinidad	Trinidad						wild
+TT06	12/24/1999	Heliconius	erato	hydara	m		Wild	TT06	"North Coast Rd, Maracas - Las Cuevas"	Trinidad	Trinidad						wild
+TT07	12/24/1999	Heliconius	erato	hydara	m		Wild	TT07	"North Coast Rd, Maracas - Las Cuevas"	Trinidad	Trinidad						wild
+TT08	12/24/1999	Heliconius	ricini?		m		Wild	TT08	"North Coast Rd, Maracas - Las Cuevas"	Trinidad	Trinidad						wild
+TT09	12/24/1999	Heliconius	ricini?		m		Wild	TT09	"North Coast Rd, Maracas - Las Cuevas"	Trinidad	Trinidad						wild
+TT10	12/27/1999	Heliconius	erato	hydara	m		Wild	TT10	"Madamas Rd, Braso Seco"	Trinidad	Trinidad						wild
+TT11	12/27/1999	Heliconius	erato	hydara	m		Wild	TT11	"Madamas Rd, Braso Seco"	Trinidad	Trinidad						wild
+TT12	12/27/1999	Heliconius	erato	hydara	f		Wild	TT12	"Madamas Rd, Braso Seco"	Trinidad	Trinidad						wild
+TT14	12/27/1999	Heliconius	melpomene	melpomene	f		Wild	TT14	"Madamas Rd, Braso Seco"	Trinidad	Trinidad						wild
+Y1	1/6/2000	Heliconius	erato	lativitta	m	INEFAN?	Wild	Y1		Yasuni	Ecuador						wild
+Y10	1/6/2000	Heliconius	erato	lativitta	m	INEFAN?	Wild	Y10		Yasuni	Ecuador						wild
+Y11	1/6/2000	Heliconius	erato	lativitta	m	INEFAN?	Wild	Y11		Yasuni	Ecuador						wild
+Y12	1/6/2000	Neruda	acede		m		Wild	Y12		Yasuni	Ecuador						wild
+Y13	3/22/1995	Heliconius 	ethilla?		f	H. ethilla not recorded from Ecuador	Wild	Y13	"Yasuni Research Station,heliport"	Yasuni	Ecuador					H. ethilla not recorded from Ecuador	wild
+Y14	3/22/1995	Heliconius 	sara		f		Wild	Y14	"Yasuni Research Station, km 47 Maxus Rd"	Yasuni	Ecuador						wild
+Y15	1/6/2000	Dryas	iulia		f		Wild	Y15		Yasuni	Ecuador						wild
+Y18	3/23/1995	Heliconius 	numata		m	type 4	Wild	Y18	"Yasuni Research Station, km 37 Maxus Rd"	Yasuni	Ecuador					type 4	wild
+Y19	3/23/1995	Heliconius 	numata		m	type 5	Wild	Y19	"Yasuni Research Station, km 37 Maxus Rd"	Yasuni	Ecuador					type 5	wild
+Y23	3/23/1995	Neruda 	aoede		m	type 3	Wild	Y23	"Yasuni Research Station, km 37 Maxus Rd"	Yasuni	Ecuador					type 3	wild
+Y24	3/23/1995	Neruda 	aoede		m	type 3	Wild	Y24	"Yasuni Research Station, km 37 Maxus Rd"	Yasuni	Ecuador					type 3	wild
+Y25	3/23/1995	Neruda 	aoede		m	type 3	Wild	Y25	"Yasuni Research Station, km 37 Maxus Rd"	Yasuni	Ecuador					type 3	wild
+Y27	3/23/1995	Dryas	iulia		f		Wild	Y27	"Yasuni Research Station, km 42 Maxus Rd"	Yasuni	Ecuador						wild
+Y3	3/21/1995	Dryas	iulia		m		Wild	Y3	Yasuni Research Stationfield centre at Heliport and roadsides	Yasuni	Ecuador						wild
+Y30	3/25/1995	Heliconius	erato	lativitta	m		Wild	Y30	Yasuni Research Station	Yasuni	Ecuador						wild
+Y31	3/25/1995	Heliconius	erato	lativitta	m		Wild	Y31	Yasuni Research Station	Yasuni	Ecuador						wild
+Y32	3/25/1995	Heliconius	erato	lativitta / demeter?	f	possibly demeter	Wild	Y32	Yasuni Research Station	Yasuni	Ecuador					possibly demeter	wild
+Y33	3/25/1995	Heliconius	erato	lativitta			Wild	Y33	Yasuni Research Station	Yasuni	Ecuador						wild
+Y34	3/25/1995	Heliconius	erato	lativitta	f		Wild	Y34	Yasuni Research Station	Yasuni	Ecuador						wild
+Y35	3/25/1995	Heliconius	wallacei		m		Wild	Y35	Yasuni Research Station	Yasuni	Ecuador						wild
+Y36	3/25/1995	Heliconius	wallacei		m		Wild	Y36	Yasuni Research Station	Yasuni	Ecuador						wild
+Y37	3/25/1995	Heliconius	wallacei		m		Wild	Y37	Yasuni Research Station	Yasuni	Ecuador						wild
+Y38	3/25/1995	Eueides	tales		f		Wild	Y38	Yasuni Research Station	Yasuni	Ecuador						wild
+Y39	3/25/1995	Dryas	iulia		m		Wild	Y39	Yasuni Research Station	Yasuni	Ecuador						wild
+Y4	3/21/1995	Dryas	iulia		f		Wild	Y4	Yasuni Research Stationfield centre at Heliport and roadsides	Yasuni	Ecuador						wild
+Y40	3/24/1995	Neruda	metharme		m		Wild	Y40	Yasuni Research Station	Yasuni	Ecuador						wild
+Y41	3/24/1995	Heliconius	ethilla?		m	H. ethilla not recorded from Ecuador	Wild	Y41	Yasuni Research Station	Yasuni	Ecuador					H. ethilla not recorded from Ecuador	wild
+Y5	3/20/1995	Heliconius 	pardalinus	spp. nov.	f	was thought to be hecale but Chris Jiggins determined likely pardalinus 12 Dec 2002	Wild	Y5	Yasuni Research Stationfield centre at Heliport and roadsides	Yasuni	Ecuador					sylvaniform	wild
+Y6	3/21/1995	Heliconius 	sara		f		Wild	Y6	Yasuni Research Stationfield centre at Heliport and roadsides	Yasuni	Ecuador						wild
+Y7	1/6/2000	Heliconius	erato	lativitta	m	INEFAN?	Wild	Y7		Yasuni	Ecuador						wild
+Y8	1/6/2000	Heliconius	erato	lativitta	m	INEFAN?	Wild	Y8		Yasuni	Ecuador						wild
+Y9	1/6/2000	Heliconius	erato	lativitta	m	INEFAN?	Wild	Y9		Yasuni	Ecuador						wild
+0	7/22/1999	Heliconius	charithonia		m		Wild										wild
+Y2		Heliconius	melpomene	aglaope	f	no date	Wild										wild
+P36	1/8/1997	Heliconius	sapho			We think this is the right data for this but not sure 	Wild										wild
+PR01gar	9/1/2002	Heliconius	himera	himera	F	for DNA extraction Nic	Wild										wild
+PR02gar	9/1/2002	Heliconius	himera	himera	F	for DNA extraction Nic	Wild										wild
+FG0.5	11/7/2000	Heliconius	sara				Wild										wild
