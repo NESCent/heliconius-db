@@ -5,6 +5,8 @@
 
 package org.nescent.heliconius.ws.rest;
 import java.io.ByteArrayInputStream;
+import java.util.Date;
+import java.util.List;
 import java.util.StringTokenizer;
 
 import javax.annotation.Resource;
@@ -17,6 +19,12 @@ import javax.xml.ws.WebServiceProvider;
 import javax.xml.ws.handler.MessageContext;
 import javax.xml.ws.http.HTTPBinding;
 import javax.xml.ws.http.HTTPException;
+
+import org.nescent.heliconius.hibernate.Biotype;
+import org.nescent.heliconius.hibernate.Geolocation;
+import org.nescent.heliconius.hibernate.Individual;
+import org.nescent.heliconius.hibernate.IndividualBiotype;
+import org.nescent.heliconius.hibernate.IndividualDAO;
 
 
 @WebServiceProvider
@@ -72,53 +80,96 @@ public class Collection implements Provider<Source> {
 	 */
 	private Source createSource(String id) {
         
-		/**hold 2 seconds to let the animation of the flying butterfly show up.
-		 * This is only for demo purpose and should be removed later
-		 */ 
-		try{
-			Thread.sleep(2000);
-		}catch(Exception e){}
-		
-		String notes="Basking in their first moments of nuptial bliss, brides and grooms around the country are exiting churches, showered not with rice or confetti, but surrounded instead by the fluttering gossamer wings of hundreds of butterflies. All but unheard of just a few years ago, butterfly releases are the latest fashion at weddings, not to mention at memorial services, grand openings, divorces and prison releases.\n"; 
-        notes+="\"The beautiful flight of the butterflies as they ascended -- it captured the beauty and the spirit of the day,\" said Dr. Patricia Heaman of White Haven, Pa., who ordered a \"mixed bouquet\" of several species of butterflies for the garden wedding last month of her nature-loving daughter. \"It just seemed like the natural culmination to a natural event.\""; 
-
-		String body =
-            "<CollectionResponse>"
-        	+"<Individual id=\"" + id +"\">"
-            +"<ScientificName>"
-            +"<Simple>Scientific Name 1</Simple>"
-            +"<Family>family name</Family>"
-    		+"<Subfamily>Subfamily name</Subfamily>"
-    		+"<Genus>Genus name</Genus>"
-    		+"<Species>Species name </Species>"
-    		+"<Subspecies>Subspecies name</Subspecies>"
-    		+"</ScientificName>"
-            +"<GeoLocation><Country>USA</Country><Province>NC</Province>"
-            +"<Latitude>30.5</Latitude>"
-            +"<Longitude>100.3</Longitude>"
-            +"<Altitude>330.8</Altitude>"
-            +"</GeoLocation>"
-            +"<Images>"
-            +"<Image>eratocyrbia.jpg</Image>"
-            +"</Images>"
-            +"<Specimens SpecimenNumber=\"5\">"
-        	+"<Specimen id=\"1\">"
-        	+"<Tissue>tissue 1</Tissue>"
-        	+"<Location>location 1</Location>"
-        	+"</Specimen>"
-        	+"<Specimen id=\"2\">"
-        	+"<Tissue>tissue 2</Tissue>"
-        	+"<Location>location 2</Location>"
-        	+"</Specimen>"
-        	+"</Specimens>"
-        	+"<Sex>Male</Sex>"
-        	+"<CollectionDate>01/20/2001</CollectionDate>"
-        	+"<Notes>"+notes+"</Notes>"
-            +"</Individual>"
-            +"</CollectionResponse>";
-        Source source = new StreamSource(
+		IndividualDAO indvDao=new IndividualDAO();
+		Individual indv=indvDao.findById(Integer.valueOf(id));
+		String body ="<CollectionResponse>";
+		if(indv==null)
+		{
+			body +="<Error>No individual found</Error>";
+	            
+		}
+		else
+		{
+			body +="<Individual id=\"" + id +"\">";
+			
+			IndividualBiotype indvBiotype=(IndividualBiotype)indv.getIndividualBiotypes().toArray()[0];
+			Biotype biotype=indvBiotype.getBiotype();
+			
+			body+="<ScientificName><Simple>"+biotype.getName()+"</Simple>";
+			String genus="";
+			String species="";
+			String subspecies="";
+			
+			String ss[]=biotype.getName().split(" ssp. ");
+			if(ss.length==2)
+			{
+				subspecies=ss[1];
+			}
+			String sss[]=ss[0].split(" ");
+			if(sss.length==2)
+				species=sss[1];
+			genus=sss[0];
+			
+			body+="<Genus>" + genus + "</Genus>"
+			+"<Species>" + species + "</Species>"
+    		+"<Subspecies>" + subspecies + "</Subspecies>"
+    		+"</ScientificName>";
+    		
+			String country1="";
+            String province1="";
+            String lat="";
+            String longitude="";
+            String alt="";
+            Geolocation geo=indv.getGeolocation();
+            
+            if(geo!=null)
+            {
+            	if(geo.getCountry()!=null)
+            		country1=geo.getCountry();
+            	if(geo.getProvince()!=null)
+            		province1=geo.getProvince();
+            	if(geo.getLatitude()!=null)
+            		lat=String.valueOf(geo.getLatitude());
+            	if(geo.getLongitude()!=null)
+            		longitude=String.valueOf(geo.getLongitude());
+            	if(geo.getAltitude()!=null)
+            		alt=String.valueOf(geo.getAltitude());
+            }
+            body+="<GeoLocation>" 
+            	+"<Country>" + country1 +"</Country>" 
+            	+"<Province>"+ province1+"</Province>"
+            	+"<Latitude>" + lat+"</Latitude>"
+            	+"<Longitude>"+longitude+"</Longitude>"
+            	+"<Altitude>"+ alt+"</Altitude>"
+            	+"</GeoLocation>";
+            	
+            body+="<Images></Images>";
+            	
+            
+            Date date=indv.getCollectionDate();
+            if(date!=null)
+            	body+="<CollectionDate>" + date + "</CollectionDate>";
+            else
+            	body+="<CollectionDate></CollectionDate>";
+            String notes=indv.getDescription();
+            if(notes!=null)
+            	body+="<Notes>"+notes+"</Notes>";
+            else
+            	body+="<Notes></Notes>";
+            
+            body+="</Individual>";
+		}
+		body+="</CollectionResponse>";
+        System.out.println(body);
+		Source source = new StreamSource(
             new ByteArrayInputStream(body.getBytes()));
         return source;
     }
-	
+	public static void main(String [] agrs)
+	{
+		Collection test=new Collection();
+		Source sc=test.createSource("2537");
+		System.out.println(sc.toString());
+		
+	}
 }

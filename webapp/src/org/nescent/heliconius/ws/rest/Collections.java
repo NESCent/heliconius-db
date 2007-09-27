@@ -5,6 +5,7 @@
 package org.nescent.heliconius.ws.rest;
 
 import java.io.ByteArrayInputStream;
+import java.util.List;
 import java.util.StringTokenizer;
 
 import javax.annotation.Resource;
@@ -17,6 +18,15 @@ import javax.xml.ws.WebServiceProvider;
 import javax.xml.ws.handler.MessageContext;
 import javax.xml.ws.http.HTTPBinding;
 import javax.xml.ws.http.HTTPException;
+
+import org.hibernate.Session;
+import org.nescent.heliconius.hibernate.Biotype;
+import org.nescent.heliconius.hibernate.BiotypeDAO;
+import org.nescent.heliconius.hibernate.Geolocation;
+import org.nescent.heliconius.hibernate.HibernateSessionFactory;
+import org.nescent.heliconius.hibernate.Individual;
+import org.nescent.heliconius.hibernate.IndividualBiotype;
+import org.nescent.heliconius.hibernate.IndividualDAO;
 
 @WebServiceProvider
 @BindingType(value=HTTPBinding.HTTP_BINDING)
@@ -37,7 +47,7 @@ public class Collections implements Provider<Source> {
             String genus="";
             String species="";
             String subspecies="";
-            System.out.println(query);
+           // System.out.println(query);
             if (query != null)
             {
             	
@@ -96,40 +106,89 @@ public class Collections implements Provider<Source> {
 	 */
 	private Source createSource(String country,String province,String genus,String species,String subspecies) {
                 
-		/**hold 2 seconds to let the animation of the flying butterfly show up.
-		 * This is only for demo purpose and should be removed later
-		 */ 
-		try{
-			Thread.sleep(2000);
-		}catch(Exception e){}
+		Session sess=HibernateSessionFactory.getSession();
+		String name="";
+		if(genus!=null && ! genus.trim().equals(""))
+			name=genus.trim();
+		if(species!=null && ! species.trim().equals(""))
+			name+=" " + species.trim();
+		if(subspecies!=null && ! subspecies.trim().equals(""))
+			name+=" ssp. " + subspecies.trim();
+		name=name.trim();
+		IndividualDAO indvDao=new IndividualDAO();
 		
+		List indvList=null;
+		
+		//indvList=indvDao.findByProperty("biotype",biotype);
+		String query="from Individual as indv join indv.individualBiotypes as biotypes join biotypes.biotype as biotype where indv.isCaptivityReared=FALSE AND  biotype.name like '%" + name +"%'";
+		if(country!=null && ! country.trim().equals(""))
+			query+=" AND indv.geolocation.country='" + country +"'";
+		if(province!=null && ! province.trim().equals(""))
+			query+=" AND indv.geolocation.province='" + province +"'";
+		
+		indvList=sess.createQuery(query).list();
+			
 		String body ="<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>" 
         	+"<CollectionsResponse>"
-        	+"<Individuals>"
-        	+"<Individual id=\"0\">"
-            +"<ScientificName><Simple>"+genus+" "+ species+" "+subspecies + "</Simple></ScientificName>"
-            +"<GeoLocation><Country>" + country +"</Country><Province>"+ province+"</Province>"
-            +"<Latitude>30.5</Latitude>"
-            +"<Longitude>100.3</Longitude>"
-            +"<Altitude>330.8</Altitude>"
-            +"</GeoLocation>"
-            +"<Images><Image>image1</Image></Images>"
-            +"<Specimens SpecimenNumber=\"5\"></Specimens>"
-            +"</Individual>"
-            +"<Individual id=\"1\">"
-            +"<ScientificName><Simple>Scientific Name 1</Simple></ScientificName>"
-            +"<GeoLocation><Country>USA</Country><Province>FL</Province>"
-            +"<Latitude>23.0</Latitude>"
-            +"<Longitude>90.5</Longitude>"
-            +"<Altitude>230.1</Altitude>"
-            +"</GeoLocation>"
-            +"<Images><Image>image2</Image></Images>"
-            +"<Specimens SpecimenNumber=\"2\"></Specimens>"
-            +"</Individual>"
-            +"</Individuals>"
+        	+"<Individuals>";
+		if(indvList!=null)
+		{
+			for(int i=0;i<indvList.size();i++)
+			{
+				Individual indv=(Individual)((Object [])indvList.get(i))[0];
+				
+				body+="<Individual id=\"" + indv.getIndividualId()+"\">";
+	            
+				IndividualBiotype indvBiotype=(IndividualBiotype)indv.getIndividualBiotypes().toArray()[0];
+				Biotype biotype=indvBiotype.getBiotype();
+				
+				body+="<ScientificName><Simple>"+biotype.getName()+"</Simple></ScientificName>"; 
+	            String country1="";
+	            String province1="";
+	            String lat="";
+	            String longitude="";
+	            String alt="";
+	            Geolocation geo=indv.getGeolocation();
+	            
+	            if(geo!=null)
+	            {
+	            	if(geo.getCountry()!=null)
+	            		country1=geo.getCountry();
+	            	if(geo.getProvince()!=null)
+	            		province1=geo.getProvince();
+	            	if(geo.getLatitude()!=null)
+	            		lat=String.valueOf(geo.getLatitude());
+	            	if(geo.getLongitude()!=null)
+	            		longitude=String.valueOf(geo.getLongitude());
+	            	if(geo.getAltitude()!=null)
+	            		alt=String.valueOf(geo.getAltitude());
+	            }
+	            body+="<GeoLocation>" 
+	            	+"<Country>" + country1 +"</Country>" 
+	            	+"<Province>"+ province1+"</Province>"
+	            	+"<Latitude>" + lat+"</Latitude>"
+	            	+"<Longitude>"+longitude+"</Longitude>"
+	            	+"<Altitude>"+ alt+"</Altitude>"
+	            	+"</GeoLocation>";
+	            	
+	            body+="<Images></Images>"
+	            	+"</Individual>";
+			}
+		}
+		body+="</Individuals>"
             +"</CollectionsResponse>";
         Source source = new StreamSource(
             new ByteArrayInputStream(body.getBytes()));
+        //System.out.println(body);
+       
         return source;
     }
+	
+	public static void main(String [] agrs)
+	{
+		Collections test=new Collections();
+		Source sc=test.createSource("Ecuador","","","erato","");
+		//System.out.println(sc.toString());
+		
+	}
 }

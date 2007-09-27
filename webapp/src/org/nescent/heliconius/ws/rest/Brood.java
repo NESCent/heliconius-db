@@ -5,6 +5,7 @@
 
 package org.nescent.heliconius.ws.rest;
 import java.io.ByteArrayInputStream;
+import java.util.Set;
 import java.util.StringTokenizer;
 
 import javax.annotation.Resource;
@@ -17,6 +18,15 @@ import javax.xml.ws.WebServiceProvider;
 import javax.xml.ws.handler.MessageContext;
 import javax.xml.ws.http.HTTPBinding;
 import javax.xml.ws.http.HTTPException;
+
+import org.nescent.heliconius.hibernate.Biotype;
+import org.nescent.heliconius.hibernate.Crossexperiment;
+import org.nescent.heliconius.hibernate.CrossexperimentDAO;
+import org.nescent.heliconius.hibernate.Crossexperimentprop;
+import org.nescent.heliconius.hibernate.Cvterm;
+import org.nescent.heliconius.hibernate.Individual;
+import org.nescent.heliconius.hibernate.IndividualBiotype;
+import org.nescent.heliconius.hibernate.IndividualDAO;
 
 
 @WebServiceProvider
@@ -72,57 +82,139 @@ public class Brood implements Provider<Source> {
 	 */
 	private Source createSource(String id) {
         
-		/**hold 2 seconds to let the animation of the flying butterfly show up.
-		 * This is only for demo purpose and should be removed later
-		 */ 
-		try{
-			Thread.sleep(2000);
-		}catch(Exception e){}
+		CrossexperimentDAO crossDao=new CrossexperimentDAO();
+		Crossexperiment cross=crossDao.findById(Integer.valueOf(id));
 		
 		String body ="<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>" 
-        	+"<BroodResponse>"
-        	+"<Brood id=\"" + id +"\">"
-        	+"<Father id=\"1000\">"
-        	+"<ScientificName><Simple>Scientific Name of Father</Simple></ScientificName>"
-        	+"</Father>"
-            +"<Mother id=\"1001\">"
-            +"<ScientificName><Simple>Scientific Name of Mother</Simple></ScientificName>"
-            +"</Mother>"
-            +"<CrossType>Cross Type 1</CrossType>"
-            +"<NumberOfEggs>100</NumberOfEggs>"
-            +"<NumberOfAdults>25</NumberOfAdults>"
-            +"<Offsprings>";
+        	+"<BroodResponse>";
         
-        for(int i=10000; i<10025;i++)
-        {
-        	body+="<Individual id=\"" + i + "\">"
-        		+"<ScientificName><Simple>Offspring " + i + "</Simple></ScientificName>"
-        		+"</Individual>";
-        }
+        	
+		if(cross==null)
+		{
+			body +="<Error>No brood found</Error>";
+	    }
+		else
+		{
+			body+="<Brood id=\"" + id +"\">";
+        	
+			Individual father=cross.getIndividualByMaleId();
+        	if(father!=null)
+        	{
+        		body+="<Father id=\"" + father.getIndividualId()+"\">";
+        		IndividualBiotype indvBiotype=(IndividualBiotype)father.getIndividualBiotypes().toArray()[0];
+    			Biotype biotype=indvBiotype.getBiotype();
+    			body+="<ScientificName><Simple>"+biotype.getName()+"</Simple></ScientificName></Father>";
+        	}
+        	
+        	Individual mother=cross.getIndividualByFemaleId();
+        	if(mother!=null)
+        	{
+        		body+="<Mother id=\"" + mother.getIndividualId()+"\">";
+        		IndividualBiotype indvBiotype=(IndividualBiotype)mother.getIndividualBiotypes().toArray()[0];
+    			Biotype biotype=indvBiotype.getBiotype();
+    			body+="<ScientificName><Simple>"+biotype.getName()+"</Simple></ScientificName></Mother>";
+        	}
+        	Cvterm cv=cross.getCvterm();
+        	
+        	if(cv!=null)
+    			body+="<CrossType>" + cv.getName()+ "</CrossType>";
+        	else
+        		body+="<CrossType></CrossType>";
+        	
+        	Set set=cross.getCrossexperimentprops();
+        	for(int j=0;j<set.size();j++)
+        	{
+        		Crossexperimentprop prop=(Crossexperimentprop)set.toArray()[j];
+        		if(prop.getCvterm().getName().equals("Number_Of_Eggs"))
+        			body+="<NumberOfEggs>" + prop.getValue() + "</NumberOfEggs>";
+        		if(prop.getCvterm().getName().equals("Number_Of_Eclosed"))
+        			body+="<NumberOfAdults>" + prop.getValue() + "</NumberOfAdults>";
+        	}
+        	
+        	Set children=cross.getIndividuals();
+        	
+        	body+="<Offsprings>";
+        	for(int i=0; i<children.size();i++)
+        	{
+        		Individual indv=(Individual)children.toArray()[i];
+        		body+="<Individual id=\"" + indv.getIndividualId() + "\">";
+        		IndividualBiotype indvBiotype=(IndividualBiotype)indv.getIndividualBiotypes().toArray()[0];
+    			Biotype biotype=indvBiotype.getBiotype();
+    			
+    			body+="<ScientificName><Simple>"+biotype.getName()+"</Simple></ScientificName>"
+        			+"</Individual>";
+        	}
+            body+="</Offsprings>";
             
-        body+="</Offsprings>";
+            if(father!=null)
+            {
+            	Crossexperiment fcross=father.getCrossexperiment();
+            	if(fcross!=null)
+            	{
+            		body+="<FatherBrood id=\"" + fcross.getName() + "\">";
+            		Individual ffather=fcross.getIndividualByMaleId();
+                	if(ffather!=null)
+                	{
+                		body+="<Father id=\"" + ffather.getIndividualId()+"\">";
+                		IndividualBiotype findvBiotype=(IndividualBiotype)ffather.getIndividualBiotypes().toArray()[0];
+            			Biotype fbiotype=findvBiotype.getBiotype();
+            			body+="<ScientificName><Simple>"+fbiotype.getName()+"</Simple></ScientificName></Father>";
+                	}
+                	
+                	Individual fmother=fcross.getIndividualByFemaleId();
+                	if(fmother!=null)
+                	{
+                		body+="<Mother id=\"" + fmother.getIndividualId()+"\">";
+                		IndividualBiotype mindvBiotype=(IndividualBiotype)fmother.getIndividualBiotypes().toArray()[0];
+            			Biotype mbiotype=mindvBiotype.getBiotype();
+            			body+="<ScientificName><Simple>"+mbiotype.getName()+"</Simple></ScientificName></Mother>";
+                	}
+                	
+                	body+="</FatherBrood>";
+            	}
+            }
         
-        body+="<FatherBrood id=\"2000\">"
-        	+"<Father id=\"20001\">"
-        	+"<ScientificName><Simple>Scientific Name of Father's Father</Simple></ScientificName>"
-        	+"</Father>"
-        	+"<Mother id=\"20002\">"
-        	+"<ScientificName><Simple>Scientific Name of Father's Mother</Simple></ScientificName>"
-        	+"</Mother>"
-        	+"</FatherBrood>";
-        body+="<MotherBrood id=\"3000\">"
-        	+"<Father id=\"30001\">"
-        	+"<ScientificName><Simple>Scientific Name of Mother's Father</Simple></ScientificName>"
-        	+"</Father>"
-        	+"<Mother id=\"30002\">"
-        	+"<ScientificName><Simple>Scientific Name of Mother's Mother</Simple></ScientificName>"
-        	+"</Mother>"
-        	+"</MotherBrood>";
-        body+="</Brood>";
+            if(mother!=null)
+            {
+            	Crossexperiment mcross=mother.getCrossexperiment();
+            	if(mcross!=null)
+            	{
+            		body+="<MotherBrood id=\"" + mcross.getName() + "\">";
+            		Individual mfather=mcross.getIndividualByMaleId();
+                	if(mfather!=null)
+                	{
+                		body+="<Father id=\"" + mfather.getIndividualId()+"\">";
+                		IndividualBiotype mindvBiotype=(IndividualBiotype)mfather.getIndividualBiotypes().toArray()[0];
+            			Biotype mbiotype=mindvBiotype.getBiotype();
+            			body+="<ScientificName><Simple>"+mbiotype.getName()+"</Simple></ScientificName></Father>";
+                	}
+                	
+                	Individual mmother=mcross.getIndividualByFemaleId();
+                	if(mmother!=null)
+                	{
+                		body+="<Mother id=\"" + mmother.getIndividualId()+"\">";
+                		IndividualBiotype mindvBiotype=(IndividualBiotype)mmother.getIndividualBiotypes().toArray()[0];
+            			Biotype mbiotype=mindvBiotype.getBiotype();
+            			body+="<ScientificName><Simple>"+mbiotype.getName()+"</Simple></ScientificName></Mother>";
+                	}
+                	
+                	body+="</MotherBrood>";
+            	}
+            }
+            body+="</Brood>";
+		} 
         body+="</BroodResponse>";
-        
+        System.out.println(body);
         Source source = new StreamSource(
             new ByteArrayInputStream(body.getBytes()));
         return source;
     }
+	
+	public static void main(String [] agrs)
+	{
+		Brood test=new Brood();
+		Source sc=test.createSource("47");
+		System.out.println(sc.toString());
+		
+	}
 }
