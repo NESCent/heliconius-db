@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    	<?xml-stylesheet type="text/xsl" href="xslt/collections.xsl"?>
+            <CollectionsResponse>
+        	<Individuals>
+        	<Individual id="0">
+            <ScientificName><Simple>name</Simple></ScientificName>
+            <GeoLocation><Country>country</Country><Province>province</Province>
+            <Latitude>30.5</Latitude>
+            <Longitude>100.3</Longitude>
+            <Altitude>330.8</Altitude>
+            </GeoLocation>
+            <Images><Image>image1</Image></Images>
+            <Specimens SpecimenNumber="5"></Specimens>
+            </Individual>
+            <Individual id="1">
+            <ScientificName><Simple>Scientific Name 1</Simple></ScientificName>
+            <GeoLocation><Country>USA</Country><Province>FL</Province>
+            <Latitude>23.0</Latitude>
+            <Longitude>90.5</Longitude>
+            <Altitude>230.1</Altitude>
+            </GeoLocation>
+            <Images><Image>image2</Image></Images>
+            <Specimens SpecimenNumber="2"></Specimens>
+            </Individual>
+            </Individuals>
+            </CollectionsResponse>

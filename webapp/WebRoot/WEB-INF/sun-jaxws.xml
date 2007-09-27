@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ The contents of this file are subject to the terms
+ of the Common Development and Distribution License
+ (the "License").  You may not use this file except
+ in compliance with the License.
+ 
+ You can obtain a copy of the license at
+ https://jwsdp.dev.java.net/CDDLv1.0.html
+ See the License for the specific language governing
+ permissions and limitations under the License.
+ 
+ When distributing Covered Code, include this CDDL
+ HEADER in each file and include the License file at
+ https://jwsdp.dev.java.net/CDDLv1.0.html  If applicable,
+ add the following below this CDDL HEADER, with the
+ fields enclosed by brackets "[]" replaced with your
+ own identifying information: Portions Copyright [yyyy]
+ [name of copyright owner]
+-->
+<endpoints
+    xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime"
+    version="2.0">
+    
+   <endpoint
+        name="restful-collections"
+        implementation="org.nescent.heliconius.ws.rest.Collections"
+        url-pattern="/rest/collections/*" /> 
+   <endpoint
+        name="restful-collection"
+        implementation="org.nescent.heliconius.ws.rest.Collection"
+        url-pattern="/rest/collection/*" />   
+   <endpoint
+        name="restful-hybrids"
+        implementation="org.nescent.heliconius.ws.rest.Hybrids"
+        url-pattern="/rest/hybrids/*" />  
+   <endpoint
+        name="restful-hybrid"
+        implementation="org.nescent.heliconius.ws.rest.Hybrid"
+        url-pattern="/rest/hybrid/*" /> 
+   <endpoint
+        name="restful-broods"
+        implementation="org.nescent.heliconius.ws.rest.Broods"
+        url-pattern="/rest/broods/*" /> 
+   <endpoint
+        name="restful-brood"
+        implementation="org.nescent.heliconius.ws.rest.Brood"
+        url-pattern="/rest/brood/*" />                 
+</endpoints>

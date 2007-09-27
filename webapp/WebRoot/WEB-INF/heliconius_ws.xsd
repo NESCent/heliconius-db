@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.nescent.org/heliconius_ws" xmlns:tns="http://www.nescent.org/heliconius_ws">
+    
+    <complexType name="GeoLocation">
+    	<sequence>
+    		<element name="Country" type="string" minOccurs="0" maxOccurs="1"></element>
+    		<element name="Province" type="string" minOccurs="0" maxOccurs="1"></element>
+    		<element name="Latitude" type="float" minOccurs="0" maxOccurs="1"></element>
+    		<element name="Longitude" type="float" minOccurs="0" maxOccurs="1"></element>
+    		<element name="Altitude" type="float" minOccurs="0" maxOccurs="1"></element>
+    	</sequence></complexType>
+
+    <complexType name="Specimen">
+    	<sequence>
+    		<element name="Tissue" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="Location" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    	</sequence>
+    	<attribute name="id" type="int"></attribute>
+    </complexType>
+
+
+    <complexType name="Individual">
+    	<sequence>
+    		<element name="ScientificName" type="tns:ScientificName"
+    			minOccurs="1" maxOccurs="1">
+    		</element>
+    		<element name="GeoLocation" type="tns:GeoLocation"
+    			minOccurs="1" maxOccurs="1">
+    		</element>
+    		<element name="Images"  maxOccurs="1" minOccurs="1">
+    			<complexType>
+    				<sequence>
+    					<element name="Image" type="string" maxOccurs="unbounded" minOccurs="0">
+    					</element>
+    				</sequence>
+    			</complexType>
+    		</element>
+    		<element name="Specimens" type="tns:Specimens" maxOccurs="1" minOccurs="0"></element>
+    		<element name="CollectionDate" type="date" maxOccurs="1" minOccurs="0"></element>
+    		<element name="Sex" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="Notes" type="string" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    	<attribute name="id" type="int"></attribute>
+    </complexType>
+
+    <complexType name="Hybrid">
+    	<complexContent>
+    		<extension base="tns:Individual">
+    			<sequence>
+    				<element name="ScientificName2" type="tns:ScientificName"></element>
+    			</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>
+    
+    <complexType name="Brood">
+        <sequence>
+           	<element name="CrossType" type="string" maxOccurs="1"
+        		minOccurs="1">
+        	</element>
+        	<element name="NumberOfEggs" type="int" maxOccurs="1"
+        		minOccurs="1">
+        	</element>
+        	<element name="NumberOfAdults" type="string" maxOccurs="1"
+        		minOccurs="1">
+        	</element>
+        	<element name="Father" type="tns:Individual" maxOccurs="1"
+        		minOccurs="0">
+        	</element>
+        	<element name="Mother" type="tns:Individual" maxOccurs="1"
+        		minOccurs="0">
+        	</element>
+        	<element name="FatherBrood" type="tns:Brood"
+        		maxOccurs="1" minOccurs="0">
+        	</element>
+        	<element name="MotherBrood" type="tns:Brood"
+        		maxOccurs="1" minOccurs="0">
+        	</element>
+        	<element name="Offsprings" type="tns:Individuals"></element>
+        </sequence>
+        <attribute name="id" type="int"></attribute>
+    </complexType>
+    <complexType name="ScientificName">
+    	<sequence>
+    		<element name="Simple" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="Family" type="string" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="Subfamily" type="string" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="Genus" type="string" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="Species" type="string" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="Subspecies" type="string" minOccurs="0" maxOccurs="1"></element>
+    	</sequence></complexType>
+
+    <complexType name="Specimens">
+    	<sequence>
+    		<element name="Specimen" type="tns:Specimen" maxOccurs="unbounded" minOccurs="0"></element>
+    		
+    	</sequence>
+    	<attribute name="SpecimenNumber" type="int"></attribute>
+    </complexType>
+
+    <complexType name="Individuals">
+    	<sequence>
+    		<element name="Individual" type="tns:Individual" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    <complexType name="Broods">
+    	<sequence>
+    		<element name="Brood" type="tns:Brood" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+</schema>
