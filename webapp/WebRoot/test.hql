@@ -1,1 +1,0 @@
-select individual from Individual individual join individual.individualBiotypes biotypes join biotypes.biotype biotype where biotype.name like '%erato%'
