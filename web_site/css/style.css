@@ -96,7 +96,7 @@ body {
 	border-right:1px solid #778;
 	padding:0px;
 	width: 150px;
-	height: 450px;
+	height: 800px;
 	
 }
 
@@ -191,4 +191,12 @@ font-weight:bold;
 	width:150px;
 }
 
-
+#offspring_box{
+margin: 0;
+	margin-right:0px;
+	padding:10px;
+	border:1px solid #585858;
+	background-color:#CCCCCC;
+	color:#000000;
+	width:150px;
+}
