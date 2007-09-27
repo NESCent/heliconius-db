@@ -268,10 +268,10 @@ var brood_xsl=
 	'<h3>Brood</h3>' + 
 	'<table cellpadding="0" cellspacing="0" border="0" width="500">' +
 	'<tr>'+
-	'<td align="left"><div id="mother_box">Maternal Grand Mother<br/><xsl:value-of  select="BroodResponse/Brood/MotherBrood/Mother/ScientificName/Simple" /></div>	'+
-	'<br /><div id="father_box">Maternal Grand Father<br/><xsl:value-of  select="BroodResponse/Brood/MotherBrood/Father/ScientificName/Simple" /></div></td>' +
-	'<td align="right"><div id="mother_box">Paternal Grand Mother<br/><xsl:value-of  select="BroodResponse/Brood/FatherBrood/Mother/ScientificName/Simple" /></div>	'+
-	'<br /><div id="father_box">Paternal Grand Father<br/><xsl:value-of  select="BroodResponse/Brood/FatherBrood/Father/ScientificName/Simple" /></div></td>' +
+	'<td align="left"><div id="mother_box">Maternal Grand Mother <br/>ID: <xsl:value-of  select="BroodResponse/Brood/MotherBrood/Mother/@id" /><br/><xsl:value-of  select="BroodResponse/Brood/MotherBrood/Mother/ScientificName/Simple" /></div>	'+
+	'<br /><div id="father_box">Maternal Grand Father<br/>ID: <xsl:value-of  select="BroodResponse/Brood/MotherBrood/Father/@id" /><br/><xsl:value-of  select="BroodResponse/Brood/MotherBrood/Father/ScientificName/Simple" /></div></td>' +
+	'<td align="right"><div id="mother_box">Paternal Grand Mother<br/>ID: <xsl:value-of  select="BroodResponse/Brood/FatherBrood/Mother/@id" /><br/><xsl:value-of  select="BroodResponse/Brood/FatherBrood/Mother/ScientificName/Simple" /></div>	'+
+	'<br /><div id="father_box">Paternal Grand Father<br/>ID: <xsl:value-of  select="BroodResponse/Brood/FatherBrood/Father/@id" /><br/><xsl:value-of  select="BroodResponse/Brood/FatherBrood/Father/ScientificName/Simple" /></div></td>' +
 	'</tr>'+
 	'</table>' +
 	'<br/><br/>' +
@@ -282,10 +282,10 @@ var brood_xsl=
 	'<td align="right" width="20%">' +
 	'<img src="images/right_point.jpg" /></td>' +
 	'<td align="right" width="30%">' +
-	'<div id="mother_box">Mother<br/><xsl:value-of  select="BroodResponse/Brood/Mother/ScientificName/Simple" /></div>	'+
+	'<div id="mother_box">Mother<br/>ID: <xsl:value-of  select="BroodResponse/Brood/Mother/@id" /><br/><xsl:value-of  select="BroodResponse/Brood/Mother/ScientificName/Simple" /></div>	'+
 	'</td>' +
 	'<td align="left" width="30%">' +
-	'<div id="father_box">Father<br/><xsl:value-of  select="BroodResponse/Brood/Father/ScientificName/Simple" /></div>' +
+	'<div id="father_box">Father<br/>ID: <xsl:value-of  select="BroodResponse/Brood/Father/@id" /><br/><xsl:value-of  select="BroodResponse/Brood/Father/ScientificName/Simple" /></div>' +
 	'</td>' +
 	'<td align="left" width="20%">' +
 	'<img src="images/left_point.jpg" /></td>' +
@@ -308,6 +308,10 @@ var brood_xsl=
 	'</table>' +
 	'<br/><br/>' +
 	'<xsl:for-each select="BroodResponse/Brood/Offsprings/Individual">' +
-	'<xsl:value-of select="./ScientificName/Simple"/><br/>'+
+	
+	'<div id="offspring_box">'+
+	'ID: <xsl:value-of select="./@id"/><br/>'+
+	'Name: <xsl:value-of select="./ScientificName/Simple"/><br/>'+
+	'</div><br/>'+
 	'</xsl:for-each>'+
 	'</table>';
