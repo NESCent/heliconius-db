@@ -8,22 +8,6 @@ genotype.description have unlimited length (text?).  Other way is
 to use accession to the data in Genbank, i.e. add accession fkey to
 genotype table.
 
-===Table Pcrexperiment===
-
-* What is the definition for the table? I.e., what is the conceptual
-entity? Documentation says 'initial examination'; why not subsequent
-examinations? Why is this not a gtassay_result? How is this entity fundamentally
-different from a gtexperiment?
-
-* Expected_length should be calculable based on amplicon?
-
-* test_species_id: should be named test_organism_id, or possibly
-differently to better reflect the conceptual model?
-
-* columns intron and outcome_success should rather be cvterm foreign keys?
-
-See change to pcrexperiment.
-
 ===Column 'Notes'===
  
 This is in tables Individual_Phenotype, Stock_Phenotype, and Biotype_Phenotype.
