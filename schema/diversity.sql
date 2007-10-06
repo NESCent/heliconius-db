@@ -85,38 +85,6 @@ CREATE TABLE biotype_organism (
 
 COMMENT ON TABLE biotype_organism IS 'Allows grouping of two or more organisms to allow for the presence of hybrid individuals';
 
--- table politlocation
---
--- The political boundaries of a georeference.
-
-CREATE TABLE politlocation (
-        politlocation_id serial NOT NULL,
-        PRIMARY KEY (politlocation_id),
-        refdate date,
-        postalcode character varying(64),
-	county_id INTEGER,
-        FOREIGN KEY (county_id) REFERENCES cvterm (cvterm_id)
-                ON DELETE RESTRICT,
-	province_id INTEGER,
-        FOREIGN KEY (province_id) REFERENCES cvterm (cvterm_id)
-                ON DELETE RESTRICT,
-	country_id INTEGER,
-        FOREIGN KEY (country_id) REFERENCES cvterm (cvterm_id)
-                ON DELETE RESTRICT
-);
-
-COMMENT ON TABLE politlocation IS 'The political boundaries within which a georeference currently falls.';
-
-COMMENT ON COLUMN politlocation.refdate IS 'The date on which the political boundaries were used.';
-
-COMMENT ON COLUMN politlocation.postalcode IS 'The postal code, or zipcode in the US, within which the georeference falls.';
-
-COMMENT ON COLUMN politlocation.county_id IS 'The county (or equivalent local government unit) whithin which the georeference falls.';
-
-COMMENT ON COLUMN politlocation.province_id IS 'The province, or state, within which the georeference falls.';
-
-COMMENT ON COLUMN politlocation.country_id IS 'The country within which the georeference falls.';
-
 -- table geolocation:
 --
 -- The geo-referencable location of the stock, experiment, or cross.
@@ -131,12 +99,13 @@ CREATE TABLE geolocation (
         geodetic_datum character varying(32),
 	altitude real,
 	altitude_dev real,
-        politlocation_id INTEGER,
-        FOREIGN KEY (politlocation_id) REFERENCES politlocation (politlocation_id)
-                ON DELETE SET NULL
+        postalcode character varying(32),
+	county character varying(64),
+	province character varying(64),
+	country character varying(64)
 );
 
-COMMENT ON TABLE geolocation IS 'The geo-referencable location of the stock';
+COMMENT ON TABLE geolocation IS 'The geo-referencable location of the stock. NOTE: This entity is subject to change as a more general and possibly more OpenGIS-compliant geolocation module may be introduced into Chado.';
 
 COMMENT ON COLUMN geolocation.description IS 'A textual representation of the location, if this is the original georeference. Optional if the original georeference is available in lat/long coordinates.';
 
@@ -152,7 +121,13 @@ COMMENT ON COLUMN geolocation.altitude IS 'The altitude (elevation) of the locat
 
 COMMENT ON COLUMN geolocation.altitude_dev IS 'The possible deviation in altitude, in meters, from the average altitude for collected individuals. Will be empty (null) if the altitude is exact.';
 
-COMMENT ON COLUMN geolocation.politlocation_id IS 'The political boundaries of the georeference, if known.';
+COMMENT ON COLUMN geolocation.postalcode IS 'The postal code, or zipcode in the US, within which the georeference falls.';
+
+COMMENT ON COLUMN geolocation.county IS 'The county (or equivalent local government unit) whithin which the georeference falls. This should probably rather be a foreign key to a cvterm, but there is an unresolved problem about the univocality constraint with location name ontologies, such as the Gazetteer.';
+
+COMMENT ON COLUMN geolocation.province IS 'The province, or state, within which the georeference falls. This should probably rather be a foreign key to a cvterm, but there is an unresolved problem about the univocality constraint with location name ontologies, such as the Gazetteer.';
+
+COMMENT ON COLUMN geolocation.country IS 'The country within which the georeference falls. This should probably rather be a foreign key to a cvterm, but there is an unresolved problem about the univocality constraint with location name ontologies, such as the Gazetteer.';
 
 -- table image (link out to a file name)
 --
@@ -332,13 +307,10 @@ COMMENT ON COLUMN individualprop.rank IS 'The rank of the property value, if the
 CREATE TABLE crossexperiment (
 	crossexperiment_id serial NOT NULL,
         PRIMARY KEY (crossexperiment_id),
-	name character varying(255) NOT NULL UNIQUE,
+	name character varying(255) NOT NULL,
         expdate date,
 	female_id integer,
         FOREIGN KEY (female_id) REFERENCES individual (individual_id) 
-                ON DELETE RESTRICT,
-	male_id integer,
-        FOREIGN KEY (male_id) REFERENCES individual (individual_id) 
                 ON DELETE RESTRICT,
 	experimenter_id integer,
         FOREIGN KEY (experimenter_id) REFERENCES contact (contact_id)
@@ -346,9 +318,10 @@ CREATE TABLE crossexperiment (
 	geolocation_id integer,
         FOREIGN KEY (geolocation_id) REFERENCES geolocation (geolocation_id) 
                 ON DELETE RESTRICT,
-	type_id integer,
+	type_id integer NOT NULL,
         FOREIGN KEY (type_id) REFERENCES cvterm (cvterm_id) 
-                ON DELETE RESTRICT
+                ON DELETE RESTRICT,
+        CONSTRAINT crossexperiment_c1 UNIQUE (name)
 );
 
 COMMENT ON TABLE crossexperiment IS 'An experiment crossing two individuals. The individuals may be from the same or different species, or the same or different biotypes.';
@@ -358,6 +331,10 @@ COMMENT ON COLUMN crossexperiment.name IS 'Reference name for the cross. Existin
 COMMENT ON COLUMN crossexperiment.geolocation_id IS 'The geo-reference for where the experimental cross was conducted.'; 
 
 COMMENT ON COLUMN crossexperiment.expdate IS 'The date of the cross experiment, typically the mating date.';
+
+COMMENT ON COLUMN crossexperiment.experimenter_id IS 'The person who conducted the cross experiment.';
+
+COMMENT ON COLUMN crossexperiment.female_id IS 'The female individual used in the cross experiment.';
 
 COMMENT ON COLUMN crossexperiment.type_id IS 'The type of cross, for example, F1, or F2, or backcross.';
 
@@ -396,6 +373,32 @@ COMMENT ON COLUMN crossexperimentprop.cvterm_id IS 'The name of the property as 
 COMMENT ON COLUMN crossexperimentprop.value IS 'The value of the property.';
 
 COMMENT ON COLUMN crossexperimentprop.rank IS 'The rank of the property value, if the property has an array of values.';
+
+-- table crossexperiment_male
+--
+-- Note: Though it is theoretically possible to conduct cross
+-- experiments in a way that the female could also one out of multiple
+-- individuals, there isn't a use case for this right now and we
+-- therefore defer accommodating this until there is a requirement to
+-- do so.
+
+CREATE TABLE crossexperiment_male (
+        crossexperiment_male_id serial NOT NULL,
+        PRIMARY KEY (crossexperiment_male_id),
+	crossexperiment_id integer NOT NULL,
+        FOREIGN KEY (crossexperiment_id) REFERENCES crossexperiment (crossexperiment_id) 
+                ON DELETE CASCADE,
+	male_id integer NOT NULL,
+        FOREIGN KEY (male_id) REFERENCES individual (individual_id) 
+                ON DELETE CASCADE,
+        CONSTRAINT crossexperiment_male_c1 UNIQUE (crossexperiment_id, male_id)
+);
+
+COMMENT ON TABLE crossexperiment_male IS 'The male individual(s) used in a crossexperiment. Certain cross experiments are carried out by pairing multiple males to a female, so that the actual father is not known a-priori until the genetic experiment is carried out that determines paternity. It is expected that once paternity has been determined other possible fathers for the cross be removed from this association. Also, though it is theoretically possible to conduct cross experiments in a way that the female could also one out of multiple individuals, there isn''t a use case for this right now and we therefore defer accommodating this until there is a requirement to do so.';
+
+COMMENT ON COLUMN crossexperiment_male.crossexperiment_id IS 'The cross experiment in which the individual could be the father.';
+
+COMMENT ON COLUMN crossexperiment_male.male_id IS 'The (presumably male) individual that was the sole or one of multiple possible fathers in the cross experiment. If this is the only individual associated with the cross, it is assumed that it is known, either by experimental set-up or by means of a paternity test, to be the father. A specific individual can be associated with a crossexperiment only once.';
 
 -- table gtassay
 --
