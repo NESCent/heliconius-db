@@ -8,16 +8,17 @@
 --
 -- This migration accomplishes the following:
 -- * fold politlocation into geolocation
--- * creates table crossexperiment_male, populates content, and removes male_id
---   from crossexperiment.
+-- * creates tables crossexperiment_individual and individual_relationship
+-- * populates both using male_id and female_id from crossexperiment
+-- * drops male_id and female_id from crossexperiment
 -- * makes crossexperiment.type_id non-nullable
 -- * add comments to some tables and columns
 
 -- 1) Migrate politlocation
 ALTER TABLE geolocation ADD COLUMN postalcode character varying(32);
---ALTER TABLE geolocation ADD COLUMN county character varying(64);
---ALTER TABLE geolocation ADD COLUMN province character varying(64);
---ALTER TABLE geolocation ADD COLUMN country character varying(64);
+ALTER TABLE geolocation ADD COLUMN county character varying(64);
+ALTER TABLE geolocation ADD COLUMN province character varying(64);
+ALTER TABLE geolocation ADD COLUMN country character varying(64);
 
 UPDATE geolocation SET
        postalcode = p.postalcode 
