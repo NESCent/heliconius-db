@@ -180,11 +180,11 @@ FROM individual i JOIN crossexperiment c
 WHERE c.female_id IS NOT NULL
 AND t.name = 'maternal parent' AND cv.name = 'individual relationship';
 
--- drop columns from crossexperiment
+-- drop male and female references from crossexperiment
 ALTER TABLE crossexperiment DROP COLUMN male_id;
 ALTER TABLE crossexperiment DROP COLUMN female_id;
 
--- drop column from individual
+-- drop crossexperiment reference from individual
 ALTER TABLE individual DROP COLUMN crossexperiment_id;
 
 -- 5) Make crossexperiment.type_id not nullable

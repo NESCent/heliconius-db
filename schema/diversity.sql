@@ -990,8 +990,4 @@ COMMENT ON TABLE biotype_phenotype_project IS 'Assigns the biotype-phenotype ass
 -- can't be added in-line.
 --
 
-ALTER TABLE individual ADD 
-       FOREIGN KEY (crossexperiment_id) 
-       REFERENCES crossexperiment (crossexperiment_id) 
-                ON DELETE RESTRICT
-;
+-- none currently.
