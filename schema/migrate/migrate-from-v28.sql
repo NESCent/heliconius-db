@@ -15,9 +15,9 @@
 
 -- 1) Migrate politlocation
 ALTER TABLE geolocation ADD COLUMN postalcode character varying(32);
-ALTER TABLE geolocation ADD COLUMN county character varying(64);
-ALTER TABLE geolocation ADD COLUMN province character varying(64);
-ALTER TABLE geolocation ADD COLUMN country character varying(64);
+--ALTER TABLE geolocation ADD COLUMN county character varying(64);
+--ALTER TABLE geolocation ADD COLUMN province character varying(64);
+--ALTER TABLE geolocation ADD COLUMN country character varying(64);
 
 UPDATE geolocation SET
        postalcode = p.postalcode 
@@ -55,40 +55,139 @@ COMMENT ON COLUMN geolocation.province IS 'The province, or state, within which 
 
 COMMENT ON COLUMN geolocation.country IS 'The country within which the georeference falls. This should probably rather be a foreign key to a cvterm, but there is an unresolved problem about the univocality constraint with location name ontologies, such as the Gazetteer.';
 
--- 2) table crossexperiment_male
+-- 2) table crossexperiment_individual
 --
 
-CREATE TABLE crossexperiment_male (
-        crossexperiment_male_id serial NOT NULL,
-        PRIMARY KEY (crossexperiment_male_id),
+CREATE TABLE crossexperiment_individual (
+        crossexperiment_individual_id serial NOT NULL,
+        PRIMARY KEY (crossexperiment_individual_id),
 	crossexperiment_id integer NOT NULL,
         FOREIGN KEY (crossexperiment_id) REFERENCES crossexperiment (crossexperiment_id) 
                 ON DELETE CASCADE,
-	male_id integer NOT NULL,
-        FOREIGN KEY (male_id) REFERENCES individual (individual_id) 
+	individual_id integer NOT NULL,
+        FOREIGN KEY (individual_id) REFERENCES individual (individual_id) 
                 ON DELETE CASCADE,
-        CONSTRAINT crossexperiment_male_c1 UNIQUE (crossexperiment_id, male_id)
+        type_id integer NOT NULL,
+        FOREIGN KEY (type_id) REFERENCES cvterm (cvterm_id)
+                ON DELETE RESTRICT,
+        CONSTRAINT crossexperiment_individual_c1 UNIQUE (crossexperiment_id, individual_id)
 );
 
-COMMENT ON TABLE crossexperiment_male IS 'The male individual(s) used in a crossexperiment. Certain cross experiments are carried out by pairing multiple males to a female, so that the actual father is not known a-priori until the genetic experiment is carried out that determines paternity. It is expected that once paternity has been determined other possible fathers for the cross be removed from this association. Also, though it is theoretically possible to conduct cross experiments in a way that the female could also one out of multiple individuals, there isn''t a use case for this right now and we therefore defer accommodating this until there is a requirement to do so.';
+COMMENT ON TABLE crossexperiment_individual IS 'The parental individual(s) used in a crossexperiment. Some cross experiments are carried out by pairing multiple males to one or multiple female(s) so that the actual parent individuals of offspring may not necessarily be known a-priori. ';
 
-COMMENT ON COLUMN crossexperiment_male.crossexperiment_id IS 'The cross experiment in which the individual could be the father.';
+COMMENT ON COLUMN crossexperiment_individual.crossexperiment_id IS 'The cross experiment in which the individual is used as a (possible) parent.';
 
-COMMENT ON COLUMN crossexperiment_male.male_id IS 'The (presumably male) individual that was the sole or one of multiple possible fathers in the cross experiment. If this is the only individual associated with the cross, it is assumed that it is known, either by experimental set-up or by means of a paternity test, to be the father. A specific individual can be associated with a crossexperiment only once.';
+COMMENT ON COLUMN crossexperiment_individual.individual_id IS 'The parental individual being used in the cross experiment. A specific individual can be associated with a crossexperiment only once. There may be multiple parental individuals of the same type in a cross experiment.';
 
--- populate from existing data
-INSERT INTO crossexperiment_male (crossexperiment_id, male_id)
-SELECT c.crossexperiment_id, c.male_id
-FROM crossexperiment c
-WHERE c.male_id IS NOT NULL;
+COMMENT ON COLUMN crossexperiment_individual.type_id IS 'The type of the association of the individual, such as ''maternal parent'', or ''paternal parent''. Note that this is not necessarily redundant with the gender of the individual, for example consider plants.';
 
--- drop column from crossexperiment
+-- 3) table individual_relationship
+
+CREATE TABLE individual_relationship (
+        individual_relationship_id serial NOT NULL,
+        PRIMARY KEY (individual_relationship_id),
+        parent_id integer NOT NULL,
+        FOREIGN KEY (parent_id) REFERENCES individual (individual_id)
+                ON DELETE CASCADE,
+        offspring_id integer NOT NULL,
+        FOREIGN KEY (offspring_id) REFERENCES individual (individual_id)
+                ON DELETE CASCADE,
+        type_id integer NOT NULL,
+        FOREIGN KEY (type_id) REFERENCES cvterm (cvterm_id)
+                ON DELETE RESTRICT,
+        crossexperiment_id integer,
+        FOREIGN KEY (crossexperiment_id) REFERENCES crossexperiment (crossexperiment_id)
+                ON DELETE SET NULL,
+        CONSTRAINT individual_relationship_c1 UNIQUE (offspring_id, parent_id, type_id)
+);
+
+COMMENT ON TABLE individual_relationship IS 'The parental relationship between two individuals, either of paternal or maternal type. There may be multiple parental relationships of the same type for an individual among the progeny if the exact maternal or paternal individuals have not (yet) been determined.';
+
+COMMENT ON COLUMN individual_relationship.parent_id IS 'The individual that is, possibly or unequivocally, a parent to the offspring individual.';
+
+COMMENT ON COLUMN individual_relationship.offspring_id IS 'The offspring individual for which a parental individual is being associated.';
+
+COMMENT ON COLUMN individual_relationship.type_id IS 'The type of parental relationship being stated, such as ''maternal parent'' and ''paternal parent''.';
+
+COMMENT ON COLUMN individual_relationship.crossexperiment_id IS 'The cross experiment from which the offspring arose.';
+
+-- 4) migrate the data regarding male and female to the two tables
+-- crossexperiment_individual and individual_relationship
+
+-- before we can populate this we need to create the cvterm entries
+INSERT INTO cv (name, definition) 
+VALUES ('individual relationship','relationship types between individuals');
+INSERT INTO db (name) VALUES ('NESCent');
+
+-- ID for 'maternal parent'
+INSERT INTO dbxref (accession, db_id)
+SELECT 'IRO:000000001', db.db_id
+FROM db WHERE db.name = 'NESCent';
+-- term for 'maternal parent'
+INSERT INTO cvterm (name, dbxref_id, cv_id)
+SELECT 'maternal parent', dbxref.dbxref_id, cv.cv_id
+FROM dbxref JOIN db ON (dbxref.db_id = db.db_id), cv
+WHERE db.name = 'NESCent' AND dbxref.accession = 'IRO:000000001'
+AND cv.name = 'individual relationship';
+
+-- ID for 'paternal parent'
+INSERT INTO dbxref (accession, db_id)
+SELECT 'IRO:000000002', db.db_id
+FROM db WHERE db.name = 'NESCent';
+-- term for 'paternal parent'
+INSERT INTO cvterm (name, dbxref_id, cv_id)
+SELECT 'paternal parent', dbxref.dbxref_id, cv.cv_id
+FROM dbxref JOIN db ON (dbxref.db_id = db.db_id), cv
+WHERE db.name = 'NESCent' AND dbxref.accession = 'IRO:000000002'
+AND cv.name = 'individual relationship';
+
+-- now populate crossexperiment_individual from male and female data
+INSERT INTO crossexperiment_individual (crossexperiment_id, 
+                                        individual_id,
+                                        type_id)
+SELECT c.crossexperiment_id, c.male_id, t.cvterm_id
+FROM crossexperiment c, cvterm t JOIN cv ON (t.cv_id = cv.cv_id)
+WHERE c.male_id IS NOT NULL
+AND t.name = 'paternal parent' AND cv.name = 'individual relationship';
+INSERT INTO crossexperiment_individual (crossexperiment_id, 
+                                        individual_id,
+                                        type_id)
+SELECT c.crossexperiment_id, c.female_id, t.cvterm_id
+FROM crossexperiment c, cvterm t JOIN cv ON (t.cv_id = cv.cv_id)
+WHERE c.female_id IS NOT NULL
+AND t.name = 'maternal parent' AND cv.name = 'individual relationship';
+
+-- populate individual_relationship from crossexperiment male and female data
+INSERT INTO individual_relationship (parent_id,
+                                     offspring_id,
+                                     type_id,
+                                     crossexperiment_id)
+SELECT c.male_id, i.individual_id, t.cvterm_id, c.crossexperiment_id
+FROM individual i JOIN crossexperiment c 
+                  ON (i.crossexperiment_id = c.crossexperiment_id), 
+     cvterm t JOIN cv ON (t.cv_id = cv.cv_id)
+WHERE c.male_id IS NOT NULL
+AND t.name = 'paternal parent' AND cv.name = 'individual relationship';
+INSERT INTO individual_relationship (parent_id,
+                                     offspring_id,
+                                     type_id,
+                                     crossexperiment_id)
+SELECT c.female_id, i.individual_id, t.cvterm_id, c.crossexperiment_id
+FROM individual i JOIN crossexperiment c 
+                  ON (i.crossexperiment_id = c.crossexperiment_id), 
+     cvterm t JOIN cv ON (t.cv_id = cv.cv_id)
+WHERE c.female_id IS NOT NULL
+AND t.name = 'maternal parent' AND cv.name = 'individual relationship';
+
+-- drop columns from crossexperiment
 ALTER TABLE crossexperiment DROP COLUMN male_id;
+ALTER TABLE crossexperiment DROP COLUMN female_id;
 
--- 3) Make crossexperiment.type_id not nullable
+-- drop column from individual
+ALTER TABLE individual DROP COLUMN crossexperiment_id;
+
+-- 5) Make crossexperiment.type_id not nullable
 ALTER TABLE crossexperiment ALTER COLUMN type_id SET NOT NULL;
 
 -- comments added to table crossexperiment
 COMMENT ON COLUMN crossexperiment.experimenter_id IS 'The person who conducted the cross experiment.';
-
-COMMENT ON COLUMN crossexperiment.female_id IS 'The female individual used in the cross experiment.';

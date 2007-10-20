@@ -209,7 +209,6 @@ CREATE TABLE individual (
         gender_id integer,
         FOREIGN KEY (gender_id) REFERENCES cvterm (cvterm_id)
                 ON DELETE RESTRICT,
-	crossexperiment_id integer,
 	stock_id integer,
         FOREIGN KEY (stock_id) REFERENCES stock (stock_id)
                 ON DELETE RESTRICT,
@@ -298,7 +297,6 @@ COMMENT ON COLUMN individualprop.value IS 'The value of the property.';
 
 COMMENT ON COLUMN individualprop.rank IS 'The rank of the property value, if the property has an array of values.';
 
-
 -- table crossexperiment
 --
 -- An experiment crossing two individuals. The individuals may be from
@@ -309,9 +307,6 @@ CREATE TABLE crossexperiment (
         PRIMARY KEY (crossexperiment_id),
 	name character varying(255) NOT NULL,
         expdate date,
-	female_id integer,
-        FOREIGN KEY (female_id) REFERENCES individual (individual_id) 
-                ON DELETE RESTRICT,
 	experimenter_id integer,
         FOREIGN KEY (experimenter_id) REFERENCES contact (contact_id)
                 ON DELETE RESTRICT,
@@ -326,15 +321,13 @@ CREATE TABLE crossexperiment (
 
 COMMENT ON TABLE crossexperiment IS 'An experiment crossing two individuals. The individuals may be from the same or different species, or the same or different biotypes.';
 
-COMMENT ON COLUMN crossexperiment.name IS 'Reference name for the cross. Existing conventions for naming the cross use the "stock" type and "biotype" information, listing the female "type" first. Thus, a backcross of a female F1 individual generated from a cross between a female H. erato cyrbia and a male H. himera by a male H. himera would be (HecHh)xHh_001, where 001 is the first replicate of this type of cross.';
+COMMENT ON COLUMN crossexperiment.name IS 'Reference name for the cross, also known as the "brood name." Existing conventions for naming the cross use the "stock" type and "biotype" information, listing the female "type" first. Thus, a backcross of a female F1 individual generated from a cross between a female H. erato cyrbia and a male H. himera by a male H. himera would be (HecHh)xHh_001, where 001 is the first replicate of this type of cross.';
 
 COMMENT ON COLUMN crossexperiment.geolocation_id IS 'The geo-reference for where the experimental cross was conducted.'; 
 
 COMMENT ON COLUMN crossexperiment.expdate IS 'The date of the cross experiment, typically the mating date.';
 
 COMMENT ON COLUMN crossexperiment.experimenter_id IS 'The person who conducted the cross experiment.';
-
-COMMENT ON COLUMN crossexperiment.female_id IS 'The female individual used in the cross experiment.';
 
 COMMENT ON COLUMN crossexperiment.type_id IS 'The type of cross, for example, F1, or F2, or backcross.';
 
@@ -374,7 +367,7 @@ COMMENT ON COLUMN crossexperimentprop.value IS 'The value of the property.';
 
 COMMENT ON COLUMN crossexperimentprop.rank IS 'The rank of the property value, if the property has an array of values.';
 
--- table crossexperiment_male
+-- table crossexperiment_individual
 --
 -- Note: Though it is theoretically possible to conduct cross
 -- experiments in a way that the female could also one out of multiple
@@ -382,23 +375,65 @@ COMMENT ON COLUMN crossexperimentprop.rank IS 'The rank of the property value, i
 -- therefore defer accommodating this until there is a requirement to
 -- do so.
 
-CREATE TABLE crossexperiment_male (
-        crossexperiment_male_id serial NOT NULL,
-        PRIMARY KEY (crossexperiment_male_id),
+CREATE TABLE crossexperiment_individual (
+        crossexperiment_individual_id serial NOT NULL,
+        PRIMARY KEY (crossexperiment_individual_id),
 	crossexperiment_id integer NOT NULL,
         FOREIGN KEY (crossexperiment_id) REFERENCES crossexperiment (crossexperiment_id) 
                 ON DELETE CASCADE,
-	male_id integer NOT NULL,
-        FOREIGN KEY (male_id) REFERENCES individual (individual_id) 
+	individual_id integer NOT NULL,
+        FOREIGN KEY (individual_id) REFERENCES individual (individual_id) 
                 ON DELETE CASCADE,
-        CONSTRAINT crossexperiment_male_c1 UNIQUE (crossexperiment_id, male_id)
+        type_id integer NOT NULL,
+        FOREIGN KEY (type_id) REFERENCES cvterm (cvterm_id)
+                ON DELETE RESTRICT,
+        CONSTRAINT crossexperiment_individual_c1 UNIQUE (crossexperiment_id, individual_id)
 );
 
-COMMENT ON TABLE crossexperiment_male IS 'The male individual(s) used in a crossexperiment. Certain cross experiments are carried out by pairing multiple males to a female, so that the actual father is not known a-priori until the genetic experiment is carried out that determines paternity. It is expected that once paternity has been determined other possible fathers for the cross be removed from this association. Also, though it is theoretically possible to conduct cross experiments in a way that the female could also one out of multiple individuals, there isn''t a use case for this right now and we therefore defer accommodating this until there is a requirement to do so.';
+COMMENT ON TABLE crossexperiment_individual IS 'The parental individual(s) used in a crossexperiment. Some cross experiments are carried out by pairing multiple males to one or multiple female(s) so that the actual parent individuals of offspring may not necessarily be known a-priori. ';
 
-COMMENT ON COLUMN crossexperiment_male.crossexperiment_id IS 'The cross experiment in which the individual could be the father.';
+COMMENT ON COLUMN crossexperiment_individual.crossexperiment_id IS 'The cross experiment in which the individual is used as a (possible) parent.';
 
-COMMENT ON COLUMN crossexperiment_male.male_id IS 'The (presumably male) individual that was the sole or one of multiple possible fathers in the cross experiment. If this is the only individual associated with the cross, it is assumed that it is known, either by experimental set-up or by means of a paternity test, to be the father. A specific individual can be associated with a crossexperiment only once.';
+COMMENT ON COLUMN crossexperiment_individual.individual_id IS 'The parental individual being used in the cross experiment. A specific individual can be associated with a crossexperiment only once. There may be multiple parental individuals of the same type in a cross experiment.';
+
+COMMENT ON COLUMN crossexperiment_individual.type_id IS 'The type of the association of the individual, such as ''maternal parent'', or ''paternal parent''. Note that this is not necessarily redundant with the gender of the individual, for example consider plants.';
+
+-- table individual_relationship
+--
+-- The parental relationship between two individuals, either of
+-- paternal or maternal type. There may be multiple parental
+-- relationships of the same type for an individual among the progeny
+-- if the exact maternal or paternal individuals have not (yet) been
+-- determined.
+
+CREATE TABLE individual_relationship (
+        individual_relationship_id serial NOT NULL,
+        PRIMARY KEY (individual_relationship_id),
+        parent_id integer NOT NULL,
+        FOREIGN KEY (parent_id) REFERENCES individual (individual_id)
+                ON DELETE CASCADE,
+        offspring_id integer NOT NULL,
+        FOREIGN KEY (offspring_id) REFERENCES individual (individual_id)
+                ON DELETE CASCADE,
+        type_id integer NOT NULL,
+        FOREIGN KEY (type_id) REFERENCES cvterm (cvterm_id)
+                ON DELETE RESTRICT,
+        crossexperiment_id integer,
+        FOREIGN KEY (crossexperiment_id) REFERENCES crossexperiment (crossexperiment_id)
+                ON DELETE SET NULL,
+        CONSTRAINT individual_relationship_c1 UNIQUE (offspring_id, parent_id, type_id)
+);
+
+COMMENT ON TABLE individual_relationship IS 'The parental relationship between two individuals, either of paternal or maternal type. There may be multiple parental relationships of the same type for an individual among the progeny if the exact maternal or paternal individuals have not (yet) been determined.';
+
+COMMENT ON COLUMN individual_relationship.parent_id IS 'The individual that is, possibly or unequivocally, a parent to the offspring individual.';
+
+COMMENT ON COLUMN individual_relationship.offspring_id IS 'The offspring individual for which a parental individual is being associated.';
+
+COMMENT ON COLUMN individual_relationship.type_id IS 'The type of parental relationship being stated, such as ''maternal parent'' and ''paternal parent''.';
+
+COMMENT ON COLUMN individual_relationship.crossexperiment_id IS 'The cross experiment from which the offspring arose.';
+
 
 -- table gtassay
 --
