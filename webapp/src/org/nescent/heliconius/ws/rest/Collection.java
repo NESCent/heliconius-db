@@ -91,6 +91,7 @@ public class Collection implements Provider<Source> {
 		else
 		{
 			body +="<Individual id=\"" + id +"\">";
+			body +="<Name>" + indv.getName() +"</Name>";
 			
 			IndividualBiotype indvBiotype=(IndividualBiotype)indv.getIndividualBiotypes().toArray()[0];
 			Biotype biotype=indvBiotype.getBiotype();
