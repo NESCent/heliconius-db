@@ -1,0 +1,202 @@
+/* CSS for heliconius web site, January 2007. */
+
+body {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	margin:0px;
+	padding:0px;
+}
+
+
+.back_color_1 {
+	background-color:#FFFFFF;
+}
+
+.back_color_2 {
+	background-color:#00FF00;
+}
+
+.back_color_3 {
+	background-color:#00FF00;
+}
+
+.back_color_4 {
+	background-color:#00FF00;
+}
+
+.fore_color_1 {
+	color:#000033;
+}
+
+.fore_color_2 {
+	color:#000033;
+}
+
+.fore_color_3 {
+	color:#000033;
+}
+
+.fore_color_4 {
+	color:#000033;
+}
+.button
+{
+ padding: 2px;
+ border: 0px solid #778;
+/* background: #DDE; */
+}
+
+.button a
+{
+ padding: 1px;
+ text-decoration: none;
+}
+
+.button a:link { color: #22f; }
+.button a:visited { color: #22f; }
+
+.button a:hover
+{
+ color: #000;
+ text-decoration:underline;
+/* background: #AAE;
+ border-color: #227; */
+}
+
+.button_1
+{
+ padding: 2px;
+}
+
+.button_1 a
+{
+ padding: 1px;
+ padding-left:8px;
+ padding-right:8px;
+ text-decoration: none;
+ border: 1px solid #778;
+ background: #DDE; 
+
+}
+
+.button_1 a:link { color: #22f; }
+.button_1 a:visited { color: #22f; }
+
+.button_1 a:hover
+{
+ color: #000;
+ text-decoration:none;
+ background: #AAE;
+ border-color: #227; 
+}
+
+
+
+.menu_window{
+	border-right:1px solid #778;
+	padding:0px;
+	width: 150px;
+	height: 800px;
+	
+}
+
+.top_window{
+	border-bottom:1px solid #778;
+	padding:0px;
+	padding-bottom: 0px;
+	margin:0px;
+	height:74px;
+}
+
+th {
+background-color:#CCCCCC;
+color:#000033;
+font-weight:bold;
+padding:3px;
+margin:0px;
+padding-left:10px;
+padding-right:10px;
+}
+
+td{
+	padding:3px;
+}
+
+.odd
+{
+	background-color:#FFFFFF;
+}
+
+.even
+{
+	background-color:#CCCCCC;
+}
+
+caption {
+text-align:left;
+font-size:14px;
+font-weight:bold;
+}
+
+.field_name
+{
+	text-align:right;
+	vertical-align:top;
+	background-color:#CCCCCC;
+	padding:3px;
+	padding-left:5px;
+	padding-right:5px;
+}
+
+.field_value
+{
+	text-align:left;
+	vertical-align:top;
+	padding:3px;
+	padding-left:5px;
+	padding-right:5px;
+}
+
+
+.linked
+{
+	background-color:#99CC66;
+
+}
+
+#default_box{
+	margin: 0;
+	margin-right:0px;
+	padding:10px;
+	border:1px solid #585858;
+	background-color:#CCCCCC;
+}
+
+#mother_box{
+	margin: 0;
+	margin-right:0px;
+	padding:10px;
+	border:1px solid #585858;
+	background-color:#FF99FF;
+	width:150px;
+}
+
+#father_box{
+	margin: 0;
+	margin-right:0px;
+	padding:10px;
+	border:1px solid #585858;
+	background-color:#0000CC;
+	color:#FFFFFF;
+	width:150px;
+}
+
+#offspring_box{
+margin: 0;
+	margin-right:0px;
+	padding:10px;
+	border:1px solid #585858;
+	background-color:#CCCCCC;
+	color:#000000;
+	width:150px;
+}
