@@ -6,6 +6,7 @@ package org.nescent.heliconius.ws.rest;
 
 import java.io.ByteArrayInputStream;
 import java.util.List;
+import java.util.Set;
 import java.util.StringTokenizer;
 
 import javax.annotation.Resource;
@@ -53,8 +54,6 @@ public class Collections implements Provider<Source> {
             	
             	StringTokenizer st = new StringTokenizer(query, "&");
             	
-            	if(st.hasMoreTokens())
-            	
             	
             	while(st.hasMoreTokens())
             	{
@@ -91,7 +90,14 @@ public class Collections implements Provider<Source> {
 			
         } catch(Exception e) {
             e.printStackTrace();
-            throw new HTTPException(500);
+            String body ="<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>" 
+        		+"<CollectionsResponse>"
+        		+"<Error>"+e+"</Error>"
+        		+"</CollectionsResponse>";		
+        		
+            Source source = new StreamSource(
+            	new ByteArrayInputStream(body.getBytes()));
+        	return source;
         }
 	
 	}
@@ -104,7 +110,7 @@ public class Collections implements Provider<Source> {
 	 * @param subspecies
 	 * @return
 	 */
-	private Source createSource(String country,String province,String genus,String species,String subspecies) {
+	private Source createSource(String country,String province,String genus,String species,String subspecies) throws Exception {
                 
 		Session sess=HibernateSessionFactory.getSession();
 		String name="";
@@ -135,44 +141,67 @@ public class Collections implements Provider<Source> {
 		{
 			for(int i=0;i<indvList.size();i++)
 			{
+				
 				Individual indv=(Individual)((Object [])indvList.get(i))[0];
-				
-				body+="<Individual id=\"" + indv.getIndividualId()+"\">";
-	            
-				IndividualBiotype indvBiotype=(IndividualBiotype)indv.getIndividualBiotypes().toArray()[0];
-				Biotype biotype=indvBiotype.getBiotype();
-				
-				body+="<ScientificName><Simple>"+biotype.getName()+"</Simple></ScientificName>"; 
-	            String country1="";
-	            String province1="";
-	            String lat="";
-	            String longitude="";
-	            String alt="";
-	            Geolocation geo=indv.getGeolocation();
-	            
-	            if(geo!=null)
-	            {
-	            	if(geo.getCountry()!=null)
-	            		country1=geo.getCountry();
-	            	if(geo.getProvince()!=null)
-	            		province1=geo.getProvince();
-	            	if(geo.getLatitude()!=null)
-	            		lat=String.valueOf(geo.getLatitude());
-	            	if(geo.getLongitude()!=null)
-	            		longitude=String.valueOf(geo.getLongitude());
-	            	if(geo.getAltitude()!=null)
-	            		alt=String.valueOf(geo.getAltitude());
-	            }
-	            body+="<GeoLocation>" 
-	            	+"<Country>" + country1 +"</Country>" 
-	            	+"<Province>"+ province1+"</Province>"
-	            	+"<Latitude>" + lat+"</Latitude>"
-	            	+"<Longitude>"+longitude+"</Longitude>"
-	            	+"<Altitude>"+ alt+"</Altitude>"
-	            	+"</GeoLocation>";
-	            	
-	            body+="<Images></Images>"
-	            	+"</Individual>";
+				if(indv!=null)
+				{
+					body+="<Individual id=\"" + indv.getIndividualId()+"\">";
+		            body +="<Name>" + indv.getName() +"</Name>";
+		            Set biotypes=indv.getIndividualBiotypes();
+		            if(biotypes!=null && biotypes.size()>0)
+		            {
+		            	IndividualBiotype indvBiotype=(IndividualBiotype)biotypes.toArray()[0];
+						if(indvBiotype!=null)
+						{
+							Biotype biotype=indvBiotype.getBiotype();
+							if(biotype!=null)
+								body+="<ScientificName><Simple>"+biotype.getName()+"</Simple></ScientificName>"; 
+							else
+								body+="<ScientificName><Simple></Simple></ScientificName>"; 
+						}
+		            }
+		            else
+		            	body+="<ScientificName><Simple></Simple></ScientificName>"; 
+		            String country1="";
+		            String province1="";
+		            String lat="";
+		            String longitude="";
+		            String alt="";
+		            Geolocation geo=indv.getGeolocation();
+		            
+		            if(geo!=null)
+		            {
+		            	if(geo.getCountry()!=null)
+		            		country1=geo.getCountry();
+		            	if(geo.getProvince()!=null)
+		            		province1=geo.getProvince();
+		            	if(geo.getLatitude()!=null)
+		            		lat=String.valueOf(geo.getLatitude());
+		            	if(geo.getLongitude()!=null)
+		            		longitude=String.valueOf(geo.getLongitude());
+		            	if(geo.getAltitude()!=null)
+		            	{
+		            		try
+		            		{
+		            			alt=String.valueOf(geo.getAltitude());
+		            		}
+		            		catch(Exception e)
+		            		{
+		            			alt="";
+		            		}
+		            	}
+		            }
+		            body+="<GeoLocation>" 
+		            	+"<Country>" + country1 +"</Country>" 
+		            	+"<Province>"+ province1+"</Province>"
+		            	+"<Latitude>" + lat+"</Latitude>"
+		            	+"<Longitude>"+longitude+"</Longitude>"
+		            	+"<Altitude>"+ alt+"</Altitude>"
+		            	+"</GeoLocation>";
+		            	
+		            body+="<Images></Images>"
+		            	+"</Individual>";
+				}
 			}
 		}
 		body+="</Individuals>"
@@ -184,11 +213,5 @@ public class Collections implements Provider<Source> {
         return source;
     }
 	
-	public static void main(String [] agrs)
-	{
-		Collections test=new Collections();
-		Source sc=test.createSource("Ecuador","","","erato","");
-		//System.out.println(sc.toString());
-		
-	}
+	
 }
