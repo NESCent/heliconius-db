@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Heliconius Website</title>
+<LINK href="css/style.css" type=text/css rel=stylesheet>
+<script language="javascript">
+function startup()
+{
+	var mainFrame=window.parent.main_frame;
+	if(mainFrame.startup)
+		mainFrame.startup();
+}
+</script>
+</head>
+<frameset cols="*,80%,*" border="0" onload="startup();">
+	<frame src="template/blank.html" />
+		<frameset rows="75,*,18" border="0">
+			<frame name="top_frame" id="top_frame" src="header.html" noresize="noresize" scrolling="no" />
+			<frameset cols="165,*">
+				<frame name="menu_frame" src="template/menu.html"  noresize="noresize" scrolling="no"/>
+				<frame name="main_frame" src="home.html" />
+			</frameset>
+			<frame name="bottom_frame" src="template/footer.html" noresize="noresize" scrolling="no" />
+		</fieldset>
+	</frameset>
+	<frame src="template/blank.html" />
+</frameset><noframes></noframes>
+			
+	
+</html>

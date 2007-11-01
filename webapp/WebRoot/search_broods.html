@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Search Broods</title>
+
+<LINK href="css/style.css" type=text/css rel=stylesheet>
+<script language="javascript">
+var topFrame;
+
+function startup()
+{
+	topFrame=window.parent.top_frame;
+	var v=document.getElementById("results");
+	topFrame.setShowResultObject(v);
+}
+
+
+function queryWebserviceBroods()
+{
+	startup();
+	var ws_form=document.ws_form;
+
+	var param="";
+	param+="genus1="+ws_form.genus1.value;
+	param+="&species1="+ws_form.species1.value;
+	param+="&subspecies1="+ws_form.subspecies1.value;
+	param+="&genus2="+ws_form.genus2.value;
+	param+="&species2="+ws_form.species2.value;
+	param+="&subspecies2="+ws_form.subspecies2.value;
+
+	topFrame.sendQuery("broods",param);
+}
+
+</script>
+
+<style type="text/css">
+<!--
+.style1 {font-size: 36px}
+-->
+</style>
+</head>
+
+<body>
+<div id="results">
+<h3>Search Broods</h3>
+<form name="ws_form">
+<table>
+
+<tr><td class="field_name">Genus/Species/Subspecies</td><td class="field_value"><input type="text" name="genus1" size=15 /></td>
+<td class="field_value"><input type="text" name="species1" size=15 /></td>
+<td class="field_value"><input type="text" name="subspecies1" size=15 /></td>
+</tr>
+<tr><td></td><td></td><td align="center"><span style="font-size: 36px; text-align:center;">X</span></td><td></td></tr>
+<tr><td class="field_name">Genus/Species/Subspecies</td><td class="field_value"><input type="text" name="genus2" size=15 /></td>
+<td class="field_value"><input type="text" name="species2" size=15 /></td>
+<td class="field_value"><input type="text" name="subspecies2" size=15 /></td></tr>
+<tr><td></td><td>&nbsp;</td></tr>
+<tr><td></td><td height=25 vliagn=center><div class="button_1"><a href="javascript:queryWebserviceBroods()" >Search</a></div></td></tr>
+</table>
+</form>
+</div>
+</body>
+</html>
