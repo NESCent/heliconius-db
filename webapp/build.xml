@@ -325,6 +325,14 @@
     	    </filterset>
     	</copy>
     	
+    	<!-- copy herder file -->
+    	<copy file="WebRoot/header.html.example" tofile="WebRoot/header.html" overwrite="yes">
+    	    		<filterset>
+    	    		  <filter token="version" value="${project.version}"/>
+    	         	  <filter token="deploy_date" value="${heliconius.deploy_time}"/>	
+    	    	    </filterset>
+    	 </copy>
+    	
 
     	<war destfile="${final.war.name}" webxml="WebRoot/WEB-INF/web.xml">
 	    	<lib dir="${web.dir}/WEB-INF/lib" />
@@ -335,7 +343,8 @@
                 <exclude name="WEB-INF/classes/**/*.*"/>
             	<exclude name="config/*.example"/>
             	<exclude name="config/*.new"/>
-            	
+            	<exclude name="*.example"/>
+            	<exclude name="*.new"/>
             </fileset>
         </war>
 		
