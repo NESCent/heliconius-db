@@ -1189,10 +1189,10 @@ public class ImportFromMakefileOutput {
 			importData.readCrosses();
 			importData.linkParentsToCross();
 			importData.linkCrossToIndividual();
-			//importData.importWildIndividuals();
-			//importData.importRearedBiotypes();
-			//importData.importCrosses();
-			//importData.importRearedIndividuals();
+			importData.importWildIndividuals();
+			importData.importRearedBiotypes();
+			importData.importCrosses();
+			importData.importRearedIndividuals();
 			importData.importParentsForCross();
 		}
 		catch(Exception e)
