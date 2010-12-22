@@ -350,5 +350,40 @@
 		
     </target>
 	
+    <target name="war_jboss5" depends="prepare-war" 
+            description="generates the war file (default)">
+       	<!-- copy config file -->
+        	<copy file="WebRoot/config/heliconius.conf.example" tofile="WebRoot/config/heliconius.conf" overwrite="yes">
+        		<filterset>
+        		  <filter token="version" value="${project.version}"/>
+             	  <filter token="deploy_date" value="${heliconius.deploy_time}"/>	
+        	    </filterset>
+        	</copy>
+        	
+        	<!-- copy herder file -->
+        	<copy file="WebRoot/header.html.example" tofile="WebRoot/header.html" overwrite="yes">
+        	    		<filterset>
+        	    		  <filter token="version" value="${project.version}"/>
+        	         	  <filter token="deploy_date" value="${heliconius.deploy_time}"/>	
+        	    	    </filterset>
+        	 </copy>
+     	<war destfile="${final.war.name}" webxml="WebRoot/WEB-INF/web.xml">
+     	    <lib dir="WebRoot/WEB-INF/lib">
+	         	<exclude name="hibernate3.jar"/>
+	    	  	<exclude name="hibernate-annotations.jar"/>
+     	    	<exclude name="xerces-2.6.2.jar"/>
+     	    	<exclude name="xml-apis.jar"/>
+     	    	<exclude name="postgresql-8.2-506.jdbc3.jar"/>
+	    	 </lib> 	
+            <classes dir="${out.classes.dir}" />
+            <fileset dir="${web.dir}">
+            	<exclude name="WEB-INF/web.xml"/>
+                <exclude name="WEB-INF/lib/**/*.*"/>
+                <exclude name="WEB-INF/classes/**/*.*"/>
+            	<exclude name="config/*.example"/>
+            	<exclude name="config/*.new"/>
+            </fileset>
+        </war>
+    </target>
 
 </project>
