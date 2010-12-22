@@ -372,6 +372,8 @@
 	         	<exclude name="hibernate3.jar"/>
 	    	  	<exclude name="hibernate-annotations.jar"/>
      	    	<exclude name="xerces-2.6.2.jar"/>
+     	    	<exclude name="xercesImpl.jar"/>
+     	    	<exclude name="xalan.jar"/>
      	    	<exclude name="xml-apis.jar"/>
      	    	<exclude name="postgresql-8.2-506.jdbc3.jar"/>
 	    	 </lib> 	
