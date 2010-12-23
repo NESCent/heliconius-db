@@ -32,6 +32,11 @@
     <property name="build.dir" value="build"/>
 
 
+    <!-- hibernate connection settings -->
+	<property name="hibernate.password" value="" />
+    <property name="hibernate.username" value="" />
+	<property name="hibernate.database" value="" />
+	
     <!--
        ========================================================================
          Set the properties related to the build area
@@ -367,6 +372,18 @@
         	         	  <filter token="deploy_date" value="${heliconius.deploy_time}"/>	
         	    	    </filterset>
         	 </copy>
+    	
+    	  <!-- copy hibernate configuration file -->
+    	   	<copy file="src/hibernate.cfg.xml.example" 
+    	   	      tofile="${out.classes.dir}/hibernate.cfg.xml" 
+    	   	      overwrite="yes">
+    	    	      <filterset>
+    	    	    	           <filter token="password" value="${hibernate.password}"/>
+    	    	    	            <filter token="username" value="${hibernate.username}"/>
+    	    	    	          	<filter token="database" value="${hibernate.database}"/>
+    	    	    	          </filterset>
+    	  	 </copy>
+    	
      	<war destfile="${final.war.name}" webxml="WebRoot/WEB-INF/web.xml">
      	    <lib dir="WebRoot/WEB-INF/lib">
 	         	<exclude name="hibernate3.jar"/>
