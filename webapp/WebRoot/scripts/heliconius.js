@@ -23,7 +23,7 @@ var brood;
 
 
 /* url of the web service */
-var ws_url="http://"+document.domain+":"+document.location.port+"/heliconius_ws/rest/";  
+var ws_url="http://"+document.domain+":"+document.location.port+"/rest/";  
 
 /* image folder */
 var image_url="http://www.nescent.org/images/rotate/";  
