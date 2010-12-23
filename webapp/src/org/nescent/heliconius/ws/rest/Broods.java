@@ -125,8 +125,14 @@ public class Broods implements Provider<Source> {
 			name+=" " + species1.trim();
 		if(subspecies1!=null && ! subspecies1.trim().equals(""))
 			name+=" ssp. " + subspecies1.trim();
+		name = name.replaceAll("%20"," ");
 		name=name.trim();
-		String fstr="select individual from Individual individual join individual.individualBiotypes biotypes join biotypes.biotype biotype where biotype.name like '%"+name+"%'";
+		String fstr="select individual from Individual individual join individual.individualBiotypes biotypes join biotypes.biotype biotype ";
+		String where="";
+		if(name!=null && ! name.trim().equals("")){
+		   fstr+=" where upper(biotype.name) like '%" + name.toUpperCase() +"%'";
+		}
+		
 		String name1="";
 		if(genus2!=null && ! genus2.trim().equals(""))
 			name1=genus2.trim();
@@ -134,9 +140,13 @@ public class Broods implements Provider<Source> {
 			name1+=" " + species2.trim();
 		if(subspecies2!=null && ! subspecies2.trim().equals(""))
 			name1+=" ssp. " + subspecies2.trim();
+		name1 = name1.replaceAll("%20"," ");
 		name1=name1.trim();
 		
-		String mstr="select individual from Individual individual join individual.individualBiotypes biotypes join biotypes.biotype biotype where biotype.name like '%"+name1+"%'";
+		String mstr="select individual from Individual individual join individual.individualBiotypes biotypes join biotypes.biotype biotype ";
+		if(name1!=null && ! name1.trim().equals("")){
+			mstr+=" where upper(biotype.name) like '%" + name1.toUpperCase() +"%'";
+		}
 		
 		String query="select cross from Crossexperiment cross where "
 			+"cross.individualByFemaleId in (" + fstr +")"

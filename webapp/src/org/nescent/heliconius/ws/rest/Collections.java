@@ -132,11 +132,19 @@ public class Collections implements Provider<Source> {
 		List indvList=null;
 		
 		//indvList=indvDao.findByProperty("biotype",biotype);
-		String query="from Individual as indv join indv.individualBiotypes as biotypes join biotypes.biotype as biotype where indv.isCaptivityReared=FALSE AND  biotype.name like '%" + name +"%'";
-		if(country!=null && ! country.trim().equals(""))
-			query+=" AND indv.geolocation.country='" + country +"'";
-		if(province!=null && ! province.trim().equals(""))
-			query+=" AND indv.geolocation.province='" + province +"'";
+		String query="from Individual as indv join indv.individualBiotypes as biotypes join biotypes.biotype as biotype left outer join indv.geolocation as loc where indv.isCaptivityReared=FALSE ";
+		if(name!=null && ! name.trim().equals("")){
+		    name = name.replaceAll("%20"," ");
+			query+=" AND upper(biotype.name) like '%" + name.toUpperCase() +"%'";
+		}
+		if(country!=null && ! country.trim().equals("")){
+			country = country.replaceAll("%20"," ");
+			query+=" AND upper(loc.country) like '%" + country.toUpperCase() +"%'";
+		}
+		if(province!=null && ! province.trim().equals("")){
+			province = province.replaceAll("%20"," ");
+			query+=" AND upper(loc.province) like '%" + province.toUpperCase() +"%'";
+		}
 		
 		indvList=sess.createQuery(query).list();
 			
@@ -224,5 +232,13 @@ public class Collections implements Provider<Source> {
         return source;
     }
 	
+	public static void main(String [] agrs){
+		Collections c = new Collections();
+		try{Source s = c.createSource("a",null,null,null,null);
+		  System.out.println(s.toString());
+		}catch(Exception e){
+			System.out.println(e);
+		}
+	}
 	
 }
