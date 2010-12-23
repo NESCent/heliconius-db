@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="heliconius" basedir="." default="war_jboss5">
+<project name="heliconius" basedir="." default="war">
 
 	
 	<!-- Give user a chance to override without editing this file
