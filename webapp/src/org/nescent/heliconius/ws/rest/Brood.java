@@ -204,7 +204,6 @@ public class Brood implements Provider<Source> {
             body+="</Brood>";
 		} 
         body+="</BroodResponse>";
-        System.out.println(body);
         Source source = new StreamSource(
             new ByteArrayInputStream(body.getBytes()));
         return source;

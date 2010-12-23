@@ -72,13 +72,7 @@ public class Hybrid implements Provider<Source> {
 	 */
 	private Source createSource(String id) {
         
-		/**hold 2 seconds to let the animation of the flying butterfly show up.
-		 * This is only for demo purpose and should be removed later
-		 */ 
-		try{
-			Thread.sleep(2000);
-		}catch(Exception e){}
-		
+
 		String notes="Basking in their first moments of nuptial bliss, brides and grooms around the country are exiting churches, showered not with rice or confetti, but surrounded instead by the fluttering gossamer wings of hundreds of butterflies. All but unheard of just a few years ago, butterfly releases are the latest fashion at weddings, not to mention at memorial services, grand openings, divorces and prison releases.\n"; 
         notes+="\"The beautiful flight of the butterflies as they ascended -- it captured the beauty and the spirit of the day,\" said Dr. Patricia Heaman of White Haven, Pa., who ordered a \"mixed bouquet\" of several species of butterflies for the garden wedding last month of her nature-loving daughter. \"It just seemed like the natural culmination to a natural event.\""; 
 

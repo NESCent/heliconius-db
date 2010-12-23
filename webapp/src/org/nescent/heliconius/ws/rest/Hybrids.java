@@ -111,14 +111,6 @@ public class Hybrids implements Provider<Source> {
 	 */
 	private Source createSource(String genus1,String species1,String subspecies1,
 			String genus2,String species2,String subspecies2) {
-                
-		/**hold 2 seconds to let the animation of the flying butterfly show up.
-		 * This is only for demo purpose and should be removed later
-		 */ 
-		try{
-			Thread.sleep(2000);
-		}catch(Exception e){}
-		
 		String body ="<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>" 
         	+"<HybridsResponse>"
         	+"<Individuals>"

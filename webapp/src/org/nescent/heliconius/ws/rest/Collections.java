@@ -4,7 +4,8 @@
  */
 package org.nescent.heliconius.ws.rest;
 
-import java.io.ByteArrayInputStream;
+
+import java.io.*;
 import java.util.List;
 import java.util.Set;
 import java.util.StringTokenizer;
@@ -89,10 +90,15 @@ public class Collections implements Provider<Source> {
             
 			
         } catch(Exception e) {
-            e.printStackTrace();
+            
+            
+            StringWriter writer = new StringWriter (  ) ; 
+			PrintWriter out = new PrintWriter ( writer ) ; 
+			e.printStackTrace(out);
+            String str = writer.toString();
             String body ="<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>" 
         		+"<CollectionsResponse>"
-        		+"<Error>"+e+"</Error>"
+        		+"<Error>"+str+"</Error>"
         		+"</CollectionsResponse>";		
         		
             Source source = new StreamSource(
@@ -142,65 +148,70 @@ public class Collections implements Provider<Source> {
 			for(int i=0;i<indvList.size();i++)
 			{
 				
-				Individual indv=(Individual)((Object [])indvList.get(i))[0];
-				if(indv!=null)
+				try{
+					Individual indv=(Individual)((Object [])indvList.get(i))[0];
+					if(indv!=null)
+					{
+						body+="<Individual id=\"" + indv.getIndividualId()+"\">";
+			            body +="<Name>" + indv.getName() +"</Name>";
+			            Set biotypes=indv.getIndividualBiotypes();
+			            if(biotypes!=null && biotypes.size()>0)
+			            {
+			            	IndividualBiotype indvBiotype=(IndividualBiotype)biotypes.toArray()[0];
+							if(indvBiotype!=null)
+							{
+								Biotype biotype=indvBiotype.getBiotype();
+								if(biotype!=null)
+									body+="<ScientificName><Simple>"+biotype.getName()+"</Simple></ScientificName>"; 
+								else
+									body+="<ScientificName><Simple></Simple></ScientificName>"; 
+							}
+			            }
+			            else
+			            	body+="<ScientificName><Simple></Simple></ScientificName>"; 
+			            String country1="";
+			            String province1="";
+			            String lat="";
+			            String longitude="";
+			            String alt="";
+			            Geolocation geo=indv.getGeolocation();
+			            
+			            if(geo!=null)
+			            {
+			            	if(geo.getCountry()!=null)
+			            		country1=geo.getCountry();
+			            	if(geo.getProvince()!=null)
+			            		province1=geo.getProvince();
+			            	if(geo.getLatitude()!=null)
+			            		lat=String.valueOf(geo.getLatitude());
+			            	if(geo.getLongitude()!=null)
+			            		longitude=String.valueOf(geo.getLongitude());
+			            	if(geo.getAltitude()!=null)
+			            	{
+			            		try
+			            		{
+			            			alt=String.valueOf(geo.getAltitude());
+			            		}
+			            		catch(Exception e)
+			            		{
+			            			alt="";
+			            		}
+			            	}
+			            }
+			            body+="<GeoLocation>" 
+			            	+"<Country>" + country1 +"</Country>" 
+			            	+"<Province>"+ province1+"</Province>"
+			            	+"<Latitude>" + lat+"</Latitude>"
+			            	+"<Longitude>"+longitude+"</Longitude>"
+			            	+"<Altitude>"+ alt+"</Altitude>"
+			            	+"</GeoLocation>";
+			            	
+			            body+="<Images></Images>"
+			            	+"</Individual>";
+					}
+				}catch(Exception e)
 				{
-					body+="<Individual id=\"" + indv.getIndividualId()+"\">";
-		            body +="<Name>" + indv.getName() +"</Name>";
-		            Set biotypes=indv.getIndividualBiotypes();
-		            if(biotypes!=null && biotypes.size()>0)
-		            {
-		            	IndividualBiotype indvBiotype=(IndividualBiotype)biotypes.toArray()[0];
-						if(indvBiotype!=null)
-						{
-							Biotype biotype=indvBiotype.getBiotype();
-							if(biotype!=null)
-								body+="<ScientificName><Simple>"+biotype.getName()+"</Simple></ScientificName>"; 
-							else
-								body+="<ScientificName><Simple></Simple></ScientificName>"; 
-						}
-		            }
-		            else
-		            	body+="<ScientificName><Simple></Simple></ScientificName>"; 
-		            String country1="";
-		            String province1="";
-		            String lat="";
-		            String longitude="";
-		            String alt="";
-		            Geolocation geo=indv.getGeolocation();
-		            
-		            if(geo!=null)
-		            {
-		            	if(geo.getCountry()!=null)
-		            		country1=geo.getCountry();
-		            	if(geo.getProvince()!=null)
-		            		province1=geo.getProvince();
-		            	if(geo.getLatitude()!=null)
-		            		lat=String.valueOf(geo.getLatitude());
-		            	if(geo.getLongitude()!=null)
-		            		longitude=String.valueOf(geo.getLongitude());
-		            	if(geo.getAltitude()!=null)
-		            	{
-		            		try
-		            		{
-		            			alt=String.valueOf(geo.getAltitude());
-		            		}
-		            		catch(Exception e)
-		            		{
-		            			alt="";
-		            		}
-		            	}
-		            }
-		            body+="<GeoLocation>" 
-		            	+"<Country>" + country1 +"</Country>" 
-		            	+"<Province>"+ province1+"</Province>"
-		            	+"<Latitude>" + lat+"</Latitude>"
-		            	+"<Longitude>"+longitude+"</Longitude>"
-		            	+"<Altitude>"+ alt+"</Altitude>"
-		            	+"</GeoLocation>";
-		            	
-		            body+="<Images></Images>"
-		            	+"</Individual>";
+					e.printStackTrace();
 				}
 			}
 		}
