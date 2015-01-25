@@ -17,8 +17,9 @@ How to cite
 
 The data modeling and schema work was eventually merged into the following publication:
 
-Jung, S., Menda, N., Redmond, S., Buels, R. M., Friesen, M., Bendana, Y., Sanderson, L.-A.,
-Lapp, H., Lee, T., MacCallum, B., Bett, K. E., Cain, S., Clements, D., Mueller, L. A., and Main, D.
-"The Chado Natural Diversity Module: A New Generic Database Schema for Large-Scale Phenotyping and
-Genotyping Data” Database 2011, (2011): bar051.
+Jung, S., Menda, N., Redmond, S., Buels, R. M., Friesen, M., Bendana, Y., 
+Sanderson, L.-A., Lapp, H., Lee, T., MacCallum, B., Bett, K. E., Cain, S., 
+Clements, D., Mueller, L. A., and Main, D. "The Chado Natural Diversity Module:
+A New Generic Database Schema for Large-Scale Phenotyping and Genotyping Data”
+Database 2011, (2011): bar051.
 http://dx.doi.org/10.1093/database/bar051
