@@ -1,10 +1,24 @@
 HELICONIUS BUTTERFLY EVOLUTIONARY DATABASE
+==========================================
 
-LICENSE
+Copying and License
+-------------------
 
-This software and data are developed by Owen McMillan and Nassib
-Nassar, and are licensed under the terms of the MIT License.
+This software and data were initially developed by Owen McMillan (NC State)
+and Nassib Nassar (RENCI). Subsequent development was by Hilmar Lapp (NESCent)
+and Xianhua Liu (NESCent). The code is released under the terms of the MIT License.
 
 The Chado schema is adapted from the GMOD project (Chris Mungall,
 David Emmert and the GMOD team) and distributed under the terms of the
 Perl Artistic License.
+
+How to cite
+-----------
+
+The data modeling and schema work was eventually merged into the following publication:
+
+Jung, S., Menda, N., Redmond, S., Buels, R. M., Friesen, M., Bendana, Y., Sanderson, L.-A.,
+Lapp, H., Lee, T., MacCallum, B., Bett, K. E., Cain, S., Clements, D., Mueller, L. A., and Main, D.
+"The Chado Natural Diversity Module: A New Generic Database Schema for Large-Scale Phenotyping and
+Genotyping Data” Database 2011, (2011): bar051.
+http://dx.doi.org/10.1093/database/bar051
